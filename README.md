@@ -51,15 +51,14 @@ vision-clarity-website/
 │
 ├── index.html              # Main HTML document with site structure
 │
-├── styles.css              # Global stylesheet containing all site styling
+├── css/                    # Directory for CSS stylesheets
+│   ├── styles.css          # Global stylesheet containing all site styling
+│   └── chatbot.css         # Chatbot-specific styling
 │
-├── scripts.js              # JavaScript file for interactive functionality
-│
-├── chatbot.js              # Chatbot implementation with OpenAI/Claude support
-│
-├── chatbot.css             # Chatbot-specific styling
-│
-├── server.js               # Express server implementation
+├── js/                     # Directory for JavaScript files
+│   ├── scripts.js          # JavaScript file for interactive functionality
+│   ├── chatbot.js          # Chatbot implementation with OpenAI/Claude support
+│   └── server.js           # Express server implementation
 │
 ├── api/                    # Directory for API implementations
 │   └── chatbot-api.js      # Chatbot API supporting multiple AI providers
