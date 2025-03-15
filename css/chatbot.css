@@ -1,0 +1,297 @@
+/* Vision Clarity Institute - Chatbot Styles */
+
+/* Chatbot Container */
+.vision-clarity-chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+/* Chatbot Button */
+.chatbot-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #76b900;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(1.05);
+}
+
+.chatbot-button.hidden {
+    display: none;
+}
+
+/* Chat Window */
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+}
+
+.chat-window.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: #f8f8f8;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.chat-logo {
+    height: 24px;
+    margin-right: 10px;
+}
+
+.chat-header span {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #333;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Chat Messages Container */
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Message Styles */
+.chat-message {
+    display: flex;
+    gap: 10px;
+    max-width: 85%;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.assistant-message {
+    align-self: flex-start;
+}
+
+.message-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.message-content {
+    padding: 12px 15px;
+    border-radius: 18px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.user-message .message-content {
+    background-color: #e1f5d5;
+    border-bottom-right-radius: 5px;
+}
+
+.assistant-message .message-content {
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 5px;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888;
+    display: inline-block;
+    animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes typing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Input Area */
+.chat-input-container {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 10px 15px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.send-button {
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+    color: #76b900;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.send-button svg {
+    stroke: #76b900;
+    transition: transform 0.2s;
+}
+
+.send-button:hover svg {
+    transform: scale(1.1);
+}
+
+/* AI Toggle Switch Styles */
+.ai-toggle-container {
+    margin-right: 10px;
+}
+
+.ai-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    margin: 0 5px;
+}
+
+.ai-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ai-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.ai-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.ai-toggle-label {
+    position: absolute;
+    top: 2px;
+    right: -36px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    width: 40px;
+    text-align: left;
+}
+
+input:checked + .ai-toggle-slider {
+    background-color: #76b900;
+}
+
+input:checked + .ai-toggle-slider:before {
+    transform: translateX(36px);
+}
+
+/* System Message Style */
+.system-message .message-content {
+    background-color: #f8f8f8;
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+    padding: 8px 12px;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .chat-window {
+        width: calc(100vw - 40px);
+        height: 60vh;
+        bottom: 70px;
+    }
+}
