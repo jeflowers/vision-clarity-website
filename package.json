@@ -2,10 +2,10 @@
   "name": "vision-clarity-website",
   "version": "1.1.0",
   "description": "Modern website for Vision Clarity Institute - a Lasik eye surgery provider",
-  "main": "server.js",
+  "main": "js/server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node js/server.js",
+    "dev": "nodemon js/server.js"
   },
   "repository": {
     "type": "git",
