@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locations - Vision Clarity Institute</title>
+    <meta name="description" content="Find a Vision Clarity Institute location near you. Our modern Lasik surgery centers offer convenient scheduling and state-of-the-art facilities.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../chatbot.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <img src="../assets/images/icons/menu.svg" alt="Menu">
+                </button>
+                <ul class="nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="technology.html">Technology</a></li>
+                    <li><a href="locations.html" class="active">Locations</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="language-select" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="zh">中文</option>
+                        <option value="ko">한국어</option>
+                        <option value="hy">Հայերեն</option>
+                    </select>
+                </div>
+                <a href="contact.html" class="btn btn-primary">Schedule Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Locations</h1>
+            <p>Advanced eye care centers across Southern California</p>
+        </div>
+    </section>
+
+    <!-- Locations Map -->
+    <section class="locations-map section">
+        <div class="container">
+            <div class="map-container">
+                <!-- Interactive map would be implemented here with actual JavaScript/API integration -->
+                <img src="../assets/images/locations/socal-map.jpg" alt="Southern California Map with Vision Clarity Institute Locations" class="map-placeholder">
+            </div>
+            <div class="location-finder">
+                <h2>Find a Location Near You</h2>
+                <form class="location-search">
+                    <input type="text" placeholder="Enter ZIP code" class="zip-input">
+                    <button type="submit" class="btn">Search</button>
+                </form>
+                <div class="location-filters">
+                    <label><input type="checkbox" checked> Show all locations</label>
+                    <label><input type="checkbox" checked> Surgery centers</label>
+                    <label><input type="checkbox" checked> Consultation offices</label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Locations -->
+    <section class="featured-locations section bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Centers</h2>
+            
+            <div class="location-grid">
+                <!-- Los Angeles Location -->
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="../assets/images/locations/los-angeles.jpg" alt="Los Angeles Vision Clarity Institute">
+                    </div>
+                    <div class="location-details">
+                        <h3>Los Angeles</h3>
+                        <p class="location-type">Surgery Center & Consultation Office</p>
+                        <address>
+                            1234 Vision Way, Suite 100<br>
+                            Los Angeles, CA 90001
+                        </address>
+                        <p class="location-contact">
+                            <strong>Phone:</strong> (213) 555-2020<br>
+                            <strong>Email:</strong> la@visionclarityinstitute.com
+                        </p>
+                        <div class="location-hours">
+                            <p><strong>Hours:</strong></p>
+                            <p>Monday - Friday: 8am - 6pm</p>
+                            <p>Saturday: 9am - 2pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                        <div class="location-actions">
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline">Get Directions</a>
+                            <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pasadena Location -->
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="../assets/images/locations/pasadena.jpg" alt="Pasadena Vision Clarity Institute">
+                    </div>
+                    <div class="location-details">
+                        <h3>Pasadena</h3>
+                        <p class="location-type">Consultation Office</p>
+                        <address>
+                            567 Lake Avenue, Suite 200<br>
+                            Pasadena, CA 91101
+                        </address>
+                        <p class="location-contact">
+                            <strong>Phone:</strong> (626) 555-2020<br>
+                            <strong>Email:</strong> pasadena@visionclarityinstitute.com
+                        </p>
+                        <div class="location-hours">
+                            <p><strong>Hours:</strong></p>
+                            <p>Monday - Friday: 9am - 5pm</p>
+                            <p>Saturday: 10am - 2pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                        <div class="location-actions">
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline">Get Directions</a>
+                            <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newport Beach Location -->
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="../assets/images/locations/newport-beach.jpg" alt="Newport Beach Vision Clarity Institute">
+                    </div>
+                    <div class="location-details">
+                        <h3>Newport Beach</h3>
+                        <p class="location-type">Surgery Center & Consultation Office</p>
+                        <address>
+                            2200 Newport Boulevard, Suite 300<br>
+                            Newport Beach, CA 92663
+                        </address>
+                        <p class="location-contact">
+                            <strong>Phone:</strong> (949) 555-2020<br>
+                            <strong>Email:</strong> newport@visionclarityinstitute.com
+                        </p>
+                        <div class="location-hours">
+                            <p><strong>Hours:</strong></p>
+                            <p>Monday - Friday: 8am - 6pm</p>
+                            <p>Saturday: 9am - 3pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                        <div class="location-actions">
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline">Get Directions</a>
+                            <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glendale Location -->
+                <div class="location-card">
+                    <div class="location-image">
+                        <img src="../assets/images/locations/glendale.jpg" alt="Glendale Vision Clarity Institute">
+                    </div>
+                    <div class="location-details">
+                        <h3>Glendale</h3>
+                        <p class="location-type">Consultation Office</p>
+                        <address>
+                            400 North Brand Blvd, Suite 150<br>
+                            Glendale, CA 91203
+                        </address>
+                        <p class="location-contact">
+                            <strong>Phone:</strong> (818) 555-2020<br>
+                            <strong>Email:</strong> glendale@visionclarityinstitute.com
+                        </p>
+                        <div class="location-hours">
+                            <p><strong>Hours:</strong></p>
+                            <p>Monday - Friday: 9am - 5pm</p>
+                            <p>Saturday: 10am - 2pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                        <div class="location-actions">
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline">Get Directions</a>
+                            <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon section">
+        <div class="container">
+            <h2>Coming Soon</h2>
+            <p>We're expanding to better serve you. New Vision Clarity Institute locations opening in 2025:</p>
+            
+            <div class="coming-soon-grid">
+                <div class="coming-soon-location">
+                    <h3>San Diego</h3>
+                    <p>Opening Spring 2025</p>
+                    <p>Full-service surgery center and consultation office</p>
+                </div>
+                <div class="coming-soon-location">
+                    <h3>Santa Monica</h3>
+                    <p>Opening Summer 2025</p>
+                    <p>Consultation office with advanced diagnostic equipment</p>
+                </div>
+                <div class="coming-soon-location">
+                    <h3>Valencia</h3>
+                    <p>Opening Fall 2025</p>
+                    <p>Consultation office with telemedicine capabilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p>Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p>Phone: (800) 555-2020</p>
+                        <p>Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 8am - 6pm</p>
+                    <p>Saturday: 9am - 2pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts.js"></script>
+    <script src="../chatbot.js"></script>
+</body>
+</html>
