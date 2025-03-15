@@ -1,0 +1,135 @@
+{
+  "global": {
+    "siteName": "Vision Clarity Institute",
+    "tagline": "See the world with clarity",
+    "menu": {
+      "home": "Home",
+      "services": "Services",
+      "technology": "Technology",
+      "locations": "Locations",
+      "contact": "Contact"
+    },
+    "buttons": {
+      "schedule": "Schedule Consultation",
+      "learnMore": "Learn More",
+      "bookNow": "Book Now",
+      "getDirections": "Get Directions",
+      "submit": "Submit",
+      "close": "Close"
+    },
+    "footer": {
+      "quickLinks": "Quick Links",
+      "contact": "Contact",
+      "hours": "Hours",
+      "copyright": "© 2025 Vision Clarity Institute. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "accessibility": "Accessibility"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Advanced Laser Vision Correction",
+      "subtitle": "Achieve crystal clear vision with state-of-the-art LASIK technology"
+    },
+    "intro": {
+      "title": "Experience the Vision Clarity Difference",
+      "content": "At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs."
+    },
+    "services": {
+      "title": "Our Services",
+      "traditional": {
+        "title": "Traditional LASIK",
+        "description": "Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time."
+      },
+      "custom": {
+        "title": "Custom Bladeless LASIK",
+        "description": "Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications."
+      },
+      "prk": {
+        "title": "PRK",
+        "description": "An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas or certain corneal abnormalities."
+      },
+      "presbyopia": {
+        "title": "Presbyopia Correction",
+        "description": "Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses."
+      }
+    },
+    "testimonials": {
+      "title": "Patient Testimonials",
+      "subtitle": "Hear from our satisfied patients"
+    },
+    "cta": {
+      "title": "Ready to See Clearly?",
+      "content": "Schedule your free consultation today and take the first step toward clearer vision.",
+      "button": "Book Your Free Consultation"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Our Services",
+      "subtitle": "Advanced vision correction solutions tailored to your needs"
+    },
+    "traditional": {
+      "title": "Traditional LASIK",
+      "description": "Our standard LASIK procedure uses a microkeratome blade to create a thin flap in the cornea. This established technique offers excellent vision correction for nearsightedness, farsightedness, and astigmatism with a quick recovery time.",
+      "features": [
+        "Quick 15-minute procedure",
+        "Minimal discomfort",
+        "24-48 hour recovery",
+        "Established safety record"
+      ]
+    },
+    "custom": {
+      "title": "Custom Bladeless LASIK",
+      "description": "Our premium all-laser LASIK procedure creates a corneal flap using a femtosecond laser instead of a blade. This advanced technique allows for more precise corneal mapping and customized treatment, resulting in better outcomes for patients with complex prescriptions.",
+      "features": [
+        "Bladeless technology",
+        "Customized corneal mapping",
+        "Higher precision for complex cases",
+        "Reduced risk of complications"
+      ]
+    },
+    "prk": {
+      "title": "PRK (Photorefractive Keratectomy)",
+      "description": "PRK is an excellent alternative for patients who aren't candidates for LASIK. Instead of creating a flap, PRK removes the outer layer of the cornea before reshaping, making it suitable for patients with thin corneas or certain corneal abnormalities.",
+      "features": [
+        "Ideal for thin corneas",
+        "No flap-related complications",
+        "Excellent long-term stability",
+        "3-5 day initial recovery"
+      ]
+    },
+    "presbyopia": {
+      "title": "Presbyopia Correction",
+      "description": "We offer specialized procedures to address age-related near vision loss (presbyopia). These treatments can reduce or eliminate dependence on reading glasses through monovision LASIK or advanced lens-based solutions.",
+      "features": [
+        "Freedom from reading glasses",
+        "Monovision options",
+        "Customized to your lifestyle",
+        "Multifocal capabilities"
+      ]
+    }
+  },
+  "contact": {
+    "header": {
+      "title": "Contact Us",
+      "subtitle": "Schedule your free consultation or connect with our team"
+    },
+    "form": {
+      "title": "Schedule a Free Consultation",
+      "subtitle": "Fill out the form below, and our team will contact you to schedule your complimentary consultation.",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Preferred Location",
+      "service": "Interested Service",
+      "dateRange": "Preferred Date Range",
+      "message": "Additional Information",
+      "consent": "I consent to be contacted by Vision Clarity Institute regarding my inquiry.",
+      "required": "Required fields",
+      "submit": "Submit Request",
+      "success": "Your consultation request has been submitted successfully. One of our patient coordinators will contact you within 24 hours to confirm your appointment."
+    }
+  }
+}
