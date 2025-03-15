@@ -3,103 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Clarity Institute - Advanced Lasik Procedures</title>
+    <title>Vision Clarity Institute - Advanced Lasik Eye Surgery</title>
+    <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
-    <!-- Primary Navigation -->
-    <nav class="primary-nav">
-        <div class="logo">
-            <svg height="24" width="24" viewBox="0 0 24 24" fill="#76b900">
-                <circle cx="12" cy="12" r="10" fill="#76b900"/>
-                <path d="M8 12 L16 12 M12 8 L12 16" stroke="white" stroke-width="2"/>
-            </svg>
-            <span style="margin-left: 8px;">VISION CLARITY</span>
-        </div>
-        <div class="nav-links">
-            <a href="#">Services</a>
-            <a href="#">Technology</a>
-            <a href="#">Patient Resources</a>
-            <button class="search-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </button>
-            <div class="language-selector">
-                <button class="language-btn" id="languageToggle">
-                    EN
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-                <div class="language-dropdown" id="languageDropdown">
-                    <a href="#">English</a>
-                    <a href="#">Español</a>
-                    <a href="#">简体中文</a>
-                    <a href="#">한국어</a>
-                    <a href="#">Հայերեն</a>
-                </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+                </a>
             </div>
-            <button class="login-btn">Schedule Consultation</button>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <img src="assets/images/icons/menu.svg" alt="Menu">
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="pages/services.html">Services</a></li>
+                    <li><a href="pages/technology.html">Technology</a></li>
+                    <li><a href="pages/locations.html">Locations</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="language-select" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="zh">中文</option>
+                        <option value="ko">한국어</option>
+                        <option value="hy">Հայերեն</option>
+                    </select>
+                </div>
+                <a href="pages/contact.html" class="btn btn-primary">Schedule Consultation</a>
+            </div>
         </div>
-    </nav>
-    
-    <!-- Secondary Navigation -->
-    <nav class="secondary-nav">
-        <div class="secondary-nav-brand">Vision Clarity Institute</div>
-        <div class="secondary-nav-links">
-            <a href="#">Find Locations</a>
-            <a href="#">Self-Assessment Test</a>
-            <a href="#">Doctor-Led Consultations</a>
-            <a href="#">Patient Education</a>
-            <a href="#">Enterprise Solutions</a>
-            <a href="#">More</a>
-        </div>
-    </nav>
-    
+    </header>
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Vision Clarity Institute</h1>
-            <p>Gain perfect vision with our state-of-the-art Lasik technology.</p>
-        </div>
-        <div class="hero-image">
-            <div class="hero-image-grid">
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
-                <div class="hero-image-item" style="background-color: #555;"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Advanced Laser Vision Correction</h1>
+                    <p>Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts.</p>
+                    <div class="hero-cta">
+                        <a href="pages/contact.html" class="btn btn-primary btn-large">Schedule Free Consultation</a>
+                        <a href="pages/technology.html" class="btn btn-outline">Explore Our Technology</a>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="hero-image-grid">
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image1.jpg" alt="Patient with clear vision after LASIK surgery">
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image2.jpg" alt="Advanced laser technology for vision correction">
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image3.jpg" alt="Vision Clarity Institute surgeon performing LASIK procedure">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <div class="bottom-nav-links">
-            <a href="#">What's New</a>
-            <a href="#">Benefits</a>
-            <a href="#">Partners</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Stay Informed</a>
+
+    <!-- Intro Section -->
+    <section class="intro section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-image">
+                    <img src="assets/images/intro/doctor-patient.jpg" alt="Doctor consulting with a patient at Vision Clarity Institute">
+                </div>
+                <div class="intro-content">
+                    <h2>Experience the Vision Clarity Difference</h2>
+                    <p>At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs.</p>
+                    <p>With over 50,000 successful procedures performed, our board-certified ophthalmologists have the expertise to provide you with the highest standard of care in laser vision correction.</p>
+                    <ul class="intro-features">
+                        <li>Advanced bladeless LASIK technology</li>
+                        <li>Comprehensive consultation and eye analysis</li>
+                        <li>Personalized treatment plans</li>
+                        <li>Exceptional post-operative care</li>
+                    </ul>
+                    <a href="pages/technology.html" class="btn btn-secondary">Our Technology</a>
+                </div>
+            </div>
         </div>
-        <a href="#" class="cta-button">
-            Browse Treatment Options
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-        </a>
-    </nav>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-overview section bg-light">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive vision correction solutions to fit your needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
+                    </div>
+                    <h3>Traditional LASIK</h3>
+                    <p>Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
+                    <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/custom-lasik.svg" alt="Custom Bladeless LASIK Icon">
+                    </div>
+                    <h3>Custom Bladeless LASIK</h3>
+                    <p>Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
+                    <a href="pages/services.html#custom" class="service-link">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/prk.svg" alt="PRK Icon">
+                    </div>
+                    <h3>PRK</h3>
+                    <p>An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
+                    <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/presbyopia.svg" alt="Presbyopia Correction Icon">
+                    </div>
+                    <h3>Presbyopia Correction</h3>
+                    <p>Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
+                    <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">Patient Testimonials</h2>
+            <p class="section-subtitle">Hear from our satisfied patients</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <blockquote>
+                            <p>"After 20 years of wearing glasses, I can finally see clearly without them. The procedure was quick and painless, and the staff made me feel completely at ease. I wish I had done this years ago!"</p>
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonials/jennifer-t.jpg" alt="Jennifer T." class="author-image">
+                            <div class="author-info">
+                                <h4>Jennifer T.</h4>
+                                <p>Los Angeles, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-navigation">
+                    <button class="prev-testimonial" aria-label="Previous testimonial">
+                        <img src="assets/images/icons/arrow-left.svg" alt="Previous">
+                    </button>
+                    <div class="testimonial-indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+                    <button class="next-testimonial" aria-label="Next testimonial">
+                        <img src="assets/images/icons/arrow-right.svg" alt="Next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-overview section bg-light">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">Am I a good candidate for LASIK?</h3>
+                    <div class="faq-answer">
+                        <p>Good candidates for LASIK are typically 18 years or older with stable vision for at least one year. A comprehensive eye exam during your consultation will determine if LASIK is right for you based on your eye health, prescription, and corneal thickness.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is LASIK painful?</h3>
+                    <div class="faq-answer">
+                        <p>LASIK is generally not painful. We use numbing eye drops before the procedure, and patients typically feel only slight pressure during the brief surgery. Some mild discomfort, irritation, or dryness may occur during the first 24-48 hours of recovery.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How long does recovery take?</h3>
+                    <div class="faq-answer">
+                        <p>Most patients notice improved vision immediately after surgery, with vision continuing to stabilize over the next few days. Many return to work within 1-2 days. Complete healing may take 3-6 months, though most visual stabilization occurs within the first few weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How much does LASIK cost?</h3>
+                    <div class="faq-answer">
+                        <p>The cost of LASIK at Vision Clarity Institute ranges from $1,800 to $2,500 per eye, depending on your specific vision needs and the technology selected. We offer flexible financing options with affordable monthly payments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <a href="pages/contact.html" class="btn btn-primary">Schedule a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to See Clearly?</h2>
+            <p>Schedule your free consultation today and take the first step toward clearer vision.</p>
+            <a href="pages/contact.html" class="btn btn-large">Book Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p>Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/services.html">Services</a></li>
+                        <li><a href="pages/technology.html">Technology</a></li>
+                        <li><a href="pages/locations.html">Locations</a></li>
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p>Phone: (800) 555-2020</p>
+                        <p>Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 8am - 6pm</p>
+                    <p>Saturday: 9am - 2pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="scripts.js"></script>
-    <script type="module" src="chatbot.js"></script>
+    <script src="chatbot.js"></script>
 </body>
 </html>
