@@ -5,11 +5,40 @@ class I18nManager {
         // Current language setting
         this.currentLanguage = 'en';
         
-        // Supported languages
-        this.supportedLanguages = ['en', 'es', 'zh', 'ko', 'hy'];
+        // Supported languages with RTL configuration
+        this.supportedLanguages = {
+            'en': { rtl: false, code: 'en' },
+            'es': { rtl: false, code: 'es' },
+            'zh': { rtl: false, code: 'zh' },
+            'ko': { rtl: false, code: 'ko' },
+            'hy': { rtl: false, code: 'hy' },
+            'ar': { rtl: true, code: 'ar' },
+            'he': { rtl: true, code: 'he' }
+        };
         
         // Cached translations
         this.translations = {};
+    }
+
+    /**
+     * Apply Right-to-Left (RTL) styling based on language
+     * @param {string} language - Language code
+     */
+    applyRTLStyles(language) {
+        const languageConfig = this.supportedLanguages[language] || { rtl: false };
+        
+        // Toggle RTL class on document root
+        document.documentElement.classList.toggle('rtl', languageConfig.rtl);
+        document.documentElement.setAttribute('dir', languageConfig.rtl ? 'rtl' : 'ltr');
+        
+        // Apply custom RTL CSS variables
+        if (languageConfig.rtl) {
+            document.documentElement.style.setProperty('--text-align', 'right');
+            document.documentElement.style.setProperty('--flex-direction', 'row-reverse');
+        } else {
+            document.documentElement.style.setProperty('--text-align', 'left');
+            document.documentElement.style.setProperty('--flex-direction', 'row');
+        }
     }
 
     /**
@@ -26,9 +55,9 @@ class I18nManager {
         // Determine language priority: saved > browser > default
         let selectedLanguage = 'en'; // Default
         
-        if (savedLanguage && this.supportedLanguages.includes(savedLanguage)) {
+        if (savedLanguage && this.supportedLanguages[savedLanguage]) {
             selectedLanguage = savedLanguage;
-        } else if (this.supportedLanguages.includes(browserLanguage)) {
+        } else if (this.supportedLanguages[browserLanguage]) {
             selectedLanguage = browserLanguage;
         }
         
@@ -43,7 +72,7 @@ class I18nManager {
      */
     async loadTranslations(language) {
         // Validate language
-        if (!this.supportedLanguages.includes(language)) {
+        if (!this.supportedLanguages[language]) {
             console.warn(`Unsupported language: ${language}. Falling back to English.`);
             language = 'en';
         }
@@ -83,6 +112,9 @@ class I18nManager {
         try {
             // Load translations
             const translations = await this.loadTranslations(language);
+            
+            // Apply RTL styles
+            this.applyRTLStyles(language);
             
             // Update language selector
             const languageSelect = document.getElementById('language-select');
@@ -146,6 +178,11 @@ class I18nManager {
      */
     getLanguage() {
         return this.currentLanguage;
+    }
+
+    // Additional method for language configuration
+    getLanguageConfig(language) {
+        return this.supportedLanguages[language] || { rtl: false, code: language };
     }
 }
 
