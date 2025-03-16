@@ -1,155 +1,166 @@
 # Vision Clarity Institute Website
 
-## Overview
+## Project Overview
 
-The Vision Clarity Institute website is a modern, responsive platform for a premium Lasik eye surgery provider. The design follows NVIDIA's clean and professional design principles while offering comprehensive information about vision correction services, technologies, and patient resources.
+Vision Clarity Institute's website is a modern, responsive web application designed to provide comprehensive information about advanced laser vision correction services. Built with a focus on user experience, accessibility, and multilingual support, the website serves as a critical digital touchpoint for patients seeking vision correction solutions.
 
 ## Key Features
 
-### Professional Design
-- Responsive layout optimized for all devices
-- Clean, modern aesthetic with professional typography and color scheme
-- Consistent navigation and user experience across all pages
+### Technical Architecture
+- **Frontend**: Responsive HTML5, CSS3, and modern JavaScript
+- **Backend**: Node.js with Express.js
+- **Internationalization**: Comprehensive multi-language support
+- **AI Integration**: OpenAI-powered chatbot for patient assistance
 
-### Comprehensive Content Structure
-- Detailed service descriptions with treatment options
-- Technology showcase highlighting advanced equipment
-- Location finder with interactive map and clinic information
-- Streamlined contact forms for consultation scheduling
+### Multilingual Capabilities
+- Supported Languages:
+  - English
+  - Spanish
+  - Chinese
+  - Korean
+  - Armenian
 
-### Interactive Elements
-- AI-powered chatbot with dual AI capabilities (OpenAI and Claude)
-- Interactive testimonial slider
-- Location search functionality
-- Dynamic FAQ accordions
+### Primary Functionalities
+- Detailed service descriptions
+- Interactive AI chatbot
+- Responsive design
+- Multilingual content management
+- Secure API integrations
 
-### Multilingual Support
-- Complete translations for English and Spanish
-- Partial support for Chinese, Korean, and Armenian
-- Structured localization system using i18next
+## Prerequisites
 
-## Technology Stack
+Before you begin, ensure you have the following installed:
+- Node.js (v16.0.0 or later)
+- npm (v8.0.0 or later)
+- Git
 
-### Frontend
-- HTML5/CSS3 for structure and styling
-- JavaScript (ES6+) for interactive features
-- Responsive design principles with mobile-first approach
+## Installation
 
-### Backend
-- Node.js with Express for server implementation
-- RESTful API endpoints for chatbot and contact form processing
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jeflowers/vision-clarity-website.git
+   cd vision-clarity-website
+   ```
 
-### AI Integration
-- Dual AI provider support (OpenAI GPT and Claude)
-- Real-time chat interface with toggle between AI providers
-- Context-aware responses based on vision care knowledge
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Edit the `.env` file with your configuration details
+
+## Running the Application
+
+### Development Mode
+```bash
+npm run dev
+```
+
+### Production Mode
+```bash
+npm start
+```
+
+## Internationalization Workflow
+
+### Adding/Updating Translations
+
+1. Add `data-i18n` attributes to HTML elements:
+   ```html
+   <h1 data-i18n="services.header.title">Our Services</h1>
+   ```
+
+2. Extract translation keys:
+   ```bash
+   npm run extract-translations
+   ```
+
+3. Translate the generated JSON files in the `locales/` directory
+
+### Language Management
+- Automatic browser language detection
+- Persistent language preference
+- Fallback to default language (English)
+
+## API Integration
+
+### Chatbot API
+The website integrates an AI-powered chatbot using OpenAI's GPT models to provide interactive patient support.
+
+### Security Considerations
+- Secure API communication
+- Environment-based configuration
+- Error handling and logging
 
 ## Project Structure
 
 ```
 vision-clarity-website/
 │
-├── index.html              # Main HTML document with site structure
+├── js/                 # JavaScript files
+│   ├── i18n.js         # Internationalization management
+│   └── chatbot.js      # Chatbot functionality
 │
-├── styles.css              # Global stylesheet containing all site styling
+├── css/                # Stylesheets
+│   ├── styles.css      # Global styles
+│   └── chatbot.css     # Chatbot-specific styles
 │
-├── scripts.js              # JavaScript file for interactive functionality
+├── locales/            # Translation files
+│   ├── en.json         # English translations
+│   ├── es.json         # Spanish translations
+│   └── ...             # Other language translations
 │
-├── chatbot.js              # Chatbot implementation with OpenAI/Claude support
+├── pages/              # HTML page templates
+│   ├── services.html
+│   ├── contact.html
+│   └── ...             
 │
-├── chatbot.css             # Chatbot-specific styling
+├── api/                # Backend API handlers
+│   └── chatbot-api.js  # Chatbot API implementation
 │
-├── server.js               # Express server implementation
+├── assets/             # Media and design assets
+│   ├── images/
+│   └── icons/
 │
-├── api/                    # Directory for API implementations
-│   └── chatbot-api.js      # Chatbot API supporting multiple AI providers
-│
-├── assets/                 # Directory for all media assets
-│   ├── images/             # Image files for the site
-│   │   ├── logo.svg        # Vision Clarity logo
-│   │   ├── hero/           # Hero section images
-│   │   └── icons/          # UI icons (search, arrows, etc.)
-│   │
-│   └── fonts/              # Custom font files and documentation
-│
-├── pages/                  # Additional HTML pages
-│   ├── services.html       # Detailed service descriptions
-│   ├── technology.html     # Information about Lasik technology
-│   ├── locations.html      # Clinic locations page
-│   └── contact.html        # Contact information and form
-│
-└── locales/                # Localization resources
-    ├── en/                 # English translations
-    ├── es/                 # Spanish translations
-    ├── zh/                 # Chinese translations
-    ├── ko/                 # Korean translations
-    └── hy/                 # Armenian translations
+└── server.js           # Main server configuration
 ```
 
-## Installation and Setup
+## Contribution Guidelines
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/jeflowers/vision-clarity-website.git
-   cd vision-clarity-website
-   ```
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a pull request
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## Localization Best Practices
+- Use translation keys consistently
+- Avoid hardcoding text
+- Provide context for translators
+- Test translations across different languages
 
-3. **Configure environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Edit the `.env` file to add your API keys for OpenAI and Claude.
+## Performance Optimization
+- Lazy loading of translation files
+- Caching of translation resources
+- Minimal overhead for language switching
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+## Licensing
 
-5. **View the website**
-   Open your browser and navigate to `http://localhost:3000`
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## AI Chatbot Implementation
+## Contact
 
-The website features a sophisticated chatbot that can switch between OpenAI and Claude AI models. This provides flexibility in response styles and ensures fallback capability if one service is unavailable.
+For inquiries, please contact:
+- Vision Clarity Institute
+- Email: tech@visionclarityinstitute.com
 
-### Key Chatbot Features
+## Roadmap
 
-- **Toggle Between AI Providers**: Users can switch between OpenAI and Claude with a simple UI toggle.
-- **Different Response Styles**: OpenAI provides concise, direct responses while Claude offers more detailed explanations with better paragraph structure.
-- **Context-Aware Responses**: The chatbot has domain knowledge about Lasik procedures, recovery processes, and common patient questions.
-- **Demo Mode Fallback**: If API keys are not configured, the system falls back to pre-written responses for demonstration purposes.
-
-## Multilingual Support
-
-The website implements comprehensive language support using a structured JSON-based translation system.
-
-- Language selection is available in the site header
-- Translations are organized by page and component
-- The system dynamically loads the appropriate language file based on user selection
-
-## Deployment
-
-The website can be deployed to any standard Node.js hosting environment:
-
-1. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-2. **Start the production server**
-   ```bash
-   npm start
-   ```
-
-## License
-
-This project is proprietary and confidential. All rights reserved by Vision Clarity Institute.
-
----
-
-© 2025 Vision Clarity Institute
+- [ ] Expand language support
+- [ ] Implement locale-specific formatting
+- [ ] Enhanced AI chatbot capabilities
+- [ ] Comprehensive accessibility improvements
