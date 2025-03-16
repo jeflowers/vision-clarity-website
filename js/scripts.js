@@ -143,7 +143,7 @@ function changeLanguage(lang) {
     // Store the selected language in localStorage
     localStorage.setItem('preferredLanguage', lang);
     
-    // Fix: Use correct path to translation files
+    // FIXED: Use correct path to translation files
     fetch(`/locales/${lang}/translation.json`)
         .then(response => {
             console.log('Translation fetch response:', response);
