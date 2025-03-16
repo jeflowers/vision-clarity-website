@@ -1,5 +1,9 @@
 // Internationalization (i18n) Core Functionality
 
+// Import supporting utilities
+import LocaleFormatter from './locale-formatter.js';
+import ErrorTracker from './error-tracker.js';
+
 class I18nManager {
     constructor() {
         // Current language setting
@@ -7,17 +11,20 @@ class I18nManager {
         
         // Supported languages with RTL configuration
         this.supportedLanguages = {
-            'en': { rtl: false, code: 'en' },
-            'es': { rtl: false, code: 'es' },
-            'zh': { rtl: false, code: 'zh' },
-            'ko': { rtl: false, code: 'ko' },
-            'hy': { rtl: false, code: 'hy' },
-            'ar': { rtl: true, code: 'ar' },
-            'he': { rtl: true, code: 'he' }
+            'en': { rtl: false, code: 'en-US', name: 'English' },
+            'es': { rtl: false, code: 'es-ES', name: 'Español' },
+            'zh': { rtl: false, code: 'zh-CN', name: '中文' },
+            'ko': { rtl: false, code: 'ko-KR', name: '한국어' },
+            'hy': { rtl: false, code: 'hy-AM', name: 'Հայերեն' },
+            'ar': { rtl: true,  code: 'ar-SA', name: 'العربية' },
+            'he': { rtl: true,  code: 'he-IL', name: 'עברית' }
         };
         
         // Cached translations
         this.translations = {};
+        
+        // Language detection tracking
+        this.languageDetectionHistory = [];
     }
 
     /**
@@ -42,17 +49,37 @@ class I18nManager {
     }
 
     /**
-     * Initialize language preferences
-     * @returns {Promise<string>} Resolved language
+     * Advanced language detection with intelligent recommendation
+     * @returns {Promise<string>} Recommended language code
      */
-    async initializeLanguage() {
-        // Check for saved language preference
+    async detectLanguage() {
         const savedLanguage = localStorage.getItem('preferred_language');
-        
-        // Check browser language
         const browserLanguage = navigator.language.split('-')[0];
         
-        // Determine language priority: saved > browser > default
+        // Collect language detection data
+        const detectionData = {
+            timestamp: new Date().toISOString(),
+            saved: savedLanguage,
+            browser: browserLanguage,
+            geolocation: null,
+            userPreferences: null
+        };
+
+        try {
+            // Optional geolocation detection
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+            });
+            
+            detectionData.geolocation = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            };
+        } catch (error) {
+            ErrorTracker.log('GEOLOCATION_ERROR', { message: error.message });
+        }
+
+        // Intelligent language selection
         let selectedLanguage = 'en'; // Default
         
         if (savedLanguage && this.supportedLanguages[savedLanguage]) {
@@ -60,9 +87,21 @@ class I18nManager {
         } else if (this.supportedLanguages[browserLanguage]) {
             selectedLanguage = browserLanguage;
         }
-        
-        await this.setLanguage(selectedLanguage);
+
+        // Track language detection history
+        this.languageDetectionHistory.push(detectionData);
+
         return selectedLanguage;
+    }
+
+    /**
+     * Initialize language preferences
+     * @returns {Promise<string>} Resolved language
+     */
+    async initializeLanguage() {
+        const language = await this.detectLanguage();
+        await this.setLanguage(language);
+        return language;
     }
 
     /**
@@ -73,7 +112,7 @@ class I18nManager {
     async loadTranslations(language) {
         // Validate language
         if (!this.supportedLanguages[language]) {
-            console.warn(`Unsupported language: ${language}. Falling back to English.`);
+            ErrorTracker.captureTranslationError(language, 'UNSUPPORTED_LANGUAGE');
             language = 'en';
         }
 
@@ -93,7 +132,10 @@ class I18nManager {
             this.translations[language] = translations;
             return translations;
         } catch (error) {
-            console.error('Translation loading error:', error);
+            ErrorTracker.log('TRANSLATION_LOAD_ERROR', {
+                language,
+                message: error.message
+            }, 'error');
             
             // Fallback to English translations
             if (language !== 'en') {
@@ -147,8 +189,17 @@ class I18nManager {
             // Store language preference
             localStorage.setItem('preferred_language', language);
             this.currentLanguage = language;
+
+            // Trigger custom language change event
+            const languageChangeEvent = new CustomEvent('languageChanged', { 
+                detail: { language } 
+            });
+            document.dispatchEvent(languageChangeEvent);
         } catch (error) {
-            console.error('Language setting error:', error);
+            ErrorTracker.log('LANGUAGE_SET_ERROR', {
+                language,
+                message: error.message
+            }, 'error');
         }
     }
 
@@ -166,10 +217,26 @@ class I18nManager {
         let translation = translations;
         for (const k of keys) {
             translation = translation?.[k];
-            if (translation === undefined) break;
+            if (translation === undefined) {
+                ErrorTracker.captureTranslationError(key, this.currentLanguage);
+                break;
+            }
         }
 
         return translation || key;
+    }
+
+    /**
+     * Get language configuration
+     * @param {string} language - Language code
+     * @returns {Object} Language configuration
+     */
+    getLanguageConfig(language) {
+        return this.supportedLanguages[language] || { 
+            rtl: false, 
+            code: language,
+            name: 'Unknown' 
+        };
     }
 
     /**
@@ -178,11 +245,6 @@ class I18nManager {
      */
     getLanguage() {
         return this.currentLanguage;
-    }
-
-    // Additional method for language configuration
-    getLanguageConfig(language) {
-        return this.supportedLanguages[language] || { rtl: false, code: language };
     }
 }
 
