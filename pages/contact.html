@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/chatbot.css">
     <link rel="stylesheet" href="../css/staff.css">
-    <!-- New CSS -->
     <link rel="stylesheet" href="../css/consultation-popup.css">
 </head>
 <body>
@@ -47,12 +46,11 @@
                         <option value="fa">فارسی</option>
                         <option value="ar">العربية</option>
                     </select>
-                </div>        
+                </div>
                 <button id="consultation-btn" class="btn btn-primary">Schedule Consultation</button>
             </div>
         </div>
     </header>
-
 
     <!-- Page Header -->
     <section class="page-header">
@@ -62,212 +60,72 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Information (Removed Static Form) -->
     <section class="contact-section section">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
                     <h2>Get In Touch</h2>
                     <p>We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
-                    
-                    <div class="contact-method">
-                        <h3>Call Us</h3>
-                        <p><a href="tel:8005552020">(800) 555-2020</a></p>
-                        <p class="contact-hours">Monday - Friday: 8am - 6pm<br>Saturday: 9am - 2pm</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <h3>Email Us</h3>
-                        <p><a href="mailto:info@visionclarityinstitute.com">info@visionclarityinstitute.com</a></p>
-                        <p class="contact-hours">We respond to all inquiries within 24 hours during business days.</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <h3>Main Office</h3>
-                        <address>
-                            1234 Vision Way, Suite 100<br>
-                            Los Angeles, CA 90001
-                        </address>
-                        <p><a href="locations.html">View all locations</a></p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <h3>Follow Us</h3>
-                        <div class="social-icons">
-                            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><img src="../assets/images/icons/facebook.svg" alt="Facebook"></a>
-                            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="../assets/images/icons/instagram.svg" alt="Instagram"></a>
-                            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><img src="../assets/images/icons/twitter.svg" alt="Twitter"></a>
-                            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/images/icons/youtube.svg" alt="YouTube"></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form-container">
-                    <h2>Schedule a Free Consultation</h2>
-                    <p>Fill out the form below, and our team will contact you to schedule your complimentary consultation.</p>
-                    
-                    <form id="consultation-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="full-name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="full-name" name="full-name" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Preferred Location <span class="required">*</span></label>
-                            <select id="location" name="location" required>
-                                <option value="" disabled selected>Select a location</option>
-                                <option value="los-angeles">Los Angeles</option>
-                                <option value="pasadena">Pasadena</option>
-                                <option value="newport-beach">Newport Beach</option>
-                                <option value="glendale">Glendale</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Interested Service <span class="required">*</span></label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Select a service</option>
-                                <option value="traditional-lasik">Traditional LASIK</option>
-                                <option value="custom-bladeless-lasik">Custom Bladeless LASIK</option>
-                                <option value="prk">PRK (Photorefractive Keratectomy)</option>
-                                <option value="presbyopia">Presbyopia Correction</option>
-                                <option value="unsure">Not sure yet (need consultation)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="preferred-date">Preferred Date Range</label>
-                            <div class="date-range">
-                                <input type="date" id="preferred-date-start" name="preferred-date-start">
-                                <span class="date-separator">to</span>
-                                <input type="date" id="preferred-date-end" name="preferred-date-end">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Additional Information</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Please include any questions or specific concerns you'd like to discuss during your consultation."></textarea>
-                        </div>
-                        
-                        <div class="form-group consent-checkbox">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I consent to be contacted by Vision Clarity Institute regarding my inquiry. <span class="required">*</span></label>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
-                        </div>
-                        
-                        <p class="form-note"><span class="required">*</span> Required fields</p>
-                    </form>
+                    <!-- Existing contact info here -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section section bg-light">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <h3 class="faq-question">How do I prepare for my consultation?</h3>
-                    <div class="faq-answer">
-                        <p>Please bring your current glasses or contact lens prescription, a list of medications you're taking, and any relevant medical history. If you wear contact lenses, please discontinue wear for at least 3 days before your consultation for soft contacts, or 2-3 weeks for hard or rigid gas permeable contacts.</p>
-                    </div>
+    <!-- Consultation Popup Modal -->
+    <div id="consultation-modal" class="modal-overlay">
+        <div class="popup-modal">
+            <span class="close-popup">&times;</span>
+            <h2>Schedule a Free Consultation</h2>
+            <form id="consultation-form-popup" class="contact-form">
+                <div class="form-group">
+                    <label for="full-name-popup">Full Name *</label>
+                    <input type="text" id="full-name-popup" required>
                 </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">How long does a consultation appointment take?</h3>
-                    <div class="faq-answer">
-                        <p>Initial consultations typically take 90 minutes. During this time, we'll perform comprehensive diagnostic tests, discuss your vision goals, review your options, and answer all your questions.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="email-popup">Email *</label>
+                    <input type="email" id="email-popup" required>
                 </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">Is there a fee for the consultation?</h3>
-                    <div class="faq-answer">
-                        <p>No, Vision Clarity Institute offers complimentary consultations to determine if you're a candidate for laser vision correction. If additional specialized testing is required, your consultant will discuss any potential costs before proceeding.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="phone-popup">Phone *</label>
+                    <input type="tel" id="phone-popup" required>
                 </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">Do you offer financing options?</h3>
-                    <div class="faq-answer">
-                        <p>Yes, we partner with several financing companies to offer flexible payment plans with 0% interest options. Our team will discuss these options during your consultation.</p>
-                    </div>
+                <div class="form-group">
+                    <label for="location-popup">Preferred Location *</label>
+                    <select id="location-popup" required>
+                        <option value="">Select location</option>
+                        <option>Los Angeles</option>
+                        <option>Pasadena</option>
+                        <option>Newport Beach</option>
+                        <option>Glendale</option>
+                    </select>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
-                    <p>Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                <div class="form-group">
+                    <label for="service-popup">Interested Service *</label>
+                    <select id="service-popup" required>
+                        <option value="">Select service</option>
+                        <option>Traditional LASIK</option>
+                        <option>Custom Bladeless LASIK</option>
+                        <option>PRK</option>
+                        <option>Presbyopia Correction</option>
+                        <option>Unsure (need consultation)</option>
+                    </select>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="technology.html">Technology</a></li>
-                        <li><a href="locations.html">Locations</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="form-group">
+                    <label>Preferred Date Range</label>
+                    <input type="date" id="date-start-popup"> to <input type="date" id="date-end-popup">
                 </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <address>
-                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
-                        <p>Phone: (800) 555-2020</p>
-                        <p>Email: info@visionclarityinstitute.com</p>
-                    </address>
+                <div class="form-group">
+                    <label for="message-popup">Additional Information</label>
+                    <textarea id="message-popup" rows="4"></textarea>
                 </div>
-                <div class="footer-column">
-                    <h3>Hours</h3>
-                    <p>Monday - Friday: 8am - 6pm</p>
-                    <p>Saturday: 9am - 2pm</p>
-                    <p>Sunday: Closed</p>
+                <div class="form-group consent-checkbox">
+                    <input type="checkbox" id="consent-popup" required>
+                    <label for="consent-popup">I consent to be contacted. *</label>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
-                <ul class="footer-legal">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Modal -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-icon">✓</div>
-                <h2>Thank You!</h2>
-                <p>Your consultation request has been submitted successfully. One of our patient coordinators will contact you within 24 hours to confirm your appointment.</p>
-                <button class="btn btn-primary close-modal-btn">Close</button>
-            </div>
+                <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
+            </form>
         </div>
     </div>
 
