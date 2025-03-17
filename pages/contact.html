@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Vision Clarity Institute</title>
+    <title data-i18n="contact.header.title">Contact Us - Vision Clarity Institute</title>
     <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures.">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/staff.css">
     <link rel="stylesheet" href="../css/consultation-popup.css">
 </head>
 <body>
@@ -24,12 +22,11 @@
                     <img src="../assets/images/icons/menu.svg" alt="Menu">
                 </button>
                 <ul class="nav-list">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="staff.html">Our Staff</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                    <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                    <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                    <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="global.menu.contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -47,7 +44,7 @@
                         <option value="ar">العربية</option>
                     </select>
                 </div>
-                <button id="consultation-btn" class="btn btn-primary">Schedule Consultation</button>
+                <button id="consultation-btn" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</button>
             </div>
         </div>
     </header>
@@ -55,20 +52,128 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Schedule your free consultation or connect with our team</p>
+            <h1 data-i18n="contact.header.title">Contact Us</h1>
+            <p data-i18n="contact.header.subtitle">Schedule your free consultation or connect with our team</p>
         </div>
     </section>
 
-    <!-- Contact Information (Removed Static Form) -->
+    <!-- Contact Information Section -->
     <section class="contact-section section">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
-                    <!-- Existing contact info here -->
+                    <h2 data-i18n="contact.info.title">Get In Touch</h2>
+                    <p data-i18n="contact.info.description">We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="../assets/images/icons/phone.svg" alt="Phone">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.phone.title">Phone</h3>
+                                <p data-i18n="contact.info.phone.hours">Available Monday-Friday, 8am-6pm</p>
+                                <a href="tel:8005552020" class="contact-link">(800) 555-2020</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="../assets/images/icons/email.svg" alt="Email">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.email.title">Email</h3>
+                                <p data-i18n="contact.info.email.response">We typically respond within 24 hours</p>
+                                <a href="mailto:info@visionclarityinstitute.com" class="contact-link">info@visionclarityinstitute.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="../assets/images/icons/chat.svg" alt="Live Chat">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.chat.title">Live Chat</h3>
+                                <p data-i18n="contact.info.chat.hours">Available during business hours</p>
+                                <button class="chat-button" data-i18n="contact.info.chat.button">Start Chat</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-box">
+                        <h3 data-i18n="contact.cta.title">Ready for Clearer Vision?</h3>
+                        <p data-i18n="contact.cta.description">Schedule your free consultation today and take the first step toward visual freedom.</p>
+                        <button class="btn btn-primary cta-consultation" data-i18n="contact.cta.button">Book Free Consultation</button>
+                    </div>
                 </div>
+                
+                <div class="location-map">
+                    <h2 data-i18n="contact.locations.title">Our Locations</h2>
+                    <div id="map" class="map-container">
+                        <!-- Map will be inserted here by JavaScript -->
+                        <img src="../assets/images/map-placeholder.jpg" alt="Map of our locations" class="placeholder-map">
+                    </div>
+                    
+                    <div class="locations-list">
+                        <div class="location">
+                            <h3>Los Angeles</h3>
+                            <address>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</address>
+                            <a href="#" class="btn btn-small">Get Directions</a>
+                        </div>
+                        
+                        <div class="location">
+                            <h3>Pasadena</h3>
+                            <address>567 Clarity Street<br>Pasadena, CA 91106</address>
+                            <a href="#" class="btn btn-small">Get Directions</a>
+                        </div>
+                        
+                        <div class="location">
+                            <h3>Newport Beach</h3>
+                            <address>789 Ocean View Dr<br>Newport Beach, CA 92663</address>
+                            <a href="#" class="btn btn-small">Get Directions</a>
+                        </div>
+                        
+                        <div class="location">
+                            <h3>Glendale</h3>
+                            <address>321 Brand Blvd, Suite 200<br>Glendale, CA 91203</address>
+                            <a href="#" class="btn btn-small">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section bg-light">
+        <div class="container">
+            <h2 data-i18n="contact.faq.title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q1.question">What happens during a free consultation?</h3>
+                    <p data-i18n="contact.faq.q1.answer">During your free consultation, we'll perform a comprehensive eye exam, discuss your vision goals, and determine if you're a candidate for LASIK or another vision correction procedure. You'll have the opportunity to ask questions and learn about your options.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q2.question">How do I prepare for my consultation?</h3>
+                    <p data-i18n="contact.faq.q2.answer">Please bring your glasses or contact lens prescription, a list of medications you're taking, and your vision insurance information if applicable. If you wear contact lenses, please stop wearing them for at least 3 days (soft lenses) or 2 weeks (rigid lenses) before your appointment.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q3.question">Is financing available for LASIK surgery?</h3>
+                    <p data-i18n="contact.faq.q3.answer">Yes, we offer several financing options through trusted healthcare financing partners. During your consultation, our patient coordinator will explain the available plans, including 0% interest options for qualified patients.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q4.question">How soon can I schedule my LASIK procedure after consultation?</h3>
+                    <p data-i18n="contact.faq.q4.answer">If you're a suitable candidate for LASIK, you can typically schedule your procedure within 1-2 weeks of your consultation, depending on availability. Some patients choose to schedule their procedure the same day as their consultation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <p data-i18n="contact.faq.cta">Have more questions? We're here to help.</p>
+                <button class="btn btn-primary cta-consultation" data-i18n="contact.faq.button">Schedule Your Free Consultation</button>
             </div>
         </div>
     </section>
@@ -77,22 +182,22 @@
     <div id="consultation-modal" class="modal-overlay">
         <div class="popup-modal">
             <span class="close-popup">&times;</span>
-            <h2>Schedule a Free Consultation</h2>
+            <h2 data-i18n="contact.form.title">Schedule a Free Consultation</h2>
             <form id="consultation-form-popup" class="contact-form">
                 <div class="form-group">
-                    <label for="full-name-popup">Full Name *</label>
+                    <label for="full-name-popup" data-i18n="contact.form.fullName">Full Name *</label>
                     <input type="text" id="full-name-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="email-popup">Email *</label>
+                    <label for="email-popup" data-i18n="contact.form.email">Email *</label>
                     <input type="email" id="email-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone-popup">Phone *</label>
+                    <label for="phone-popup" data-i18n="contact.form.phone">Phone *</label>
                     <input type="tel" id="phone-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="location-popup">Preferred Location *</label>
+                    <label for="location-popup" data-i18n="contact.form.location">Preferred Location *</label>
                     <select id="location-popup" required>
                         <option value="">Select location</option>
                         <option>Los Angeles</option>
@@ -102,7 +207,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="service-popup">Interested Service *</label>
+                    <label for="service-popup" data-i18n="contact.form.service">Interested Service *</label>
                     <select id="service-popup" required>
                         <option value="">Select service</option>
                         <option>Traditional LASIK</option>
@@ -112,26 +217,73 @@
                         <option>Unsure (need consultation)</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Preferred Date Range</label>
-                    <input type="date" id="date-start-popup"> to <input type="date" id="date-end-popup">
+                <div class="form-group date-range">
+                    <label data-i18n="contact.form.dateRange">Preferred Date Range</label>
+                    <div class="date-inputs">
+                        <input type="date" id="date-start-popup" min="2025-03-18">
+                        <span>to</span>
+                        <input type="date" id="date-end-popup" min="2025-03-18">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="message-popup">Additional Information</label>
+                    <label for="message-popup" data-i18n="contact.form.message">Additional Information</label>
                     <textarea id="message-popup" rows="4"></textarea>
                 </div>
                 <div class="form-group consent-checkbox">
                     <input type="checkbox" id="consent-popup" required>
-                    <label for="consent-popup">I consent to be contacted. *</label>
+                    <label for="consent-popup" data-i18n="contact.form.consent">I consent to be contacted by Vision Clarity Institute regarding my inquiry. *</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
+                <button type="submit" class="btn btn-primary btn-large" data-i18n="contact.form.submit">Submit Request</button>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p data-i18n="global.footer.tagline">Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                        <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                        <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                        <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                        <li><a href="contact.html" data-i18n="global.menu.contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.contact">Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p data-i18n="global.footer.phone">Phone: (800) 555-2020</p>
+                        <p data-i18n="global.footer.email">Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.hours">Hours</h3>
+                    <p data-i18n="global.footer.weekdays">Monday - Friday: 8am - 6pm</p>
+                    <p data-i18n="global.footer.saturday">Saturday: 9am - 2pm</p>
+                    <p data-i18n="global.footer.sunday">Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="global.footer.copyright">&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#" data-i18n="global.footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="global.footer.terms">Terms of Service</a></li>
+                    <li><a href="#" data-i18n="global.footer.accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
-    <script src="../scripts.js"></script>
-    <script src="../chatbot.js"></script>
+    <script src="../js/scripts.js"></script>
     <script src="../js/consultation-popup.js"></script>
 </body>
 </html>
