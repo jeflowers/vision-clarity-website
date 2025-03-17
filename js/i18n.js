@@ -36,18 +36,15 @@ class I18nManager {
   }
   
   /**
-   * Initialize language based on saved preference or browser settings
+   * Initialize language based on saved preference or detection
    */
   async initLanguage() {
     // Try to get language from localStorage
     const savedLanguage = localStorage.getItem('vci-language');
     
-    // If no saved language, try to detect browser language
+    // If no saved language, use our advanced language detector
     if (!savedLanguage) {
-      const browserLang = this.getBrowserLanguage();
-      if (this.supportedLanguages.includes(browserLang)) {
-        this.currentLanguage = browserLang;
-      }
+      this.currentLanguage = await languageDetector.detectLanguage();
     } else if (this.supportedLanguages.includes(savedLanguage)) {
       this.currentLanguage = savedLanguage;
     }
@@ -64,6 +61,41 @@ class I18nManager {
     
     // Set the HTML lang attribute
     document.documentElement.lang = this.currentLanguage;
+    
+    // Handle right-to-left languages
+    this.handleTextDirection(this.currentLanguage);
+    
+    // Load appropriate fonts for the language
+    fontLoader.loadFontsForLanguage(this.currentLanguage);
+    
+    console.log(`Language initialized: ${this.currentLanguage}`);
+  }
+  
+  /**
+   * Handle text direction based on language
+   * @param {string} lang - Language code
+   */
+  handleTextDirection(lang) {
+    if (this.rtlLanguages.includes(lang)) {
+      document.documentElement.dir = 'rtl';
+      document.body.classList.add('rtl');
+      // Add RTL stylesheet if not already added
+      if (!document.getElementById('rtl-stylesheet')) {
+        const rtlStylesheet = document.createElement('link');
+        rtlStylesheet.id = 'rtl-stylesheet';
+        rtlStylesheet.rel = 'stylesheet';
+        rtlStylesheet.href = '../css/rtl.css';
+        document.head.appendChild(rtlStylesheet);
+      }
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.body.classList.remove('rtl');
+      // Remove RTL stylesheet if it exists
+      const rtlStylesheet = document.getElementById('rtl-stylesheet');
+      if (rtlStylesheet) {
+        rtlStylesheet.remove();
+      }
+    }
   }
   
   /**
