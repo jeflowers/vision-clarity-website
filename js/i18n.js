@@ -1,268 +1,248 @@
-// Internationalization (i18n) Core Functionality
-
-// Import supporting utilities
-import LocaleFormatter from './locale-formatter.js';
-import ErrorTracker from './error-tracker.js';
+/**
+ * Vision Clarity Institute - Internationalization Module
+ * This module handles loading and applying translations based on user language preferences.
+ */
 
 class I18nManager {
-    constructor() {
-        // Current language setting
-        this.currentLanguage = 'en';
-        
-        // Supported languages with RTL configuration
-        this.supportedLanguages = {
-            'en': { rtl: false, code: 'en-US', name: 'English' },
-            'es': { rtl: false, code: 'es-ES', name: 'Español' },
-            'zh': { rtl: false, code: 'zh-CN', name: '中文' },
-            'ko': { rtl: false, code: 'ko-KR', name: '한국어' },
-            'hy': { rtl: false, code: 'hy-AM', name: 'Հայերեն' },
-            'ar': { rtl: true,  code: 'ar-SA', name: 'العربية' },
-            'he': { rtl: true,  code: 'he-IL', name: 'עברית' }
-        };
-        
-        // Cached translations
-        this.translations = {};
-        
-        // Language detection tracking
-        this.languageDetectionHistory = [];
+  constructor() {
+    this.translations = {}; // Will store all loaded translations
+    this.currentLanguage = 'en'; // Default language
+    this.defaultLanguage = 'en';
+    this.supportedLanguages = ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'];
+    
+    // Initialize event listeners
+    this.initEventListeners();
+    
+    // Initialize language based on saved preference or browser settings
+    this.initLanguage();
+  }
+  
+  /**
+   * Initialize event listeners for language selection
+   */
+  initEventListeners() {
+    // Language selector dropdown event listener
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', (event) => {
+        this.changeLanguage(event.target.value);
+      });
     }
-
-    /**
-     * Apply Right-to-Left (RTL) styling based on language
-     * @param {string} language - Language code
-     */
-    applyRTLStyles(language) {
-        const languageConfig = this.supportedLanguages[language] || { rtl: false };
-        
-        // Toggle RTL class on document root
-        document.documentElement.classList.toggle('rtl', languageConfig.rtl);
-        document.documentElement.setAttribute('dir', languageConfig.rtl ? 'rtl' : 'ltr');
-        
-        // Apply custom RTL CSS variables
-        if (languageConfig.rtl) {
-            document.documentElement.style.setProperty('--text-align', 'right');
-            document.documentElement.style.setProperty('--flex-direction', 'row-reverse');
+  }
+  
+  /**
+   * Initialize language based on saved preference or browser settings
+   */
+  async initLanguage() {
+    // Try to get language from localStorage
+    const savedLanguage = localStorage.getItem('vci-language');
+    
+    // If no saved language, try to detect browser language
+    if (!savedLanguage) {
+      const browserLang = this.getBrowserLanguage();
+      if (this.supportedLanguages.includes(browserLang)) {
+        this.currentLanguage = browserLang;
+      }
+    } else if (this.supportedLanguages.includes(savedLanguage)) {
+      this.currentLanguage = savedLanguage;
+    }
+    
+    // Set the language selector to the current language
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+      languageSelect.value = this.currentLanguage;
+    }
+    
+    // Load translations and apply them
+    await this.loadTranslations(this.currentLanguage);
+    this.applyTranslations();
+    
+    // Set the HTML lang attribute
+    document.documentElement.lang = this.currentLanguage;
+  }
+  
+  /**
+   * Get the user's browser language
+   * @returns {string} Language code (e.g., 'en', 'es')
+   */
+  getBrowserLanguage() {
+    const fullLang = navigator.language || navigator.userLanguage;
+    return fullLang.split('-')[0].toLowerCase(); // Extract the language code (e.g., 'en' from 'en-US')
+  }
+  
+  /**
+   * Load translations for a specific language
+   * @param {string} lang - Language code
+   * @returns {Promise} Promise that resolves when translations are loaded
+   */
+  async loadTranslations(lang) {
+    try {
+      // Check if translations are already loaded
+      if (this.translations[lang]) {
+        return;
+      }
+      
+      // Fetch the translation file
+      const response = await fetch(`../js/i18n/${lang}.json`);
+      if (!response.ok) {
+        throw new Error(`Failed to load translations for ${lang}`);
+      }
+      
+      this.translations[lang] = await response.json();
+      console.log(`Loaded translations for ${lang}`);
+    } catch (error) {
+      console.error(`Error loading translations for ${lang}:`, error);
+      
+      // Fallback to default language if not already trying to load it
+      if (lang !== this.defaultLanguage) {
+        console.warn(`Falling back to ${this.defaultLanguage}`);
+        await this.loadTranslations(this.defaultLanguage);
+      }
+    }
+  }
+  
+  /**
+   * Change the current language
+   * @param {string} lang - Language code
+   */
+  async changeLanguage(lang) {
+    if (!this.supportedLanguages.includes(lang)) {
+      console.error(`Language ${lang} is not supported`);
+      return;
+    }
+    
+    // Save the language preference
+    localStorage.setItem('vci-language', lang);
+    this.currentLanguage = lang;
+    
+    // Load translations if not already loaded
+    await this.loadTranslations(lang);
+    
+    // Apply translations
+    this.applyTranslations();
+    
+    // Update the HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Handle right-to-left languages (Hebrew and Arabic)
+    const rtlLanguages = ['he', 'ar'];
+    if (rtlLanguages.includes(lang)) {
+      document.documentElement.dir = 'rtl';
+      document.body.classList.add('rtl');
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.body.classList.remove('rtl');
+    }
+    
+    // Dispatch a custom event for other components to react to language change
+    document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+  }
+  
+  /**
+   * Apply translations to all elements with data-i18n attributes
+   */
+  applyTranslations() {
+    // Return early if translations aren't loaded
+    if (!this.translations[this.currentLanguage]) {
+      console.warn(`Translations for ${this.currentLanguage} not loaded.`);
+      return;
+    }
+    
+    // Find all elements with data-i18n attribute
+    const elements = document.querySelectorAll('[data-i18n]');
+    
+    elements.forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      const translation = this.getTranslation(key);
+      
+      if (translation) {
+        // Special handling for different element types
+        if (element.tagName === 'INPUT' && element.type === 'placeholder') {
+          element.placeholder = translation;
+        } else if (element.tagName === 'META' && element.getAttribute('name') === 'description') {
+          element.content = translation;
+        } else if (element.tagName === 'IMG' || element.tagName === 'IFRAME') {
+          element.alt = translation;
         } else {
-            document.documentElement.style.setProperty('--text-align', 'left');
-            document.documentElement.style.setProperty('--flex-direction', 'row');
+          // Default: set as text content
+          element.textContent = translation;
         }
+      } else {
+        console.warn(`No translation found for key: ${key}`);
+      }
+    });
+    
+    // Update page title if it has a translation
+    const titleElement = document.querySelector('title');
+    if (titleElement && titleElement.getAttribute('data-i18n')) {
+      const titleKey = titleElement.getAttribute('data-i18n');
+      const titleTranslation = this.getTranslation(titleKey);
+      if (titleTranslation) {
+        document.title = titleTranslation;
+      }
     }
-
-    /**
-     * Advanced language detection with intelligent recommendation
-     * @returns {Promise<string>} Recommended language code
-     */
-    async detectLanguage() {
-        const savedLanguage = localStorage.getItem('preferred_language');
-        const browserLanguage = navigator.language.split('-')[0];
-        
-        // Collect language detection data
-        const detectionData = {
-            timestamp: new Date().toISOString(),
-            saved: savedLanguage,
-            browser: browserLanguage,
-            geolocation: null,
-            userPreferences: null
-        };
-
-        try {
-            // Optional geolocation detection
-            const position = await new Promise((resolve, reject) => {
-                navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
-            });
-            
-            detectionData.geolocation = {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            };
-        } catch (error) {
-            ErrorTracker.log('GEOLOCATION_ERROR', { message: error.message });
+  }
+  
+  /**
+   * Get a translation by key using dot notation
+   * @param {string} key - Translation key in dot notation (e.g., 'global.menu.home')
+   * @returns {string|null} The translation or null if not found
+   */
+  getTranslation(key) {
+    // Split the key into parts
+    const parts = key.split('.');
+    
+    // Navigate through the nested translations object
+    let translation = this.translations[this.currentLanguage];
+    for (const part of parts) {
+      if (!translation || typeof translation !== 'object') {
+        return null;
+      }
+      translation = translation[part];
+    }
+    
+    // Fallback to default language if translation is missing
+    if (translation === undefined && this.currentLanguage !== this.defaultLanguage) {
+      let defaultTranslation = this.translations[this.defaultLanguage];
+      for (const part of parts) {
+        if (!defaultTranslation || typeof defaultTranslation !== 'object') {
+          return null;
         }
-
-        // Intelligent language selection
-        let selectedLanguage = 'en'; // Default
-        
-        if (savedLanguage && this.supportedLanguages[savedLanguage]) {
-            selectedLanguage = savedLanguage;
-        } else if (this.supportedLanguages[browserLanguage]) {
-            selectedLanguage = browserLanguage;
-        }
-
-        // Track language detection history
-        this.languageDetectionHistory.push(detectionData);
-
-        return selectedLanguage;
+        defaultTranslation = defaultTranslation[part];
+      }
+      return defaultTranslation;
     }
-
-    /**
-     * Initialize language preferences
-     * @returns {Promise<string>} Resolved language
-     */
-    async initializeLanguage() {
-        const language = await this.detectLanguage();
-        await this.setLanguage(language);
-        return language;
-    }
-
-    /**
-     * Load translations for a specific language
-     * @param {string} language - Language code
-     * @returns {Promise<Object>} Translation object
-     */
-    async loadTranslations(language) {
-        // Validate language
-        if (!this.supportedLanguages[language]) {
-            ErrorTracker.captureTranslationError(language, 'UNSUPPORTED_LANGUAGE');
-            language = 'en';
-        }
-
-        // Check if translations are already cached
-        if (this.translations[language]) {
-            return this.translations[language];
-        }
-
-        try {
-            const response = await fetch(`/locales/${language}.json`);
-            
-            if (!response.ok) {
-                throw new Error(`Failed to load translations for ${language}`);
-            }
-
-            const translations = await response.json();
-            this.translations[language] = translations;
-            return translations;
-        } catch (error) {
-            ErrorTracker.log('TRANSLATION_LOAD_ERROR', {
-                language,
-                message: error.message
-            }, 'error');
-            
-            // Fallback to English translations
-            if (language !== 'en') {
-                return this.loadTranslations('en');
-            }
-
-            return {};
-        }
-    }
-
-    /**
-     * Set the current language and apply translations
-     * @param {string} language - Language code
-     */
-    async setLanguage(language) {
-        try {
-            // Load translations
-            const translations = await this.loadTranslations(language);
-            
-            // Apply RTL styles
-            this.applyRTLStyles(language);
-            
-            // Update language selector
-            const languageSelect = document.getElementById('language-select');
-            if (languageSelect) {
-                languageSelect.value = language;
-            }
-
-            // Update HTML lang attribute
-            document.documentElement.lang = language;
-            
-            // Apply translations to all elements with data-i18n attribute
-            const elements = document.querySelectorAll('[data-i18n]');
-            
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                const translation = this.translate(key, translations);
-                
-                if (translation) {
-                    // Handle different element types
-                    if (element.tagName === 'IMG') {
-                        element.alt = translation;
-                    } else if (element.tagName === 'META') {
-                        element.content = translation;
-                    } else {
-                        element.textContent = translation;
-                    }
-                }
-            });
-
-            // Store language preference
-            localStorage.setItem('preferred_language', language);
-            this.currentLanguage = language;
-
-            // Trigger custom language change event
-            const languageChangeEvent = new CustomEvent('languageChanged', { 
-                detail: { language } 
-            });
-            document.dispatchEvent(languageChangeEvent);
-        } catch (error) {
-            ErrorTracker.log('LANGUAGE_SET_ERROR', {
-                language,
-                message: error.message
-            }, 'error');
-        }
-    }
-
-    /**
-     * Translate a specific key
-     * @param {string} key - Translation key
-     * @param {Object} translations - Translation dictionary
-     * @returns {string} Translated text or key
-     */
-    translate(key, translations = this.translations[this.currentLanguage]) {
-        // Split nested keys
-        const keys = key.split('.');
-        
-        // Traverse translation object
-        let translation = translations;
-        for (const k of keys) {
-            translation = translation?.[k];
-            if (translation === undefined) {
-                ErrorTracker.captureTranslationError(key, this.currentLanguage);
-                break;
-            }
-        }
-
-        return translation || key;
-    }
-
-    /**
-     * Get language configuration
-     * @param {string} language - Language code
-     * @returns {Object} Language configuration
-     */
-    getLanguageConfig(language) {
-        return this.supportedLanguages[language] || { 
-            rtl: false, 
-            code: language,
-            name: 'Unknown' 
-        };
-    }
-
-    /**
-     * Get current language
-     * @returns {string} Current language code
-     */
-    getLanguage() {
-        return this.currentLanguage;
-    }
+    
+    return translation;
+  }
+  
+  /**
+   * Get a formatted translation with variable substitution
+   * @param {string} key - Translation key
+   * @param {Object} vars - Variables for substitution
+   * @returns {string} Formatted translation
+   */
+  formatTranslation(key, vars = {}) {
+    let text = this.getTranslation(key);
+    
+    if (!text) return null;
+    
+    // Replace variables in the format {{variableName}}
+    return text.replace(/\{\{(\w+)\}\}/g, (match, variable) => {
+      return vars[variable] !== undefined ? vars[variable] : match;
+    });
+  }
 }
 
-// Initialize internationalization on page load
-const i18nManager = new I18nManager();
+// Create and export a singleton instance
+const i18n = new I18nManager();
 
+// Make i18n available globally
+window.i18n = i18n;
+
+// Initialize when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize language
-    i18nManager.initializeLanguage().then(language => {
-        // Setup language selector if exists
-        const languageSelect = document.getElementById('language-select');
-        if (languageSelect) {
-            languageSelect.addEventListener('change', (event) => {
-                i18nManager.setLanguage(event.target.value);
-            });
-        }
-    });
+  // i18n is already initialized, but we can add any page-specific handling here
 });
 
-// Export for potential use in other modules
-export default i18nManager;
+export default i18n;
