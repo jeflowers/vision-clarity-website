@@ -1,4 +1,24 @@
 /**
+ * Get a nested value from an object using dot notation
+ * @param {Object} obj - The object to extract value from
+ * @param {string} path - The path in dot notation (e.g., 'global.menu.home')
+ * @returns {string|null} The value at the specified path, or null if not found
+ */
+function getNestedValue(obj, path) {
+    if (!obj || !path) return null;
+    
+    const keys = path.split('.');
+    let current = obj;
+    
+    for (const key of keys) {
+        if (!current[key]) return null;
+        current = current[key];
+    }
+    
+    return current;
+}
+
+/**
  * Change website language
  * @param {string} lang - Language code (en, es, zh, ko, hy)
  */
@@ -8,7 +28,7 @@ function changeLanguage(lang) {
     // Store the selected language in localStorage
     localStorage.setItem('preferredLanguage', lang);
     
-    // FIXED: Use correct path to translation files
+    // Use correct path to translation files
     fetch(`/locales/${lang}/translation.json`)
         .then(response => {
             console.log('Translation fetch response:', response);
@@ -58,3 +78,23 @@ function changeLanguage(lang) {
             console.error('Error loading translations:', error);
         });
 }
+
+// Initialize language selection on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Get language preference from localStorage or default to English
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+    
+    // Set the language selector to the saved preference
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+        languageSelect.value = savedLanguage;
+        
+        // Add event listener for language changes
+        languageSelect.addEventListener('change', (event) => {
+            changeLanguage(event.target.value);
+        });
+    }
+    
+    // Apply the saved language
+    changeLanguage(savedLanguage);
+});
