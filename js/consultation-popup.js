@@ -1,29 +1,31 @@
-// consultation-popup.js
-document.addEventListener("DOMContentLoaded", function() {
-    const openModalBtn = document.getElementById('consultation-btn');
-    const modal = document.getElementById('consultation-modal');
-    const closeModalBtn = modal.querySelector('.close-popup');
+function openModal() {
+    const modal = document.getElementById('consultationModal');
+    modal.classList.add('active', 'fade-in');
+}
 
-    openModalBtn.addEventListener('click', () => {
-        modal.classList.add('active');
-    });
+function closeModal() {
+    const modal = document.getElementById('consultationModal');
+    modal.classList.add('fade-out');
+    setTimeout(() => {
+        modal.classList.remove('active', 'fade-in', 'fade-out');
+    }, 200);
+}
 
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
+function handleSubmit(event) {
+    event.preventDefault();
+    // Handle form submission here
+    closeModal();
+    alert('Thank you! We will contact you shortly.');
+}
 
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-
-    const popupForm = document.getElementById('consultation-form-popup');
-    popupForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here (e.g., AJAX request)
-        alert('Your consultation request has been submitted successfully.');
-        popupForm.reset();
-        modal.classList.remove('active');
-    });
+// Close modal when clicking outside
+document.getElementById('consultationModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeModal();
+    }
 });
+
+// Close modal on escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && document.getElementById('consultationModal').classList.contains('active')) {
+        closeModa
