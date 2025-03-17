@@ -3,17 +3,22 @@
  * This module handles loading and applying translations based on user language preferences.
  */
 
+// Import our utility modules
+import languageDetector from './language-detector.js';
+import fontLoader from './font-loader.js';
+
 class I18nManager {
   constructor() {
     this.translations = {}; // Will store all loaded translations
     this.currentLanguage = 'en'; // Default language
     this.defaultLanguage = 'en';
     this.supportedLanguages = ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'];
+    this.rtlLanguages = ['he', 'ar', 'fa'];
     
     // Initialize event listeners
     this.initEventListeners();
     
-    // Initialize language based on saved preference or browser settings
+    // Initialize language based on saved preference or detection
     this.initLanguage();
   }
   
