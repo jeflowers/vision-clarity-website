@@ -5,31 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Vision Clarity Institute</title>
     <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures.">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/staff.css">
-    <link rel="stylesheet" href="../css/consultation-popup.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/inquiry-form.css">
+    <link rel="stylesheet" href="/css/consultation-popup.css">
+    
+    <!-- Fallback styles in case CSS files fail to load -->
+    <style>
+        /* Critical header styles */
+        .header {
+            background-color: #222;
+            padding: 15px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-list li {
+            margin-right: 20px;
+        }
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #8bc34a;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* Basic form styles */
+        .inquiry-form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        /* Critical body content */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .page-header {
+            background-color: #f5f5f5;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo-container">
-                <a href="../index.html">
-                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+                <a href="/index.html">
+                    <img src="/assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
                 </a>
             </div>
             <nav class="main-nav">
                 <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                    <img src="../assets/images/icons/menu.svg" alt="Menu">
+                    <img src="/assets/images/icons/menu.svg" alt="Menu">
                 </button>
                 <ul class="nav-list">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="staff.html">Our Staff</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="/index.html" data-i18n="global.menu.home">Home</a></li>
+                    <li><a href="/pages/services.html" data-i18n="global.menu.services">Services</a></li>
+                    <li><a href="/pages/technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                    <li><a href="/pages/locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                    <li><a href="/pages/contact.html" class="active" data-i18n="global.menu.contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -47,7 +116,7 @@
                         <option value="ar">العربية</option>
                     </select>
                 </div>
-                <button id="consultation-btn" class="btn btn-primary">Schedule Consultation</button>
+                <button id="consultation-btn" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</button>
             </div>
         </div>
     </header>
@@ -55,20 +124,198 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Schedule your free consultation or connect with our team</p>
+            <h1 data-i18n="contact.header.title">Contact Us</h1>
+            <p data-i18n="contact.header.subtitle">Schedule your free consultation or connect with our team</p>
         </div>
     </section>
 
-    <!-- Contact Information (Removed Static Form) -->
+    <!-- Contact Information and Inquiry Form Section -->
     <section class="contact-section section">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
-                    <!-- Existing contact info here -->
+                    <h2 data-i18n="contact.info.title">Get In Touch</h2>
+                    <p data-i18n="contact.info.description">We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="/assets/images/icons/phone.svg" alt="Phone">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.phone.title">Phone</h3>
+                                <p data-i18n="contact.info.phone.hours">Available Monday-Friday, 8am-6pm</p>
+                                <a href="tel:8005552020" class="contact-link">(800) 555-2020</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="/assets/images/icons/email.svg" alt="Email">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.email.title">Email</h3>
+                                <p data-i18n="contact.info.email.response">We typically respond within 24 hours</p>
+                                <a href="mailto:info@visionclarityinstitute.com" class="contact-link">info@visionclarityinstitute.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="icon">
+                                <img src="/assets/images/icons/chat.svg" alt="Live Chat">
+                            </div>
+                            <div class="method-details">
+                                <h3 data-i18n="contact.info.chat.title">Live Chat</h3>
+                                <p data-i18n="contact.info.chat.hours">Available during business hours</p>
+                                <button class="chat-button" data-i18n="contact.info.chat.button">Start Chat</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-box">
+                        <h3 data-i18n="contact.cta.title">Ready for Clearer Vision?</h3>
+                        <p data-i18n="contact.cta.description">Schedule your free consultation today and take the first step toward visual freedom.</p>
+                        <button class="btn btn-primary cta-consultation" data-i18n="contact.cta.button">Book Free Consultation</button>
+                    </div>
                 </div>
+                
+                <!-- Service Inquiry Form -->
+                <div class="inquiry-form-container">
+                    <h2 data-i18n="contact.inquiry.title">Service Inquiry</h2>
+                    <p data-i18n="contact.inquiry.subtitle">Have questions about our services? Complete the form below and one of our specialists will respond within 24 hours.</p>
+                    
+                    <form id="service-inquiry-form" class="inquiry-form" style="max-width: 600px; margin: 0 auto;">
+                        <div style="margin-bottom: 15px;">
+                            <label for="inquiry-name" style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.name">Your Name *</label>
+                            <input type="text" id="inquiry-name" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label for="inquiry-email" style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.email">Email Address *</label>
+                            <input type="email" id="inquiry-email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label for="inquiry-phone" style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.phone">Phone Number</label>
+                            <input type="tel" id="inquiry-phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label for="inquiry-service" style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.service">Service of Interest *</label>
+                            <select id="inquiry-service" name="service" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="" data-i18n="contact.inquiry.service.select">Select a service</option>
+                                <option value="traditional" data-i18n="contact.inquiry.service.traditional">Traditional LASIK</option>
+                                <option value="custom" data-i18n="contact.inquiry.service.custom">Custom Bladeless LASIK</option>
+                                <option value="prk" data-i18n="contact.inquiry.service.prk">PRK</option>
+                                <option value="presbyopia" data-i18n="contact.inquiry.service.presbyopia">Presbyopia Correction</option>
+                                <option value="general" data-i18n="contact.inquiry.service.general">General Information</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label for="inquiry-message" style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.message">Your Questions or Comments *</label>
+                            <textarea id="inquiry-message" name="message" rows="5" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;" data-i18n="contact.inquiry.preference">Preferred Contact Method:</label>
+                            <div style="display: flex; gap: 20px;">
+                                <label style="display: flex; align-items: center;">
+                                    <input type="radio" name="contact-preference" value="email" checked style="margin-right: 5px;">
+                                    <span data-i18n="contact.inquiry.preference.email">Email</span>
+                                </label>
+                                <label style="display: flex; align-items: center;">
+                                    <input type="radio" name="contact-preference" value="phone" style="margin-right: 5px;">
+                                    <span data-i18n="contact.inquiry.preference.phone">Phone</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="checkbox" id="inquiry-consent" name="consent" required style="margin-right: 5px;">
+                                <span data-i18n="contact.inquiry.consent">I consent to Vision Clarity Institute contacting me regarding my inquiry. *</span>
+                            </label>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <button type="submit" style="background-color: #0077cc; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" data-i18n="contact.inquiry.submit">Submit Inquiry</button>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 14px; color: #666;" data-i18n="contact.inquiry.disclaimer">* Required fields. Your information will be kept confidential and will only be used to respond to your inquiry.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section section bg-light">
+        <div class="container">
+            <h2 data-i18n="contact.locations.title">Our Locations</h2>
+            <div id="map" class="map-container">
+                <!-- Map will be inserted here by JavaScript -->
+                <img src="/assets/images/map-placeholder.jpg" alt="Map of our locations" class="placeholder-map">
+            </div>
+            
+            <div class="locations-list">
+                <div class="location">
+                    <h3>Los Angeles</h3>
+                    <address>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</address>
+                    <a href="#" class="btn btn-small">Get Directions</a>
+                </div>
+                
+                <div class="location">
+                    <h3>Pasadena</h3>
+                    <address>567 Clarity Street<br>Pasadena, CA 91106</address>
+                    <a href="#" class="btn btn-small">Get Directions</a>
+                </div>
+                
+                <div class="location">
+                    <h3>Newport Beach</h3>
+                    <address>789 Ocean View Dr<br>Newport Beach, CA 92663</address>
+                    <a href="#" class="btn btn-small">Get Directions</a>
+                </div>
+                
+                <div class="location">
+                    <h3>Glendale</h3>
+                    <address>321 Brand Blvd, Suite 200<br>Glendale, CA 91203</address>
+                    <a href="#" class="btn btn-small">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section">
+        <div class="container">
+            <h2 data-i18n="contact.faq.title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q1.question">What happens during a free consultation?</h3>
+                    <p data-i18n="contact.faq.q1.answer">During your free consultation, we'll perform a comprehensive eye exam, discuss your vision goals, and determine if you're a candidate for LASIK or another vision correction procedure. You'll have the opportunity to ask questions and learn about your options.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q2.question">How do I prepare for my consultation?</h3>
+                    <p data-i18n="contact.faq.q2.answer">Please bring your glasses or contact lens prescription, a list of medications you're taking, and your vision insurance information if applicable. If you wear contact lenses, please stop wearing them for at least 3 days (soft lenses) or 2 weeks (rigid lenses) before your appointment.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q3.question">Is financing available for LASIK surgery?</h3>
+                    <p data-i18n="contact.faq.q3.answer">Yes, we offer several financing options through trusted healthcare financing partners. During your consultation, our patient coordinator will explain the available plans, including 0% interest options for qualified patients.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 data-i18n="contact.faq.q4.question">How soon can I schedule my LASIK procedure after consultation?</h3>
+                    <p data-i18n="contact.faq.q4.answer">If you're a suitable candidate for LASIK, you can typically schedule your procedure within 1-2 weeks of your consultation, depending on availability. Some patients choose to schedule their procedure the same day as their consultation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <p data-i18n="contact.faq.cta">Have more questions? We're here to help.</p>
+                <button class="btn btn-primary cta-consultation" data-i18n="contact.faq.button">Schedule Your Free Consultation</button>
             </div>
         </div>
     </section>
@@ -77,22 +324,22 @@
     <div id="consultation-modal" class="modal-overlay">
         <div class="popup-modal">
             <span class="close-popup">&times;</span>
-            <h2>Schedule a Free Consultation</h2>
+            <h2 data-i18n="contact.form.title">Schedule a Free Consultation</h2>
             <form id="consultation-form-popup" class="contact-form">
                 <div class="form-group">
-                    <label for="full-name-popup">Full Name *</label>
+                    <label for="full-name-popup" data-i18n="contact.form.fullName">Full Name *</label>
                     <input type="text" id="full-name-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="email-popup">Email *</label>
+                    <label for="email-popup" data-i18n="contact.form.email">Email *</label>
                     <input type="email" id="email-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone-popup">Phone *</label>
+                    <label for="phone-popup" data-i18n="contact.form.phone">Phone *</label>
                     <input type="tel" id="phone-popup" required>
                 </div>
                 <div class="form-group">
-                    <label for="location-popup">Preferred Location *</label>
+                    <label for="location-popup" data-i18n="contact.form.location">Preferred Location *</label>
                     <select id="location-popup" required>
                         <option value="">Select location</option>
                         <option>Los Angeles</option>
@@ -102,7 +349,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="service-popup">Interested Service *</label>
+                    <label for="service-popup" data-i18n="contact.form.service">Interested Service *</label>
                     <select id="service-popup" required>
                         <option value="">Select service</option>
                         <option>Traditional LASIK</option>
@@ -112,26 +359,190 @@
                         <option>Unsure (need consultation)</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Preferred Date Range</label>
-                    <input type="date" id="date-start-popup"> to <input type="date" id="date-end-popup">
+                <div class="form-group date-range">
+                    <label data-i18n="contact.form.dateRange">Preferred Date Range</label>
+                    <div class="date-inputs">
+                        <input type="date" id="date-start-popup" min="2025-03-18">
+                        <span>to</span>
+                        <input type="date" id="date-end-popup" min="2025-03-18">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="message-popup">Additional Information</label>
+                    <label for="message-popup" data-i18n="contact.form.message">Additional Information</label>
                     <textarea id="message-popup" rows="4"></textarea>
                 </div>
                 <div class="form-group consent-checkbox">
                     <input type="checkbox" id="consent-popup" required>
-                    <label for="consent-popup">I consent to be contacted. *</label>
+                    <label for="consent-popup" data-i18n="contact.form.consent">I consent to be contacted by Vision Clarity Institute regarding my inquiry. *</label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
+                <button type="submit" class="btn btn-primary btn-large" data-i18n="contact.form.submit">Submit Request</button>
             </form>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="/assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p data-i18n="global.footer.tagline">Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html" data-i18n="global.menu.home">Home</a></li>
+                        <li><a href="/pages/services.html" data-i18n="global.menu.services">Services</a></li>
+                        <li><a href="/pages/technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                        <li><a href="/pages/locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                        <li><a href="/pages/contact.html" data-i18n="global.menu.contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.contact">Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p data-i18n="global.footer.phone">Phone: (800) 555-2020</p>
+                        <p data-i18n="global.footer.email">Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.hours">Hours</h3>
+                    <p data-i18n="global.footer.weekdays">Monday - Friday: 8am - 6pm</p>
+                    <p data-i18n="global.footer.saturday">Saturday: 9am - 2pm</p>
+                    <p data-i18n="global.footer.sunday">Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="global.footer.copyright">&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#" data-i18n="global.footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="global.footer.terms">Terms of Service</a></li>
+                    <li><a href="#" data-i18n="global.footer.accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     <!-- Scripts -->
-    <script src="../scripts.js"></script>
-    <script src="../chatbot.js"></script>
-    <script src="../js/consultation-popup.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/consultation-popup.js"></script>
+    <script src="/js/inquiry-form.js"></script>
+    
+    <!-- Fallback script for form functionality -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Basic form validation
+        const inquiryForm = document.getElementById('service-inquiry-form');
+        if (inquiryForm) {
+            inquiryForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Simple validation
+                let isValid = true;
+                const requiredFields = inquiryForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#e53e3e';
+                    } else {
+                        field.style.borderColor = '#ccc';
+                    }
+                });
+                
+                if (isValid) {
+                    // Display success message
+                    alert('Thank you for your inquiry! We will contact you within 24 hours.');
+                    inquiryForm.reset();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        }
+        
+        // Initialize consultation button
+        const consultationBtn = document.getElementById('consultation-btn');
+        const consultationModal = document.getElementById('consultation-modal');
+        const ctaButtons = document.querySelectorAll('.cta-consultation');
+        
+        function openModal() {
+            if (consultationModal) {
+                consultationModal.style.display = 'flex';
+            }
+        }
+        
+        // Close modal function
+        function closeModal() {
+            if (consultationModal) {
+                consultationModal.style.display = 'none';
+            }
+        }
+        
+        if (consultationBtn) {
+            consultationBtn.addEventListener('click', openModal);
+        }
+        
+        // Add click handlers to all CTA buttons
+        if (ctaButtons) {
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', openModal);
+            });
+        }
+        
+        // Close popup when clicking X
+        const closeBtn = document.querySelector('.close-popup');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+        
+        // Close popup when clicking outside
+        if (consultationModal) {
+            consultationModal.addEventListener('click', function(event) {
+                if (event.target === consultationModal) {
+                    closeModal();
+                }
+            });
+        }
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && consultationModal && 
+                consultationModal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+        
+        // Handle consultation form submission
+        const consultationForm = document.getElementById('consultation-form-popup');
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Simple validation
+                let isValid = true;
+                const requiredFields = consultationForm.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#e53e3e';
+                    } else {
+                        field.style.borderColor = '#ccc';
+                    }
+                });
+                
+                if (isValid) {
+                    // Display success message
+                    alert('Thank you for requesting a consultation! We will contact you shortly to confirm your appointment.');
+                    consultationForm.reset();
+                    closeModal();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
