@@ -1,0 +1,101 @@
+{
+  "global": {
+    "menu": {
+      "home": "Home",
+      "services": "Mga Serbisyo",
+      "technology": "Teknolohiya",
+      "locations": "Mga Lokasyon",
+      "contact": "Makipag-ugnayan"
+    },
+    "buttons": {
+      "schedule": "Mag-iskedyul ng Konsultasyon"
+    },
+    "footer": {
+      "tagline": "Advanced na Lasik eye surgery gamit ang cutting-edge na teknolohiya para sa pinakamahusay na resulta at kasiyahan ng pasyente.",
+      "quickLinks": "Mabilisang Links",
+      "contact": "Makipag-ugnayan",
+      "phone": "Telepono: (800) 555-2020",
+      "email": "Email: info@visionclarityinstitute.com",
+      "hours": "Oras",
+      "weekdays": "Lunes - Biyernes: 8am - 6pm",
+      "saturday": "Sabado: 9am - 2pm", 
+      "sunday": "Linggo: Sarado",
+      "copyright": "© 2025 Vision Clarity Institute. Lahat ng karapatan ay nakalaan.",
+      "privacy": "Patakaran sa Privacy",
+      "terms": "Mga Tuntunin ng Serbisyo",
+      "accessibility": "Accessibility"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Aming Mga Serbisyo",
+      "subtitle": "Advanced na mga pamamaraan ng pagwawasto ng paningin na naka-customize sa iyong mga pangangailangan"
+    },
+    "traditional": {
+      "title": "Tradisyonal na LASIK",
+      "description": "Ang Tradisyonal na LASIK ay ang aming standard na procedure ng pagwawasto ng paningin gamit ang laser na nakatulong na sa milyun-milyong tao sa buong mundo na mabawasan o maalis ang kanilang pag-asa sa salamin at contact lenses.",
+      "how_works_title": "Paano Ito Gumagana",
+      "how_works_text": "Sa panahon ng tradisyonal na LASIK, gumagamit ang aming surgeon ng microkeratome (surgical blade) para gumawa ng manipis na flap sa cornea. Ang flap ay itinataas, at ang excimer laser ay humuhubog muli sa corneal tissue sa ilalim para iwasto ang iyong paningin. Ang flap ay inilalagay pabalik para magsilbing natural na bandage habang gumagaling.",
+      "candidates_title": "Mga Angkop na Kandidato",
+      "candidates_text": "Maaari kang maging magandang kandidato para sa tradisyonal na LASIK kung ikaw ay:",
+      "candidates": {
+        "item1": "Hindi bababa sa 18 taong gulang",
+        "item2": "May paningin na stable nang hindi bababa sa isang taon",
+        "item3": "May katamtamang nearsightedness, farsightedness, o astigmatism",
+        "item4": "May sapat na kapal ng cornea",
+        "item5": "Walang malalang problema sa kalusugan ng mata"
+      },
+      "recovery_title": "Paggaling at Mga Resulta",
+      "recovery_text": "Karamihan ng mga pasyente ay nakakaranas ng pagbuti ng paningin sa loob ng 24 na oras pagkatapos ng operasyon. Ang kumpletong paggaling ay kadalasang tumatagal ng 1-2 linggo, na may stable na paningin na karaniwang nakakamit sa loob ng isang buwan. Ang tradisyonal na LASIK ay may mataas na rate ng tagumpay, na may humigit-kumulang 96% ng mga pasyente na nakakamit ang kanilang ninanais na paningin."
+    },
+    "custom": {
+      "title": "Custom Bladeless LASIK",
+      "description": "Ang Custom Bladeless LASIK ay ang aming premium, all-laser LASIK procedure na nag-aalok ng pinahusay na precision at personalization para sa pinakamahusay na visual outcomes.",
+      "how_works_title": "Paano Ito Gumagana",
+      "how_works_text": "Sa Custom Bladeless LASIK, gumagamit kami ng dalawang magkaibang laser: isang femtosecond laser para gumawa ng corneal flap (sa halip na blade), at isang advanced na wavefront-guided excimer laser para sa corneal reshaping. Ang all-laser approach na ito ay nagbibigay-daan para sa mas tumpak na paggawa ng flap at naka-customize na treatment batay sa iyong natatanging corneal map.",
+      "benefits_title": "Mga Pangunahing Benepisyo",
+      "benefits": {
+        "item1": "Mas mahusay na precision sa paggawa ng flap",
+        "item2": "Personalized na treatment plan batay sa natatanging characteristics ng mata",
+        "item3": "Pinahusay na night vision at nabawasan ang glare kumpara sa tradisyonal na LASIK",
+        "item4": "Potential na i-correct ang higher-order aberrations (visual distortions)",
+        "item5": "Excellent na opsyon para sa mga pasyente na may manipis na cornea o mas mataas na prescriptions"
+      },
+      "right_for_you_title": "Angkop ba sa iyo ang Custom Bladeless LASIK?",
+      "right_for_you_text": "Bagama't medyo mas mahal kaysa sa tradisyonal na LASIK, maaaring sulit pag-isipan ang Custom Bladeless LASIK kung mayroon kang complex na mga isyu sa paningin, mga high-order aberrations, o gusto mo ang pinakaadvanced na teknolohiya na available. Susuriin ng aming mga surgeon ang iyong mga partikular na pangangailangan sa panahon ng iyong konsultasyon."
+    },
+    "prk": {
+      "title": "PRK (Photorefractive Keratectomy)",
+      "description": "Ang PRK ay isang mahusay na alternatibo sa LASIK para sa mga pasyente na maaaring hindi ideal na kandidato para sa mga procedure na base sa flap. Ang PRK ang unang procedure ng pagwawasto ng paningin gamit ang laser at patuloy na nag-aalok ng mahuhusay na resulta.",
+      "how_works_title": "Paano Ito Gumagana",
+      "how_works_text": "Sa panahon ng PRK, dahan-dahang inaalis ng surgeon ang panlabas na layer ng cornea (epithelium) sa halip na gumawa ng flap. Pagkatapos ay humuhubog ang excimer laser sa cornea upang iwasto ang iyong paningin. Ang epithelium ay natural na nagre-regenerate sa loob ng ilang araw pagkatapos ng procedure.",
+      "candidates_title": "Mga Angkop na Kandidato para sa PRK",
+      "candidates_text": "Ang PRK ay maaaring irekomenda para sa mga pasyente na:",
+      "candidates": {
+        "item1": "May manipis na cornea na maaaring hindi angkop para sa LASIK",
+        "item2": "May mga propesyon o libangan na may mas mataas na panganib para sa pinsala sa mata (military, contact sports)",
+        "item3": "May ilang corneal abnormalities",
+        "item4": "Dati nang sumailalim sa LASIK at nangangailangan ng enhancement"
+      },
+      "recovery_title": "Paggaling at Mga Resulta",
+      "recovery_text": "Ang paggaling mula sa PRK ay mas matagal kaysa sa LASIK, na may kumpletong visual stabilization na karaniwang nangyayari sa loob ng 1-3 buwan. Gayunpaman, ang mga long-term na resulta ay katulad ng LASIK, at ang PRK ay nag-aalis ng mga komplikasyon na may kaugnayan sa flap."
+    },
+    "presbyopia": {
+      "title": "Pagwawasto ng Presbyopia",
+      "description": "Ang presbyopia ay isang kondisyon na may kaugnayan sa edad na nakakaapekto sa halos lahat ng tao na higit sa 40, na nagpapahirap sa pag-focus sa mga malapit na bagay. Sa Vision Clarity Institute, nag-aalok kami ng ilang solusyon para tugunan ang presbyopia.",
+      "options_title": "Aming Mga Opsyon sa Pagwawasto ng Presbyopia",
+      "monovision_title": "Monovision LASIK",
+      "monovision_text": "Sa approach na ito, ang isang mata ay iwawasto para sa paningin sa malayo at ang isa para sa paningin sa malapit. Natututunan ng iyong utak na gamitin ang angkop na mata depende sa iyong tinitingnan. Maaari nitong bawasan o alisin ang pangangailangan para sa reading glasses.",
+      "multifocal_title": "Multifocal LASIK",
+      "multifocal_text": "Gamit ang advanced na laser technology, maaari kaming lumikha ng maramihang focus zones sa iyong cornea, na nagbibigay-daan sa malinaw na paningin sa iba't ibang distansya. Ang advanced na technique na ito ay maaaring magbigay ng mahuhusay na resulta para sa mga angkop na kandidato.",
+      "rle_title": "Refractive Lens Exchange (RLE)",
+      "rle_text": "Para sa ilang pasyente, lalo na ang mga higit sa 50 taong gulang, ang pagpapalit ng natural na lens ng mata sa isang advanced multifocal lens implant ay maaaring ang pinakamahusay na opsyon. Ang procedure na ito ay katulad ng cataract surgery ngunit isinasagawa bago mabuo ang mga cataract.",
+      "determination_title": "Pagtukoy sa Tamang Opsyon para sa iyo",
+      "determination_text": "Sa panahon ng iyong konsultasyon, susuriin ng aming mga espesyalista ang iyong paningin, pag-uusapan ang iyong lifestyle at mga visual na pangangailangan, at irekomenda ang pinaka-angkop na approach sa pagwawasto ng presbyopia para sa iyo."
+    },
+    "cta": {
+      "title": "Handa na Bang Makakita nang Malinaw nang Walang Salamin?",
+      "content": "I-schedule ang iyong libreng konsultasyon ngayon para malaman kung anong procedure ng pagwawasto ng paningin ang tama para sa iyo."
+    }
+  }
+}
