@@ -1,278 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Vision Clarity Institute</title>
-    <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures.">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/staff.css">
-    <link rel="stylesheet" href="../css/consultation-popup.css"> <!-- New CSS -->
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <a href="../index.html">
-                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                    <img src="../assets/images/icons/menu.svg" alt="Menu">
-                </button>
-                <ul class="nav-list">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="pages/staff.html">Our Staff</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <div class="language-selector">
-                    <select id="language-select" aria-label="Select Language">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="zh">中文</option>
-                        <option value="ko">한국어</option>
-                        <option value="hy">Հայերեն</option>
-                        <option value="he">עברית</option>
-                        <option value="tl">Filipino</option>
-                        <option value="ru">Русский</option>
-                        <option value="fa">فارسی</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                </div>        
-                <a href="pages/contact.html" class="btn btn-primary">Schedule Consultation</a>
-            </div>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+            </a>
         </div>
-    </header>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>Schedule your free consultation or connect with our team</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>We're here to answer your questions about Lasik surgery and help you take the first step toward clearer vision.</p>
-                    
-                    <div class="contact-method">
-                        <h3>Call Us</h3>
-                        <p><a href="tel:8005552020">(800) 555-2020</a></p>
-                        <p class="contact-hours">Monday - Friday: 8am - 6pm<br>Saturday: 9am - 2pm</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <h3>Email Us</h3>
-                        <p><a href="mailto:info@visionclarityinstitute.com">info@visionclarityinstitute.com</a></p>
-                        <p class="contact-hours">We respond to all inquiries within 24 hours during business days.</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <h3>Main Office</h3>
-                        <address>
-                            1234 Vision Way, Suite 100<br>
-                            Los Angeles, CA 90001
-                        </address>
-                        <p><a href="locations.html">View all locations</a></p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <h3>Follow Us</h3>
-                        <div class="social-icons">
-                            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><img src="../assets/images/icons/facebook.svg" alt="Facebook"></a>
-                            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><img src="../assets/images/icons/instagram.svg" alt="Instagram"></a>
-                            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><img src="../assets/images/icons/twitter.svg" alt="Twitter"></a>
-                            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/images/icons/youtube.svg" alt="YouTube"></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form-container">
-                    <h2>Schedule a Free Consultation</h2>
-                    <p>Fill out the form below, and our team will contact you to schedule your complimentary consultation.</p>
-                    
-                    <form id="consultation-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="full-name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="full-name" name="full-name" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="location">Preferred Location <span class="required">*</span></label>
-                            <select id="location" name="location" required>
-                                <option value="" disabled selected>Select a location</option>
-                                <option value="los-angeles">Los Angeles</option>
-                                <option value="pasadena">Pasadena</option>
-                                <option value="newport-beach">Newport Beach</option>
-                                <option value="glendale">Glendale</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Interested Service <span class="required">*</span></label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Select a service</option>
-                                <option value="traditional-lasik">Traditional LASIK</option>
-                                <option value="custom-bladeless-lasik">Custom Bladeless LASIK</option>
-                                <option value="prk">PRK (Photorefractive Keratectomy)</option>
-                                <option value="presbyopia">Presbyopia Correction</option>
-                                <option value="unsure">Not sure yet (need consultation)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="preferred-date">Preferred Date Range</label>
-                            <div class="date-range">
-                                <input type="date" id="preferred-date-start" name="preferred-date-start">
-                                <span class="date-separator">to</span>
-                                <input type="date" id="preferred-date-end" name="preferred-date-end">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Additional Information</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Please include any questions or specific concerns you'd like to discuss during your consultation."></textarea>
-                        </div>
-                        
-                        <div class="form-group consent-checkbox">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I consent to be contacted by Vision Clarity Institute regarding my inquiry. <span class="required">*</span></label>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large">Submit Request</button>
-                        </div>
-                        
-                        <p class="form-note"><span class="required">*</span> Required fields</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section section bg-light">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <h3 class="faq-question">How do I prepare for my consultation?</h3>
-                    <div class="faq-answer">
-                        <p>Please bring your current glasses or contact lens prescription, a list of medications you're taking, and any relevant medical history. If you wear contact lenses, please discontinue wear for at least 3 days before your consultation for soft contacts, or 2-3 weeks for hard or rigid gas permeable contacts.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">How long does a consultation appointment take?</h3>
-                    <div class="faq-answer">
-                        <p>Initial consultations typically take 90 minutes. During this time, we'll perform comprehensive diagnostic tests, discuss your vision goals, review your options, and answer all your questions.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">Is there a fee for the consultation?</h3>
-                    <div class="faq-answer">
-                        <p>No, Vision Clarity Institute offers complimentary consultations to determine if you're a candidate for laser vision correction. If additional specialized testing is required, your consultant will discuss any potential costs before proceeding.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">Do you offer financing options?</h3>
-                    <div class="faq-answer">
-                        <p>Yes, we partner with several financing companies to offer flexible payment plans with 0% interest options. Our team will discuss these options during your consultation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
-                    <p>Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="technology.html">Technology</a></li>
-                        <li><a href="pages/staff.html">Our Staff</a></li>
-                        <li><a href="locations.html">Locations</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <address>
-                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
-                        <p>Phone: (800) 555-2020</p>
-                        <p>Email: info@visionclarityinstitute.com</p>
-                    </address>
-                </div>
-                <div class="footer-column">
-                    <h3>Hours</h3>
-                    <p>Monday - Friday: 8am - 6pm</p>
-                    <p>Saturday: 9am - 2pm</p>
-                    <p>Sunday: Closed</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
-                <ul class="footer-legal">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Success Modal -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <div class="modal-icon">✓</div>
-                <h2>Thank You!</h2>
-                <p>Your consultation request has been submitted successfully. One of our patient coordinators will contact you within 24 hours to confirm your appointment.</p>
-                <button class="btn btn-primary close-modal-btn">Close</button>
-            </div>
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <img src="../assets/images/icons/menu.svg" alt="Menu">
+            </button>
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="staff.html">Our Staff</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="language-selector">
+                <select id="language-select" aria-label="Select Language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="zh">中文</option>
+                    <option value="ko">한국어</option>
+                    <option value="hy">Հայերեն</option>
+                    <option value="he">עברית</option>
+                    <option value="tl">Filipino</option>
+                    <option value="ru">Русский</option>
+                    <option value="fa">فارسی</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>        
+            <button id="consultation-btn" class="btn btn-primary">Schedule Consultation</button>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="../scripts.js"></script>
-    <script src="../chatbot.js"></script>
-    <script src="../js/consultation-popup.js"></script> <!-- New JS -->
-</body>
-</html>
+</header>
