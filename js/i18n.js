@@ -161,14 +161,17 @@ class I18nManager {
     // Update the HTML lang attribute
     document.documentElement.lang = lang;
     
-    // Handle right-to-left languages (Hebrew and Arabic)
-    const rtlLanguages = ['he', 'ar'];
-    if (rtlLanguages.includes(lang)) {
-      document.documentElement.dir = 'rtl';
-      document.body.classList.add('rtl');
-    } else {
-      document.documentElement.dir = 'ltr';
-      document.body.classList.remove('rtl');
+    // Handle right-to-left languages
+    this.handleTextDirection(lang);
+    
+    // Load appropriate fonts for the language
+    fontLoader.loadFontsForLanguage(lang);
+    
+    // Track language change in analytics if available
+    if (window.gtag) {
+      window.gtag('event', 'language_change', {
+        'language': lang
+      });
     }
     
     // Dispatch a custom event for other components to react to language change
