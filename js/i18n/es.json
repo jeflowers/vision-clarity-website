@@ -5,13 +5,18 @@
       "services": "Servicios",
       "technology": "Tecnología",
       "locations": "Ubicaciones",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "staff": "Nuestro Equipo"
     },
     "buttons": {
-      "schedule": "Programar Consulta"
+      "schedule": "Programar Consulta",
+      "learn_more": "Más Información",
+      "read_more": "Leer Más",
+      "submit": "Enviar",
+      "send": "Enviar Mensaje"
     },
     "footer": {
-      "tagline": "Cirugía láser avanzada utilizando tecnología de vanguardia para resultados óptimos y satisfacción del paciente.",
+      "tagline": "Cirugía ocular Lasik avanzada utilizando tecnología de vanguardia para obtener resultados óptimos y satisfacción del paciente.",
       "quickLinks": "Enlaces Rápidos",
       "contact": "Contacto",
       "hours": "Horario",
@@ -29,73 +34,73 @@
   "services": {
     "header": {
       "title": "Nuestros Servicios",
-      "subtitle": "Procedimientos avanzados de corrección visual adaptados a sus necesidades"
+      "subtitle": "Procedimientos avanzados de corrección de la visión adaptados a sus necesidades"
     },
     "traditional": {
       "title": "LASIK Tradicional",
-      "description": "LASIK Tradicional es nuestro procedimiento estándar de corrección visual con láser que ha ayudado a millones de personas en todo el mundo a reducir o eliminar su dependencia de anteojos y lentes de contacto.",
+      "description": "El LASIK tradicional es nuestro procedimiento estándar de corrección de la visión con láser que ha ayudado a millones de personas en todo el mundo a reducir o eliminar su dependencia de gafas y lentes de contacto.",
       "how_works_title": "Cómo Funciona",
-      "how_works_text": "Durante el LASIK tradicional, nuestro cirujano utiliza un microqueratomo (cuchilla quirúrgica) para crear un colgajo delgado en la córnea. Luego se levanta el colgajo y un láser excimer remodela el tejido corneal debajo para corregir su visión. El colgajo se reposiciona para servir como un vendaje natural mientras se produce la curación.",
+      "how_works_text": "Durante el LASIK tradicional, nuestro cirujano usa un microqueratomo (cuchilla quirúrgica) para crear un flap delgado en la córnea. Luego se levanta el flap, y un láser excimer remodela el tejido corneal debajo para corregir su visión. Finalmente, el flap se reposiciona para servir como un vendaje natural mientras ocurre la curación.",
       "candidates_title": "Candidatos Ideales",
       "candidates_text": "Puede ser un buen candidato para LASIK tradicional si:",
       "candidates": {
         "item1": "Tiene al menos 18 años de edad",
         "item2": "Ha tenido visión estable durante al menos un año",
         "item3": "Tiene miopía, hipermetropía o astigmatismo moderados",
-        "item4": "Tiene suficiente grosor corneal",
+        "item4": "Tiene suficiente espesor corneal",
         "item5": "No tiene problemas significativos de salud ocular"
       },
       "recovery_title": "Recuperación y Resultados",
-      "recovery_text": "La mayoría de los pacientes experimentan una mejor visión dentro de las 24 horas posteriores a la cirugía. La recuperación completa suele tardar de 1 a 2 semanas, con visión estable generalmente lograda dentro de un mes. El LASIK tradicional tiene una alta tasa de éxito, con aproximadamente el 96% de los pacientes logrando la visión deseada."
+      "recovery_text": "La mayoría de los pacientes experimentan una mejora de la visión dentro de las 24 horas posteriores a la cirugía. La recuperación completa generalmente toma de 1 a 2 semanas, y la visión estable se logra generalmente dentro de un mes. El LASIK tradicional tiene una alta tasa de éxito, con aproximadamente el 96% de los pacientes logrando la visión deseada."
     },
     "custom": {
       "title": "LASIK Personalizado Sin Cuchilla",
-      "description": "LASIK Personalizado Sin Cuchilla es nuestro procedimiento LASIK premium, totalmente láser, que ofrece mayor precisión y personalización para resultados visuales óptimos.",
+      "description": "El LASIK Personalizado Sin Cuchilla es nuestro procedimiento premium de LASIK totalmente láser que ofrece mayor precisión y personalización para resultados visuales óptimos.",
       "how_works_title": "Cómo Funciona",
-      "how_works_text": "En LASIK Personalizado Sin Cuchilla, usamos dos láseres diferentes: un láser femtosegundo para crear el colgajo corneal (en lugar de una cuchilla) y un láser excimer avanzado guiado por frente de onda para remodelar la córnea. Este enfoque totalmente láser permite una creación de colgajo más precisa y un tratamiento personalizado basado en su mapa corneal único.",
-      "benefits_title": "Beneficios Clave",
+      "how_works_text": "En el LASIK Personalizado Sin Cuchilla, utilizamos dos láseres diferentes: un láser de femtosegundo para crear el flap corneal (en lugar de una cuchilla), y un láser excimer avanzado guiado por frente de onda para remodelar la córnea. Este enfoque totalmente láser permite una creación de flap más precisa y un tratamiento personalizado basado en el mapa único de su córnea.",
+      "benefits_title": "Beneficios Principales",
       "benefits": {
-        "item1": "Mayor precisión en la creación del colgajo",
-        "item2": "Plan de tratamiento personalizado basado en características únicas del ojo",
-        "item3": "Mejor visión nocturna y menor deslumbramiento en comparación con LASIK tradicional",
+        "item1": "Mayor precisión en la creación del flap",
+        "item2": "Plan de tratamiento personalizado basado en las características únicas del ojo",
+        "item3": "Mejor visión nocturna y reducción del deslumbramiento en comparación con el LASIK tradicional",
         "item4": "Potencial para corregir aberraciones de orden superior (distorsiones visuales)",
-        "item5": "Excelente opción para pacientes con córneas delgadas o prescripciones altas"
+        "item5": "Excelente opción para pacientes con córneas delgadas o prescripciones más altas"
       },
-      "right_for_you_title": "¿Es LASIK Personalizado Sin Cuchilla Adecuado para Usted?",
-      "right_for_you_text": "Aunque es ligeramente más costoso que el LASIK tradicional, el LASIK Personalizado Sin Cuchilla puede valer la pena considerarlo si tiene problemas de visión complejos, aberraciones de orden superior o desea la tecnología más avanzada disponible. Nuestros cirujanos evaluarán sus necesidades específicas durante su consulta."
+      "right_for_you_title": "¿Es el LASIK Personalizado Sin Cuchilla Adecuado para Usted?",
+      "right_for_you_text": "Aunque es ligeramente más costoso que el LASIK tradicional, el LASIK Personalizado Sin Cuchilla puede valer la pena si tiene problemas visuales complejos, aberraciones de orden superior, o desea la tecnología más avanzada disponible. Nuestros cirujanos evaluarán sus necesidades específicas durante su consulta."
     },
     "prk": {
-      "title": "PRK (Queratectomía Fotorrefractiva)",
-      "description": "PRK es una excelente alternativa al LASIK para pacientes que pueden no ser candidatos ideales para procedimientos basados en colgajos. PRK fue el primer procedimiento de corrección visual con láser y continúa ofreciendo excelentes resultados.",
+      "title": "PRK (Queratectomía Fotorreactiva)",
+      "description": "PRK es una excelente alternativa al LASIK para pacientes que pueden no ser candidatos ideales para procedimientos basados en flap. PRK fue el primer procedimiento de corrección visual con láser y continúa ofreciendo excelentes resultados.",
       "how_works_title": "Cómo Funciona",
-      "how_works_text": "Durante el PRK, el cirujano elimina suavemente la capa externa de la córnea (epitelio) en lugar de crear un colgajo. Un láser excimer luego remodela la córnea para corregir su visión. El epitelio se regenera naturalmente dentro de unos días después del procedimiento.",
+      "how_works_text": "Durante la PRK, el cirujano elimina suavemente la capa externa de la córnea (epitelio) en lugar de crear un flap. Luego, un láser excimer remodela la córnea para corregir su visión. El epitelio se regenera naturalmente dentro de los pocos días posteriores al procedimiento.",
       "candidates_title": "Candidatos Ideales para PRK",
-      "candidates_text": "El PRK puede recomendarse para pacientes que:",
+      "candidates_text": "PRK puede ser recomendado para pacientes que:",
       "candidates": {
         "item1": "Tienen córneas delgadas que pueden no ser adecuadas para LASIK",
         "item2": "Tienen profesiones o pasatiempos con mayor riesgo de lesiones oculares (militares, deportes de contacto)",
-        "item3": "Tienen ciertas anomalías corneales",
-        "item4": "Han tenido LASIK anteriormente y necesitan una mejora"
+        "item3": "Presentan ciertas anomalías corneales",
+        "item4": "Se sometieron previamente a LASIK y necesitan mejoría"
       },
       "recovery_title": "Recuperación y Resultados",
-      "recovery_text": "La recuperación del PRK toma más tiempo que el LASIK, con una estabilización visual completa que generalmente ocurre dentro de 1-3 meses. Sin embargo, los resultados a largo plazo son comparables a LASIK, y PRK elimina las complicaciones relacionadas con el colgajo."
+      "recovery_text": "La recuperación de PRK toma más tiempo que el LASIK, con estabilización visual completa que generalmente ocurre dentro de 1-3 meses. Sin embargo, los resultados a largo plazo son comparables al LASIK, y PRK elimina las complicaciones relacionadas con el flap."
     },
     "presbyopia": {
       "title": "Corrección de Presbicia",
-      "description": "La presbicia es una condición relacionada con la edad que afecta a casi todas las personas mayores de 40 años, dificultando el enfoque de objetos cercanos. En Vision Clarity Institute, ofrecemos varias soluciones para abordar la presbicia.",
+      "description": "La presbicia es una condición relacionada con la edad que afecta a casi todas las personas mayores de 40 años, dificultando enfocar objetos cercanos. En Vision Clarity Institute, ofrecemos varias soluciones para abordar la presbicia.",
       "options_title": "Nuestras Opciones de Corrección de Presbicia",
       "monovision_title": "LASIK Monovisión",
-      "monovision_text": "En este enfoque, un ojo se corrige para visión de distancia y el otro para visión cercana. Su cerebro aprende a usar el ojo apropiado dependiendo de lo que esté mirando. Esto puede reducir o eliminar la necesidad de anteojos de lectura.",
+      "monovision_text": "En este enfoque, un ojo se corrige para la visión de distancia y el otro para la visión cercana. Su cerebro aprende a usar el ojo apropiado dependiendo de lo que esté mirando. Esto puede reducir o eliminar la necesidad de gafas de lectura.",
       "multifocal_title": "LASIK Multifocal",
       "multifocal_text": "Usando tecnología láser avanzada, podemos crear múltiples zonas de enfoque en su córnea, permitiendo una visión clara a varias distancias. Esta técnica avanzada puede proporcionar excelentes resultados para candidatos apropiados.",
-      "rle_title": "Intercambio de Lente Refractivo (RLE)",
+      "rle_title": "Intercambio de Lentes Refractivos (RLE)",
       "rle_text": "Para algunos pacientes, especialmente aquellos mayores de 50 años, reemplazar el lente natural del ojo con un implante de lente multifocal avanzado puede ser la mejor opción. Este procedimiento es similar a la cirugía de cataratas pero se realiza antes de que se desarrollen las cataratas.",
       "determination_title": "Determinando la Opción Correcta para Usted",
       "determination_text": "Durante su consulta, nuestros especialistas evaluarán su visión, discutirán su estilo de vida y necesidades visuales, y recomendarán el enfoque de corrección de presbicia más adecuado para usted."
     },
     "cta": {
-      "title": "¿Listo para Ver Claramente Sin Anteojos?",
-      "content": "Programe su consulta gratuita hoy para conocer qué procedimiento de corrección visual es adecuado para usted."
+      "title": "¿Listo para Ver Claramente Sin Gafas?",
+      "content": "Programe su consulta gratuita hoy para conocer qué procedimiento de corrección de la visión es adecuado para usted."
     }
   }
 }
