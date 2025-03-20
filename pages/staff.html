@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="staff.profile.title">Employee Profile - Vision Clarity Institute</title>
+    <title data-i18n="staff.profile.title">Our Team - Vision Clarity Institute</title>
+    <meta name="description" content="Meet our team of expert ophthalmologists and vision care specialists at Vision Clarity Institute.">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/staff.css">
 </head>
@@ -11,8 +12,36 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <!-- Standard navigation menu and language selector -->
-            <!-- [...] -->
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <img src="../assets/images/icons/menu.svg" alt="Menu">
+                </button>
+                <ul class="nav-list">
+                    <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                    <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                    <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                    <li><a href="staff.html" class="active" data-i18n="global.menu.staff">Our Staff</a></li>
+                    <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                    <li><a href="contact.html" data-i18n="global.menu.contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <select id="language-select" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="zh">中文</option>
+                        <option value="ko">한국어</option>
+                        <option value="hy">Հայերեն</option>
+                    </select>
+                </div>
+                <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</a>
+            </div>
         </div>
     </header>
 
@@ -25,99 +54,193 @@
     </section>
 
     <!-- Employee Profile -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="staff-card">
-            <!-- Name Header - Note the staff-type-dr class -->
-            <div class="header dr staff-type-dr">
-                <h1 class="text-4xl font-serif">Charles Wesley Flowers, MD, FACS</h1>
-            </div>
-
-            <!-- Profile Image -->
-            <img src="../assets/images/staff/dr-flowers.jpg" alt="Dr. Charles Wesley Flowers" class="profile-img">
-
-            <!-- Content Section -->
-            <div class="p-8 text-gray-800">
-                <!-- Overview Section -->
-                <div class="mb-8">
-                    <h2 class="section-title">OVERVIEW</h2>
-                    <div class="space-y-4">
-                        <p>
-                            Charles W. Flowers Jr., MD, received his undergraduate degree in Chemistry from Stanford University in 1985 and his medical degree from Cornell University Medical College in 1989.
-                        </p>
-                        <p>
-                            Following his ophthalmology residency training at the Charles R. Drew University of Medicine in Los Angeles, California, he completed a cornea and refractive surgery fellowship, earning the Award of Excellence in Resident Training.
-                        </p>
-                        <p>
-                            Recognized as one of the nation's top eye surgeons, Dr. Flowers is dedicated to advancing teleophthalmology, diabetic retinopathy screening, and visual enhancement in sports.
-                        </p>
-                    </div>
+    <main class="section">
+        <div class="container">
+            <div class="staff-card">
+                <!-- Name Header -->
+                <div class="header staff-type-dr">
+                    <h2>Charles Wesley Flowers, MD, FACS</h2>
                 </div>
 
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <span>Roski Eye Institute</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
-                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
-                        <span>cflowers@med.usc.edu</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        <span>(323) 442-6335</span>
-                    </div>
-                </div>
+                <!-- Profile Image -->
+                <img src="../assets/images/staff/dr-flowers.jpg" alt="Dr. Charles Wesley Flowers" class="profile-img">
 
-                <!-- Awards Section -->
-                <section class="section-divider">
-                    <h2 class="section-title">AWARDS</h2>
-                    <div class="grid-cols-2 gap-4">
-                        <!-- Award items would go here -->
+                <!-- Content Section -->
+                <div class="staff-content">
+                    <!-- Overview Section -->
+                    <div class="staff-overview">
+                        <h3 class="section-title">OVERVIEW</h3>
+                        <div class="staff-text">
+                            <p>
+                                Charles W. Flowers Jr., MD, received his undergraduate degree in Chemistry from Stanford University in 1985 and his medical degree from Cornell University Medical College in 1989.
+                            </p>
+                            <p>
+                                Following his ophthalmology residency training at the Charles R. Drew University of Medicine in Los Angeles, California, he completed a cornea and refractive surgery fellowship, earning the Award of Excellence in Resident Training.
+                            </p>
+                            <p>
+                                Recognized as one of the nation's top eye surgeons, Dr. Flowers is dedicated to advancing teleophthalmology, diabetic retinopathy screening, and visual enhancement in sports.
+                            </p>
+                        </div>
                     </div>
-                </section>
 
-                <!-- Publications Section -->
-                <section class="section-divider">
-                    <h2 class="section-title">PUBLICATIONS</h2>
-                    <div class="space-y-6">
-                        <!-- Publication items would go here -->
-                    </div>
-                </section>
-
-                <!-- Education and Expertise -->
-                <div class="grid-cols-2 gap-8 section-divider">
-                    <section>
-                        <h3 class="text-xl font-semibold text-[#2D2D2D] flex items-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            Education
-                        </h3>
-                        <!-- Education items would go here -->
+                            <span>Roski Eye Institute</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <span>cflowers@med.usc.edu</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>(323) 442-6335</span>
+                        </div>
+                    </div>
+
+                    <!-- Education and Expertise -->
+                    <div class="grid-cols-2 section-divider">
+                        <section class="education-section">
+                            <h3 class="section-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                                </svg>
+                                Education
+                            </h3>
+                            <ul class="education-list">
+                                <li>
+                                    <span class="year">1989</span>
+                                    <div class="education-detail">
+                                        <h4>Doctor of Medicine (MD)</h4>
+                                        <p>Cornell University Medical College</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="year">1985</span>
+                                    <div class="education-detail">
+                                        <h4>Bachelor of Science in Chemistry</h4>
+                                        <p>Stanford University</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="year">1990-1993</span>
+                                    <div class="education-detail">
+                                        <h4>Ophthalmology Residency</h4>
+                                        <p>Charles R. Drew University of Medicine, Los Angeles</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="year">1993-1994</span>
+                                    <div class="education-detail">
+                                        <h4>Cornea and Refractive Surgery Fellowship</h4>
+                                        <p>UCLA Jules Stein Eye Institute</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="expertise-section">
+                            <h3 class="section-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                                    <path d="M20 12a8 8 0 1 0-16 0"></path>
+                                    <path d="m14.5 19 1-2.5h2.5l1 2.5"></path>
+                                    <path d="M6 19a2 2 0 0 1-2-2"></path>
+                                    <path d="M17.73 5a2 2 0 0 1 2.27 2"></path>
+                                </svg>
+                                Areas of Expertise
+                            </h3>
+                            <ul class="expertise-list">
+                                <li>LASIK and Refractive Surgery</li>
+                                <li>Corneal Disorders</li>
+                                <li>Cataracts</li>
+                                <li>Teleophthalmology</li>
+                                <li>Diabetic Retinopathy</li>
+                                <li>Sports Vision Enhancement</li>
+                                <li>Complex Eye Surgery</li>
+                                <li>Eye Disease Prevention</li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <!-- Awards Section -->
+                    <section class="section-divider">
+                        <h3 class="section-title">AWARDS</h3>
+                        <ul class="awards-list">
+                            <li>
+                                <span class="award-year">2022</span>
+                                <div class="award-detail">
+                                    <h4>Innovator in Ophthalmology Award</h4>
+                                    <p>American Society of Cataract and Refractive Surgery</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="award-year">2018</span>
+                                <div class="award-detail">
+                                    <h4>Distinguished Service Award</h4>
+                                    <p>American Academy of Ophthalmology</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="award-year">2014</span>
+                                <div class="award-detail">
+                                    <h4>Excellence in Teaching Award</h4>
+                                    <p>USC Keck School of Medicine</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="award-year">1994</span>
+                                <div class="award-detail">
+                                    <h4>Award of Excellence in Resident Training</h4>
+                                    <p>Charles R. Drew University of Medicine</p>
+                                </div>
+                            </li>
+                        </ul>
                     </section>
 
-                    <section>
-                        <h3 class="text-xl font-semibold text-[#2D2D2D] flex items-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2">
-                                <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
-                                <path d="M20 12a8 8 0 1 0-16 0"></path>
-                                <path d="m14.5 19 1-2.5h2.5l1 2.5"></path>
-                                <path d="M6 19a2 2 0 0 1-2-2"></path>
-                                <path d="M17.73 5a2 2 0 0 1 2.27 2"></path>
-                            </svg>
-                            Areas of Expertise
-                        </h3>
-                        <!-- Expertise items would go here -->
+                    <!-- Publications Section -->
+                    <section class="section-divider">
+                        <h3 class="section-title">PUBLICATIONS</h3>
+                        <ul class="publications-list">
+                            <li>
+                                <span class="pub-year">2023</span>
+                                <div class="publication-detail">
+                                    <h4>Advancements in Teleophthalmology for Diabetic Retinopathy Screening</h4>
+                                    <p>Journal of Telemedicine and e-Health</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="pub-year">2020</span>
+                                <div class="publication-detail">
+                                    <h4>Long-term Outcomes of Wavefront-Guided LASIK in Athletes</h4>
+                                    <p>Journal of Refractive Surgery</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="pub-year">2017</span>
+                                <div class="publication-detail">
+                                    <h4>Comparative Analysis of Femtosecond Laser vs. Microkeratome for LASIK Flap Creation</h4>
+                                    <p>American Journal of Ophthalmology</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="pub-year">2012</span>
+                                <div class="publication-detail">
+                                    <h4>Visual Performance Enhancement Techniques for Professional Athletes</h4>
+                                    <p>Sports Medicine Journal</p>
+                                </div>
+                            </li>
+                        </ul>
                     </section>
                 </div>
             </div>
@@ -126,8 +249,47 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- Standard footer content -->
-        <!-- [...] -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p data-i18n="global.footer.tagline">Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                        <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                        <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                        <li><a href="staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                        <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                        <li><a href="contact.html" data-i18n="global.menu.contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.contact">Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p data-i18n="global.footer.phone">Phone: (800) 555-2020</p>
+                        <p data-i18n="global.footer.email">Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.hours">Hours</h3>
+                    <p data-i18n="global.footer.weekdays">Monday - Friday: 8am - 6pm</p>
+                    <p data-i18n="global.footer.saturday">Saturday: 9am - 2pm</p>
+                    <p data-i18n="global.footer.sunday">Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="global.footer.copyright">&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#" data-i18n="global.footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="global.footer.terms">Terms of Service</a></li>
+                    <li><a href="#" data-i18n="global.footer.accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
 
     <!-- Scripts -->
