@@ -167,7 +167,7 @@ function getNestedValue(obj, path) {
     let current = obj;
     
     for (const key of keys) {
-        if (!current[key]) {
+        if (current[key] === undefined) {
             return null;
         }
         current = current[key];
