@@ -9,7 +9,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
-const chatbotApi = require('./api/chatbot-api');
+const chatbotApi = require('../api/chatbot-api');
 
 // Initialize express app
 const app = express();
