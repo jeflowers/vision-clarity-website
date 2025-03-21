@@ -1,9 +1,36 @@
 /**
  * Vision Clarity Institute - Modal Form Handler
  * Handles the consultation and inquiry modal forms.
+ * Dynamically loads the modal template HTML from a separate file.
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Determine the correct path to the template based on current page location
+    const isInPagesDirectory = window.location.pathname.includes('/pages/');
+    const templatePath = isInPagesDirectory ? 
+                         '../templates/modal-template.html' : 
+                         'pages/templates/modal-template.html';
+    
+    fetch(templatePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load modal template');
+            }
+            return response.text();
+        })
+        .then(html => {
+            document.body.insertAdjacentHTML('beforeend', html);
+            initializeModal(); // Initialize after loading
+        })
+        .catch(error => {
+            console.error('Error loading modal template:', error);
+        });
+});
+
+/**
+ * Initialize modal functionality after the template has been loaded
+ */
+function initializeModal() {
     // Modal opening and configuration
     const openModalButtons = document.querySelectorAll('.open-modal');
     const modal = document.getElementById('service-modal');
@@ -25,8 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Skip if modal is not on the page
-    if (!modal) return;
+    // Skip if modal couldn't be loaded
+    if (!modal) {
+        console.warn('Modal template not found or failed to load.');
+        return;
+    }
     
     // Open Modal with Configuration
     openModalButtons.forEach(button => {
@@ -179,4 +209,4 @@ document.addEventListener('DOMContentLoaded', function() {
         
         announcer.textContent = message;
     }
-});
+}
