@@ -30,7 +30,7 @@
                 <li><a href="index.html" class="active" data-i18n="global.menu.home">Home</a></li>
                 <li><a href="pages/services.html" data-i18n="global.menu.services">Services</a></li>
                 <li><a href="pages/technology.html" data-i18n="global.menu.technology">Technology</a></li>
-                <li><a href="pages/our-staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                <li><a href="pages/staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
                 <li><a href="pages/locations.html" data-i18n="global.menu.locations">Locations</a></li>
                 <li><a href="pages/contact.html" data-i18n="global.menu.contact">Contact</a></li>
             </ul>
@@ -120,7 +120,10 @@
                     </div>
                     <h3>Traditional LASIK</h3>
                     <p>Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
-                    <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -129,7 +132,10 @@
                     </div>
                     <h3>Custom Bladeless LASIK</h3>
                     <p>Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
-                    <a href="pages/services.html#custom" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#custom" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="bladeless_lasik">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -138,7 +144,10 @@
                     </div>
                     <h3>PRK</h3>
                     <p>An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
-                    <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -147,7 +156,10 @@
                     </div>
                     <h3>Presbyopia Correction</h3>
                     <p>Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
-                    <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="presbyopia">Request Consultation</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -255,7 +267,7 @@
     <div class="container">
         <h3 data-i18n="home.service_cta.title">Interested in LASIK?</h3>
         <p data-i18n="home.service_cta.content">Learn more about our advanced LASIK procedures. Our specialists will assess your vision and recommend the best solution.</p>
-        <button class="btn btn-primary open-modal" data-form-type="inquiry" data-i18n="home.service_cta.button">Request Information</button>
+        <button class="btn btn-primary open-modal" data-form-type="inquiry" data-service="traditional_lasik" data-i18n="home.service_cta.button">Request Information</button>
     </div>
 </section>
 
@@ -349,5 +361,8 @@
     <script src="js/scripts.js"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/modal.js"></script>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 </body>
 </html>
