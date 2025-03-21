@@ -251,9 +251,160 @@
         </div>
     </footer>
 
+    <!-- Modal Templates -->
+    <!-- Consultation Modal -->
+    <div id="consultationModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">×</button>
+            <h2 class="modal-title" data-i18n="modal.consultation.title">Schedule a Consultation</h2>
+            
+            <form id="consultationForm" data-form-type="consultation">
+                <div class="form-field">
+                    <label for="title" data-i18n="modal.form.title">Title</label>
+                    <select id="title" name="title">
+                        <option value="" data-i18n="modal.form.select">Select</option>
+                        <option value="mr" data-i18n="modal.form.title.mr">Mr.</option>
+                        <option value="mrs" data-i18n="modal.form.title.mrs">Mrs.</option>
+                        <option value="ms" data-i18n="modal.form.title.ms">Ms.</option>
+                        <option value="dr" data-i18n="modal.form.title.dr">Dr.</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="name" data-i18n="modal.form.name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="email" data-i18n="modal.form.email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="phone" data-i18n="modal.form.phone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="preferred_language" data-i18n="modal.form.preferred_language">Preferred Language</label>
+                        <select id="preferred_language" name="preferred_language">
+                            <option value="english" data-i18n="modal.form.language.english">English</option>
+                            <option value="spanish" data-i18n="modal.form.language.spanish">Español</option>
+                            <option value="chinese" data-i18n="modal.form.language.chinese">中文</option>
+                            <option value="korean" data-i18n="modal.form.language.korean">한국어</option>
+                            <option value="armenian" data-i18n="modal.form.language.armenian">Հայերեն</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="insurance" data-i18n="modal.form.insurance">Insurance Provider (if applicable)</label>
+                    <input type="text" id="insurance" name="insurance">
+                </div>
+                
+                <div class="form-field">
+                    <label for="preferred_time" data-i18n="modal.form.preferred_contact_time">Preferred Contact Time</label>
+                    <select id="preferred_time" name="preferred_time">
+                        <option value="morning" data-i18n="modal.form.time.morning">Morning (8am-12pm)</option>
+                        <option value="afternoon" data-i18n="modal.form.time.afternoon">Afternoon (12pm-4pm)</option>
+                        <option value="evening" data-i18n="modal.form.time.evening">Evening (4pm-6pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label for="additional_info" data-i18n="modal.form.additional_info">Additional Information</label>
+                    <textarea id="additional_info" name="additional_info"></textarea>
+                </div>
+                
+                <div class="checkbox-field">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="modal.form.schedule_consultation">Schedule Consultation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Service Inquiry Modal -->
+    <div id="inquiryModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">×</button>
+            <h2 class="modal-title" data-i18n="modal.inquiry.title">Service Inquiry</h2>
+            
+            <form id="inquiryForm" data-form-type="inquiry">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="inquiry_name" data-i18n="modal.form.name">Name <span class="required">*</span></label>
+                        <input type="text" id="inquiry_name" name="name" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="inquiry_email" data-i18n="modal.form.email">Email <span class="required">*</span></label>
+                        <input type="email" id="inquiry_email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="inquiry_phone" data-i18n="modal.form.phone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="inquiry_phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="inquiry_language" data-i18n="modal.form.preferred_language">Preferred Language</label>
+                        <select id="inquiry_language" name="preferred_language">
+                            <option value="english" data-i18n="modal.form.language.english">English</option>
+                            <option value="spanish" data-i18n="modal.form.language.spanish">Español</option>
+                            <option value="chinese" data-i18n="modal.form.language.chinese">中文</option>
+                            <option value="korean" data-i18n="modal.form.language.korean">한국어</option>
+                            <option value="armenian" data-i18n="modal.form.language.armenian">Հայերեն</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label for="service" data-i18n="modal.form.service">Service of Interest <span class="required">*</span></label>
+                    <select id="service" name="service" required>
+                        <option value="" data-i18n="modal.form.select_service">Select a service</option>
+                        <option value="traditional_lasik" data-i18n="modal.form.service.traditional_lasik">Traditional LASIK</option>
+                        <option value="bladeless_lasik" data-i18n="modal.form.service.bladeless_lasik">Custom Bladeless LASIK</option>
+                        <option value="prk" data-i18n="modal.form.service.prk">PRK</option>
+                        <option value="presbyopia" data-i18n="modal.form.service.presbyopia">Presbyopia Correction</option>
+                        <option value="other" data-i18n="modal.form.service.other">Other (please specify)</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label for="inquiry_info" data-i18n="modal.form.additional_info">Additional Information</label>
+                    <textarea id="inquiry_info" name="additional_info"></textarea>
+                </div>
+                
+                <div class="checkbox-field">
+                    <input type="checkbox" id="inquiry_consent" name="consent" required>
+                    <label for="inquiry_consent" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="modal.form.submit_inquiry">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
     <script src="../js/modal.js"></script>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 </body>
 </html>
