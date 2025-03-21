@@ -210,3 +210,137 @@ function initializeModal() {
         // Clear previous form values
         modalForm.reset();
     }
+    
+    // Close modal function
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        
+        // Announce modal closed for screen readers
+        announceForScreenReaders('Dialog closed');
+    }
+    
+    // Close modal events
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+    
+    // Close modal when Escape key is pressed (accessibility)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Trap focus in modal for accessibility
+    modal.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab' && modal.classList.contains('active')) {
+            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+    
+    // Form submission
+    modalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const formType = this.getAttribute('data-form-type');
+        
+        // Here you would typically send the data to your server
+        // For demonstration, we'll just log it and show a success message
+        console.log('Form submitted:', formType, Object.fromEntries(formData));
+        
+        // Show success message (could be enhanced with a proper notification system)
+        let successMessage;
+        if (formType === 'consultation') {
+            successMessage = 'Thank you! Your consultation request has been submitted. We will contact you shortly to confirm your appointment.';
+        } else {
+            successMessage = 'Thank you for your request. A member of our team will respond to your questions within 24 hours.';
+        }
+        
+        // Create success message element
+        const successElement = document.createElement('div');
+        successElement.className = 'form-success';
+        successElement.textContent = successMessage;
+        
+        // Replace form with success message
+        this.style.display = 'none';
+        this.parentNode.appendChild(successElement);
+        
+        // Close modal after delay
+        setTimeout(() => {
+            closeModal();
+            
+            // Reset form display after modal is closed
+            setTimeout(() => {
+                this.style.display = 'block';
+                if (successElement.parentNode) {
+                    successElement.parentNode.removeChild(successElement);
+                }
+            }, 300);
+        }, 3000);
+    });
+    
+    // Helper function for screen reader announcements
+    function announceForScreenReaders(message) {
+        let announcer = document.getElementById('a11y-announcer');
+        
+        if (!announcer) {
+            announcer = document.createElement('div');
+            announcer.id = 'a11y-announcer';
+            announcer.setAttribute('aria-live', 'polite');
+            announcer.className = 'sr-only';
+            document.body.appendChild(announcer);
+        }
+        
+        announcer.textContent = message;
+    }
+}
+
+// Fallback function if modal functionality fails completely
+function setupFallbackLinks() {
+    const consultationButtons = document.querySelectorAll('.open-modal[data-form-type="consultation"]');
+    const inquiryButtons = document.querySelectorAll('.open-modal[data-form-type="inquiry"]');
+    
+    // Determine if we're in the pages directory
+    const isInPagesDirectory = window.location.pathname.includes('/pages/');
+    
+    // Convert consultation buttons to regular links
+    consultationButtons.forEach(button => {
+        const link = document.createElement('a');
+        link.href = isInPagesDirectory ? 'contact.html' : 'pages/contact.html';
+        link.className = button.className.replace('open-modal', '');
+        link.textContent = button.textContent;
+        button.parentNode.replaceChild(link, button);
+    });
+    
+    // Convert inquiry buttons to regular links
+    inquiryButtons.forEach(button => {
+        const link = document.createElement('a');
+        link.href = isInPagesDirectory ? 'contact.html?inquiry=true' : 'pages/contact.html?inquiry=true';
+        link.className = button.className.replace('open-modal', '');
+        link.textContent = button.textContent;
+        button.parentNode.replaceChild(link, button);
+    });
+    
+    console.log('Modal functionality disabled - falling back to direct links');
+}
