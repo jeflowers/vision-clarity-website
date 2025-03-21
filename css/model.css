@@ -1,0 +1,156 @@
+/* Modal base styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container {
+    position: relative;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+/* Form styles in modal */
+.modal-form .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-form .form-row .form-field {
+    flex: 1;
+}
+
+.modal-form .form-field {
+    margin-bottom: 15px;
+}
+
+.modal-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.modal-form input[type="text"],
+.modal-form input[type="email"],
+.modal-form input[type="tel"],
+.modal-form select,
+.modal-form textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.modal-form textarea {
+    resize: vertical;
+}
+
+.modal-form .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.modal-form .checkbox-container input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.modal-form .form-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Success message */
+.form-success {
+    padding: 15px;
+    background-color: #d4edda;
+    border-radius: 4px;
+    color: #155724;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 90%;
+        margin: 30px auto;
+    }
+    
+    .modal-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Hide fields based on form type */
+.modal-form[data-form-type="consultation"] [data-form-type="inquiry"] {
+    display: none;
+}
+
+.modal-form[data-form-type="inquiry"] [data-form-type="consultation"] {
+    display: none;
+}
+
+/* Accessibility - screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
