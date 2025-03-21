@@ -111,71 +111,30 @@
                     </div>
                 </div>
                 
-                <!-- Service Inquiry Form -->
-                <div class="inquiry-form-container">
+                <!-- Service Inquiry Section (replaced form with button) -->
+                <div class="inquiry-section">
                     <h2>Service Inquiry</h2>
-                    <p>Have questions about our services? Complete the form below and one of our specialists will respond within 24 hours.</p>
+                    <p>Have questions about our services? Our specialists are ready to provide the information you need about our procedures, technologies, and treatment options.</p>
+                    <p>Submit a service inquiry and one of our vision specialists will respond within 24 hours with detailed information tailored to your needs.</p>
                     
-                    <form id="service-inquiry-form" class="inquiry-form">
-                        <div class="form-group">
-                            <label for="inquiry-name">Your Name *</label>
-                            <input type="text" id="inquiry-name" name="name" required>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <h4>Personalized Information</h4>
+                            <p>Get answers specific to your vision needs and concerns</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="inquiry-email">Email Address *</label>
-                            <input type="email" id="inquiry-email" name="email" required>
+                        <div class="benefit-item">
+                            <h4>Expert Guidance</h4>
+                            <p>Receive advice from our experienced vision specialists</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="inquiry-phone">Phone Number</label>
-                            <input type="tel" id="inquiry-phone" name="phone">
+                        <div class="benefit-item">
+                            <h4>No Obligation</h4>
+                            <p>Learn about your options without any pressure or commitment</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="inquiry-service">Service of Interest *</label>
-                            <select id="inquiry-service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="traditional">Traditional LASIK</option>
-                                <option value="custom">Custom Bladeless LASIK</option>
-                                <option value="prk">PRK</option>
-                                <option value="presbyopia">Presbyopia Correction</option>
-                                <option value="general">General Information</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="inquiry-message">Your Questions or Comments *</label>
-                            <textarea id="inquiry-message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <div class="form-group radio-group">
-                            <label>Preferred Contact Method:</label>
-                            <div class="radio-options">
-                                <label>
-                                    <input type="radio" name="contact-preference" value="email" checked>
-                                    <span>Email</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="contact-preference" value="phone">
-                                    <span>Phone</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group checkbox-group">
-                            <label>
-                                <input type="checkbox" id="inquiry-consent" name="consent" required>
-                                <span>I consent to Vision Clarity Institute contacting me regarding my inquiry. *</span>
-                            </label>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-                        </div>
-                        
-                        <p class="form-disclaimer">* Required fields. Your information will be kept confidential and will only be used to respond to your inquiry.</p>
-                    </form>
+                    </div>
+                    
+                    <div class="inquiry-cta">
+                        <button id="inquiryCTAButton" class="btn btn-primary btn-large">Submit a Service Inquiry</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -436,5 +395,20 @@
     <script src="../js/scripts.js"></script>
     <script src="../js/consultation-popup.js"></script>
     <script src="../js/service-inquiry-modal.js"></script>
+    <script>
+        // Connect the new CTA button to the service inquiry modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const inquiryCTAButton = document.getElementById('inquiryCTAButton');
+            if (inquiryCTAButton) {
+                inquiryCTAButton.addEventListener('click', function() {
+                    // Trigger the service inquiry modal
+                    const serviceInquiryButton = document.getElementById('serviceInquiryButton');
+                    if (serviceInquiryButton) {
+                        serviceInquiryButton.click();
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
