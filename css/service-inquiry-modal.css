@@ -225,6 +225,18 @@
     outline-offset: 2px;
 }
 
+/* Custom button styling */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .service-inquiry-content,
@@ -250,4 +262,21 @@
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* RTL language support */
+[dir="rtl"] .service-inquiry-form .form-actions {
+    text-align: left;
+}
+
+[dir="rtl"] .close-service-inquiry,
+[dir="rtl"] .close-success {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .service-inquiry-form .radio-label input,
+[dir="rtl"] .service-inquiry-form .checkbox-group input {
+    margin-right: 0;
+    margin-left: 10px;
 }
