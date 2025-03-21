@@ -71,11 +71,20 @@ function createFallbackModal() {
                     
                     <div class="form-field" data-field="message">
                         <label for="modal-message">Message</label>
-                        <textarea id="modal-message" name="message" rows="3"></textarea>
+                        <textarea id="modal-message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-field required">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="modal-consent" name="consent" required>
+                            <label for="modal-consent" class="checkbox-label">
+                                I consent to Vision Clarity Institute collecting and storing the information provided above.
+                            </label>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary modal-submit-button">Submit</button>
+                        <button type="submit" class="btn btn-primary modal-submit-button">Schedule Consultation</button>
                     </div>
                 </form>
             </div>
@@ -107,7 +116,7 @@ function initializeModal() {
             'submitButton': 'Schedule Consultation'
         },
         'inquiry': {
-            'title': 'Service Inquiry',
+            'title': 'Request Information',
             'submitButton': 'Submit Inquiry'
         }
     };
@@ -166,25 +175,37 @@ function initializeModal() {
         // Update title and submit button text based on form type
         if (window.i18n && typeof window.i18n.getTranslation === 'function') {
             // If i18n module is available, use it
-            modalTitle.textContent = window.i18n.getTranslation(`modals.${formType}.title`);
-            modalSubmitButton.textContent = window.i18n.getTranslation(`modals.form.submit_${formType}`);
+            modalTitle.textContent = window.i18n.getTranslation(`modals.${formType}.title`) || modalTranslations[formType].title;
+            modalSubmitButton.textContent = window.i18n.getTranslation(`modals.form.submit_${formType}`) || modalTranslations[formType].submitButton;
         } else {
             // Fallback to our basic translations
             modalTitle.textContent = modalTranslations[formType].title;
             modalSubmitButton.textContent = modalTranslations[formType].submitButton;
         }
         
-        // Hide/show form fields based on form type
-        const allFormFields = modalForm.querySelectorAll('.form-field[data-form-type]');
-        
-        allFormFields.forEach(field => {
-            const fieldTypes = field.getAttribute('data-form-type').split(' ');
-            if (fieldTypes.includes(formType)) {
-                field.style.display = 'block';
-            } else {
+        // Show/hide fields based on form type
+        if (formType === 'consultation') {
+            // Hide inquiry-specific fields
+            document.querySelectorAll('.inquiry-field').forEach(field => {
                 field.style.display = 'none';
-            }
-        });
+                const input = field.querySelector('select, input');
+                if (input) input.required = false;
+            });
+            
+            // Show consultation fields
+            document.querySelectorAll('.consultation-field').forEach(field => {
+                field.style.display = 'block';
+                const input = field.querySelector('input, select');
+                if (input && field.classList.contains('required')) input.required = true;
+            });
+        } else if (formType === 'inquiry') {
+            // Show inquiry-specific fields
+            document.querySelectorAll('.inquiry-field').forEach(field => {
+                field.style.display = 'block';
+                const input = field.querySelector('select, input');
+                if (input && field.classList.contains('required')) input.required = true;
+            });
+        }
         
         // Clear previous form values
         modalForm.reset();
@@ -300,10 +321,13 @@ function setupFallbackLinks() {
     const consultationButtons = document.querySelectorAll('.open-modal[data-form-type="consultation"]');
     const inquiryButtons = document.querySelectorAll('.open-modal[data-form-type="inquiry"]');
     
+    // Determine if we're in the pages directory
+    const isInPagesDirectory = window.location.pathname.includes('/pages/');
+    
     // Convert consultation buttons to regular links
     consultationButtons.forEach(button => {
         const link = document.createElement('a');
-        link.href = 'pages/contact.html';
+        link.href = isInPagesDirectory ? 'contact.html' : 'pages/contact.html';
         link.className = button.className.replace('open-modal', '');
         link.textContent = button.textContent;
         button.parentNode.replaceChild(link, button);
@@ -312,7 +336,7 @@ function setupFallbackLinks() {
     // Convert inquiry buttons to regular links
     inquiryButtons.forEach(button => {
         const link = document.createElement('a');
-        link.href = 'pages/contact.html?inquiry=true';
+        link.href = isInPagesDirectory ? 'contact.html?inquiry=true' : 'pages/contact.html?inquiry=true';
         link.className = button.className.replace('open-modal', '');
         link.textContent = button.textContent;
         button.parentNode.replaceChild(link, button);
