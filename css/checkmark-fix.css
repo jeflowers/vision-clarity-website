@@ -1,0 +1,19 @@
+/* Fix for checkmarks on homepage to remove bullet points */
+.intro-features {
+    margin: var(--spacing-lg) 0;
+    list-style-type: none; /* Remove the default bullets */
+}
+
+.intro-features li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    list-style-type: none; /* Ensure no bullets appear */
+}
+
+.intro-features li:before {
+    content: '✓';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+}
