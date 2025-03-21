@@ -101,6 +101,59 @@
     "cta": {
       "title": "¿Listo para Ver Claramente Sin Gafas?",
       "content": "Programe su consulta gratuita hoy para conocer qué procedimiento de corrección de la visión es adecuado para usted."
+    },
+    {
+  "modals": {
+    "consultation": {
+      "title": "Programar una Consulta"
+    },
+    "inquiry": {
+      "title": "Consulta de Servicios"
+    },
+    "default": {
+      "title": "Contáctenos"
+    },
+    "form": {
+      "honorific": "Título",
+      "honorific_select": "Seleccionar",
+      "honorific_mr": "Sr.",
+      "honorific_mrs": "Sra.",
+      "honorific_ms": "Srta.",
+      "honorific_dr": "Dr.",
+      "honorific_prof": "Prof.",
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "phone": "Teléfono",
+      "preferred_language": "Idioma Preferido",
+      "language_english": "Inglés",
+      "language_spanish": "Español",
+      "language_chinese": "Chino",
+      "language_korean": "Coreano",
+      "language_armenian": "Armenio",
+      "language_hebrew": "Hebreo",
+      "language_russian": "Ruso",
+      "language_farsi": "Farsi",
+      "language_arabic": "Árabe",
+      "insurance": "Proveedor de Seguro (si aplica)",
+      "preferred_time": "Hora de Contacto Preferida",
+      "time_morning": "Mañana (8am-12pm)",
+      "time_afternoon": "Tarde (12pm-4pm)",
+      "time_evening": "Noche (4pm-6pm)",
+      "service": "Servicio de Interés",
+      "service_select": "Seleccione un servicio",
+      "service_traditional_lasik": "LASIK Tradicional",
+      "service_custom_lasik": "LASIK Personalizado Sin Cuchilla",
+      "service_prk": "PRK",
+      "service_presbyopia": "Corrección de Presbicia",
+      "service_other": "Otro",
+      "message": "Información Adicional",
+      "inquiry_message": "Sus Preguntas",
+      "consent": "Doy mi consentimiento para que Vision Clarity Institute recopile y almacene la información proporcionada anteriormente.",
+      "submit_default": "Enviar",
+      "submit_consultation": "Programar Consulta",
+      "submit_inquiry": "Enviar Consulta"
     }
+  }
+}
   }
 }
