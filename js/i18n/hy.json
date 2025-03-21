@@ -97,5 +97,56 @@
       "title": "Պատրա՞ստ եք Հստակ Տեսնել Առանց Ակնոցների",
       "content": "Պայմանավորվեք ձեր անվճար խորհրդատվությունը այսօր՝ իմանալու, թե որ տեսողության ուղղման ընթացակարգն է ճիշտ ձեզ համար:"
     }
-  }
+  },
+  "modals": {
+    "consultation": {
+      "title": "Խորհրդատվության Ամրագրում"
+    },
+    "inquiry": {
+      "title": "Ծառայությունների Հարցում"
+    },
+    "default": {
+      "title": "Կապվեք Մեզ Հետ"
+    },
+    "form": {
+      "honorific": "Դիմելաձև",
+      "honorific_select": "Ընտրել",
+      "honorific_mr": "Պրն",
+      "honorific_mrs": "Տկն",
+      "honorific_ms": "Օրդ",
+      "honorific_dr": "Դր",
+      "honorific_prof": "Պրոֆ",
+      "name": "Անուն",
+      "email": "Էլ․ փոստ",
+      "phone": "Հեռախոսահամար",
+      "preferred_language": "Նախընտրելի լեզու",
+      "language_english": "Անգլերեն",
+      "language_spanish": "Իսպաներեն",
+      "language_chinese": "Չինարեն",
+      "language_korean": "Կորեերեն",
+      "language_armenian": "Հայերեն",
+      "language_hebrew": "Եբրայերեն",
+      "language_russian": "Ռուսերեն",
+      "language_farsi": "Պարսկերեն",
+      "language_arabic": "Արաբերեն",
+      "insurance": "Ապահովագրության ընկերություն (եթե կիրառելի է)",
+      "preferred_time": "Նախընտրելի կապի ժամանակ",
+      "time_morning": "Առավոտյան (8am-12pm)",
+      "time_afternoon": "Կեսօրից հետո (12pm-4pm)",
+      "time_evening": "Երեկոյան (4pm-6pm)",
+      "service": "Հետաքրքրող ծառայություն",
+      "service_select": "Ընտրեք ծառայություն",
+      "service_traditional_lasik": "Ավանդական ԼԱՍԻԿ",
+      "service_custom_lasik": "Անհատականացված Անսայր ԼԱՍԻԿ",
+      "service_prk": "ՊՌԿ",
+      "service_presbyopia": "Պրեսբիոպիայի ուղղում",
+      "service_other": "Այլ",
+      "message": "Լրացուցիչ տեղեկություն",
+      "inquiry_message": "Ձեր հարցերը",
+      "consent": "Ես համաձայն եմ, որ Vision Clarity Institute-ն հավաքի և պահպանի վերը տրամադրված տեղեկությունները։",
+      "submit_default": "Ուղարկել",
+      "submit_consultation": "Ամրագրել Խորհրդատվություն",
+      "submit_inquiry": "Ուղարկել Հարցում"
+    }
+}
 }
