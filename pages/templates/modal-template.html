@@ -1,0 +1,103 @@
+<!-- Universal Modal Component -->
+<div id="service-modal" class="modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-container" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-header">
+            <h2 id="modal-title" data-i18n="modals.default.title">Schedule a Consultation</h2>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="service-form" class="modal-form" data-form-type="consultation">
+                <div class="form-field" data-field="honorific" data-form-type="consultation">
+                    <label for="modal-honorific" data-i18n="modals.form.honorific">Title</label>
+                    <select id="modal-honorific" name="honorific">
+                        <option value="" data-i18n="modals.form.honorific_select">Select</option>
+                        <option value="mr" data-i18n="modals.form.honorific_mr">Mr.</option>
+                        <option value="mrs" data-i18n="modals.form.honorific_mrs">Mrs.</option>
+                        <option value="ms" data-i18n="modals.form.honorific_ms">Ms.</option>
+                        <option value="dr" data-i18n="modals.form.honorific_dr">Dr.</option>
+                        <option value="prof" data-i18n="modals.form.honorific_prof">Prof.</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field required" data-field="name">
+                        <label for="modal-name" data-i18n="modals.form.name">Name</label>
+                        <input type="text" id="modal-name" name="name" required>
+                    </div>
+                    
+                    <div class="form-field required" data-field="email">
+                        <label for="modal-email" data-i18n="modals.form.email">Email</label>
+                        <input type="email" id="modal-email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field required" data-field="phone">
+                        <label for="modal-phone" data-i18n="modals.form.phone">Phone</label>
+                        <input type="tel" id="modal-phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-field" data-field="preferred_language">
+                        <label for="modal-preferred_language" data-i18n="modals.form.preferred_language">Preferred Language</label>
+                        <select id="modal-preferred_language" name="preferred_language">
+                            <option value="english" data-i18n="modals.form.language_english">English</option>
+                            <option value="spanish" data-i18n="modals.form.language_spanish">Spanish</option>
+                            <option value="chinese" data-i18n="modals.form.language_chinese">Chinese</option>
+                            <option value="korean" data-i18n="modals.form.language_korean">Korean</option>
+                            <option value="armenian" data-i18n="modals.form.language_armenian">Armenian</option>
+                            <option value="hebrew" data-i18n="modals.form.language_hebrew">Hebrew</option>
+                            <option value="russian" data-i18n="modals.form.language_russian">Russian</option>
+                            <option value="farsi" data-i18n="modals.form.language_farsi">Farsi</option>
+                            <option value="arabic" data-i18n="modals.form.language_arabic">Arabic</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-field" data-field="insurance" data-form-type="consultation">
+                    <label for="modal-insurance" data-i18n="modals.form.insurance">Insurance Provider (if applicable)</label>
+                    <input type="text" id="modal-insurance" name="insurance">
+                </div>
+                
+                <div class="form-field" data-field="preferred_time" data-form-type="consultation">
+                    <label for="modal-preferred_time" data-i18n="modals.form.preferred_time">Preferred Contact Time</label>
+                    <select id="modal-preferred_time" name="preferred_time">
+                        <option value="morning" data-i18n="modals.form.time_morning">Morning (8am-12pm)</option>
+                        <option value="afternoon" data-i18n="modals.form.time_afternoon">Afternoon (12pm-4pm)</option>
+                        <option value="evening" data-i18n="modals.form.time_evening">Evening (4pm-6pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-field required" data-field="service" data-form-type="inquiry">
+                    <label for="modal-service" data-i18n="modals.form.service">Service of Interest</label>
+                    <select id="modal-service" name="service" required>
+                        <option value="" data-i18n="modals.form.service_select">Select a service</option>
+                        <option value="traditional_lasik" data-i18n="modals.form.service_traditional_lasik">Traditional LASIK</option>
+                        <option value="custom_lasik" data-i18n="modals.form.service_custom_lasik">Custom Bladeless LASIK</option>
+                        <option value="prk" data-i18n="modals.form.service_prk">PRK</option>
+                        <option value="presbyopia" data-i18n="modals.form.service_presbyopia">Presbyopia Correction</option>
+                        <option value="other" data-i18n="modals.form.service_other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-field" data-field="message">
+                    <label for="modal-message" data-i18n="modals.form.message">Additional Information</label>
+                    <textarea id="modal-message" name="message" rows="3"></textarea>
+                </div>
+                
+                <div class="form-field">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="modal-consent" name="consent" required>
+                        <label for="modal-consent" class="checkbox-label" data-i18n="modals.form.consent">
+                            I consent to Vision Clarity Institute collecting and storing the information provided above.
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary modal-submit-button" data-i18n="modals.form.submit_default">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
