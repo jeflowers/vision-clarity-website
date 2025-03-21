@@ -9,6 +9,55 @@
     <link rel="stylesheet" href="../css/inquiry-form.css">
     <link rel="stylesheet" href="../css/consultation-popup.css">
     <link rel="stylesheet" href="../css/service-inquiry-modal.css">
+    <style>
+        /* Button enhancements for consistent sizing */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            line-height: 1;
+            height: 44px;
+            min-width: 160px;
+            white-space: nowrap;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .language-selector {
+            margin-right: 4px;
+        }
+        
+        .language-selector select {
+            height: 36px;
+            padding: 0 8px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-actions {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+            
+            .language-selector {
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -24,30 +73,30 @@
                     <img src="../assets/images/icons/menu.svg" alt="Menu">
                 </button>
                 <ul class="nav-list">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="technology.html">Technology</a></li>
-                    <li><a href="staff.html">Our Staff</a></li>
-                    <li><a href="locations.html">Locations</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                    <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                    <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                    <li><a href="staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                    <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                    <li><a href="contact.html" class="active" data-i18n="global.menu.contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
                 <div class="language-selector">
                     <select id="language-select" aria-label="Select Language">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="zh">中文</option>
-                        <option value="ko">한국어</option>
-                        <option value="hy">Հայերեն</option>
-                        <option value="he">עברית</option>
-                        <option value="tl">Filipino</option>
-                        <option value="ru">Русский</option>
-                        <option value="fa">فارسی</option>
-                        <option value="ar">العربية</option>
+                        <option value="en">EN</option>
+                        <option value="es">ES</option>
+                        <option value="zh">ZH</option>
+                        <option value="ko">KO</option>
+                        <option value="hy">HY</option>
+                        <option value="he">HE</option>
+                        <option value="tl">TL</option>
+                        <option value="ru">RU</option>
+                        <option value="fa">FA</option>
+                        <option value="ar">AR</option>
                     </select>
                 </div>
-                <a href="#" id="scheduleConsultationBtn" class="btn btn-primary">Schedule Consultation</a>
+                <a href="#" id="scheduleConsultationBtn" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</a>
                 <button id="serviceInquiryButton" class="btn btn-secondary">Service Inquiry</button>
             </div>
         </div>
