@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/inquiry-form.css">
     <link rel="stylesheet" href="../css/consultation-popup.css">
+    <link rel="stylesheet" href="../css/service-inquiry-modal.css">
 </head>
 <body>
     <!-- Header -->
@@ -47,6 +48,7 @@
                     </select>
                 </div>
                 <a href="#" id="scheduleConsultationBtn" class="btn btn-primary">Schedule Consultation</a>
+                <button id="serviceInquiryButton" class="btn btn-secondary">Service Inquiry</button>
             </div>
         </div>
     </header>
@@ -310,6 +312,81 @@
         </div>
     </div>
 
+    <!-- Service Inquiry Modal -->
+    <div id="serviceInquiryModal" class="service-inquiry-modal">
+        <div class="service-inquiry-content">
+            <span class="close-service-inquiry">&times;</span>
+            <h2 id="service-inquiry-title">Service Inquiry</h2>
+            
+            <form id="serviceInquiryForm" class="service-inquiry-form">
+                <div class="form-group">
+                    <label for="inquiry-name-modal">Your Name *</label>
+                    <input type="text" id="inquiry-name-modal" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry-email-modal">Email Address *</label>
+                    <input type="email" id="inquiry-email-modal" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry-phone-modal">Phone Number</label>
+                    <input type="tel" id="inquiry-phone-modal" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry-service-modal">Service of Interest *</label>
+                    <select id="inquiry-service-modal" name="service" required>
+                        <option value="">-- Select a Service --</option>
+                        <option value="vision-test">Vision Test</option>
+                        <option value="eye-surgery">Eye Surgery</option>
+                        <option value="prescription-glasses">Prescription Glasses</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inquiry-comments-modal">Your Questions or Comments *</label>
+                    <textarea id="inquiry-comments-modal" name="comments" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <p>Preferred Contact Method:</p>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="contactMethod" value="email" checked>
+                            <span>Email</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="contactMethod" value="phone">
+                            <span>Phone</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" name="consent" required>
+                        <span>I consent to Vision Clarity Institute contacting me regarding my inquiry. *</span>
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Service Inquiry Success Alert -->
+    <div id="serviceInquirySuccess" class="service-inquiry-success">
+        <div class="success-content">
+            <span class="close-success">&times;</span>
+            <h3>Thank You!</h3>
+            <p>Thank you for your inquiry! We'll contact you shortly with the information you requested.</p>
+            <button class="btn btn-primary close-success-btn">Close</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -358,6 +435,6 @@
     <!-- Scripts -->
     <script src="../js/scripts.js"></script>
     <script src="../js/consultation-popup.js"></script>
-    <script src="../js/inquiry-form.js"></script>
+    <script src="../js/service-inquiry-modal.js"></script>
 </body>
 </html>
