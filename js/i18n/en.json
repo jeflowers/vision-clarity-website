@@ -96,6 +96,59 @@
     "cta": {
       "title": "Ready to See Clearly Without Glasses?",
       "content": "Schedule your free consultation today to learn which vision correction procedure is right for you."
+    },
+    {
+  "modals": {
+    "consultation": {
+      "title": "Schedule a Consultation"
+    },
+    "inquiry": {
+      "title": "Service Inquiry"
+    },
+    "default": {
+      "title": "Contact Us"
+    },
+    "form": {
+      "honorific": "Title",
+      "honorific_select": "Select",
+      "honorific_mr": "Mr.",
+      "honorific_mrs": "Mrs.",
+      "honorific_ms": "Ms.",
+      "honorific_dr": "Dr.",
+      "honorific_prof": "Prof.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "preferred_language": "Preferred Language",
+      "language_english": "English",
+      "language_spanish": "Spanish",
+      "language_chinese": "Chinese",
+      "language_korean": "Korean",
+      "language_armenian": "Armenian",
+      "language_hebrew": "Hebrew",
+      "language_russian": "Russian",
+      "language_farsi": "Farsi",
+      "language_arabic": "Arabic",
+      "insurance": "Insurance Provider (if applicable)",
+      "preferred_time": "Preferred Contact Time",
+      "time_morning": "Morning (8am-12pm)",
+      "time_afternoon": "Afternoon (12pm-4pm)",
+      "time_evening": "Evening (4pm-6pm)",
+      "service": "Service of Interest",
+      "service_select": "Select a service",
+      "service_traditional_lasik": "Traditional LASIK",
+      "service_custom_lasik": "Custom Bladeless LASIK",
+      "service_prk": "PRK",
+      "service_presbyopia": "Presbyopia Correction",
+      "service_other": "Other",
+      "message": "Additional Information",
+      "inquiry_message": "Your Questions",
+      "consent": "I consent to Vision Clarity Institute collecting and storing the information provided above.",
+      "submit_default": "Submit",
+      "submit_consultation": "Schedule Consultation",
+      "submit_inquiry": "Submit Inquiry"
     }
+  }
+}
   }
 }
