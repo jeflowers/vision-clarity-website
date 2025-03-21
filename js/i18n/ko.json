@@ -97,5 +97,58 @@
       "title": "안경 없이 선명하게 볼 준비가 되셨나요?",
       "content": "어떤 시력 교정 시술이 귀하에게 적합한지 알아보기 위해 오늘 무료 상담을 예약하세요."
     }
+  },
+  {
+  "modals": {
+    "consultation": {
+      "title": "상담 예약"
+    },
+    "inquiry": {
+      "title": "서비스 문의"
+    },
+    "default": {
+      "title": "연락하기"
+    },
+    "form": {
+      "honorific": "호칭",
+      "honorific_select": "선택",
+      "honorific_mr": "씨",
+      "honorific_mrs": "여사님",
+      "honorific_ms": "양",
+      "honorific_dr": "의사",
+      "honorific_prof": "교수님",
+      "name": "이름",
+      "email": "이메일",
+      "phone": "전화번호",
+      "preferred_language": "선호하는 언어",
+      "language_english": "영어",
+      "language_spanish": "스페인어",
+      "language_chinese": "중국어",
+      "language_korean": "한국어",
+      "language_armenian": "아르메니아어",
+      "language_hebrew": "히브리어",
+      "language_russian": "러시아어",
+      "language_farsi": "페르시아어",
+      "language_arabic": "아랍어",
+      "insurance": "보험 제공자 (해당되는 경우)",
+      "preferred_time": "선호하는 연락 시간",
+      "time_morning": "오전 (8am-12pm)",
+      "time_afternoon": "오후 (12pm-4pm)",
+      "time_evening": "저녁 (4pm-6pm)",
+      "service": "관심 있는 서비스",
+      "service_select": "서비스 선택",
+      "service_traditional_lasik": "전통적 라식",
+      "service_custom_lasik": "맞춤형 블레이드리스 라식",
+      "service_prk": "PRK",
+      "service_presbyopia": "노안 교정",
+      "service_other": "기타",
+      "message": "추가 정보",
+      "inquiry_message": "문의 사항",
+      "consent": "본인은 Vision Clarity Institute가 위에 제공된 정보를 수집하고 저장하는 것에 동의합니다.",
+      "submit_default": "제출",
+      "submit_consultation": "상담 예약",
+      "submit_inquiry": "문의 제출"
+    }
   }
+}
 }
