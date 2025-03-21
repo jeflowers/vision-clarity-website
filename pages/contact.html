@@ -6,10 +6,8 @@
     <title>Contact Us - Vision Clarity Institute</title>
     <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures.">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/inquiry-form.css">
-    <link rel="stylesheet" href="../css/consultation-popup.css">
-    <link rel="stylesheet" href="../css/service-inquiry-modal.css">
     <link rel="stylesheet" href="../css/button-refinements.css">
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 <body>
     <!-- Header -->
@@ -28,7 +26,7 @@
                     <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
                     <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
                     <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
-                    <li><a href="staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                    <li><a href="our-staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
                     <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
                     <li><a href="contact.html" class="active" data-i18n="global.menu.contact">Contact</a></li>
                 </ul>
@@ -48,8 +46,8 @@
                         <option value="ar">AR</option>
                     </select>
                 </div>
-                <a href="#" id="scheduleConsultationBtn" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</a>
-                <button id="serviceInquiryButton" class="btn btn-secondary">Service Inquiry</button>
+                <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+                <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Service Inquiry</button>
             </div>
         </div>
     </header>
@@ -122,86 +120,28 @@
                 </div>
                 
                 <div class="contact-form-container">
-                    <h2 data-i18n="contact.form.title">Send Us a Message</h2>
-                    <form id="contact-form" class="contact-form" data-form-type="consultation">
-                        <div class="form-field" data-field="honorific">
-                            <label for="honorific" data-i18n="contact.form.honorific">Title</label>
-                            <select id="honorific" name="honorific">
-                                <option value="" data-i18n="contact.form.honorific_select">Select</option>
-                                <option value="mr" data-i18n="contact.form.honorific_mr">Mr.</option>
-                                <option value="mrs" data-i18n="contact.form.honorific_mrs">Mrs.</option>
-                                <option value="ms" data-i18n="contact.form.honorific_ms">Ms.</option>
-                                <option value="dr" data-i18n="contact.form.honorific_dr">Dr.</option>
-                                <option value="prof" data-i18n="contact.form.honorific_prof">Prof.</option>
-                            </select>
+                    <h2 data-i18n="contact.form.title">Get in Touch</h2>
+                    <p class="contact-intro-text">We're here to answer your questions and help you achieve crystal clear vision. Use one of our convenient contact options to reach us.</p>
+                    
+                    <div class="contact-options">
+                        <div class="contact-option-card">
+                            <h3>Schedule a Consultation</h3>
+                            <p>Ready to explore your vision correction options? Schedule a free, no-obligation consultation with our expert team.</p>
+                            <button class="btn btn-primary open-modal" data-form-type="consultation">Schedule Consultation</button>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-field required" data-field="name">
-                                <label for="name" data-i18n="contact.form.name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-field required" data-field="email">
-                                <label for="email" data-i18n="contact.form.email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
+                        <div class="contact-option-card">
+                            <h3>Ask About Our Services</h3>
+                            <p>Have questions about a specific procedure? Our team can provide detailed information about our services.</p>
+                            <button class="btn btn-secondary open-modal" data-form-type="inquiry">Service Inquiry</button>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-field required" data-field="phone">
-                                <label for="phone" data-i18n="contact.form.phone">Phone</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            
-                            <div class="form-field" data-field="preferred_language">
-                                <label for="preferred_language" data-i18n="contact.form.preferred_language">Preferred Language</label>
-                                <select id="preferred_language" name="preferred_language">
-                                    <option value="english" data-i18n="contact.form.language_english">English</option>
-                                    <option value="spanish" data-i18n="contact.form.language_spanish">Spanish</option>
-                                    <option value="chinese" data-i18n="contact.form.language_chinese">Chinese</option>
-                                    <option value="korean" data-i18n="contact.form.language_korean">Korean</option>
-                                    <option value="armenian" data-i18n="contact.form.language_armenian">Armenian</option>
-                                    <option value="hebrew" data-i18n="contact.form.language_hebrew">Hebrew</option>
-                                    <option value="russian" data-i18n="contact.form.language_russian">Russian</option>
-                                    <option value="farsi" data-i18n="contact.form.language_farsi">Farsi</option>
-                                    <option value="arabic" data-i18n="contact.form.language_arabic">Arabic</option>
-                                </select>
-                            </div>
+                        <div class="contact-option-card">
+                            <h3>Send Us a Message</h3>
+                            <p>Have a general question or comment? Send us a message and our team will get back to you promptly.</p>
+                            <button class="btn btn-outline open-modal" data-form-type="message">Send Message</button>
                         </div>
-                        
-                        <div class="form-field" data-field="insurance">
-                            <label for="insurance" data-i18n="contact.form.insurance">Insurance Provider (if applicable)</label>
-                            <input type="text" id="insurance" name="insurance">
-                        </div>
-                        
-                        <div class="form-field" data-field="preferred_time">
-                            <label for="preferred_time" data-i18n="contact.form.preferred_time">Preferred Contact Time</label>
-                            <select id="preferred_time" name="preferred_time">
-                                <option value="morning" data-i18n="contact.form.time_morning">Morning (8am-12pm)</option>
-                                <option value="afternoon" data-i18n="contact.form.time_afternoon">Afternoon (12pm-4pm)</option>
-                                <option value="evening" data-i18n="contact.form.time_evening">Evening (4pm-6pm)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-field required" data-field="message">
-                            <label for="message" data-i18n="contact.form.message">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
-                        </div>
-                        
-                        <div class="form-field">
-                            <div class="checkbox-container">
-                                <input type="checkbox" id="consent" name="consent" required>
-                                <label for="consent" class="checkbox-label" data-i18n="contact.form.consent">
-                                    I consent to Vision Clarity Institute collecting and storing the information provided above.
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Send Message</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,7 +178,7 @@
                         <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
                     </button>
                     <div class="accordion-content">
-                        <p data-i18n="contact.faq.a1">You can schedule a consultation by filling out the form on this page, calling our office at (800) 555-2020, or using our online booking system. Our staff will help you find a convenient time for your initial evaluation.</p>
+                        <p data-i18n="contact.faq.a1">You can schedule a consultation by clicking the "Schedule Consultation" button on this page, calling our office at (800) 555-2020, or using our online booking system. Our staff will help you find a convenient time for your initial evaluation.</p>
                     </div>
                 </div>
                 
@@ -290,7 +230,7 @@
         <div class="container">
             <h2 data-i18n="contact.cta.title">Ready to See Clearly?</h2>
             <p data-i18n="contact.cta.content">Take the first step toward visual freedom. Our experts are ready to answer your questions.</p>
-            <a href="#contact-form" class="btn btn-large" data-i18n="contact.cta.button">Schedule Your Consultation Today</a>
+            <button class="btn btn-large open-modal" data-form-type="consultation" data-i18n="contact.cta.button">Schedule Your Consultation Today</button>
         </div>
     </section>
 
@@ -342,5 +282,6 @@
     <!-- Scripts -->
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
+    <script src="../js/modal.js"></script>
 </body>
 </html>
