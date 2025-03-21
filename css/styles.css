@@ -337,7 +337,7 @@ a:hover {
 
 .intro-features {
     margin: var(--spacing-lg) 0;
-    list-style-position: inside;
+    list-style-type: none; /* Changed from list-style-position: inside; to remove bullets */
 }
 
 .intro-features li {
