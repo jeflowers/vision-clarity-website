@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('serviceInquiryForm');
     const successAlert = document.getElementById('serviceInquirySuccess');
     const closeSuccessButton = successAlert.querySelector('.close-success');
+    const closeSuccessBtn = successAlert.querySelector('.close-success-btn');
     
     // Initialize accessibility attributes
     modalContent.setAttribute('role', 'dialog');
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Focus the first form field
         setTimeout(() => {
-            document.getElementById('inquiry-name').focus();
+            document.getElementById('inquiry-name-modal').focus();
         }, 100);
         
         // Store the element that had focus before opening the modal
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Set focus to close button for accessibility
         setTimeout(() => {
-            closeSuccessButton.focus();
+            closeSuccessBtn.focus();
         }, 100);
         
         // Auto close after 5 seconds
@@ -168,6 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset form
             form.reset();
             
+            // Clear any validation styling
+            const formFields = form.querySelectorAll('input, select, textarea');
+            formFields.forEach(field => {
+                field.classList.remove('error');
+            });
+            
             // Close modal and show success message
             closeModal();
             showSuccessAlert();
@@ -191,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close success alert when clicking close button
     closeSuccessButton.addEventListener('click', closeSuccessAlert);
+    closeSuccessBtn.addEventListener('click', closeSuccessAlert);
     
     // Close success alert when clicking outside content
     successAlert.addEventListener('click', function(event) {
