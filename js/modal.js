@@ -98,6 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <div class="form-field">
+                        <label for="consultation_service">Service of Interest</label>
+                        <select id="consultation_service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="traditional_lasik">Traditional LASIK</option>
+                            <option value="bladeless_lasik">Custom Bladeless LASIK</option>
+                            <option value="prk">PRK</option>
+                            <option value="presbyopia">Presbyopia Correction</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-field">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="4"></textarea>
                     </div>
@@ -140,11 +152,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     
                     <div class="form-field">
-                        <label for="service">Service of Interest <span class="required">*</span></label>
-                        <select id="service" name="service" required>
+                        <label for="inquiry_service">Service of Interest <span class="required">*</span></label>
+                        <select id="inquiry_service" name="service" required>
                             <option value="">Select a service</option>
                             <option value="traditional_lasik">Traditional LASIK</option>
-                            <option value="custom_lasik">Custom Bladeless LASIK</option>
+                            <option value="bladeless_lasik">Custom Bladeless LASIK</option>
                             <option value="prk">PRK</option>
                             <option value="presbyopia">Presbyopia Correction</option>
                             <option value="other">Other</option>
@@ -248,11 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {
             clone.addEventListener('click', function(e) {
                 e.preventDefault();
                 const formType = this.getAttribute('data-form-type') || 'consultation';
+                const serviceType = this.getAttribute('data-service') || '';
                 
                 if (formType === 'consultation') {
-                    openModal(consultationModal);
+                    openModal(consultationModal, serviceType);
                 } else if (formType === 'inquiry') {
-                    openModal(inquiryModal);
+                    openModal(inquiryModal, serviceType);
                 } else if (formType === 'message') {
                     openModal(messageModal);
                 }
@@ -310,8 +323,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     /**
      * Open a specific modal
+     * @param {HTMLElement} modal - The modal element to open
+     * @param {string} serviceType - Optional service type to pre-select
      */
-    function openModal(modal) {
+    function openModal(modal, serviceType = '') {
         // Close any open modals first
         document.querySelectorAll('.modal.active').forEach(openModal => {
             closeModal(openModal);
@@ -321,6 +336,27 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Pre-select service if specified and form field exists
+        if (serviceType) {
+            // For consultation form
+            const consultationServiceField = modal.querySelector('#consultation_service');
+            if (consultationServiceField) {
+                consultationServiceField.value = serviceType;
+            }
+            
+            // For inquiry form
+            const inquiryServiceField = modal.querySelector('#inquiry_service');
+            if (inquiryServiceField) {
+                inquiryServiceField.value = serviceType;
+            }
+            
+            // Universal service selector (works with both form types)
+            const serviceSelector = modal.querySelector('select[name="service"]');
+            if (serviceSelector) {
+                serviceSelector.value = serviceType;
+            }
+        }
         
         // Set focus to first form field for accessibility
         setTimeout(() => {
@@ -515,7 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Convert consultation buttons to regular links
         consultationButtons.forEach(button => {
             const link = document.createElement('a');
-            link.href = isInPagesDirectory ? 'contact.html' : 'pages/contact.html';
+            const serviceType = button.getAttribute('data-service') || '';
+            link.href = isInPagesDirectory ? `contact.html${serviceType ? '?service=' + serviceType : ''}` : `pages/contact.html${serviceType ? '?service=' + serviceType : ''}`;
             link.className = button.className.replace('open-modal', '');
             link.textContent = button.textContent;
             button.parentNode.replaceChild(link, button);
@@ -524,7 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Convert inquiry buttons to regular links
         inquiryButtons.forEach(button => {
             const link = document.createElement('a');
-            link.href = isInPagesDirectory ? 'contact.html?inquiry=true' : 'pages/contact.html?inquiry=true';
+            const serviceType = button.getAttribute('data-service') || '';
+            link.href = isInPagesDirectory ? `contact.html?inquiry=true${serviceType ? '&service=' + serviceType : ''}` : `pages/contact.html?inquiry=true${serviceType ? '&service=' + serviceType : ''}`;
             link.className = button.className.replace('open-modal', '');
             link.textContent = button.textContent;
             button.parentNode.replaceChild(link, button);
