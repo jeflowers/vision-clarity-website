@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const isInPagesDirectory = window.location.pathname.includes('/pages/');
     const templatesPath = isInPagesDirectory ? '../templates/' : 'pages/templates/';
     
-    // Load both modal templates if they don't already exist
-    if (!document.getElementById('consultationModal') && !document.getElementById('inquiryModal')) {
+    // Load all modal templates if they don't already exist
+    if (!document.getElementById('consultationModal') && !document.getElementById('inquiryModal') && !document.getElementById('messageModal')) {
         loadModalTemplates();
     } else {
         console.log('Modals already exist in the page, initializing...');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Load both modal templates
+     * Load all modal templates
      */
     function loadModalTemplates() {
         // Load consultation modal template
@@ -45,7 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.insertAdjacentHTML('beforeend', html);
                 console.log('Inquiry modal loaded successfully');
                 
-                // Initialize modals after both are loaded
+                // Load message modal template
+                return fetch(`${templatesPath}message-modal.html`);
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load message modal: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+                console.log('Message modal loaded successfully');
+                
+                // Initialize modals after all are loaded
                 initializeModals();
             })
             .catch(error => {
@@ -156,8 +169,51 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         `;
         
+        // Message modal fallback
+        const messageModalHTML = `
+        <div id="messageModal" class="modal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close">&times;</button>
+                <h2 class="modal-title">Send Us a Message</h2>
+                
+                <form id="messageForm">
+                    <div class="form-field">
+                        <label for="message_name">Name <span class="required">*</span></label>
+                        <input type="text" id="message_name" name="name" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="message_email">Email <span class="required">*</span></label>
+                        <input type="email" id="message_email" name="email" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="message_phone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="message_phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="message_text">Message <span class="required">*</span></label>
+                        <textarea id="message_text" name="message" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="checkbox-field">
+                        <input type="checkbox" id="message_consent" name="consent" required>
+                        <label for="message_consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        `;
+        
         document.body.insertAdjacentHTML('beforeend', consultationModalHTML);
         document.body.insertAdjacentHTML('beforeend', inquiryModalHTML);
+        document.body.insertAdjacentHTML('beforeend', messageModalHTML);
         
         initializeModals();
     }
@@ -169,8 +225,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const openModalButtons = document.querySelectorAll('.open-modal');
         const consultationModal = document.getElementById('consultationModal');
         const inquiryModal = document.getElementById('inquiryModal');
+        const messageModal = document.getElementById('messageModal');
         const consultationForm = document.getElementById('consultationForm');
         const inquiryForm = document.getElementById('inquiryForm');
+        const messageForm = document.getElementById('messageForm');
         
         // Skip if modals couldn't be loaded
         if (!consultationModal || !inquiryModal) {
@@ -195,6 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     openModal(consultationModal);
                 } else if (formType === 'inquiry') {
                     openModal(inquiryModal);
+                } else if (formType === 'message') {
+                    openModal(messageModal);
                 }
             });
         });
@@ -221,6 +281,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (inquiryModal.classList.contains('active')) {
                     closeModal(inquiryModal);
                 }
+                if (messageModal && messageModal.classList.contains('active')) {
+                    closeModal(messageModal);
+                }
             }
         });
         
@@ -233,9 +296,16 @@ document.addEventListener('DOMContentLoaded', function() {
             inquiryForm.addEventListener('submit', handleFormSubmit);
         }
         
-        // Set up accessibility features for both modals
+        if (messageForm) {
+            messageForm.addEventListener('submit', handleFormSubmit);
+        }
+        
+        // Set up accessibility features for all modals
         setupAccessibility(consultationModal);
         setupAccessibility(inquiryModal);
+        if (messageModal) {
+            setupAccessibility(messageModal);
+        }
     }
     
     /**
@@ -300,8 +370,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let successMessage;
         if (formId === 'consultationForm') {
             successMessage = 'Thank you! Your consultation request has been submitted. We will contact you shortly to confirm your appointment.';
-        } else {
+        } else if (formId === 'inquiryForm') {
             successMessage = 'Thank you for your request. A member of our team will respond to your questions within 24 hours.';
+        } else {
+            successMessage = 'Thank you for your message. Our team will get back to you as soon as possible.';
         }
         
         // Create success message element
@@ -435,6 +507,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupFallbackLinks() {
         const consultationButtons = document.querySelectorAll('.open-modal[data-form-type="consultation"]');
         const inquiryButtons = document.querySelectorAll('.open-modal[data-form-type="inquiry"]');
+        const messageButtons = document.querySelectorAll('.open-modal[data-form-type="message"]');
         
         // Determine if we're in the pages directory
         const isInPagesDirectory = window.location.pathname.includes('/pages/');
@@ -452,6 +525,15 @@ document.addEventListener('DOMContentLoaded', function() {
         inquiryButtons.forEach(button => {
             const link = document.createElement('a');
             link.href = isInPagesDirectory ? 'contact.html?inquiry=true' : 'pages/contact.html?inquiry=true';
+            link.className = button.className.replace('open-modal', '');
+            link.textContent = button.textContent;
+            button.parentNode.replaceChild(link, button);
+        });
+        
+        // Convert message buttons to regular links
+        messageButtons.forEach(button => {
+            const link = document.createElement('a');
+            link.href = isInPagesDirectory ? 'contact.html?message=true' : 'pages/contact.html?message=true';
             link.className = button.className.replace('open-modal', '');
             link.textContent = button.textContent;
             button.parentNode.replaceChild(link, button);
