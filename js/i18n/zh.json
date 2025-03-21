@@ -96,6 +96,59 @@
     "cta": {
       "title": "准备好无需眼镜清晰视物吗？",
       "content": "立即预约您的免费咨询，了解哪种视力矫正手术适合您。"
+    },
+    {
+  "modals": {
+    "consultation": {
+      "title": "预约咨询"
+    },
+    "inquiry": {
+      "title": "服务咨询"
+    },
+    "default": {
+      "title": "联系我们"
+    },
+    "form": {
+      "honorific": "称谓",
+      "honorific_select": "请选择",
+      "honorific_mr": "先生",
+      "honorific_mrs": "女士",
+      "honorific_ms": "小姐",
+      "honorific_dr": "医生",
+      "honorific_prof": "教授",
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话",
+      "preferred_language": "首选语言",
+      "language_english": "英语",
+      "language_spanish": "西班牙语",
+      "language_chinese": "中文",
+      "language_korean": "韩语",
+      "language_armenian": "亚美尼亚语",
+      "language_hebrew": "希伯来语",
+      "language_russian": "俄语",
+      "language_farsi": "波斯语",
+      "language_arabic": "阿拉伯语",
+      "insurance": "保险提供商（如适用）",
+      "preferred_time": "首选联系时间",
+      "time_morning": "上午 (8am-12pm)",
+      "time_afternoon": "下午 (12pm-4pm)",
+      "time_evening": "晚上 (4pm-6pm)",
+      "service": "感兴趣的服务",
+      "service_select": "选择服务",
+      "service_traditional_lasik": "传统LASIK",
+      "service_custom_lasik": "定制无刀LASIK",
+      "service_prk": "PRK",
+      "service_presbyopia": "老花矫正",
+      "service_other": "其他",
+      "message": "附加信息",
+      "inquiry_message": "您的问题",
+      "consent": "我同意Vision Clarity Institute收集和存储上述提供的信息。",
+      "submit_default": "提交",
+      "submit_consultation": "预约咨询",
+      "submit_inquiry": "提交咨询"
     }
+  }
+}
   }
 }
