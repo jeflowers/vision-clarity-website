@@ -8,7 +8,8 @@
       "contact": "Contact"
     },
     "buttons": {
-      "schedule": "Schedule Consultation"
+      "schedule": "Schedule Consultation",
+      "inquiry": "Request Information"
     },
     "footer": {
       "tagline": "Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.",
@@ -26,114 +27,19 @@
       "accessibility": "Accessibility"
     }
   },
-  "services": {
-    "header": {
-      "title": "Our Services",
-      "subtitle": "Advanced vision correction procedures tailored to your needs"
-    },
-    "traditional": {
-      "title": "Traditional LASIK",
-      "description": "Traditional LASIK is our standard laser vision correction procedure that has helped millions of people worldwide reduce or eliminate their dependence on glasses and contacts.",
-      "how_works_title": "How It Works",
-      "how_works_text": "During traditional LASIK, our surgeon uses a microkeratome (surgical blade) to create a thin flap in the cornea. The flap is then lifted, and an excimer laser reshapes the corneal tissue underneath to correct your vision. The flap is then repositioned to serve as a natural bandage while healing occurs.",
-      "candidates_title": "Ideal Candidates",
-      "candidates_text": "You may be a good candidate for traditional LASIK if you:",
-      "candidates": {
-        "item1": "Are at least 18 years of age",
-        "item2": "Have stable vision for at least one year",
-        "item3": "Have moderate nearsightedness, farsightedness, or astigmatism",
-        "item4": "Have sufficient corneal thickness",
-        "item5": "Have no significant eye health issues"
-      },
-      "recovery_title": "Recovery & Results",
-      "recovery_text": "Most patients experience improved vision within 24 hours after surgery. Full recovery typically takes 1-2 weeks, with stable vision usually achieved within one month. Traditional LASIK has a high success rate, with approximately 96% of patients achieving their desired vision."
-    },
-    "custom": {
-      "title": "Custom Bladeless LASIK",
-      "description": "Custom Bladeless LASIK is our premium, all-laser LASIK procedure that offers enhanced precision and personalization for optimal visual outcomes.",
-      "how_works_title": "How It Works",
-      "how_works_text": "In Custom Bladeless LASIK, we use two different lasers: a femtosecond laser to create the corneal flap (instead of a blade), and an advanced wavefront-guided excimer laser for corneal reshaping. This all-laser approach allows for more precise flap creation and customized treatment based on your unique corneal map.",
-      "benefits_title": "Key Benefits",
-      "benefits": {
-        "item1": "Greater precision in flap creation",
-        "item2": "Personalized treatment plan based on unique eye characteristics",
-        "item3": "Improved night vision and reduced glare compared to traditional LASIK",
-        "item4": "Potential to correct higher-order aberrations (visual distortions)",
-        "item5": "Excellent option for patients with thin corneas or higher prescriptions"
-      },
-      "right_for_you_title": "Is Custom Bladeless LASIK Right for You?",
-      "right_for_you_text": "While slightly more expensive than traditional LASIK, Custom Bladeless LASIK may be worth considering if you have complex vision issues, high-order aberrations, or want the most advanced technology available. Our surgeons will assess your specific needs during your consultation."
-    },
-    "prk": {
-      "title": "PRK (Photorefractive Keratectomy)",
-      "description": "PRK is an excellent alternative to LASIK for patients who may not be ideal candidates for flap-based procedures. PRK was the first laser vision correction procedure and continues to offer excellent outcomes.",
-      "how_works_title": "How It Works",
-      "how_works_text": "During PRK, the surgeon gently removes the outer layer of the cornea (epithelium) instead of creating a flap. An excimer laser then reshapes the cornea to correct your vision. The epithelium naturally regenerates within a few days after the procedure.",
-      "candidates_title": "Ideal Candidates for PRK",
-      "candidates_text": "PRK may be recommended for patients who:",
-      "candidates": {
-        "item1": "Have thin corneas that may not be suitable for LASIK",
-        "item2": "Have professions or hobbies with higher risk for eye injury (military, contact sports)",
-        "item3": "Have certain corneal abnormalities",
-        "item4": "Previously had LASIK and need enhancement"
-      },
-      "recovery_title": "Recovery & Results",
-      "recovery_text": "Recovery from PRK takes longer than LASIK, with full visual stabilization typically occurring within 1-3 months. However, the long-term results are comparable to LASIK, and PRK eliminates flap-related complications."
-    },
-    "presbyopia": {
-      "title": "Presbyopia Correction",
-      "description": "Presbyopia is an age-related condition that affects nearly everyone over 40, making it difficult to focus on close objects. At Vision Clarity Institute, we offer several solutions to address presbyopia.",
-      "options_title": "Our Presbyopia Correction Options",
-      "monovision_title": "Monovision LASIK",
-      "monovision_text": "In this approach, one eye is corrected for distance vision and the other for near vision. Your brain learns to use the appropriate eye depending on what you're looking at. This can reduce or eliminate the need for reading glasses.",
-      "multifocal_title": "Multifocal LASIK",
-      "multifocal_text": "Using advanced laser technology, we can create multiple focus zones on your cornea, allowing clear vision at various distances. This advanced technique can provide excellent results for appropriate candidates.",
-      "rle_title": "Refractive Lens Exchange (RLE)",
-      "rle_text": "For some patients, especially those over 50, replacing the eye's natural lens with an advanced multifocal lens implant may be the best option. This procedure is similar to cataract surgery but is performed before cataracts develop.",
-      "determination_title": "Determining the Right Option for You",
-      "determination_text": "During your consultation, our specialists will evaluate your vision, discuss your lifestyle and visual needs, and recommend the most suitable presbyopia correction approach for you."
-    },
-    "cta": {
-      "title": "Ready to See Clearly Without Glasses?",
-      "content": "Schedule your free consultation today to learn which vision correction procedure is right for you."
-    },
-    {
   "modals": {
     "consultation": {
-      "title": "Schedule a Consultation"
+      "title": "Schedule a Consultation",
+      "success": "Thank you! Your consultation request has been received. We will contact you shortly."
     },
     "inquiry": {
-      "title": "Service Inquiry"
-    },
-    "default": {
-      "title": "Contact Us"
+      "title": "Request Information",
+      "success": "Thank you for your request. Our team will respond to your questions soon."
     },
     "form": {
-      "honorific": "Title",
-      "honorific_select": "Select",
-      "honorific_mr": "Mr.",
-      "honorific_mrs": "Mrs.",
-      "honorific_ms": "Ms.",
-      "honorific_dr": "Dr.",
-      "honorific_prof": "Prof.",
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
-      "preferred_language": "Preferred Language",
-      "language_english": "English",
-      "language_spanish": "Spanish",
-      "language_chinese": "Chinese",
-      "language_korean": "Korean",
-      "language_armenian": "Armenian",
-      "language_hebrew": "Hebrew",
-      "language_russian": "Russian",
-      "language_farsi": "Farsi",
-      "language_arabic": "Arabic",
-      "insurance": "Insurance Provider (if applicable)",
-      "preferred_time": "Preferred Contact Time",
-      "time_morning": "Morning (8am-12pm)",
-      "time_afternoon": "Afternoon (12pm-4pm)",
-      "time_evening": "Evening (4pm-6pm)",
       "service": "Service of Interest",
       "service_select": "Select a service",
       "service_traditional_lasik": "Traditional LASIK",
@@ -141,14 +47,10 @@
       "service_prk": "PRK",
       "service_presbyopia": "Presbyopia Correction",
       "service_other": "Other",
-      "message": "Additional Information",
-      "inquiry_message": "Your Questions",
+      "message": "Message",
       "consent": "I consent to Vision Clarity Institute collecting and storing the information provided above.",
-      "submit_default": "Submit",
       "submit_consultation": "Schedule Consultation",
       "submit_inquiry": "Submit Inquiry"
     }
-  }
-}
   }
 }
