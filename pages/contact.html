@@ -53,3 +53,294 @@
             </div>
         </div>
     </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-i18n="contact.header.title">Contact Us</h1>
+            <p data-i18n="contact.header.subtitle">Reach out to schedule your consultation or ask questions</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info-section section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <h2 data-i18n="contact.info.title">Contact Information</h2>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <img src="../assets/images/icons/phone.svg" alt="Phone">
+                        </div>
+                        <div class="info">
+                            <h3 data-i18n="contact.info.phone_title">Phone</h3>
+                            <p data-i18n="contact.info.phone_number">(800) 555-2020</p>
+                            <p class="text-muted" data-i18n="contact.info.phone_hours">Monday-Friday: 8am-6pm, Saturday: 9am-2pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <img src="../assets/images/icons/email.svg" alt="Email">
+                        </div>
+                        <div class="info">
+                            <h3 data-i18n="contact.info.email_title">Email</h3>
+                            <p data-i18n="contact.info.email_address">info@visionclarityinstitute.com</p>
+                            <p class="text-muted" data-i18n="contact.info.email_response">We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <img src="../assets/images/icons/location.svg" alt="Locations">
+                        </div>
+                        <div class="info">
+                            <h3 data-i18n="contact.info.locations_title">Locations</h3>
+                            <p data-i18n="contact.info.main_location">1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                            <p><a href="locations.html" class="text-link" data-i18n="contact.info.all_locations">View all locations</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-social">
+                        <h3 data-i18n="contact.info.social_title">Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook" class="social-icon">
+                                <img src="../assets/images/icons/facebook.svg" alt="Facebook">
+                            </a>
+                            <a href="#" aria-label="Instagram" class="social-icon">
+                                <img src="../assets/images/icons/instagram.svg" alt="Instagram">
+                            </a>
+                            <a href="#" aria-label="Twitter" class="social-icon">
+                                <img src="../assets/images/icons/twitter.svg" alt="Twitter">
+                            </a>
+                            <a href="#" aria-label="LinkedIn" class="social-icon">
+                                <img src="../assets/images/icons/linkedin.svg" alt="LinkedIn">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h2 data-i18n="contact.form.title">Send Us a Message</h2>
+                    <form id="contact-form" class="contact-form" data-form-type="consultation">
+                        <div class="form-field" data-field="honorific">
+                            <label for="honorific" data-i18n="contact.form.honorific">Title</label>
+                            <select id="honorific" name="honorific">
+                                <option value="" data-i18n="contact.form.honorific_select">Select</option>
+                                <option value="mr" data-i18n="contact.form.honorific_mr">Mr.</option>
+                                <option value="mrs" data-i18n="contact.form.honorific_mrs">Mrs.</option>
+                                <option value="ms" data-i18n="contact.form.honorific_ms">Ms.</option>
+                                <option value="dr" data-i18n="contact.form.honorific_dr">Dr.</option>
+                                <option value="prof" data-i18n="contact.form.honorific_prof">Prof.</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-field required" data-field="name">
+                                <label for="name" data-i18n="contact.form.name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-field required" data-field="email">
+                                <label for="email" data-i18n="contact.form.email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-field required" data-field="phone">
+                                <label for="phone" data-i18n="contact.form.phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-field" data-field="preferred_language">
+                                <label for="preferred_language" data-i18n="contact.form.preferred_language">Preferred Language</label>
+                                <select id="preferred_language" name="preferred_language">
+                                    <option value="english" data-i18n="contact.form.language_english">English</option>
+                                    <option value="spanish" data-i18n="contact.form.language_spanish">Spanish</option>
+                                    <option value="chinese" data-i18n="contact.form.language_chinese">Chinese</option>
+                                    <option value="korean" data-i18n="contact.form.language_korean">Korean</option>
+                                    <option value="armenian" data-i18n="contact.form.language_armenian">Armenian</option>
+                                    <option value="hebrew" data-i18n="contact.form.language_hebrew">Hebrew</option>
+                                    <option value="russian" data-i18n="contact.form.language_russian">Russian</option>
+                                    <option value="farsi" data-i18n="contact.form.language_farsi">Farsi</option>
+                                    <option value="arabic" data-i18n="contact.form.language_arabic">Arabic</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-field" data-field="insurance">
+                            <label for="insurance" data-i18n="contact.form.insurance">Insurance Provider (if applicable)</label>
+                            <input type="text" id="insurance" name="insurance">
+                        </div>
+                        
+                        <div class="form-field" data-field="preferred_time">
+                            <label for="preferred_time" data-i18n="contact.form.preferred_time">Preferred Contact Time</label>
+                            <select id="preferred_time" name="preferred_time">
+                                <option value="morning" data-i18n="contact.form.time_morning">Morning (8am-12pm)</option>
+                                <option value="afternoon" data-i18n="contact.form.time_afternoon">Afternoon (12pm-4pm)</option>
+                                <option value="evening" data-i18n="contact.form.time_evening">Evening (4pm-6pm)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field required" data-field="message">
+                            <label for="message" data-i18n="contact.form.message">Message</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <div class="form-field">
+                            <div class="checkbox-container">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent" class="checkbox-label" data-i18n="contact.form.consent">
+                                    I consent to Vision Clarity Institute collecting and storing the information provided above.
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 data-i18n="contact.map.title">Find Us</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192047471653!3d34.02016130653294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1614012741023!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="Map of Vision Clarity Institute location"
+                    aria-label="Google Maps showing our location">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section bg-light">
+        <div class="container">
+            <h2 data-i18n="contact.faq.title">Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q1">How do I schedule a consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a1">You can schedule a consultation by filling out the form on this page, calling our office at (800) 555-2020, or using our online booking system. Our staff will help you find a convenient time for your initial evaluation.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q2">What should I bring to my consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a2">Please bring your current glasses or contact lens prescription, a list of medications you're taking, your insurance card, and any medical records related to your eyes. If you wear contact lenses, please remove them 48 hours prior to your appointment for soft contacts, or 3 weeks prior for rigid gas permeable lenses.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q3">Do you accept insurance?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a3">We accept most major insurance plans and flexible spending accounts (FSAs). While most insurance plans don't cover LASIK or other refractive surgeries, they may cover the initial consultation. Our staff will help determine your coverage and discuss financing options.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q4">How long does the consultation take?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a4">Your initial consultation will take approximately 90 minutes. This includes a comprehensive eye exam, discussion of your vision correction options, and time to ask questions. Our goal is to provide you with all the information you need to make an informed decision.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q5">Do you offer payment plans?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a5">Yes, we offer a variety of financing options including interest-free payment plans and healthcare credit options. We work with several healthcare financing companies to help make your vision correction procedure affordable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="contact.cta.title">Ready to See Clearly?</h2>
+            <p data-i18n="contact.cta.content">Take the first step toward visual freedom. Our experts are ready to answer your questions.</p>
+            <a href="#contact-form" class="btn btn-large" data-i18n="contact.cta.button">Schedule Your Consultation Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <img src="../assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
+                    <p data-i18n="global.footer.tagline">Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.quickLinks">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html" data-i18n="global.menu.home">Home</a></li>
+                        <li><a href="services.html" data-i18n="global.menu.services">Services</a></li>
+                        <li><a href="technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                        <li><a href="our-staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                        <li><a href="locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                        <li><a href="contact.html" data-i18n="global.menu.contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.contact">Contact</h3>
+                    <address>
+                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                        <p data-i18n="global.footer.phone">Phone: (800) 555-2020</p>
+                        <p data-i18n="global.footer.email">Email: info@visionclarityinstitute.com</p>
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="global.footer.hours">Hours</h3>
+                    <p data-i18n="global.footer.weekdays">Monday - Friday: 8am - 6pm</p>
+                    <p data-i18n="global.footer.saturday">Saturday: 9am - 2pm</p>
+                    <p data-i18n="global.footer.sunday">Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="global.footer.copyright">&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#" data-i18n="global.footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="global.footer.terms">Terms of Service</a></li>
+                    <li><a href="#" data-i18n="global.footer.accessibility">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/scripts.js"></script>
+    <script src="../js/chatbot.js"></script>
+</body>
+</html>
