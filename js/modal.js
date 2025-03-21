@@ -95,3 +95,118 @@ function createFallbackModal() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
     initializeModal();
 }
+
+/**
+ * Initialize modal functionality after the template has been loaded
+ */
+function initializeModal() {
+    // Modal opening and configuration
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    const modal = document.getElementById('service-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalForm = document.getElementById('service-form');
+    const modalSubmitButton = document.querySelector('.modal-submit-button');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    
+    // Modal Translations
+    const modalTranslations = {
+        'consultation': {
+            'title': 'Schedule a Consultation',
+            'submitButton': 'Schedule Consultation'
+        },
+        'inquiry': {
+            'title': 'Request Information',
+            'submitButton': 'Submit Inquiry'
+        }
+    };
+    
+    // Skip if modal couldn't be loaded
+    if (!modal) {
+        console.error('Modal template not found or failed to load, even with fallback.');
+        // Convert button links to href for graceful degradation
+        setupFallbackLinks();
+        return;
+    }
+    
+    console.log('Modal initialized, setting up event listeners');
+    
+    // Open Modal with Configuration
+    openModalButtons.forEach(button => {
+        // Clean up any existing event listeners to prevent duplicates
+        const clone = button.cloneNode(true);
+        button.parentNode.replaceChild(clone, button);
+        
+        clone.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Modal button clicked');
+            
+            // Determine form type from button data attribute
+            const formType = this.getAttribute('data-form-type') || 'consultation';
+            console.log('Modal type:', formType);
+            
+            // Configure modal based on type
+            configureModal(formType);
+            
+            // Show modal
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Set focus to first form field for accessibility
+            setTimeout(() => {
+                const firstInput = modal.querySelector('input, select, textarea');
+                if (firstInput) {
+                    firstInput.focus();
+                }
+            }, 100);
+            
+            // Announce modal opened for screen readers
+            announceForScreenReaders('Dialog opened');
+        });
+    });
+    
+    // Configure modal for specific form type
+    function configureModal(formType) {
+        console.log('Configuring modal for:', formType);
+        
+        // Set form type attribute
+        modalForm.setAttribute('data-form-type', formType);
+        
+        // Update title and submit button text based on form type
+        if (window.i18n && typeof window.i18n.getTranslation === 'function') {
+            // If i18n module is available, use it
+            modalTitle.textContent = window.i18n.getTranslation(`modals.${formType}.title`) || modalTranslations[formType].title;
+            modalSubmitButton.textContent = window.i18n.getTranslation(`modals.form.submit_${formType}`) || modalTranslations[formType].submitButton;
+        } else {
+            // Fallback to our basic translations
+            modalTitle.textContent = modalTranslations[formType].title;
+            modalSubmitButton.textContent = modalTranslations[formType].submitButton;
+        }
+        
+        // Show/hide fields based on form type
+        if (formType === 'consultation') {
+            // Hide inquiry-specific fields
+            document.querySelectorAll('.inquiry-field').forEach(field => {
+                field.style.display = 'none';
+                const input = field.querySelector('select, input');
+                if (input) input.required = false;
+            });
+            
+            // Show consultation fields
+            document.querySelectorAll('.consultation-field').forEach(field => {
+                field.style.display = 'block';
+                const input = field.querySelector('input, select');
+                if (input && field.classList.contains('required')) input.required = true;
+            });
+        } else if (formType === 'inquiry') {
+            // Show inquiry-specific fields
+            document.querySelectorAll('.inquiry-field').forEach(field => {
+                field.style.display = 'block';
+                const input = field.querySelector('select, input');
+                if (input && field.classList.contains('required')) input.required = true;
+            });
+        }
+        
+        // Clear previous form values
+        modalForm.reset();
+    }
