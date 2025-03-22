@@ -4,11 +4,13 @@
       "home": "Home",
       "services": "Mga Serbisyo",
       "technology": "Teknolohiya",
+      "staff": "Aming Kawani",
       "locations": "Mga Lokasyon",
       "contact": "Makipag-ugnayan"
     },
     "buttons": {
-      "schedule": "Mag-iskedyul ng Konsultasyon"
+      "schedule": "Mag-iskedyul ng Konsultasyon",
+      "inquiry": "Humiling ng Impormasyon"
     },
     "footer": {
       "tagline": "Advanced na Lasik eye surgery gamit ang cutting-edge na teknolohiya para sa pinakamahusay na resulta at kasiyahan ng pasyente.",
@@ -97,5 +99,74 @@
       "title": "Handa na Bang Makakita nang Malinaw nang Walang Salamin?",
       "content": "I-schedule ang iyong libreng konsultasyon ngayon para malaman kung anong procedure ng pagwawasto ng paningin ang tama para sa iyo."
     }
+  },
+  "modal": {
+    "consultation": {
+      "title": "Mag-iskedyul ng Konsultasyon",
+      "success": "Salamat po! Ang inyong kahilingan para sa konsultasyon ay natanggap na. Kakausapin namin kayo sa lalong madaling panahon."
+    },
+    "inquiry": {
+      "title": "Humiling ng Impormasyon",
+      "success": "Salamat sa inyong pagtatanong. Ang aming koponan ay tutugon sa inyong mga katanungan sa lalong madaling panahon."
+    },
+    "form": {
+      "title": "Pamagat",
+      "name": "Pangalan",
+      "email": "Email",
+      "phone": "Telepono",
+      "preferred_language": "Ginustong Wika",
+      "insurance": "Provider ng Insurance (kung naaangkop)",
+      "preferred_contact_time": "Ginustong Oras ng Pakikipag-ugnayan",
+      "service": "Serbisyong Kinakainteresan",
+      "additional_info": "Karagdagang Impormasyon",
+      "consent": "Pinapayagan ko ang Vision Clarity Institute na kolektahin at i-store ang impormasyong ibinigay sa itaas.",
+      "schedule_consultation": "I-schedule ang Konsultasyon",
+      "submit_inquiry": "Isumite ang Katanungan",
+      "select": "Pumili",
+      "select_service": "Pumili ng serbisyo",
+      "time": {
+        "morning": "Umaga (8am-12pm)",
+        "afternoon": "Hapon (12pm-4pm)",
+        "evening": "Gabi (4pm-6pm)"
+      },
+      "language": {
+        "english": "Ingles",
+        "spanish": "Espanyol",
+        "chinese": "Tsino",
+        "korean": "Koreano",
+        "armenian": "Armeniano",
+        "hebrew": "Hebreo",
+        "russian": "Ruso",
+        "farsi": "Farsi",
+        "arabic": "Arabe",
+        "tagalog": "Tagalog"
+      },
+      "service": {
+        "traditional_lasik": "Tradisyonal na LASIK",
+        "bladeless_lasik": "Custom Bladeless LASIK",
+        "prk": "PRK",
+        "presbyopia": "Pagwawasto ng Presbyopia",
+        "other": "Iba pa (mangyaring tukuyin)"
+      },
+      "title": {
+        "mr": "G.",
+        "mrs": "Gng.",
+        "ms": "Bb.",
+        "dr": "Dr.",
+        "prof": "Prof."
+      }
+    }
+  },
+  "language": {
+    "english": "Ingles",
+    "spanish": "Espanyol",
+    "chinese": "Tsino",
+    "korean": "Koreano",
+    "armenian": "Armeniano",
+    "hebrew": "Hebreo",
+    "russian": "Ruso",
+    "farsi": "Farsi",
+    "arabic": "Arabe",
+    "tagalog": "Tagalog"
   }
 }
