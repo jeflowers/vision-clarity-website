@@ -8,7 +8,8 @@
       "contact": "联系我们"
     },
     "buttons": {
-      "schedule": "预约咨询"
+      "schedule": "预约咨询",
+      "inquiry": "服务咨询"
     },
     "footer": {
       "tagline": "使用尖端技术的先进激光眼睛手术，提供最佳效果和患者满意度。",
@@ -96,8 +97,8 @@
     "cta": {
       "title": "准备好无需眼镜清晰视物吗？",
       "content": "立即预约您的免费咨询，了解哪种视力矫正手术适合您。"
-    },
-    {
+    }
+  },
   "modals": {
     "consultation": {
       "title": "预约咨询"
@@ -148,7 +149,5 @@
       "submit_consultation": "预约咨询",
       "submit_inquiry": "提交咨询"
     }
-  }
-}
   }
 }
