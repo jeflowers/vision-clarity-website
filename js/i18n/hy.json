@@ -4,11 +4,13 @@
       "home": "Գլխավոր",
       "services": "Ծառայություններ",
       "technology": "Տեխնոլոգիա",
+      "staff": "Մեր Թիմը",
       "locations": "Վայրեր",
       "contact": "Կապ"
     },
     "buttons": {
-      "schedule": "Պայմանավորվել Խորհրդատվության"
+      "schedule": "Պայմանավորվել Խորհրդատվության",
+      "inquiry": "Տեղեկատվություն Հարցնել"
     },
     "footer": {
       "tagline": "Առաջատար Լազիկ աչքի վիրահատություն՝ օգտագործելով նորագույն տեխնոլոգիաներ, լավագույն արդյունքների և հիվանդի բավարարվածության համար:",
@@ -98,55 +100,71 @@
       "content": "Պայմանավորվեք ձեր անվճար խորհրդատվությունը այսօր՝ իմանալու, թե որ տեսողության ուղղման ընթացակարգն է ճիշտ ձեզ համար:"
     }
   },
-  "modals": {
+  "modal": {
     "consultation": {
-      "title": "Խորհրդատվության Ամրագրում"
+      "title": "Խորհրդատվության Ամրագրում",
+      "success": "Շնորհակալություն։ Ձեր խորհրդատվության հարցումը ստացվել է։ Մենք կզանգահարենք ձեզ շուտով։"
     },
     "inquiry": {
-      "title": "Ծառայությունների Հարցում"
-    },
-    "default": {
-      "title": "Կապվեք Մեզ Հետ"
+      "title": "Ծառայությունների Հարցում",
+      "success": "Շնորհակալություն ձեր հարցման համար։ Մեր թիմը շուտով կպատասխանի ձեր հարցերին։"
     },
     "form": {
-      "honorific": "Դիմելաձև",
-      "honorific_select": "Ընտրել",
-      "honorific_mr": "Պրն",
-      "honorific_mrs": "Տկն",
-      "honorific_ms": "Օրդ",
-      "honorific_dr": "Դր",
-      "honorific_prof": "Պրոֆ",
+      "title": "Դիմելաձև",
       "name": "Անուն",
       "email": "Էլ․ փոստ",
       "phone": "Հեռախոսահամար",
       "preferred_language": "Նախընտրելի լեզու",
-      "language_english": "Անգլերեն",
-      "language_spanish": "Իսպաներեն",
-      "language_chinese": "Չինարեն",
-      "language_korean": "Կորեերեն",
-      "language_armenian": "Հայերեն",
-      "language_hebrew": "Եբրայերեն",
-      "language_russian": "Ռուսերեն",
-      "language_farsi": "Պարսկերեն",
-      "language_arabic": "Արաբերեն",
       "insurance": "Ապահովագրության ընկերություն (եթե կիրառելի է)",
-      "preferred_time": "Նախընտրելի կապի ժամանակ",
-      "time_morning": "Առավոտյան (8am-12pm)",
-      "time_afternoon": "Կեսօրից հետո (12pm-4pm)",
-      "time_evening": "Երեկոյան (4pm-6pm)",
+      "preferred_contact_time": "Նախընտրելի կապի ժամանակ",
       "service": "Հետաքրքրող ծառայություն",
-      "service_select": "Ընտրեք ծառայություն",
-      "service_traditional_lasik": "Ավանդական ԼԱՍԻԿ",
-      "service_custom_lasik": "Անհատականացված Անսայր ԼԱՍԻԿ",
-      "service_prk": "ՊՌԿ",
-      "service_presbyopia": "Պրեսբիոպիայի ուղղում",
-      "service_other": "Այլ",
-      "message": "Լրացուցիչ տեղեկություն",
-      "inquiry_message": "Ձեր հարցերը",
+      "additional_info": "Լրացուցիչ տեղեկություն",
       "consent": "Ես համաձայն եմ, որ Vision Clarity Institute-ն հավաքի և պահպանի վերը տրամադրված տեղեկությունները։",
-      "submit_default": "Ուղարկել",
-      "submit_consultation": "Ամրագրել Խորհրդատվություն",
-      "submit_inquiry": "Ուղարկել Հարցում"
+      "schedule_consultation": "Ամրագրել Խորհրդատվություն",
+      "submit_inquiry": "Ուղարկել Հարցում",
+      "select": "Ընտրել",
+      "select_service": "Ընտրեք ծառայություն",
+      "time": {
+        "morning": "Առավոտյան (8am-12pm)",
+        "afternoon": "Կեսօրից հետո (12pm-4pm)",
+        "evening": "Երեկոյան (4pm-6pm)"
+      },
+      "language": {
+        "english": "Անգլերեն",
+        "spanish": "Իսպաներեն",
+        "chinese": "Չինարեն",
+        "korean": "Կորեերեն",
+        "armenian": "Հայերեն",
+        "hebrew": "Եբրայերեն",
+        "russian": "Ռուսերեն",
+        "farsi": "Պարսկերեն",
+        "arabic": "Արաբերեն"
+      },
+      "service": {
+        "traditional_lasik": "Ավանդական ԼԱՍԻԿ",
+        "bladeless_lasik": "Անհատականացված Անսայր ԼԱՍԻԿ",
+        "prk": "ՊՌԿ",
+        "presbyopia": "Պրեսբիոպիայի ուղղում",
+        "other": "Այլ (խնդրում ենք նշել)"
+      },
+      "title": {
+        "mr": "Պրն",
+        "mrs": "Տկն",
+        "ms": "Օրդ",
+        "dr": "Դր",
+        "prof": "Պրոֆ"
+      }
     }
+  },
+  "language": {
+    "english": "Անգլերեն",
+    "spanish": "Իսպաներեն",
+    "chinese": "Չինարեն",
+    "korean": "Կորեերեն",
+    "armenian": "Հայերեն",
+    "hebrew": "Եբրայերեն",
+    "russian": "Ռուսերեն",
+    "farsi": "Պարսկերեն",
+    "arabic": "Արաբերեն"
   }
 }
