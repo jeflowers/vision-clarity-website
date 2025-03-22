@@ -4,12 +4,13 @@
       "home": "Inicio",
       "services": "Servicios",
       "technology": "Tecnología",
+      "staff": "Nuestro Equipo",
       "locations": "Ubicaciones",
-      "contact": "Contacto",
-      "staff": "Nuestro Equipo"
+      "contact": "Contacto"
     },
     "buttons": {
       "schedule": "Programar Consulta",
+      "inquiry": "Solicitar Información",
       "learn_more": "Más Información",
       "read_more": "Leer Más",
       "submit": "Enviar",
@@ -101,59 +102,73 @@
     "cta": {
       "title": "¿Listo para Ver Claramente Sin Gafas?",
       "content": "Programe su consulta gratuita hoy para conocer qué procedimiento de corrección de la visión es adecuado para usted."
-    },
-    {
-  "modals": {
+    }
+  },
+  "modal": {
     "consultation": {
-      "title": "Programar una Consulta"
+      "title": "Programar una Consulta",
+      "success": "¡Gracias! Su solicitud de consulta ha sido recibida. Nos pondremos en contacto con usted en breve."
     },
     "inquiry": {
-      "title": "Consulta de Servicios"
-    },
-    "default": {
-      "title": "Contáctenos"
+      "title": "Consulta de Servicios",
+      "success": "Gracias por su consulta. Nuestro equipo responderá a sus preguntas próximamente."
     },
     "form": {
-      "honorific": "Título",
-      "honorific_select": "Seleccionar",
-      "honorific_mr": "Sr.",
-      "honorific_mrs": "Sra.",
-      "honorific_ms": "Srta.",
-      "honorific_dr": "Dr.",
-      "honorific_prof": "Prof.",
+      "title": "Título",
       "name": "Nombre",
       "email": "Correo Electrónico",
       "phone": "Teléfono",
       "preferred_language": "Idioma Preferido",
-      "language_english": "Inglés",
-      "language_spanish": "Español",
-      "language_chinese": "Chino",
-      "language_korean": "Coreano",
-      "language_armenian": "Armenio",
-      "language_hebrew": "Hebreo",
-      "language_russian": "Ruso",
-      "language_farsi": "Farsi",
-      "language_arabic": "Árabe",
       "insurance": "Proveedor de Seguro (si aplica)",
-      "preferred_time": "Hora de Contacto Preferida",
-      "time_morning": "Mañana (8am-12pm)",
-      "time_afternoon": "Tarde (12pm-4pm)",
-      "time_evening": "Noche (4pm-6pm)",
+      "preferred_contact_time": "Hora de Contacto Preferida",
       "service": "Servicio de Interés",
-      "service_select": "Seleccione un servicio",
-      "service_traditional_lasik": "LASIK Tradicional",
-      "service_custom_lasik": "LASIK Personalizado Sin Cuchilla",
-      "service_prk": "PRK",
-      "service_presbyopia": "Corrección de Presbicia",
-      "service_other": "Otro",
-      "message": "Información Adicional",
-      "inquiry_message": "Sus Preguntas",
+      "additional_info": "Información Adicional",
       "consent": "Doy mi consentimiento para que Vision Clarity Institute recopile y almacene la información proporcionada anteriormente.",
-      "submit_default": "Enviar",
-      "submit_consultation": "Programar Consulta",
-      "submit_inquiry": "Enviar Consulta"
+      "schedule_consultation": "Programar Consulta",
+      "submit_inquiry": "Enviar Consulta",
+      "select": "Seleccionar",
+      "select_service": "Seleccione un servicio",
+      "time": {
+        "morning": "Mañana (8am-12pm)",
+        "afternoon": "Tarde (12pm-4pm)",
+        "evening": "Noche (4pm-6pm)"
+      },
+      "language": {
+        "english": "Inglés",
+        "spanish": "Español",
+        "chinese": "Chino",
+        "korean": "Coreano",
+        "armenian": "Armenio",
+        "hebrew": "Hebreo",
+        "russian": "Ruso",
+        "farsi": "Farsi",
+        "arabic": "Árabe"
+      },
+      "service": {
+        "traditional_lasik": "LASIK Tradicional",
+        "bladeless_lasik": "LASIK Personalizado Sin Cuchilla",
+        "prk": "PRK",
+        "presbyopia": "Corrección de Presbicia",
+        "other": "Otro (por favor especifique)"
+      },
+      "title": {
+        "mr": "Sr.",
+        "mrs": "Sra.",
+        "ms": "Srta.",
+        "dr": "Dr.",
+        "prof": "Prof."
+      }
     }
-  }
-}
+  },
+  "language": {
+    "english": "Inglés",
+    "spanish": "Español",
+    "chinese": "Chino",
+    "korean": "Coreano",
+    "armenian": "Armenio",
+    "hebrew": "Hebreo",
+    "russian": "Ruso",
+    "farsi": "Farsi",
+    "arabic": "Árabe"
   }
 }
