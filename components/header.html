@@ -1,0 +1,29 @@
+<!-- Dynamic Header Component -->
+<!-- This component will be dynamically modified based on current page location -->
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <a href="{{rootPath}}index.html">
+                <img src="{{rootPath}}assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu" data-a11y-label="ariaLabels.mobileMenuButton">
+                <img src="{{rootPath}}assets/images/icons/menu.svg" alt="Menu">
+            </button>
+            <ul class="nav-list">
+                <li><a href="{{rootPath}}index.html" data-nav-id="home" data-i18n="global.menu.home">Home</a></li>
+                <li><a href="{{rootPath}}pages/services.html" data-nav-id="services" data-i18n="global.menu.services">Services</a></li>
+                <li><a href="{{rootPath}}pages/technology.html" data-nav-id="technology" data-i18n="global.menu.technology">Technology</a></li>
+                <li><a href="{{rootPath}}pages/our-staff.html" data-nav-id="staff" data-i18n="global.menu.staff">Our Staff</a></li>
+                <li><a href="{{rootPath}}pages/locations.html" data-nav-id="locations" data-i18n="global.menu.locations">Locations</a></li>
+                <li><a href="{{rootPath}}pages/contact.html" data-nav-id="contact" data-i18n="global.menu.contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <!-- Language selector will be inserted here by the language-selector-loader.js -->
+            <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+            <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+        </div>
+    </div>
+</header>
