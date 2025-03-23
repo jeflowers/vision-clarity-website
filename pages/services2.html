@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="services.meta.title">Our Services - Vision Clarity Institute</title>
     <meta name="description" content="Explore Vision Clarity Institute's advanced laser vision correction services, including LASIK, PRK, and presbyopia treatment." data-i18n="services.meta.description">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/button-refinements.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/button-refinements.css">
     <link rel="stylesheet" href="css/language-selectors.css">
     <!-- Modal Styles -->
-    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="css/modal.css">
     <!-- Checkmark Fix -->
-    <link rel="stylesheet" href="../css/checkmark-fix.css">
+    <link rel="stylesheet" href="css/checkmark-fix.css">
 </head>
 <body>
     <!-- Header will be populated by component-loader.js -->
@@ -23,12 +23,14 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-            <h1 data-i18n="services.header.title">LASIK Eye Surgery</h1>
-            <p data-i18n="services.header.subtitle">Advanced vision correction procedures tailored to your needs</p>
-                <div class-cta">
+                    <h1 data-i18n="services.header.title">LASIK Eye Surgery</h1>
+                    <p data-i18n="services.header.subtitle">Advanced vision correction procedures tailored to your needs</p>
+                    <div class="cta">
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+                        <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+                    </div>
                 </div>
-            <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
-            <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+            </div>
         </div>
     </section>
 
@@ -37,17 +39,17 @@
         <div class="container">
             <div class="intro-grid">
                 <div class="intro-image">
-                    <img src="../assets/images/intro/doctor-patient.jpg" alt="Doctor consulting with a patient at Vision Clarity Institute">
+                    <img src="assets/images/intro/doctor-patient.jpg" alt="Doctor consulting with a patient at Vision Clarity Institute">
                 </div>
                 <div class="intro-content">
                     <h1>LASIK</h1>
                     <h2>(laser-assisted in situ keratomileusis)</h2>
-                            <ul class="green-checkmark-list section bg-light">
-                                <li>Astigmatism — a condition that affects how light is focused on the retina</li>
-                                <li>Farsightedness — a condition that causes distant objects to be seen more clearly than nearby objects</li>
-                                <li>Nearsightedness — a condition that causes close-up objects to be seen clearly and distant objects to appear blurry</li>
-                                <li>Presbyopia — a natural age-related condition that affects the eye's ability to focus on nearby objects</li>
-                            </ul>
+                    <ul class="green-checkmark-list">
+                        <li>Astigmatism — a condition that affects how light is focused on the retina</li>
+                        <li>Farsightedness — a condition that causes distant objects to be seen more clearly than nearby objects</li>
+                        <li>Nearsightedness — a condition that causes close-up objects to be seen clearly and distant objects to appear blurry</li>
+                        <li>Presbyopia — a natural age-related condition that affects the eye's ability to focus on nearby objects</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -57,85 +59,73 @@
     <section class="services-overview section bg-light">
         <div class="container">
             <h2 class="section-title">Understanding LASIK</h2>
-            <p class="section-subtitle>Comprehensive vision correction solutions to fit your needs</p>
+            <p class="section-subtitle">Comprehensive vision correction solutions to fit your needs</p>
                 
             <div class="service-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
                     </div>
-            <h2 class="section-title">What Is LASIK Eye Surgery?</h2>
-            <p>Our surgeons use special lasers to reshape your cornea, the primary lens of the eye and change its focusing power. This eye treatment corrects your vision, so you can reduce or eliminate your dependence on glasses and contact lenses.</p>
-                <p>Our ophthalmologists perform a complete eye exam to make sure you're a good candidate for LASIK. We explain your options thoroughly and answer all your questions.</p>
-                <div class="service-actions">
-                        <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                    <h3 class="section-title">What Is LASIK Eye Surgery?</h3>
+                    <p>Our surgeons use special lasers to reshape your cornea, the primary lens of the eye and change its focusing power. This eye treatment corrects your vision, so you can reduce or eliminate your dependence on glasses and contact lenses.</p>
+                    <p>Our ophthalmologists perform a complete eye exam to make sure you're a good candidate for LASIK. We explain your options thoroughly and answer all your questions.</p>
+                    <div class="service-actions">
+                        <a href="#traditional" class="service-link">Learn More</a>
                         <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik">Request Consultation</button>
                     </div>
                 </div>
             
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
+                        <img src="assets/images/icons/custom-lasik.svg" alt="Custom LASIK Icon">
                     </div>
-                    <h2 class="section-title">Who Can Get LASIK?</h2>
-                      <p>LASIK eye surgery has been proven to be safe and effective, but not everyone is a candidate. If you are healthy, have stable vision and healthy eyes — free from infections or conditions like glaucoma or cataracts — and if you are diagnosed with nearsightedness, farsightedness or astigmatism, you may be a candidate.</p>
+                    <h3 class="section-title">Who Can Get LASIK?</h3>
+                    <p>LASIK eye surgery has been proven to be safe and effective, but not everyone is a candidate. If you are healthy, have stable vision and healthy eyes — free from infections or conditions like glaucoma or cataracts — and if you are diagnosed with nearsightedness, farsightedness or astigmatism, you may be a candidate.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#traditional" class="service-link">Learn More</a>
-                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik">Request Consultation</button>
+                        <a href="#custom" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="custom_lasik">Request Consultation</button>
                     </div>  
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
+                        <img src="assets/images/icons/prk.svg" alt="PRK Icon">
                     </div>
-                        <h2 class="section-title">Who Can Get LASIK?</h2>
-                        <p>LASIK eye surgery has been proven to be safe and effective, but not everyone is a candidate. If you are healthy, have stable vision and healthy eyes — free from infections or conditions like glaucoma or cataracts — and if you are diagnosed with nearsightedness, farsightedness or astigmatism, you may be a candidate.</p>
+                    <h3 class="section-title">PRK as an Alternative</h3>
+                    <p>Photorefractive keratectomy (PRK) is an excellent alternative for those who may not be ideal candidates for LASIK. PRK was the first laser vision correction procedure and continues to offer excellent outcomes for patients with thin corneas or other specific conditions.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                        <a href="#prk" class="service-link">Learn More</a>
                         <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk">Request Consultation</button>
                     </div>
                 </div>
             </div>
-                
-            </div>
         </div>
     </section>
 
-    <section class="services-overview section bg-light">
-        <div class="container">
-            <div class="intro-grid">
-                <h2 class="section-title">Who Can Get LASIK?</h2>
-                  <p>LASIK eye surgery has been proven to be safe and effective, but not everyone is a candidate. If you are healthy, have stable vision and healthy eyes — free from infections or conditions like glaucoma or cataracts — and if you are diagnosed with nearsightedness, farsightedness or astigmatism, you may be a candidate.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-overview section bg-light">
+    <section class="services-overview section">
         <div class="container">
             <h2 class="section-title">Benefits of LASIK</h2>
-                <p>The surgery is painless and requires no bandages or stitches, making recovery easy. Most people who have had LASIK find they no longer need to rely on glasses or contacts. The surgery can benefit you, if you've been diagnosed with nearsightedness (myopia), astigmatism or farsightedness (hyperopia). There are many benefits to LASIK eye surgery, including:</p>
-                <ul class="green-checkmark-list">
-                    <li>Improved vision, with many achieving 20/20 vision or better</li>
-                    <li>Quick and minimally invasive procedure, usually taking only 10 minutes per eye</li>
-                    <li>Easy recovery with improvements in vision starting as soon as hours to a few days following the procedure</li>
-                    <li>Minimal discomfort with only a slight pressure on the eyes</li>
-                    <li>Lasting results</li>
-                    <li>Reduced allergy and infection risk, since there's no need for contact lenses after LASIK</li>
-                </ul>
-                
-                <h3>We Help You Achieve Your Best Possible Vision</h3>
-                <ul class="green-checkmark-list">
-                    <li>Our vision center was one of the first in the nation to offer laser vision correction.</li>
-                    <li>We're dedicated to preserving, restoring and enhancing your vision.</li>
-                    <li>We use one of the world's most advanced excimer lasers, and we've conducted clinical trials to check its safety and effectiveness.</li>
-                    <li>We use one of the most sophisticated femtosecond lasers in the world for performing all-laser LASIK.</li>
-                    <li>If you are not a good candidate for laser eye surgery, we can assist you with alternative procedures to help you achieve your best vision.</li>
-                </ul>
-                
-                <div class="cta-container">
-                    <button class="btn btn-primary open-modal" data-form-type="consultation">Schedule a Free Consultation</button>
-                </div>
+            <p>The surgery is painless and requires no bandages or stitches, making recovery easy. Most people who have had LASIK find they no longer need to rely on glasses or contacts. The surgery can benefit you, if you've been diagnosed with nearsightedness (myopia), astigmatism or farsightedness (hyperopia). There are many benefits to LASIK eye surgery, including:</p>
+            <ul class="green-checkmark-list">
+                <li>Improved vision, with many achieving 20/20 vision or better</li>
+                <li>Quick and minimally invasive procedure, usually taking only 10 minutes per eye</li>
+                <li>Easy recovery with improvements in vision starting as soon as hours to a few days following the procedure</li>
+                <li>Minimal discomfort with only a slight pressure on the eyes</li>
+                <li>Lasting results</li>
+                <li>Reduced allergy and infection risk, since there's no need for contact lenses after LASIK</li>
+            </ul>
+            
+            <h3>We Help You Achieve Your Best Possible Vision</h3>
+            <ul class="green-checkmark-list">
+                <li>Our vision center was one of the first in the nation to offer laser vision correction.</li>
+                <li>We're dedicated to preserving, restoring and enhancing your vision.</li>
+                <li>We use one of the world's most advanced excimer lasers, and we've conducted clinical trials to check its safety and effectiveness.</li>
+                <li>We use one of the most sophisticated femtosecond lasers in the world for performing all-laser LASIK.</li>
+                <li>If you are not a good candidate for laser eye surgery, we can assist you with alternative procedures to help you achieve your best vision.</li>
+            </ul>
+            
+            <div class="cta-container">
+                <button class="btn btn-primary open-modal" data-form-type="consultation">Schedule a Free Consultation</button>
             </div>
         </div>
     </section>
@@ -183,14 +173,14 @@
     <!-- Modal Templates will be loaded by component-loader.js -->
 
     <!-- Scripts -->
-    <script src="../js/scripts.js"></script>
-    <script src="../js/i18n.js"></script>
-    <script src="../js/component-loader-compat.js"></script>
-    <script src="../js/service-component-loader.js"></script>
-    <script src="../js/modal.js"></script>
-    <script src="..js/language-selector-loader.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/component-loader-compat.js"></script>
+    <script src="js/service-component-loader.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/language-selector-loader.js"></script>
     
     <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 </body>
-</html>  
+</html>
