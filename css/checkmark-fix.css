@@ -17,3 +17,35 @@
     position: absolute;
     left: 0;
 }
+
+/* Add to existing checkmark-fix.css */
+.green-checkmark-list {
+    margin: var(--spacing-lg) 0;
+    list-style-type: none;
+}
+
+.green-checkmark-list li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    list-style-type: none;
+}
+
+.green-checkmark-list li:before {
+    content: '✓';
+    color: var(--color-primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* RTL Support */
+[dir="rtl"] .green-checkmark-list li {
+    padding-left: 0;
+    padding-right: var(--spacing-lg);
+}
+
+[dir="rtl"] .green-checkmark-list li:before {
+    left: auto;
+    right: 0;
+}
