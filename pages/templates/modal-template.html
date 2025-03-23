@@ -1,0 +1,60 @@
+<!-- Universal Modal Component -->
+<div id="service-modal" class="modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-container" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-header">
+            <h2 id="modal-title" data-i18n="modals.consultation.title">Schedule a Consultation</h2>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <div class="modal-content">
+            <form id="service-form" class="modal-form" data-form-type="consultation">
+                <!-- Consultation Form Fields -->
+                <div class="form-field required consultation-field" data-field="name">
+                    <label for="modal-name" data-i18n="modals.form.name">Name</label>
+                    <input type="text" id="modal-name" name="name" required>
+                </div>
+                
+                <div class="form-field required consultation-field" data-field="email">
+                    <label for="modal-email" data-i18n="modals.form.email">Email</label>
+                    <input type="email" id="modal-email" name="email" required>
+                </div>
+                
+                <div class="form-field required consultation-field" data-field="phone">
+                    <label for="modal-phone" data-i18n="modals.form.phone">Phone</label>
+                    <input type="tel" id="modal-phone" name="phone" required>
+                </div>
+                
+                <!-- Inquiry-specific field -->
+                <div class="form-field required inquiry-field" data-field="service" style="display: none;">
+                    <label for="modal-service" data-i18n="modals.form.service">Service of Interest</label>
+                    <select id="modal-service" name="service">
+                        <option value="" data-i18n="modals.form.service_select">Select a service</option>
+                        <option value="traditional_lasik" data-i18n="modals.form.service_traditional_lasik">Traditional LASIK</option>
+                        <option value="custom_lasik" data-i18n="modals.form.service_custom_lasik">Custom Bladeless LASIK</option>
+                        <option value="prk" data-i18n="modals.form.service_prk">PRK</option>
+                        <option value="presbyopia" data-i18n="modals.form.service_presbyopia">Presbyopia Correction</option>
+                        <option value="other" data-i18n="modals.form.service_other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-field" data-field="message">
+                    <label for="modal-message" data-i18n="modals.form.message">Message</label>
+                    <textarea id="modal-message" name="message" rows="4"></textarea>
+                </div>
+                
+                <div class="form-field required">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="modal-consent" name="consent" required>
+                        <label for="modal-consent" class="checkbox-label" data-i18n="modals.form.consent">
+                            I consent to Vision Clarity Institute collecting and storing the information provided above.
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary modal-submit-button" data-i18n="modals.form.submit_consultation">Schedule Consultation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

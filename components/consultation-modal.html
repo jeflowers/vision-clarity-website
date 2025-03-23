@@ -1,0 +1,81 @@
+<!-- Consultation Form Modal -->
+<div id="consultationModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 data-i18n="modal.consultation.title">Schedule a Consultation</h3>
+            <button class="modal-close" aria-label="Close" data-a11y-label="ariaLabels.closeButton">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="consultationForm" class="contact-form">
+                <div class="form-field" data-field="title">
+                    <label for="title" data-i18n="modal.form.title">Title</label>
+                    <select id="title" name="title">
+                        <option value="select" data-i18n="modal.form.select">Select</option>
+                        <option value="mr" data-i18n="modal.form.title.mr">Mr.</option>
+                        <option value="mrs" data-i18n="modal.form.title.mrs">Mrs.</option>
+                        <option value="ms" data-i18n="modal.form.title.ms">Ms.</option>
+                        <option value="dr" data-i18n="modal.form.title.dr">Dr.</option>
+                    </select>
+                </div>
+                
+                <div class="form-field required" data-field="name">
+                    <label for="name" data-i18n="modal.form.name">Name</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                
+                <div class="form-field required" data-field="email">
+                    <label for="email" data-i18n="modal.form.email">Email</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                
+                <div class="form-field required" data-field="phone">
+                    <label for="phone" data-i18n="modal.form.phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required aria-required="true">
+                </div>
+                
+                <div class="form-field" data-field="preferred_language">
+                    <label for="preferred_language" data-i18n="modal.form.preferred_language">Preferred Language</label>
+                    <select id="preferred_language" name="preferred_language">
+                        <option value="en" data-i18n="modal.form.language.english">English</option>
+                        <option value="es" data-i18n="modal.form.language.spanish">Spanish</option>
+                        <option value="zh" data-i18n="modal.form.language.chinese">Chinese</option>
+                        <option value="ko" data-i18n="modal.form.language.korean">Korean</option>
+                        <option value="hy" data-i18n="modal.form.language.armenian">Armenian</option>
+                        <option value="he" data-i18n="modal.form.language.hebrew">Hebrew</option>
+                        <option value="ru" data-i18n="modal.form.language.russian">Russian</option>
+                        <option value="fa" data-i18n="modal.form.language.farsi">Farsi</option>
+                        <option value="ar" data-i18n="modal.form.language.arabic">Arabic</option>
+                    </select>
+                </div>
+                
+                <div class="form-field" data-field="insurance">
+                    <label for="insurance" data-i18n="modal.form.insurance">Insurance Provider (if applicable)</label>
+                    <input type="text" id="insurance" name="insurance">
+                </div>
+                
+                <div class="form-field" data-field="preferred_time">
+                    <label for="preferred_time" data-i18n="modal.form.preferred_contact_time">Preferred Contact Time</label>
+                    <select id="preferred_time" name="preferred_time">
+                        <option value="morning" data-i18n="modal.form.time.morning">Morning (8am-12pm)</option>
+                        <option value="afternoon" data-i18n="modal.form.time.afternoon">Afternoon (12pm-4pm)</option>
+                        <option value="evening" data-i18n="modal.form.time.evening">Evening (4pm-6pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-field" data-field="message">
+                    <label for="consultation_message" data-i18n="modal.form.additional_info">Additional Information</label>
+                    <textarea id="consultation_message" name="message" rows="4"></textarea>
+                </div>
+                
+                <div class="form-field required" data-field="consent">
+                    <input type="checkbox" id="consultation_consent" name="consent" required aria-required="true">
+                    <label for="consultation_consent" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" data-i18n="modal.form.schedule_consultation">Schedule Consultation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

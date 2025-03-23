@@ -7,6 +7,9 @@
     <meta name="description" content="Explore Vision Clarity Institute's advanced laser vision correction services, including LASIK, PRK, and presbyopia treatment.">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/chatbot.css">
+    <link rel="stylesheet" href="../css/button-refinements.css">
+    <!-- Modal Styles -->
+    <link rel="stylesheet" href="../css/modal.css">
 </head>
 <body>
     <!-- Header -->
@@ -38,9 +41,14 @@
                         <option value="zh">中文</option>
                         <option value="ko">한국어</option>
                         <option value="hy">Հայերեն</option>
+                        <option value="he">עברית</option>
+                        <option value="ru">Русский</option>
+                        <option value="fa">فارسی</option>
+                        <option value="ar">العربية</option>
                     </select>
                 </div>
-                <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule Consultation</a>
+                <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+                <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Service Inquiry</button>
             </div>
         </div>
     </header>
@@ -78,7 +86,7 @@
                     <p data-i18n="services.traditional.recovery_text">Most patients experience improved vision within 24 hours after surgery. Full recovery typically takes 1-2 weeks, with stable vision usually achieved within one month. Traditional LASIK has a high success rate, with approximately 96% of patients achieving their desired vision.</p>
                     
                     <div class="service-cta">
-                        <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule a Consultation</a>
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-service="traditional_lasik" data-i18n="global.buttons.schedule">Schedule a Consultation</button>
                     </div>
                 </div>
                 <div class="service-image">
@@ -112,7 +120,7 @@
                     <p data-i18n="services.custom.right_for_you_text">While slightly more expensive than traditional LASIK, Custom Bladeless LASIK may be worth considering if you have complex vision issues, high-order aberrations, or want the most advanced technology available. Our surgeons will assess your specific needs during your consultation.</p>
                     
                     <div class="service-cta">
-                        <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule a Consultation</a>
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-service="bladeless_lasik" data-i18n="global.buttons.schedule">Schedule a Consultation</button>
                     </div>
                 </div>
                 <div class="service-image">
@@ -146,7 +154,7 @@
                     <p data-i18n="services.prk.recovery_text">Recovery from PRK takes longer than LASIK, with full visual stabilization typically occurring within 1-3 months. However, the long-term results are comparable to LASIK, and PRK eliminates flap-related complications.</p>
                     
                     <div class="service-cta">
-                        <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule a Consultation</a>
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-service="prk" data-i18n="global.buttons.schedule">Schedule a Consultation</button>
                     </div>
                 </div>
                 <div class="service-image">
@@ -179,7 +187,7 @@
                     <p data-i18n="services.presbyopia.determination_text">During your consultation, our specialists will evaluate your vision, discuss your lifestyle and visual needs, and recommend the most suitable presbyopia correction approach for you.</p>
                     
                     <div class="service-cta">
-                        <a href="contact.html" class="btn btn-primary" data-i18n="global.buttons.schedule">Schedule a Consultation</a>
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-service="presbyopia" data-i18n="global.buttons.schedule">Schedule a Consultation</button>
                     </div>
                 </div>
                 <div class="service-image">
@@ -194,7 +202,7 @@
         <div class="container">
             <h2 data-i18n="services.cta.title">Ready to See Clearly Without Glasses?</h2>
             <p data-i18n="services.cta.content">Schedule your free consultation today to learn which vision correction procedure is right for you.</p>
-            <a href="contact.html" class="btn btn-large" data-i18n="global.buttons.schedule">Book Your Free Consultation</a>
+            <button class="btn btn-large open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Book Your Free Consultation</button>
         </div>
     </section>
 
@@ -246,6 +254,9 @@
     <!-- Scripts -->
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
-    <!-- Note: Script path corrected from "../scripts.js" to "../js/scripts.js" -->
+    <script src="../js/modal.js"></script>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 </body>
 </html>

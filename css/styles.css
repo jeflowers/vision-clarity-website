@@ -175,18 +175,22 @@ a:hover {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: 10px;
 }
 
-.language-selector select {
-    background-color: transparent;
-    border: 1px solid var(--color-light-gray);
-    border-radius: var(--border-radius-small);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    cursor: pointer;
-    font-family: var(--font-secondary);
-    color: var(--color-dark);
+.language-selector {
+    margin-right: 4px;
+}
+
+#language-select {
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
     font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 /* Buttons */
@@ -194,36 +198,45 @@ a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--border-radius-small);
-    border: none;
-    font-weight: 500;
-    font-family: var(--font-accent);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 0 1.5rem;
+    border-radius: 4px;
     text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1;
+    height: 44px;
+    min-width: 160px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: #4CAF50;
+    color: white;
 }
 
 .btn-primary:hover {
-    background-color: darken(var(--color-primary), 10%);
-    transform: translateY(-2px);
-    color: var(--color-white);
+    background-color: #388E3C;
 }
 
 .btn-secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-white);
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
 }
 
 .btn-outline {
     background-color: transparent;
     border: 2px solid var(--color-primary);
     color: var(--color-primary);
+    height: 44px;
 }
 
 .btn-outline:hover {
@@ -232,8 +245,10 @@ a:hover {
 }
 
 .btn-large {
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: 0 var(--spacing-xl);
     font-size: 1.125rem;
+    height: 52px;
+    min-width: 200px;
 }
 
 /* Hero Section */
@@ -322,7 +337,7 @@ a:hover {
 
 .intro-features {
     margin: var(--spacing-lg) 0;
-    list-style-position: inside;
+    list-style-type: none; /* Changed from list-style-position: inside; to remove bullets */
 }
 
 .intro-features li {
@@ -639,6 +654,17 @@ address p {
     .hero-images {
         margin-top: var(--spacing-xl);
     }
+    
+    .header-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+    
+    .btn {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -677,6 +703,16 @@ address p {
     .footer-legal {
         justify-content: center;
     }
+    
+    .header-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .language-selector {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -692,6 +728,13 @@ address p {
     
     .cta-section h2 {
         font-size: 2rem;
+    }
+    
+    .btn {
+        min-width: 140px;
+        padding: 0 1rem;
+        font-size: 0.8rem;
+        height: 40px;
     }
 }
 

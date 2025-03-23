@@ -7,48 +7,53 @@
     <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/button-refinements.css">
+    <!-- Modal Styles -->
+    <link rel="stylesheet" href="css/modal.css">
+    <!-- Checkmark Fix -->
+    <link rel="stylesheet" href="css/checkmark-fix.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
-                </a>
-            </div>
-            <nav class="main-nav">
-                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                    <img src="assets/images/icons/menu.svg" alt="Menu">
-                </button>
-                <ul class="nav-list">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="pages/services.html">Services</a></li>
-                    <li><a href="pages/technology.html">Technology</a></li>
-                    <li><a href="pages/staff.html">Our Staff</a></li>
-                    <li><a href="pages/locations.html">Locations</a></li>
-                    <li><a href="pages/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <div class="language-selector">
-                    <select id="language-select" aria-label="Select Language">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="zh">中文</option>
-                        <option value="ko">한국어</option>
-                        <option value="hy">Հայերեն</option>
-                        <option value="he">עברית</option>
-                        <option value="tl">Filipino</option>
-                        <option value="ru">Русский</option>
-                        <option value="fa">فارسی</option>
-                        <option value="ar">العربية</option>
-                    </select>
-                </div>        
-                <a href="pages/contact.html" class="btn btn-primary">Schedule Consultation</a>
-            </div>
+    <!-- Header for index.html with Modal Button Implementation -->
+<header class="header">
+    <div class="container">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
+            </a>
         </div>
-    </header>
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <img src="assets/images/icons/menu.svg" alt="Menu">
+            </button>
+            <ul class="nav-list">
+                <li><a href="index.html" class="active" data-i18n="global.menu.home">Home</a></li>
+                <li><a href="pages/services.html" data-i18n="global.menu.services">Services</a></li>
+                <li><a href="pages/technology.html" data-i18n="global.menu.technology">Technology</a></li>
+                <li><a href="pages/staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
+                <li><a href="pages/locations.html" data-i18n="global.menu.locations">Locations</a></li>
+                <li><a href="pages/contact.html" data-i18n="global.menu.contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <div class="language-selector">
+                <select id="language-select" aria-label="Select Language">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="zh">中文</option>
+                    <option value="ko">한국어</option>
+                    <option value="hy">Հայերեն</option>
+                    <option value="he">עברית</option>
+                    <option value="ru">Русский</option>
+                    <option value="fa">فارسی</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+            <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+            <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+        </div>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -58,7 +63,7 @@
                     <h1>Advanced Laser Vision Correction</h1>
                     <p>Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts.</p>
                     <div class="hero-cta">
-                        <a href="pages/contact.html" class="btn btn-primary btn-large">Schedule Free Consultation</a>
+                        <button class="btn btn-primary btn-large open-modal" data-form-type="consultation">Schedule Free Consultation</button>
                         <a href="pages/technology.html" class="btn btn-outline">Explore Our Technology</a>
                     </div>
                 </div>
@@ -115,7 +120,10 @@
                     </div>
                     <h3>Traditional LASIK</h3>
                     <p>Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
-                    <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#traditional" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -124,7 +132,10 @@
                     </div>
                     <h3>Custom Bladeless LASIK</h3>
                     <p>Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
-                    <a href="pages/services.html#custom" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#custom" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="bladeless_lasik">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -133,7 +144,10 @@
                     </div>
                     <h3>PRK</h3>
                     <p>An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
-                    <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#prk" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk">Request Consultation</button>
+                    </div>
                 </div>
                 
                 <div class="service-card">
@@ -142,7 +156,10 @@
                     </div>
                     <h3>Presbyopia Correction</h3>
                     <p>Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
-                    <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
+                    <div class="service-actions">
+                        <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="presbyopia">Request Consultation</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -230,19 +247,29 @@
             </div>
             
             <div class="faq-cta">
-                <a href="pages/contact.html" class="btn btn-primary">Schedule a Free Consultation</a>
+                <button class="btn btn-primary open-modal" data-form-type="consultation">Schedule a Free Consultation</button>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to See Clearly?</h2>
-            <p>Schedule your free consultation today and take the first step toward clearer vision.</p>
-            <a href="pages/contact.html" class="btn btn-large">Book Your Free Consultation</a>
-        </div>
-    </section>
+    <!-- Example of CTA section on the homepage with modal implementation -->
+<section class="cta-section">
+    <div class="container">
+        <h2 data-i18n="home.cta.title">Ready to Experience Clear Vision?</h2>
+        <p data-i18n="home.cta.content">Take the first step toward visual freedom. Our experts are ready to help you achieve better vision without glasses or contacts.</p>
+        <button class="btn btn-large open-modal" data-form-type="consultation" data-i18n="home.cta.button">Schedule Your Free Consultation</button>
+    </div>
+</section>
+
+<!-- Another example for service-specific CTA -->
+<section class="service-cta">
+    <div class="container">
+        <h3 data-i18n="home.service_cta.title">Interested in LASIK?</h3>
+        <p data-i18n="home.service_cta.content">Learn more about our advanced LASIK procedures. Our specialists will assess your vision and recommend the best solution.</p>
+        <button class="btn btn-primary open-modal" data-form-type="inquiry" data-service="traditional_lasik" data-i18n="home.service_cta.button">Request Information</button>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -331,7 +358,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="scripts.js"></script>
-    <script src="chatbot.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/modal.js"></script>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 </body>
 </html>

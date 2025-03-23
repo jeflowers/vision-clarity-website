@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize FAQ accordions
     initFaqAccordions();
     
+    // Initialize service inquiry functionality
+    initServiceInquiry();
+    
     // Initialize any other UI elements
     initMiscUI();
 });
@@ -199,6 +202,27 @@ function initFaqAccordions() {
             }
         });
     });
+}
+
+/**
+ * Initialize service inquiry functionality
+ */
+function initServiceInquiry() {
+    // Check if the current page is loaded with the inquiry parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const isInquiry = urlParams.get('inquiry') === 'true';
+    
+    // If this is a service inquiry and we're on the contact page
+    if (isInquiry && window.location.pathname.includes('/contact.html')) {
+        // Trigger the service inquiry modal if it exists
+        const serviceInquiryButton = document.getElementById('serviceInquiryButton');
+        if (serviceInquiryButton) {
+            // Use setTimeout to ensure the DOM is fully loaded
+            setTimeout(() => {
+                serviceInquiryButton.click();
+            }, 500);
+        }
+    }
 }
 
 /**

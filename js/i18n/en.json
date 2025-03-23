@@ -4,11 +4,13 @@
       "home": "Home",
       "services": "Services",
       "technology": "Technology",
+      "staff": "Our Staff",
       "locations": "Locations",
       "contact": "Contact"
     },
     "buttons": {
-      "schedule": "Schedule Consultation"
+      "schedule": "Schedule Consultation",
+      "inquiry": "Request Information"
     },
     "footer": {
       "tagline": "Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.",
@@ -97,5 +99,72 @@
       "title": "Ready to See Clearly Without Glasses?",
       "content": "Schedule your free consultation today to learn which vision correction procedure is right for you."
     }
+  },
+  "modal": {
+    "consultation": {
+      "title": "Schedule a Consultation",
+      "success": "Thank you! Your consultation request has been received. We will contact you shortly."
+    },
+    "inquiry": {
+      "title": "Request Information",
+      "success": "Thank you for your request. Our team will respond to your questions soon."
+    },
+    "form": {
+      "title": "Title",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "preferred_language": "Preferred Language",
+      "insurance": "Insurance Provider (if applicable)",
+      "preferred_contact_time": "Preferred Contact Time",
+      "service": "Service of Interest",
+      "additional_info": "Additional Information",
+      "consent": "I consent to Vision Clarity Institute collecting and storing the information provided above.",
+      "schedule_consultation": "Schedule Consultation",
+      "submit_inquiry": "Submit Inquiry",
+      "select": "Select",
+      "select_service": "Select a service",
+      "time": {
+        "morning": "Morning (8am-12pm)",
+        "afternoon": "Afternoon (12pm-4pm)",
+        "evening": "Evening (4pm-6pm)"
+      },
+      "language": {
+        "english": "English",
+        "spanish": "Spanish",
+        "chinese": "Chinese",
+        "korean": "Korean",
+        "armenian": "Armenian",
+        "hebrew": "Hebrew",
+        "russian": "Russian",
+        "farsi": "Farsi",
+        "arabic": "Arabic"
+      },
+      "service": {
+        "traditional_lasik": "Traditional LASIK",
+        "bladeless_lasik": "Custom Bladeless LASIK",
+        "prk": "PRK",
+        "presbyopia": "Presbyopia Correction",
+        "other": "Other (please specify)"
+      },
+      "title": {
+        "mr": "Mr.",
+        "mrs": "Mrs.",
+        "ms": "Ms.",
+        "dr": "Dr.",
+        "prof": "Prof."
+      }
+    }
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Spanish",
+    "chinese": "Chinese",
+    "korean": "Korean",
+    "armenian": "Armenian",
+    "hebrew": "Hebrew",
+    "russian": "Russian",
+    "farsi": "Farsi",
+    "arabic": "Arabic"
   }
 }

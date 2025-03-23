@@ -1,0 +1,282 @@
+/* service-inquiry-modal.css */
+
+.service-inquiry-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-inquiry-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.service-inquiry-modal.fade-in {
+    opacity: 1;
+}
+
+.service-inquiry-modal.fade-out {
+    opacity: 0;
+}
+
+.service-inquiry-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.service-inquiry-modal.active .service-inquiry-content {
+    transform: translateY(0);
+}
+
+.close-service-inquiry {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 28px;
+    color: #555;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-service-inquiry:hover {
+    color: #000;
+}
+
+.service-inquiry-form {
+    margin-top: 20px;
+}
+
+.service-inquiry-form .form-group {
+    margin-bottom: 20px;
+}
+
+.service-inquiry-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.service-inquiry-form input,
+.service-inquiry-form select,
+.service-inquiry-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.service-inquiry-form input:focus,
+.service-inquiry-form select:focus,
+.service-inquiry-form textarea:focus {
+    border-color: #76b900; /* Primary brand color */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(118, 185, 0, 0.2);
+}
+
+.service-inquiry-form .radio-group {
+    margin-top: 8px;
+    display: flex;
+    gap: 20px;
+}
+
+.service-inquiry-form .radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.service-inquiry-form .radio-label input {
+    margin-right: 8px;
+    width: auto;
+}
+
+.service-inquiry-form .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+}
+
+.service-inquiry-form .checkbox-group input {
+    width: auto;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+.service-inquiry-form .form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.service-inquiry-form .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Success Alert */
+.service-inquiry-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-inquiry-success.active {
+    display: flex;
+    opacity: 1;
+}
+
+.success-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: modal-slide-in 0.3s ease;
+}
+
+@keyframes modal-slide-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-success {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 28px;
+    color: #555;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-success:hover {
+    color: #000;
+}
+
+.success-content h3 {
+    color: #76b900;
+    margin-bottom: 15px;
+}
+
+.success-content p {
+    margin-bottom: 20px;
+}
+
+/* Form validation */
+.service-inquiry-form input.error,
+.service-inquiry-form select.error,
+.service-inquiry-form textarea.error {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Accessibility enhancements */
+.service-inquiry-form input:focus-visible,
+.service-inquiry-form select:focus-visible,
+.service-inquiry-form textarea:focus-visible {
+    outline: 2px solid #1a73e8;
+    outline-offset: 2px;
+}
+
+/* Custom button styling */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-inquiry-content,
+    .success-content {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .service-inquiry-form input,
+    .service-inquiry-form select,
+    .service-inquiry-form textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .close-service-inquiry,
+    .close-success {
+        top: 10px;
+        right: 15px;
+    }
+    
+    .service-inquiry-form .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* RTL language support */
+[dir="rtl"] .service-inquiry-form .form-actions {
+    text-align: left;
+}
+
+[dir="rtl"] .close-service-inquiry,
+[dir="rtl"] .close-success {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .service-inquiry-form .radio-label input,
+[dir="rtl"] .service-inquiry-form .checkbox-group input {
+    margin-right: 0;
+    margin-left: 10px;
+}

@@ -4,11 +4,13 @@
       "home": "홈",
       "services": "서비스",
       "technology": "기술",
+      "staff": "의료진",
       "locations": "위치",
       "contact": "연락처"
     },
     "buttons": {
-      "schedule": "상담 예약"
+      "schedule": "상담 예약",
+      "inquiry": "정보 요청"
     },
     "footer": {
       "tagline": "최첨단 기술을 사용한 고급 라식 눈 수술로 최적의 결과와 환자 만족도를 보장합니다.",
@@ -97,5 +99,72 @@
       "title": "안경 없이 선명하게 볼 준비가 되셨나요?",
       "content": "어떤 시력 교정 시술이 귀하에게 적합한지 알아보기 위해 오늘 무료 상담을 예약하세요."
     }
+  },
+  "modal": {
+    "consultation": {
+      "title": "상담 예약",
+      "success": "감사합니다! 귀하의 상담 요청이 접수되었습니다. 곧 연락드리겠습니다."
+    },
+    "inquiry": {
+      "title": "서비스 문의",
+      "success": "문의해주셔서 감사합니다. 저희 팀이 곧 귀하의 질문에 답변드릴 것입니다."
+    },
+    "form": {
+      "title": "호칭",
+      "name": "이름",
+      "email": "이메일",
+      "phone": "전화번호",
+      "preferred_language": "선호하는 언어",
+      "insurance": "보험 제공자 (해당되는 경우)",
+      "preferred_contact_time": "선호하는 연락 시간",
+      "service": "관심 있는 서비스",
+      "additional_info": "추가 정보",
+      "consent": "본인은 Vision Clarity Institute가 위에 제공된 정보를 수집하고 저장하는 것에 동의합니다.",
+      "schedule_consultation": "상담 예약",
+      "submit_inquiry": "문의 제출",
+      "select": "선택",
+      "select_service": "서비스 선택",
+      "time": {
+        "morning": "오전 (8am-12pm)",
+        "afternoon": "오후 (12pm-4pm)",
+        "evening": "저녁 (4pm-6pm)"
+      },
+      "language": {
+        "english": "영어",
+        "spanish": "스페인어",
+        "chinese": "중국어",
+        "korean": "한국어",
+        "armenian": "아르메니아어",
+        "hebrew": "히브리어",
+        "russian": "러시아어",
+        "farsi": "페르시아어",
+        "arabic": "아랍어"
+      },
+      "service": {
+        "traditional_lasik": "전통적 라식",
+        "bladeless_lasik": "맞춤형 블레이드리스 라식",
+        "prk": "PRK",
+        "presbyopia": "노안 교정",
+        "other": "기타 (상세히 기재해주세요)"
+      },
+      "title": {
+        "mr": "씨",
+        "mrs": "여사님",
+        "ms": "양",
+        "dr": "의사",
+        "prof": "교수님"
+      }
+    }
+  },
+  "language": {
+    "english": "영어",
+    "spanish": "스페인어",
+    "chinese": "중국어",
+    "korean": "한국어",
+    "armenian": "아르메니아어",
+    "hebrew": "히브리어",
+    "russian": "러시아어",
+    "farsi": "페르시아어",
+    "arabic": "아랍어"
   }
 }

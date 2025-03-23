@@ -1,0 +1,71 @@
+<!-- Standard Contact Form Template -->
+<div class="contact-form-container">
+    <h2 class="form-title">Send Us a Message</h2>
+    
+    <form id="contactForm" class="contact-form">
+        <div class="form-field">
+            <label for="contact_title">Title</label>
+            <select id="contact_title" name="title">
+                <option value="">Select</option>
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="ms">Ms.</option>
+                <option value="dr">Dr.</option>
+            </select>
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_name">Name</label>
+            <input type="text" id="contact_name" name="name">
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_email">Email</label>
+            <input type="email" id="contact_email" name="email">
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_phone">Phone</label>
+            <input type="tel" id="contact_phone" name="phone">
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_language">Preferred Language</label>
+            <select id="contact_language" name="preferred_language">
+                <option value="english">English</option>
+                <option value="spanish">Español</option>
+                <option value="chinese">中文</option>
+                <option value="korean">한국어</option>
+                <option value="armenian">Հայերեն</option>
+            </select>
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_insurance">Insurance Provider (if applicable)</label>
+            <input type="text" id="contact_insurance" name="insurance">
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_time">Preferred Contact Time</label>
+            <select id="contact_time" name="preferred_time">
+                <option value="morning">Morning (8am-12pm)</option>
+                <option value="afternoon">Afternoon (12pm-4pm)</option>
+                <option value="evening">Evening (4pm-6pm)</option>
+            </select>
+        </div>
+        
+        <div class="form-field">
+            <label for="contact_message">Message</label>
+            <textarea id="contact_message" name="message" rows="4"></textarea>
+        </div>
+        
+        <div class="checkbox-field">
+            <input type="checkbox" id="contact_consent" name="consent">
+            <label for="contact_consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+    </form>
+</div>

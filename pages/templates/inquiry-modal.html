@@ -1,0 +1,66 @@
+<!-- Service Inquiry Modal Template -->
+<div id="inquiryModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h2 class="modal-title">Service Inquiry</h2>
+        
+        <form id="inquiryForm">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="inquiry_name">Name <span class="required">*</span></label>
+                    <input type="text" id="inquiry_name" name="name" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="inquiry_email">Email <span class="required">*</span></label>
+                    <input type="email" id="inquiry_email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="inquiry_phone">Phone <span class="required">*</span></label>
+                    <input type="tel" id="inquiry_phone" name="phone" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="inquiry_language">Preferred Language</label>
+                    <select id="inquiry_language" name="preferred_language">
+                        <option value="english">English</option>
+                        <option value="spanish">Español</option>
+                        <option value="chinese">中文</option>
+                        <option value="korean">한국어</option>
+                        <option value="armenian">Հայերեն</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-field">
+                <label for="service">Service of Interest <span class="required">*</span></label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="traditional_lasik">Traditional LASIK</option>
+                    <option value="bladeless_lasik">Custom Bladeless LASIK</option>
+                    <option value="prk">PRK</option>
+                    <option value="presbyopia">Presbyopia Correction</option>
+                    <option value="other">Other (please specify)</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label for="inquiry_info">Additional Information</label>
+                <textarea id="inquiry_info" name="additional_info"></textarea>
+            </div>
+            
+            <div class="checkbox-field">
+                <input type="checkbox" id="inquiry_consent" name="consent" required>
+                <label for="inquiry_consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+            </div>
+        </form>
+    </div>
+</div>

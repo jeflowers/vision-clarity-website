@@ -1,0 +1,132 @@
+/* Services Section Styles */
+
+.services-section {
+    padding: 70px 0;
+    background-color: #f9f9f9;
+}
+
+.services-section h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Service Card */
+.service-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Service Icon */
+.service-icon {
+    margin: 0 auto 20px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon img {
+    width: 100%;
+    height: auto;
+}
+
+/* Service Title */
+.service-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+/* Service Description */
+.service-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Makes all descriptions take same vertical space */
+}
+
+/* Service Link */
+.service-link {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.service-link:hover {
+    color: #388E3C;
+    text-decoration: underline;
+}
+
+/* Service Button */
+.service-card .btn {
+    margin-top: auto; /* Pushes button to bottom of card */
+    align-self: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 50px 0;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-section {
+        padding: 40px 0;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+    }
+}

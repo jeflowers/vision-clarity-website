@@ -1,0 +1,75 @@
+<!-- Message Modal Template -->
+<div id="messageModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h2 class="modal-title">Send Us a Message</h2>
+        
+        <form id="messageForm">
+            <div class="form-field">
+                <label for="title">Title</label>
+                <select id="title" name="title">
+                    <option value="">Select</option>
+                    <option value="mr">Mr.</option>
+                    <option value="mrs">Mrs.</option>
+                    <option value="ms">Ms.</option>
+                    <option value="dr">Dr.</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            
+            <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-field">
+                <label for="preferred_language">Preferred Language</label>
+                <select id="preferred_language" name="preferred_language">
+                    <option value="english">English</option>
+                    <option value="spanish">Español</option>
+                    <option value="chinese">中文</option>
+                    <option value="korean">한국어</option>
+                    <option value="armenian">Հայերեն</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label for="insurance">Insurance Provider (if applicable)</label>
+                <input type="text" id="insurance" name="insurance">
+            </div>
+            
+            <div class="form-field">
+                <label for="preferred_time">Preferred Contact Time</label>
+                <select id="preferred_time" name="preferred_time">
+                    <option value="morning">Morning (8am-12pm)</option>
+                    <option value="afternoon">Afternoon (12pm-4pm)</option>
+                    <option value="evening">Evening (4pm-6pm)</option>
+                </select>
+            </div>
+            
+            <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            
+            <div class="checkbox-field">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
