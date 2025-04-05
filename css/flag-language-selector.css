@@ -80,12 +80,14 @@
     padding-bottom: 8px;
 }
 
-/* Tooltip/rollover effect for language description */
+/* Hide the field description initially */
 .field-description {
-    display: none;
+    display: none !important;
+    visibility: hidden;
     position: absolute;
-    bottom: -40px;
+    top: 100%;
     left: 0;
+    margin-top: 5px;
     background-color: #333;
     color: #fff;
     padding: 5px 10px;
@@ -94,13 +96,13 @@
     width: 220px;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: opacity 0.3s ease;
     pointer-events: none;
 }
 
-/* Show tooltip on select hover */
+/* Show field description only on hover */
 .flag-select-wrapper:hover .field-description {
-    display: block;
+    display: block !important;
+    visibility: visible;
 }
 
 /* Arrow for tooltip */
@@ -120,12 +122,6 @@
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-}
-
-/* Show tooltip on focus for accessibility */
-.flag-enabled:focus + .select-icon + .flag-display + .field-description,
-.flag-enabled:focus ~ .field-description {
-    display: block;
 }
 
 /* RTL language support */
@@ -177,4 +173,13 @@
         font-size: 14px;
         left: 6px;
     }
+}
+
+/* Specific overrides for the header language description */
+#header_language_description {
+    display: none !important;
+}
+
+.header-actions .form-field {
+    position: relative;
 }
