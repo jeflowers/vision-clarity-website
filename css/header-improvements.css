@@ -1,0 +1,198 @@
+/* Vision Clarity Institute - Header Improvements
+ * Enhances the header with better accessibility, responsive design, and active states
+ */
+
+/* Accessibility Improvements */
+.header {
+    position: relative;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: top 0.3s;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Enhanced focus states for better keyboard navigation */
+.nav-list a:focus,
+.mobile-menu-toggle:focus,
+.language-selector select:focus,
+.header-actions .btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* ARIA support */
+[aria-current="page"] {
+    position: relative;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #4CAF50;
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Mobile menu toggle improvements */
+.mobile-menu-toggle {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+    display: none; /* Hidden by default, shown in media query */
+    border-radius: 4px;
+}
+
+.mobile-menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Navigation Enhancements */
+@media (max-width: 991px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        padding: 0;
+        margin: 0;
+        z-index: 100;
+    }
+    
+    .nav-list.active {
+        display: block;
+    }
+    
+    .nav-list li {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .nav-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-list a {
+        padding: 15px 20px;
+        display: block;
+        text-align: left;
+    }
+    
+    /* Ensure proper spacing in header elements */
+    .logo-container {
+        flex: 1;
+    }
+    
+    .header-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-left: 10px;
+    }
+}
+
+/* Tablet/Small screens adjustments */
+@media (max-width: 768px) {
+    .header .container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .header-actions {
+        flex: 1 0 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+    
+    .language-selector {
+        margin-right: 10px;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Mobile screens adjustments */
+@media (max-width: 576px) {
+    .header-actions {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .language-selector {
+        order: -1;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .btn {
+        flex: 1 0 auto;
+        min-width: 0;
+        text-align: center;
+    }
+}
+
+/* RTL Language Support */
+[dir="rtl"] .nav-list a[aria-current="page"]::after {
+    right: 0;
+    left: auto;
+}
+
+[dir="rtl"] .mobile-menu-toggle {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+[dir="rtl"] .header-actions {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+[dir="rtl"] .language-selector {
+    margin-right: 0;
+    margin-left: 10px;
+}
