@@ -1,0 +1,128 @@
+/* Flag-based Language Selector CSS
+ * Enhances language selectors with country flags
+ */
+
+/* Common styles for flag-enabled selects */
+.flag-select-wrapper,
+.form-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.flag-language-select,
+.flag-enabled {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 46px !important; /* Space for flag and dropdown icon */
+    padding-left: 32px !important; /* Space for flag on the left */
+    text-indent: 8px; /* Text indentation for better appearance with flag */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 38px;
+    line-height: 36px;
+}
+
+/* Hide native dropdown arrow */
+.flag-language-select::-ms-expand,
+.flag-enabled::-ms-expand {
+    display: none;
+}
+
+/* Flag display */
+.flag-display {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.form-flag-display {
+    left: 10px;
+    font-size: 18px;
+}
+
+.header-flag-display {
+    left: 8px;
+    font-size: 16px;
+}
+
+/* Dropdown icon */
+.select-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #555;
+}
+
+/* Header-specific styling */
+.header-language-select {
+    min-width: 120px;
+    background-color: #f8f8f8;
+}
+
+/* Form-specific styling */
+.form-language-select {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Focus styles */
+.flag-language-select:focus,
+.flag-enabled:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* RTL language support */
+[dir="rtl"] .flag-display {
+    left: auto;
+    right: 8px;
+}
+
+[dir="rtl"] .form-flag-display {
+    left: auto;
+    right: 10px;
+}
+
+[dir="rtl"] .select-icon {
+    right: auto;
+    left: 10px;
+}
+
+[dir="rtl"] .flag-language-select,
+[dir="rtl"] .flag-enabled {
+    padding-right: 32px !important;
+    padding-left: 46px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-language-select {
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-language-select {
+        min-width: 90px;
+        padding-left: 28px !important;
+    }
+    
+    .flag-display {
+        font-size: 14px;
+        left: 6px;
+    }
+}
