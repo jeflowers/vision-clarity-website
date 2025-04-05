@@ -5,19 +5,20 @@
         <select 
             id="{{form_prefix}}_preferred_language" 
             name="preferred_language" 
-            class="form-language-select"
+            class="form-language-select flag-enabled"
             aria-describedby="{{form_prefix}}_language_description">
-            <option value="en" data-i18n="modal.form.language.english">English</option>
-            <option value="es" data-i18n="modal.form.language.spanish">Español</option>
-            <option value="zh" data-i18n="modal.form.language.chinese">中文</option>
-            <option value="ko" data-i18n="modal.form.language.korean">한국어</option>
-            <option value="hy" data-i18n="modal.form.language.armenian">Հայերեն</option>
-            <option value="he" data-i18n="modal.form.language.hebrew">עברית</option>
-            <option value="ru" data-i18n="modal.form.language.russian">Русский</option>
-            <option value="fa" data-i18n="modal.form.language.farsi">فارسی</option>
-            <option value="ar" data-i18n="modal.form.language.arabic">العربية</option>
+            <option value="en" data-flag="🇺🇸" data-i18n="modal.form.language.english">English</option>
+            <option value="es" data-flag="🇪🇸" data-i18n="modal.form.language.spanish">Español</option>
+            <option value="zh" data-flag="🇨🇳" data-i18n="modal.form.language.chinese">中文</option>
+            <option value="ko" data-flag="🇰🇷" data-i18n="modal.form.language.korean">한국어</option>
+            <option value="hy" data-flag="🇦🇲" data-i18n="modal.form.language.armenian">Հայերեն</option>
+            <option value="he" data-flag="🇮🇱" data-i18n="modal.form.language.hebrew">עברית</option>
+            <option value="ru" data-flag="🇷🇺" data-i18n="modal.form.language.russian">Русский</option>
+            <option value="fa" data-flag="🇮🇷" data-i18n="modal.form.language.farsi">فارسی</option>
+            <option value="ar" data-flag="🇸🇦" data-i18n="modal.form.language.arabic">العربية</option>
         </select>
         <span class="select-icon form-select-icon"></span>
+        <span class="flag-display form-flag-display" aria-hidden="true">🇺🇸</span>
     </div>
     <span id="{{form_prefix}}_language_description" class="field-description" data-i18n="modal.form.language_description">
         Select the language you prefer for communication with our staff
