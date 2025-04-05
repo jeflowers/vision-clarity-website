@@ -91,20 +91,16 @@ const ComponentLoader = {
   
   // Get the root path based on current page location
   getRootPath: function() {
+    // Get the current path
     const path = window.location.pathname;
     
-    // Check if we're in the root directory
-    if (path === '/' || path.endsWith('/index.html') || path.endsWith('/')) {
+    // Check if we're at the root or index.html
+    if (path === '/' || path === '/index.html' || path.endsWith('/index.html')) {
       return './';
     }
     
-    // Check if we're in a subdirectory (like /pages/)
-    if (path.includes('/pages/')) {
-      return '../';
-    }
-    
-    // Default to current directory
-    return './';
+    // For all other pages (assuming they're in the /pages/ directory)
+    return '../';
   },
   
   // Process after all components are loaded
