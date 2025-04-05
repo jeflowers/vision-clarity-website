@@ -22,6 +22,7 @@
     border-radius: 4px;
     height: 38px;
     line-height: 36px;
+    min-width: 120px; /* Ensure enough width for text */
 }
 
 /* Hide native dropdown arrow */
@@ -39,6 +40,7 @@
     font-size: 16px;
     pointer-events: none;
     z-index: 2;
+    display: block; /* Ensure flag is always visible */
 }
 
 .form-flag-display {
