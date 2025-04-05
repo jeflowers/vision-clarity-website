@@ -80,40 +80,44 @@
     padding-bottom: 8px;
 }
 
-/* Hide the field description initially */
-.field-description {
-    display: none !important;
-    visibility: hidden;
+/* Tooltip styling for language description */
+.language-tooltip-container {
     position: absolute;
-    top: 100%;
+    width: 100%;
     left: 0;
-    margin-top: 5px;
+    z-index: 1000;
+}
+
+.field-description.tooltip-text {
+    display: none;
+    position: absolute;
+    top: 8px;
+    left: 0;
     background-color: #333;
     color: #fff;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 4px;
     font-size: 12px;
     width: 220px;
-    z-index: 100;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    pointer-events: none;
+    z-index: 1000;
+    text-align: left;
 }
 
-/* Show field description only on hover */
-.flag-select-wrapper:hover .field-description {
-    display: block !important;
-    visibility: visible;
+/* Show tooltip on hover */
+.flag-select-wrapper:hover .field-description.tooltip-text {
+    display: block;
 }
 
 /* Arrow for tooltip */
-.field-description:before {
+.field-description.tooltip-text:before {
     content: '';
     position: absolute;
-    top: -5px;
+    top: -8px;
     left: 20px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #333;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #333;
 }
 
 /* Focus styles */
@@ -122,6 +126,11 @@
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Show tooltip on focus for accessibility */
+.flag-enabled:focus ~ .language-tooltip-container .field-description.tooltip-text {
+    display: block;
 }
 
 /* RTL language support */
@@ -146,7 +155,7 @@
     padding-left: 46px !important;
 }
 
-[dir="rtl"] .field-description:before {
+[dir="rtl"] .field-description.tooltip-text:before {
     left: auto;
     right: 20px;
 }
@@ -157,7 +166,7 @@
         min-width: 100px;
     }
     
-    .field-description {
+    .field-description.tooltip-text {
         width: 180px;
         font-size: 11px;
     }
@@ -173,13 +182,19 @@
         font-size: 14px;
         left: 6px;
     }
+    
+    .field-description.tooltip-text {
+        left: -70px;
+    }
+    
+    .field-description.tooltip-text:before {
+        left: 90px;
+    }
 }
 
-/* Specific overrides for the header language description */
+/* Fix for header instance */
 #header_language_description {
-    display: none !important;
-}
-
-.header-actions .form-field {
-    position: relative;
+    width: 240px;
+    font-size: 12px;
+    white-space: normal;
 }
