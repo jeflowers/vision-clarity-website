@@ -1,0 +1,174 @@
+{
+  "global": {
+    "menu": {
+      "home": "Início",
+      "services": "Serviços",
+      "technology": "Tecnologia",
+      "staff": "Nossa Equipe",
+      "locations": "Localizações",
+      "contact": "Contato"
+    },
+    "buttons": {
+      "schedule": "Agendar Consulta",
+      "inquiry": "Fazer Consulta",
+      "learn_more": "Saiba Mais",
+      "read_more": "Leia Mais",
+      "submit": "Enviar",
+      "send": "Enviar Mensagem"
+    },
+    "footer": {
+      "tagline": "Cirurgia ocular Lasik avançada utilizando tecnologia de ponta para obter resultados ótimos e satisfação do paciente.",
+      "quickLinks": "Links Rápidos",
+      "contact": "Contato",
+      "hours": "Horário de Funcionamento",
+      "weekdays": "Segunda - Sexta: 8:00 - 18:00",
+      "saturday": "Sábado: 9:00 - 14:00",
+      "sunday": "Domingo: Fechado",
+      "phone": "Telefone: (800) 555-2020",
+      "email": "E-mail: info@visionclarityinstitute.com",
+      "copyright": "© 2025 Vision Clarity Institute. Todos os direitos reservados.",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "accessibility": "Acessibilidade"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Nossos Serviços",
+      "subtitle": "Procedimentos avançados de correção visual adaptados às suas necessidades"
+    },
+    "traditional": {
+      "title": "LASIK Tradicional",
+      "description": "O LASIK tradicional é nosso procedimento padrão de correção visual a laser que ajudou milhões de pessoas em todo o Brasil a reduzir ou eliminar a dependência de óculos e lentes de contato.",
+      "how_works_title": "Como Funciona",
+      "how_works_text": "Durante o LASIK tradicional, nosso cirurgião usa um microceratótomo (lâmina cirúrgica) para criar uma fina camada na córnea. Em seguida, a camada é levantada, e um laser excimer remodela o tecido corneano para corrigir sua visão. Finalmente, a camada é reposicionada para servir como um curativo natural durante a cicatrização.",
+      "candidates_title": "Candidatos Ideais",
+      "candidates_text": "Você pode ser um bom candidato para LASIK tradicional se:",
+      "candidates": {
+        "item1": "Tiver pelo menos 18 anos",
+        "item2": "Tiver mantido sua visão estável por pelo menos um ano",
+        "item3": "Tiver miopia, hipermetropia ou astigmatismo moderados",
+        "item4": "Tiver espessura corneana suficiente",
+        "item5": "Não tiver problemas significativos de saúde ocular"
+      },
+      "recovery_title": "Recuperação e Resultados",
+      "recovery_text": "A maioria dos pacientes experimenta melhora na visão dentro de 24 horas após a cirurgia. A recuperação completa geralmente leva de 1 a 2 semanas, e a visão estável é normalmente alcançada dentro de um mês. O LASIK tradicional tem alta taxa de sucesso, com aproximadamente 96% dos pacientes alcançando a visão desejada."
+    },
+    "custom": {
+      "title": "LASIK Personalizado Sem Corte",
+      "description": "O LASIK Personalizado Sem Corte é nosso procedimento premium de LASIK totalmente a laser que oferece maior precisão e personalização para resultados visuais ótimos.",
+      "how_works_title": "Como Funciona",
+      "how_works_text": "No LASIK Personalizado Sem Corte, utilizamos dois lasers diferentes: um laser de femtossegundo para criar a camada corneana (em vez de uma lâmina), e um laser excimer avançado guiado por frente de onda para remodelar a córnea. Esta abordagem totalmente a laser permite uma criação de camada mais precisa e um tratamento personalizado baseado no mapa único da sua córnea.",
+      "benefits_title": "Benefícios Principais",
+      "benefits": {
+        "item1": "Maior precisão na criação da camada",
+        "item2": "Plano de tratamento personalizado baseado nas características únicas do seu olho",
+        "item3": "Melhor visão noturna e redução do ofuscamento em comparação com o LASIK tradicional",
+        "item4": "Potencial para corrigir aberrações de ordem superior (distorções visuais)",
+        "item5": "Excelente opção para pacientes com córneas finas ou prescrições mais altas"
+      },
+      "right_for_you_title": "O LASIK Personalizado Sem Corte é Adequado para Você?",
+      "right_for_you_text": "Embora seja ligeiramente mais caro que o LASIK tradicional, o LASIK Personalizado Sem Corte pode valer a pena se você tiver problemas visuais complexos, aberrações de ordem superior, ou desejar a tecnologia mais avançada disponível. Nossos cirurgiões avaliarão suas necessidades específicas durante sua consulta."
+    },
+    "prk": {
+      "title": "PRK (Ceratectomia Fotorrefratora)",
+      "description": "PRK é uma excelente alternativa ao LASIK para pacientes que podem não ser candidatos ideais para procedimentos com camada. PRK foi o primeiro procedimento de correção visual a laser e continua oferecendo excelentes resultados.",
+      "how_works_title": "Como Funciona",
+      "how_works_text": "Durante a PRK, o cirurgião remove suavemente a camada externa da córnea (epitélio) em vez de criar uma camada. Em seguida, um laser excimer remodela a córnea para corrigir sua visão. O epitélio se regenera naturalmente nos dias seguintes ao procedimento.",
+      "candidates_title": "Candidatos Ideais para PRK",
+      "candidates_text": "PRK pode ser recomendado para pacientes que:",
+      "candidates": {
+        "item1": "Têm córneas finas que podem não ser adequadas para LASIK",
+        "item2": "Têm profissões ou hobbies com maior risco de lesões oculares (militares, esportes de contato)",
+        "item3": "Apresentam certas anomalias corneanas",
+        "item4": "Foram submetidos previamente a LASIK e necessitam de melhoria"
+      },
+      "recovery_title": "Recuperação e Resultados",
+      "recovery_text": "A recuperação da PRK leva mais tempo que o LASIK, com estabilização visual completa geralmente ocorrendo entre 1-3 meses. No entanto, os resultados a longo prazo são comparáveis ao LASIK, e a PRK elimina as complicações relacionadas à camada."
+    },
+    "presbyopia": {
+      "title": "Correção de Presbiopia",
+      "description": "A presbiopia é uma condição relacionada à idade que afeta quase todas as pessoas acima de 40 anos, dificultando o foco em objetos próximos. No Vision Clarity Institute, oferecemos várias soluções para abordar a presbiopia.",
+      "options_title": "Nossas Opções de Correção de Presbiopia",
+      "monovision_title": "LASIK Monovisão",
+      "monovision_text": "Nesta abordagem, um olho é corrigido para visão distante e o outro para visão próxima. Seu cérebro aprende a usar o olho apropriado dependendo do que está olhando. Isso pode reduzir ou eliminar a necessidade de óculos de leitura.",
+      "multifocal_title": "LASIK Multifocal",
+      "multifocal_text": "Usando tecnologia laser avançada, podemos criar múltiplas zonas de foco em sua córnea, permitindo visão clara em várias distâncias. Esta técnica avançada pode proporcionar excelentes resultados para candidatos apropriados.",
+      "rle_title": "Troca de Lente Intraocular (RLE)",
+      "rle_text": "Para alguns pacientes, especialmente aqueles acima de 50 anos, substituir a lente natural do olho por um implante de lente multifocal avançado pode ser a melhor opção. Este procedimento é similar à cirurgia de catarata, mas realizado antes do desenvolvimento das cataratas.",
+      "determination_title": "Determinando a Opção Correta para Você",
+      "determination_text": "Durante sua consulta, nossos especialistas avaliarão sua visão, discutirão seu estilo de vida e necessidades visuais, e recomendarão a abordagem de correção de presbiopia mais adequada para você."
+    },
+    "cta": {
+      "title": "Pronto para Ver Claramente Sem Óculos?",
+      "content": "Agende sua consulta gratuita hoje para descobrir qual procedimento de correção visual é adequado para você."
+    }
+  },
+  "modal": {
+    "consultation": {
+      "title": "Agendar uma Consulta",
+      "success": "Obrigado! Sua solicitação de consulta foi recebida. Entraremos em contato em breve."
+    },
+    "inquiry": {
+      "title": "Consulta de Serviços",
+      "success": "Obrigado pela sua consulta. Nossa equipe responderá suas perguntas em breve."
+    },
+    "form": {
+      "title": "Título",
+      "name": "Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "preferred_language": "Idioma Preferido",
+      "insurance": "Prestador de Seguro (se aplicável)",
+      "preferred_contact_time": "Horário de Contato Preferido",
+      "service": "Serviço de Interesse",
+      "additional_info": "Informações Adicionais",
+      "consent": "Autorizo o Vision Clarity Institute a coletar e armazenar as informações fornecidas acima.",
+      "schedule_consultation": "Agendar Consulta",
+      "submit_inquiry": "Enviar Consulta",
+      "select": "Selecionar",
+      "select_service": "Selecione um serviço",
+      "time": {
+        "morning": "Manhã (8:00-12:00)",
+        "afternoon": "Tarde (12:00-16:00)",
+        "evening": "Noite (16:00-18:00)"
+      },
+      "language": {
+        "portuguese": "Português",
+        "english": "Inglês",
+        "spanish": "Espanhol",
+        "french": "Francês",
+        "german": "Alemão",
+        "italian": "Italiano",
+        "mandarin": "Mandarim",
+        "korean": "Coreano",
+        "japanese": "Japonês"
+      },
+      "service": {
+        "traditional_lasik": "LASIK Tradicional",
+        "bladeless_lasik": "LASIK Personalizado Sem Corte",
+        "prk": "PRK",
+        "presbyopia": "Correção de Presbiopia",
+        "other": "Outro (por favor, especifique)"
+      },
+      "title": {
+        "mr": "Sr.",
+        "mrs": "Sra.",
+        "ms": "Srta.",
+        "dr": "Dr.",
+        "prof": "Prof."
+      }
+    }
+  },
+  "language": {
+    "portuguese": "Português",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "french": "Francês",
+    "german": "Alemão",
+    "italian": "Italiano",
+    "mandarin": "Mandarim",
+    "korean": "Coreano",
+    "japanese": "Japonês"
+  }
+}
