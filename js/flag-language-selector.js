@@ -39,10 +39,47 @@ function initializeFlagLanguageSelectors() {
                 syncLanguageSelectors(language);
             }
         });
+        
+        // Add tooltip hover behavior
+        setupTooltipBehavior(selector);
     });
     
     // Set initial language based on saved preference or browser language
     setInitialLanguage();
+}
+
+/**
+ * Set up tooltip hover behavior
+ * @param {HTMLElement} selector - The language selector element
+ */
+function setupTooltipBehavior(selector) {
+    const wrapper = selector.closest('.flag-select-wrapper');
+    if (!wrapper) return;
+    
+    // Find the tooltip/description element
+    const tooltip = wrapper.querySelector('.field-description');
+    if (!tooltip) return;
+    
+    // Hide tooltip when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!wrapper.contains(event.target)) {
+            tooltip.style.display = 'none';
+        }
+    });
+    
+    // Hide tooltip when the select loses focus
+    selector.addEventListener('blur', function() {
+        // Delay hiding to allow for click events
+        setTimeout(() => {
+            tooltip.style.display = 'none';
+        }, 200);
+    });
+    
+    // On mobile, show/hide on click
+    selector.addEventListener('touchstart', function() {
+        const isVisible = tooltip.style.display === 'block';
+        tooltip.style.display = isVisible ? 'none' : 'block';
+    });
 }
 
 /**
