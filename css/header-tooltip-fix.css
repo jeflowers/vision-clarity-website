@@ -1,0 +1,57 @@
+/**
+ * Vision Clarity Institute - Header Tooltip Fix
+ * Ensures the language tooltip displays correctly in the header
+ */
+
+/* Hide field descriptions in header by default */
+.header-actions .field-description {
+    display: none !important;
+}
+
+/* Style tooltip for header language selector */
+.header-actions .flag-select-wrapper {
+    position: relative;
+}
+
+.header-actions .language-tooltip-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Only show tooltip on hover */
+.header-actions .flag-select-wrapper:hover + .language-tooltip-container .field-description,
+.header-actions .flag-select-wrapper:hover ~ .language-tooltip-container .field-description,
+.header-actions .language-tooltip-container:hover .field-description {
+    display: block !important;
+}
+
+/* Position tooltip */
+.header-actions .field-description.tooltip-text {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 240px;
+    z-index: 1000;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    white-space: normal;
+    text-align: left;
+}
+
+/* Tooltip arrow */
+.header-actions .field-description.tooltip-text:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #333;
+}
