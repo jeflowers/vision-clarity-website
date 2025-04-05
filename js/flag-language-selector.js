@@ -57,8 +57,23 @@ function setupTooltipBehavior(selector) {
     if (!wrapper) return;
     
     // Find the tooltip/description element
-    const tooltip = wrapper.querySelector('.field-description');
+    const tooltipContainer = wrapper.nextElementSibling;
+    if (!tooltipContainer || !tooltipContainer.classList.contains('language-tooltip-container')) return;
+    
+    const tooltip = tooltipContainer.querySelector('.field-description');
     if (!tooltip) return;
+    
+    // Hide tooltip by default
+    tooltip.style.display = 'none';
+    
+    // Show tooltip on hover
+    wrapper.addEventListener('mouseenter', function() {
+        tooltip.style.display = 'block';
+    });
+    
+    wrapper.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+    });
     
     // Hide tooltip when clicking outside
     document.addEventListener('click', function(event) {
@@ -67,7 +82,11 @@ function setupTooltipBehavior(selector) {
         }
     });
     
-    // Hide tooltip when the select loses focus
+    // Show/hide tooltip on focus/blur for accessibility
+    selector.addEventListener('focus', function() {
+        tooltip.style.display = 'block';
+    });
+    
     selector.addEventListener('blur', function() {
         // Delay hiding to allow for click events
         setTimeout(() => {
@@ -76,7 +95,7 @@ function setupTooltipBehavior(selector) {
     });
     
     // On mobile, show/hide on click
-    selector.addEventListener('touchstart', function() {
+    wrapper.addEventListener('touchstart', function() {
         const isVisible = tooltip.style.display === 'block';
         tooltip.style.display = isVisible ? 'none' : 'block';
     });
