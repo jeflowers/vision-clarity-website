@@ -3,6 +3,9 @@
  * Improves header accessibility, navigation, and mobile responsiveness
  */
 
+// Add this near the top of the file, right after your initial comments
+window.initializeHeader = initializeHeader;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize header functionality
     initializeHeader();
