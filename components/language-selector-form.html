@@ -25,11 +25,14 @@
         </select>
         <span class="select-icon {{form_prefix === 'header' ? 'header-select-icon' : 'form-select-icon'}}"></span>
         <span class="flag-display {{form_prefix === 'header' ? 'header-flag-display' : 'form-flag-display'}}" aria-hidden="true">🇺🇸</span>
-        
-        <!-- Always include the description, but only show on hover -->
+    </div>
+    
+    <!-- Language description as tooltip (hidden by default, shown on hover) -->
+    <div class="language-tooltip-container">
         <span id="{{form_prefix}}_language_description" 
-              class="field-description" 
-              data-i18n="modal.form.language_description">
+              class="field-description tooltip-text" 
+              data-i18n="modal.form.language_description"
+              style="display: none;">
             Select the language you prefer for communication with our staff
         </span>
     </div>
