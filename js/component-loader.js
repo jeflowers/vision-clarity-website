@@ -59,7 +59,7 @@ const ComponentLoader = {
     const rootPath = this.getRootPath();
     
     // Fetch the component
-    fetch(rootPath + componentPath)
+    fetch(`${rootPath}${componentPath}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`Failed to load component: ${response.status}`);
@@ -91,30 +91,20 @@ const ComponentLoader = {
   
   // Get the root path based on current page location
   getRootPath: function() {
-    // Check if we're in a subdirectory
     const path = window.location.pathname;
     
-    // Extract page depth
-    let depth = 0;
-    let pathWithoutFile = path;
-    
-    // Remove the file from the path
-    const lastSlashIndex = path.lastIndexOf('/');
-    if (lastSlashIndex !== -1) {
-      pathWithoutFile = path.substring(0, lastSlashIndex + 1);
+    // Check if we're in the root directory
+    if (path === '/' || path.endsWith('/index.html') || path.endsWith('/')) {
+      return './';
     }
     
-    // Count directory levels
-    const parts = pathWithoutFile.split('/').filter(part => part.length > 0);
-    depth = parts.length;
-    
-    // Generate the appropriate root path
-    if (depth === 0) {
-      return './'; // We're at the root
-    } else {
-      // Go up 'depth' levels
-      return '../'.repeat(depth);
+    // Check if we're in a subdirectory (like /pages/)
+    if (path.includes('/pages/')) {
+      return '../';
     }
+    
+    // Default to current directory
+    return './';
   },
   
   // Process after all components are loaded
