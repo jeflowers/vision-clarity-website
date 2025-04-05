@@ -32,6 +32,9 @@ function initializeFlagLanguageSelectors() {
                     window.i18n.changeLanguage(language);
                 }
                 
+                // Save language preference to localStorage
+                localStorage.setItem('vci-language', language);
+                
                 // Sync all other language selectors
                 syncLanguageSelectors(language);
             }
@@ -47,31 +50,54 @@ function initializeFlagLanguageSelectors() {
  * @param {HTMLElement} selector - The language selector element
  */
 function updateFlag(selector) {
+    if (!selector || !selector.options || selector.selectedIndex === undefined) {
+        console.error('Invalid selector passed to updateFlag');
+        return;
+    }
+    
     const selectedOption = selector.options[selector.selectedIndex];
+    if (!selectedOption) {
+        console.error('No selected option found');
+        return;
+    }
+    
     const flag = selectedOption.getAttribute('data-flag');
     
-    if (!flag) return;
+    if (!flag) {
+        console.warn('No flag data found for selected option');
+        return;
+    }
     
     // Find the flag display element
-    const flagDisplay = selector.parentNode.querySelector('.flag-display');
+    let flagDisplay = selector.parentNode.querySelector('.flag-display');
+    
     if (flagDisplay) {
+        // Update existing flag display
         flagDisplay.textContent = flag;
     } else {
         // Create flag display if it doesn't exist
-        const newFlagDisplay = document.createElement('span');
-        newFlagDisplay.className = 'flag-display';
-        newFlagDisplay.setAttribute('aria-hidden', 'true');
-        newFlagDisplay.textContent = flag;
+        flagDisplay = document.createElement('span');
+        flagDisplay.className = 'flag-display';
+        flagDisplay.setAttribute('aria-hidden', 'true');
         
         // Add appropriate class based on context
-        if (selector.classList.contains('header-language-select')) {
-            newFlagDisplay.classList.add('header-flag-display');
+        if (selector.classList.contains('header-language-select') || selector.id === 'header_preferred_language') {
+            flagDisplay.classList.add('header-flag-display');
         } else if (selector.classList.contains('form-language-select')) {
-            newFlagDisplay.classList.add('form-flag-display');
+            flagDisplay.classList.add('form-flag-display');
         }
         
+        flagDisplay.textContent = flag;
+        
         // Add to wrapper
-        selector.parentNode.appendChild(newFlagDisplay);
+        selector.parentNode.appendChild(flagDisplay);
+    }
+    
+    // Update direction attribute for RTL languages
+    if (['ar', 'he', 'fa'].includes(selector.value)) {
+        document.documentElement.setAttribute('dir', 'rtl');
+    } else {
+        document.documentElement.setAttribute('dir', 'ltr');
     }
 }
 
@@ -133,6 +159,13 @@ function setInitialLanguage() {
             headerSelector.value = language;
             updateFlag(headerSelector);
             syncLanguageSelectors(language);
+            
+            // Update RTL/LTR direction
+            if (['ar', 'he', 'fa'].includes(language)) {
+                document.documentElement.setAttribute('dir', 'rtl');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+            }
         }
     }
 }
