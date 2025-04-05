@@ -123,7 +123,7 @@ function loadLanguageSelector() {
     if (!headerLanguageContainer) return;
     
     // Determine the root path based on the current page location
-    const rootPath = window.location.pathname.includes('/pages/') ? '../' : '';
+    const rootPath = window.location.pathname.includes('/pages/') ? '../' : './';
     
     // Load the language selector component
     fetch(`${rootPath}components/language-selector-form.html`)
@@ -142,6 +142,16 @@ function loadLanguageSelector() {
             
             // Initialize the language selector
             initializeLanguageSelector();
+            
+            // Apply stored language preference
+            const storedLanguage = localStorage.getItem('vci-language');
+            if (storedLanguage) {
+                const selector = document.getElementById('header_preferred_language');
+                if (selector) {
+                    selector.value = storedLanguage;
+                    updateFlagDisplay(selector);
+                }
+            }
         })
         .catch(error => {
             console.error('Error loading language selector component:', error);
@@ -164,12 +174,15 @@ function initializeLanguageSelector() {
     
     // Add change event listener
     selector.addEventListener('change', function() {
-        // Update flag display
+        // Update flag display and store preference
         if (window.flagLanguageSelector && typeof window.flagLanguageSelector.update === 'function') {
             window.flagLanguageSelector.update(selector);
         } else {
-            updateFlagDisplay(selector);
+            updateFlagDisplay(this);
         }
+        
+        // Save language preference
+        localStorage.setItem('vci-language', this.value);
         
         // Change language if i18n is available
         if (window.i18n && typeof window.i18n.changeLanguage === 'function') {
@@ -183,14 +196,18 @@ function initializeLanguageSelector() {
  * @param {HTMLElement} selector - The language selector element
  */
 function updateFlagDisplay(selector) {
-    const selectedOption = selector.options[selector.selectedIndex];
-    const flag = selectedOption.getAttribute('data-flag');
+    if (!selector || selector.selectedIndex === undefined) return;
     
+    const selectedOption = selector.options[selector.selectedIndex];
+    if (!selectedOption) return;
+    
+    const flag = selectedOption.getAttribute('data-flag');
     if (!flag) return;
     
     // Find the flag display element
     const flagDisplay = selector.parentNode.querySelector('.flag-display');
     if (flagDisplay) {
+        // Update existing flag
         flagDisplay.textContent = flag;
     } else {
         // Create flag display if it doesn't exist
