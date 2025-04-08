@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     modalButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            const modalType = this.getAttribute('data-modal-type');
+            // Check for data-modal-type first, then fall back to data-form-type
+            const modalType = this.getAttribute('data-modal-type') || this.getAttribute('data-form-type');
             openModal(modalType);
         });
     });
