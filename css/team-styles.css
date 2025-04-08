@@ -130,22 +130,6 @@
     margin-top: 1.5rem;
 }
 
-.cta-section {
-    background-color: var(--color-light);
-    padding: 3rem 0;
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.cta-section h2 {
-    margin-bottom: 1rem;
-}
-
-.cta-section p {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-}
-
 .team-filters {
     display: flex;
     justify-content: center;
