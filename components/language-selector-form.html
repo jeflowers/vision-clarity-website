@@ -1,5 +1,5 @@
 <!-- Language Selector Component -->
-<div class="form-field" data-field="preferred_language">
+<div class="form-field language-selector-field" data-field="preferred_language">
     <!-- Only show label in forms, not in header -->
     <label for="{{form_prefix}}_preferred_language" 
            data-i18n="modal.form.preferred_language" 
@@ -7,33 +7,38 @@
         Preferred Language
     </label>
     
-    <div class="select-wrapper flag-select-wrapper">
+    <div class="select-wrapper flag-select-wrapper {{form_prefix === 'header' ? 'header-select-wrapper' : ''}}">
         <select id="{{form_prefix}}_preferred_language" 
                 name="{{form_prefix !== 'header' ? 'preferred_language' : ''}}" 
                 class="{{form_prefix === 'header' ? 'header-language-select' : 'form-language-select'}} flag-enabled"
                 aria-label="{{form_prefix === 'header' ? 'Select Language' : ''}}"
                 aria-describedby="{{form_prefix !== 'header' ? form_prefix + '_language_description' : ''}}">
-            <option value="en" data-flag="🇺🇸" data-i18n="{{form_prefix === 'header' ? 'language.english' : 'modal.form.language.english'}}">EN</option>
-            <option value="es" data-flag="🇪🇸" data-i18n="{{form_prefix === 'header' ? 'language.spanish' : 'modal.form.language.spanish'}}">ES</option>
-            <option value="zh" data-flag="🇨🇳" data-i18n="{{form_prefix === 'header' ? 'language.chinese' : 'modal.form.language.chinese'}}">ZH</option>
-            <option value="ko" data-flag="🇰🇷" data-i18n="{{form_prefix === 'header' ? 'language.korean' : 'modal.form.language.korean'}}">KO</option>
-            <option value="hy" data-flag="🇦🇲" data-i18n="{{form_prefix === 'header' ? 'language.armenian' : 'modal.form.language.armenian'}}">HY</option>
-            <option value="he" data-flag="🇮🇱" data-i18n="{{form_prefix === 'header' ? 'language.hebrew' : 'modal.form.language.hebrew'}}">HE</option>
-            <option value="ru" data-flag="🇷🇺" data-i18n="{{form_prefix === 'header' ? 'language.russian' : 'modal.form.language.russian'}}">RU</option>
-            <option value="fa" data-flag="🇮🇷" data-i18n="{{form_prefix === 'header' ? 'language.farsi' : 'modal.form.language.farsi'}}">FA</option>
-            <option value="ar" data-flag="🇸🇦" data-i18n="{{form_prefix === 'header' ? 'language.arabic' : 'modal.form.language.arabic'}}">AR</option>
+            <option value="en" data-flag="🇺🇸" data-i18n="{{form_prefix === 'header' ? 'language.english' : 'modal.form.language.english'}}">English</option>
+            <option value="es" data-flag="🇪🇸" data-i18n="{{form_prefix === 'header' ? 'language.spanish' : 'modal.form.language.spanish'}}">Español</option>
+            <option value="zh" data-flag="🇨🇳" data-i18n="{{form_prefix === 'header' ? 'language.chinese' : 'modal.form.language.chinese'}}">中文</option>
+            <option value="ko" data-flag="🇰🇷" data-i18n="{{form_prefix === 'header' ? 'language.korean' : 'modal.form.language.korean'}}">한국어</option>
+            <option value="hy" data-flag="🇦🇲" data-i18n="{{form_prefix === 'header' ? 'language.armenian' : 'modal.form.language.armenian'}}">Հայերեն</option>
+            <option value="he" data-flag="🇮🇱" data-i18n="{{form_prefix === 'header' ? 'language.hebrew' : 'modal.form.language.hebrew'}}">עברית</option>
+            <option value="ru" data-flag="🇷🇺" data-i18n="{{form_prefix === 'header' ? 'language.russian' : 'modal.form.language.russian'}}">Русский</option>
+            <option value="fa" data-flag="🇮🇷" data-i18n="{{form_prefix === 'header' ? 'language.farsi' : 'modal.form.language.farsi'}}">فارسی</option>
+            <option value="ar" data-flag="🇸🇦" data-i18n="{{form_prefix === 'header' ? 'language.arabic' : 'modal.form.language.arabic'}}">العربية</option>
         </select>
-        <span class="select-icon {{form_prefix === 'header' ? 'header-select-icon' : 'form-select-icon'}}"></span>
+        <div class="select-icon-container {{form_prefix === 'header' ? 'header-select-icon-container' : 'form-select-icon-container'}}">
+            <span class="select-icon"></span>
+        </div>
         <span class="flag-display {{form_prefix === 'header' ? 'header-flag-display' : 'form-flag-display'}}" aria-hidden="true">🇺🇸</span>
     </div>
     
-    <!-- Language description as tooltip (hidden by default, shown on hover) -->
+    <!-- Language description as tooltip (hidden by default, shown on hover/focus) -->
     <div class="language-tooltip-container">
-        <span id="{{form_prefix}}_language_description" 
-              class="field-description tooltip-text" 
-              data-i18n="modal.form.language_description"
-              style="display: none;">
-            Select the language you prefer for communication with our staff
-        </span>
+        <div id="{{form_prefix}}_language_description" 
+             class="field-description tooltip-text" 
+             data-i18n="modal.form.language_description"
+             style="display: none;">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-content">
+                Select the language you prefer for communication with our staff
+            </div>
+        </div>
     </div>
 </div>
