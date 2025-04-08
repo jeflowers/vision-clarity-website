@@ -111,7 +111,7 @@ const PathUtils = {
       activeNavId = 'services';
     } else if (currentPath.includes('/technology.html')) {
       activeNavId = 'technology';
-    } else if (currentPath.includes('/our-staff.html')) {
+    } else if (currentPath.includes('/staff.html')) {
       activeNavId = 'staff';
     } else if (currentPath.includes('/locations.html')) {
       activeNavId = 'locations';
