@@ -1,0 +1,4 @@
+/* Fix for "Meet Our Team" navigation link to ensure it stays on one line */
+.nav-list a.one-line {
+    white-space: nowrap;
+}
