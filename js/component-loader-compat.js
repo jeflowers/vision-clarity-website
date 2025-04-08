@@ -70,7 +70,7 @@ const PathUtils = {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           // Replace {{rootPath}} placeholder with the actual root path
-          const processedHtml = xhr.responseText.replace(/\\{\\{rootPath\\}\\}/g, rootPath);
+          const processedHtml = xhr.responseText.replace(/\{\{rootPath\}\}/g, rootPath);
           
           // Insert the component into the target element
           targetElement.innerHTML = processedHtml;
@@ -104,20 +104,28 @@ const PathUtils = {
     // Get the current page path
     const currentPath = window.location.pathname;
     
+    // Check for GitHub Pages URL structure
+    const isGitHubPages = currentPath.includes('/vision-clarity-website/');
+    
     // Determine which navigation item should be active
     let activeNavId = 'home'; // Default to home
     
-    if (currentPath.includes('/services.html')) {
+    // Handle both local and GitHub Pages URL structures
+    if (currentPath.includes('/services.html') || (isGitHubPages && currentPath.includes('/pages/services.html'))) {
       activeNavId = 'services';
-    } else if (currentPath.includes('/technology.html')) {
+    } else if (currentPath.includes('/technology.html') || (isGitHubPages && currentPath.includes('/pages/technology.html'))) {
       activeNavId = 'technology';
-    } else if (currentPath.includes('/staff.html')) {
+    } else if (currentPath.includes('/staff.html') || (isGitHubPages && currentPath.includes('/pages/staff.html'))) {
       activeNavId = 'staff';
-    } else if (currentPath.includes('/locations.html')) {
+    } else if (currentPath.includes('/locations.html') || (isGitHubPages && currentPath.includes('/pages/locations.html'))) {
       activeNavId = 'locations';
-    } else if (currentPath.includes('/contact.html')) {
+    } else if (currentPath.includes('/contact.html') || (isGitHubPages && currentPath.includes('/pages/contact.html'))) {
       activeNavId = 'contact';
     }
+    
+    // For debugging
+    console.log('Current path:', currentPath);
+    console.log('Active nav ID:', activeNavId);
     
     // Find all navigation items
     const navItems = document.querySelectorAll('[data-nav-id]');
@@ -131,6 +139,9 @@ const PathUtils = {
     const activeItem = document.querySelector(`[data-nav-id="${activeNavId}"]`);
     if (activeItem) {
       activeItem.classList.add('active');
+      console.log('Active item found and highlighted:', activeItem);
+    } else {
+      console.error('No navigation item found with ID:', activeNavId);
     }
   }
 };
