@@ -28,6 +28,11 @@
     white-space: nowrap;
 }
 
+/* Add specific spacing between Contact link and language selector */
+.nav-list li:last-child {
+    margin-right: 20px;
+}
+
 /* Make language selector more compact */
 .flag-language-select,
 .flag-enabled {
@@ -41,6 +46,11 @@
     .header-actions .btn {
         padding: 0 12px;
         min-width: 120px;
+    }
+    
+    /* Adjust spacing on smaller screens */
+    .nav-list li:last-child {
+        margin-right: 15px;
     }
 }
 
@@ -69,5 +79,10 @@
     .nav-list.active .header-action-buttons .btn {
         display: block;
         width: 100%;
+    }
+    
+    /* Adjust spacing for mobile */
+    .nav-list li:last-child {
+        margin-right: 0;
     }
 }
