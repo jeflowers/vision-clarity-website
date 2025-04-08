@@ -147,28 +147,64 @@
         </div>
     </section>
 
+    
     <!-- Service Navigation -->
-    <section class="service-nav section">
-        <div class="container">
-            <h2 class="text-center" data-i18n="services.nav.title">Our Laser Vision Correction Procedures</h2>
-            <p class="text-center" data-i18n="services.nav.subtitle">Click below to learn about our specialized procedures</p>
+<section class="service-nav section bg-light">
+    <div class="container">
+        <h2 class="section-title">Our Laser Vision Correction Procedures</h2>
+        <p class="section-subtitle">Explore our specialized procedures and select a card to learn more about each option</p>
+        
+        <div class="service-cards-grid">
+            <!-- Traditional LASIK Card -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="../assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
+                </div>
+                <h3 class="card-title">Traditional LASIK</h3>
+                <p>The most widely performed laser vision correction procedure, using a microkeratome blade to create a corneal flap before reshaping the underlying tissue.</p>
+                <div class="service-actions">
+                    <a href="#traditional" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
             
-            <div class="service-nav-grid">
-                <a href="#traditional" class="service-nav-item active" data-service="traditional">
-                    <h3 data-i18n="services.traditional.nav_title">Traditional LASIK</h3>
-                </a>
-                <a href="#custom" class="service-nav-item" data-service="custom">
-                    <h3 data-i18n="services.custom.nav_title">Custom Bladeless LASIK</h3>
-                </a>
-                <a href="#prk" class="service-nav-item" data-service="prk">
-                    <h3 data-i18n="services.prk.nav_title">PRK</h3>
-                </a>
-                <a href="#presbyopia" class="service-nav-item" data-service="presbyopia">
-                    <h3 data-i18n="services.presbyopia.nav_title">Presbyopia Correction</h3>
-                </a>
+            <!-- Custom Bladeless LASIK Card -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="../assets/images/icons/custom-lasik.svg" alt="Custom Bladeless LASIK Icon">
+                </div>
+                <h3 class="card-title">Custom Bladeless LASIK</h3>
+                <p>Advanced blade-free LASIK using femtosecond laser technology for increased precision and customized vision correction with potentially fewer complications.</p>
+                <div class="service-actions">
+                    <a href="#custom" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- PRK Card -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="../assets/images/icons/prk.svg" alt="PRK Icon">
+                </div>
+                <h3 class="card-title">PRK</h3>
+                <p>Photorefractive Keratectomy is an excellent alternative for patients who aren't suitable for LASIK, particularly those with thin corneas or irregular corneal surfaces.</p>
+                <div class="service-actions">
+                    <a href="#prk" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Presbyopia Correction Card -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="../assets/images/icons/presbyopia.svg" alt="Presbyopia Correction Icon">
+                </div>
+                <h3 class="card-title">Presbyopia Correction</h3>
+                <p>Specialized procedures to address age-related near vision difficulties, helping reduce dependence on reading glasses for adults typically over 40.</p>
+                <div class="service-actions">
+                    <a href="#presbyopia" class="btn btn-primary">Learn More</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Service Content Container - Will be populated with component files -->
     <div id="service-content-container">
