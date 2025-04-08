@@ -70,7 +70,7 @@ const PathUtils = {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           // Replace {{rootPath}} placeholder with the actual root path
-          const processedHtml = xhr.responseText.replace(/\{\{rootPath\}\}/g, rootPath);
+          const processedHtml = xhr.responseText.replace(/\\{\\{rootPath\\}\\}/g, rootPath);
           
           // Insert the component into the target element
           targetElement.innerHTML = processedHtml;
