@@ -117,9 +117,17 @@ const I18nManager = {
     
     // Fallback implementation
     const path = window.location.pathname;
+    
+    // Check if we're on GitHub Pages
+    if (path.includes('github.io')) {
+      return '/vision-clarity-website/';
+    }
+    
+    // Check if we're in a subdirectory
     if (path.includes('/pages/')) {
       return '../';
     }
+    
     return './';
   },
   
@@ -155,24 +163,58 @@ const I18nManager = {
         return;
       }
       
-      // Get the root path
+      // Get the root path - include a timestamp to prevent caching
       const rootPath = this.getRootPath();
+      const timestamp = new Date().getTime();
+      
+      console.log(`Attempting to load translations from ${rootPath}js/i18n/${lang}.json?t=${timestamp}`);
       
       // Fetch the translation file
-      const response = await fetch(`${rootPath}js/i18n/${lang}.json`);
+      const response = await fetch(`${rootPath}js/i18n/${lang}.json?t=${timestamp}`);
       if (!response.ok) {
-        throw new Error(`Failed to load translations for ${lang}`);
+        // Try alternate path for GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+          const altResponse = await fetch(`/vision-clarity-website/js/i18n/${lang}.json?t=${timestamp}`);
+          if (!altResponse.ok) {
+            throw new Error(`Failed to load translations for ${lang}`);
+          }
+          this.translations[lang] = await altResponse.json();
+        } else {
+          throw new Error(`Failed to load translations for ${lang}`);
+        }
+      } else {
+        this.translations[lang] = await response.json();
       }
       
-      this.translations[lang] = await response.json();
       console.log(`Loaded translations for ${lang}`);
     } catch (error) {
       console.error(`Error loading translations for ${lang}:`, error);
+      
+      // Add empty translations to prevent repeated failed attempts
+      this.translations[lang] = this.translations[lang] || {};
       
       // Fallback to default language if not already trying to load it
       if (lang !== this.defaultLanguage) {
         console.warn(`Falling back to ${this.defaultLanguage}`);
         await this.loadTranslations(this.defaultLanguage);
+      } else {
+        // Create some basic translations for English as fallback
+        this.translations[this.defaultLanguage] = {
+          global: {
+            menu: {
+              home: "Home",
+              services: "Services",
+              technology: "Technology",
+              staff: "Meet Our Team",
+              locations: "Locations",
+              contact: "Contact",
+            },
+            buttons: {
+              schedule: "Schedule Consultation",
+              inquiry: "Request Information"
+            }
+          }
+        };
       }
     }
   },
@@ -268,6 +310,8 @@ const I18nManager = {
    * @returns {string|null} The translation or null if not found
    */
   getTranslation: function(key) {
+    if (!key) return null;
+    
     // Split the key into parts
     const parts = key.split('.');
     
