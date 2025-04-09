@@ -8,7 +8,7 @@ const I18nManager = {
   translations: {}, // Will store all loaded translations
   currentLanguage: 'en', // Default language
   defaultLanguage: 'en',
-  supportedLanguages: ['en', 'br', 'la_es', 'es', 'zh', 'ko', 'tw', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'],
+  supportedLanguages: ['en', 'br', 'la_es', 'es', 'zh', 'ko', 'tw', 'hy', 'he', 'tl', 'ru', 'lg', 'fa', 'ar'],
   rtlLanguages: ['he', 'ar', 'fa'],
   
   /**
