@@ -265,6 +265,7 @@ const ModalSystem = {
    * @param {string} serviceType - Optional service type for pre-filling the form
    */
   openModal: function(modalType, serviceType) {
+
     if (!this.modals[modalType]) {
       this.log(`Unknown modal type: ${modalType}`, 'error');
       return;
@@ -278,6 +279,24 @@ const ModalSystem = {
     
     // Save the currently focused element for accessibility
     this.lastFocusedElement = document.activeElement;
+
+    // ## start Debug ##
+
+    // Add these debug lines here:
+    console.log(`Opening modal: ${modalType}`);
+    console.log(`Modal element:`, modal);
+    
+    // Show the modal
+    modal.style.display = 'block';
+    console.log(`Set display to block. Current style:`, modal.style.display);
+    console.log(`Current computed style:`, window.getComputedStyle(modal).display);
+    
+    // Add active class after a brief delay (for CSS transitions)
+    setTimeout(() => {
+      modal.classList.add('active');
+    }, this.config.animationTiming.showDelay);
+
+    // ## end debug ##
     
     // Show the modal
     modal.style.display = 'block';
