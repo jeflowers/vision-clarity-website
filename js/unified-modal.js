@@ -64,24 +64,23 @@ const ModalSystem = {
     // Log initialization if in debug mode
     this.log('Initializing Modal System');
     
-    // Listen for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      // Get the root path for templates
-      this.rootPath = this.getRootPath();
+    // Get the root path for templates
+    this.rootPath = this.getRootPath();
+    
+    // Look for existing modals in the DOM
+    this.findExistingModals();
+    
+    // Load any missing modals
+    this.loadMissingModals().then(() => {
+      // Initialize event listeners
+      this.initEventListeners();
       
-      // Look for existing modals in the DOM
-      this.findExistingModals();
+      // Process URL parameters if any
+      this.processUrlParameters();
       
-      // Load any missing modals
-      this.loadMissingModals().then(() => {
-        // Initialize event listeners
-        this.initEventListeners();
-        
-        // Process URL parameters if any
-        this.processUrlParameters();
-        
-        this.log('Modal System Initialized');
-      });
+      this.log('Modal System Initialized');
+    }).catch(error => {
+      this.log('Error initializing modal system: ' + error.message, 'error');
     });
     
     // Add global reference (for legacy code)
@@ -117,62 +116,83 @@ const ModalSystem = {
    * @returns {Promise} Resolves when all modals are loaded
    */
   loadMissingModals: function() {
-    // Create or find the modal container
-    let modalContainer = document.getElementById('modal-container');
-    if (!modalContainer) {
-      modalContainer = document.createElement('div');
-      modalContainer.id = 'modal-container';
-      document.body.appendChild(modalContainer);
-    }
-    
-    // Create an array of fetch promises for missing modals
-    const fetchPromises = [];
-    
-    // For each missing modal, create a fetch promise
-    Object.keys(this.modals).forEach(modalType => {
-      if (!this.modals[modalType].loaded) {
-        const templatePath = this.rootPath + this.config.templatePaths[modalType];
-        this.log(`Loading ${modalType} modal from ${templatePath}`);
-        
-        const fetchPromise = fetch(templatePath)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`Failed to load ${modalType} modal (Status: ${response.status})`);
-            }
-            return response.text();
-          })
-          .then(html => {
-            // Add the modal HTML to the container
-            modalContainer.innerHTML += html;
-            
-            // Get a reference to the modal element
-            const element = document.getElementById(this.modals[modalType].id);
-            if (element) {
-              this.modals[modalType].element = element;
-              this.modals[modalType].loaded = true;
-              
-              // Get a reference to the form inside the modal
-              const formId = modalType + 'Form';
-              const form = document.getElementById(formId);
-              if (form) {
-                this.modals[modalType].form = form;
-              }
-              
-              this.log(`${modalType} modal loaded successfully`);
-            } else {
-              this.log(`Modal HTML loaded but could not find element with ID ${this.modals[modalType].id}`, 'error');
-            }
-          })
-          .catch(error => {
-            this.log(`Error loading ${modalType} modal: ${error.message}`, 'error');
-          });
-        
-        fetchPromises.push(fetchPromise);
+    return new Promise((resolve, reject) => {
+      // Create or find the modal container
+      let modalContainer = document.getElementById('modal-container');
+      if (!modalContainer) {
+        modalContainer = document.createElement('div');
+        modalContainer.id = 'modal-container';
+        document.body.appendChild(modalContainer);
       }
+      
+      // Create an array of fetch promises for missing modals
+      const fetchPromises = [];
+      
+      // For each missing modal, create a fetch promise
+      Object.keys(this.modals).forEach(modalType => {
+        if (!this.modals[modalType].loaded) {
+          const templatePath = this.rootPath + this.config.templatePaths[modalType];
+          this.log(`Loading ${modalType} modal from ${templatePath}`);
+          
+          const fetchPromise = fetch(templatePath)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`Failed to load ${modalType} modal (Status: ${response.status})`);
+              }
+              return response.text();
+            })
+            .then(html => {
+              // Add the modal HTML to the container
+              modalContainer.innerHTML += html;
+              
+              // Get a reference to the modal element
+              const element = document.getElementById(this.modals[modalType].id);
+              if (element) {
+                this.modals[modalType].element = element;
+                this.modals[modalType].loaded = true;
+                
+                // Get a reference to the form inside the modal
+                const formId = modalType + 'Form';
+                const form = document.getElementById(formId);
+                if (form) {
+                  this.modals[modalType].form = form;
+                }
+                
+                this.log(`${modalType} modal loaded successfully`);
+              } else {
+                this.log(`Modal HTML loaded but could not find element with ID ${this.modals[modalType].id}`, 'error');
+              }
+            })
+            .catch(error => {
+              this.log(`Error loading ${modalType} modal: ${error.message}`, 'error');
+            });
+          
+          fetchPromises.push(fetchPromise);
+        }
+      });
+      
+      // If there's nothing to load, resolve immediately
+      if (fetchPromises.length === 0) {
+        resolve();
+        return;
+      }
+      
+      // Wait for all fetches to complete
+      Promise.all(fetchPromises)
+        .then(() => {
+          // Check if any modals were successfully loaded
+          const anyModalLoaded = Object.keys(this.modals).some(
+            modalType => this.modals[modalType].loaded
+          );
+          
+          if (anyModalLoaded) {
+            resolve();
+          } else {
+            reject(new Error('No modals could be loaded'));
+          }
+        })
+        .catch(reject);
     });
-    
-    // Return a promise that resolves when all fetch operations are complete
-    return Promise.all(fetchPromises);
   },
   
   /**
@@ -181,12 +201,16 @@ const ModalSystem = {
   initEventListeners: function() {
     // Modal trigger buttons - supporting both data-form-type and data-modal-type
     const modalButtons = document.querySelectorAll('.open-modal');
+    this.log(`Found ${modalButtons.length} modal trigger buttons`);
+    
     modalButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
         
         // Check both attributes for compatibility
         const modalType = button.getAttribute('data-modal-type') || button.getAttribute('data-form-type');
+        this.log(`Button clicked with modal type: ${modalType}`);
+        
         if (modalType) {
           // Check if service-specific data is provided
           const serviceType = button.getAttribute('data-service');
@@ -265,12 +289,16 @@ const ModalSystem = {
    * @param {string} serviceType - Optional service type for pre-filling the form
    */
   openModal: function(modalType, serviceType) {
+    // Log the request
+    this.log(`Request to open modal: ${modalType}`);
 
+    // Check if the modal type is valid
     if (!this.modals[modalType]) {
       this.log(`Unknown modal type: ${modalType}`, 'error');
       return;
     }
     
+    // Make sure the modal element exists
     const modal = this.modals[modalType].element;
     if (!modal) {
       this.log(`Modal of type ${modalType} not found in DOM`, 'error');
@@ -279,31 +307,27 @@ const ModalSystem = {
     
     // Save the currently focused element for accessibility
     this.lastFocusedElement = document.activeElement;
-
-    // ## start Debug ##
-
-    // Add these debug lines here:
-    console.log(`Opening modal: ${modalType}`);
-    console.log(`Modal element:`, modal);
     
-    // Show the modal
-    modal.style.display = 'block';
-    console.log(`Set display to block. Current style:`, modal.style.display);
-    console.log(`Current computed style:`, window.getComputedStyle(modal).display);
-    
-    // Add active class after a brief delay (for CSS transitions)
-    setTimeout(() => {
-      modal.classList.add('active');
-    }, this.config.animationTiming.showDelay);
-
-    // ## end debug ##
+    // Debug the modal
+    this.log(`Opening modal: ${modalType}`, 'info', modal);
+    this.log(`Modal ID: ${modal.id}`, 'info');
+    this.log(`Modal classList: ${modal.className}`, 'info');
+    this.log(`Modal display before: ${window.getComputedStyle(modal).display}`, 'info');
     
     // Show the modal
     modal.style.display = 'block';
     
+    // Force repaint to ensure styles are applied
+    modal.offsetHeight;
+    
+    // Debug the modal after style change
+    this.log(`Modal display after setting to block: ${modal.style.display}`, 'info');
+    this.log(`Modal computed style after setting to block: ${window.getComputedStyle(modal).display}`, 'info');
+    
     // Add active class after a brief delay (for CSS transitions)
     setTimeout(() => {
       modal.classList.add('active');
+      this.log(`Added 'active' class to modal: ${modalType}`, 'info');
     }, this.config.animationTiming.showDelay);
     
     // Prevent body scrolling
@@ -572,7 +596,7 @@ const ModalSystem = {
       
       // Determine modal type based on URL
       let modalType = 'consultation';
-      if (href.includes('inquiry=true') || href.includes('inquiry')) {
+      if (href && (href.includes('inquiry=true') || href.includes('inquiry'))) {
         modalType = 'inquiry';
       }
       
@@ -667,5 +691,12 @@ const ModalSystem = {
   }
 };
 
+// Make the getRootPath function available globally for other modules to use
+window.utilityFunctions = window.utilityFunctions || {};
+window.utilityFunctions.getRootPath = ModalSystem.getRootPath;
+
 // Initialize the modal system
-ModalSystem.init();
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize the modal system
+  ModalSystem.init();
+});
