@@ -1,702 +1,374 @@
 /**
- * Vision Clarity Institute - Unified Modal System
- * 
- * This file combines all modal functionality into a single, cohesive system.
- * It handles:
- * - Modal loading and initialization
- * - Button event listeners (with support for both data-modal-type and data-form-type)
- * - Form validation and submission
- * - Accessibility features
- * - Success and error messaging
+ * Vision Clarity Institute - Internationalization Module
+ * This module handles loading and applying translations based on user language preferences.
  */
 
-// Create the ModalSystem namespace to avoid global conflicts
-const ModalSystem = {
-  // Track modals and their state
-  modals: {
-    consultation: {
-      id: 'consultationModal',
-      element: null,
-      form: null,
-      loaded: false
-    },
-    inquiry: {
-      id: 'inquiryModal',
-      element: null,
-      form: null,
-      loaded: false
-    },
-    message: {
-      id: 'messageModal',
-      element: null,
-      form: null,
-      loaded: false
-    }
-  },
-  
-  // Store focus history for accessibility
-  lastFocusedElement: null,
-  
-  // Configuration options
-  config: {
-    // Template paths relative to the site root
-    templatePaths: {
-      consultation: 'pages/templates/consultation-modal.html',
-      inquiry: 'pages/templates/inquiry-modal.html',
-      message: 'pages/templates/message-modal.html'
-    },
-    // Animation timings
-    animationTiming: {
-      showDelay: 10,     // ms delay before adding active class (for animation)
-      hideDelay: 300,    // ms delay before hiding modal (for animation)
-      focusDelay: 300    // ms delay before setting focus on first field
-    },
-    // Success message display duration
-    successMessageDuration: 2000,
-    // Debug mode
-    debug: true
-  },
+// Create a simple version without ES6 imports
+const I18nManager = {
+  translations: {}, // Will store all loaded translations
+  currentLanguage: 'en', // Default language
+  defaultLanguage: 'en',
+  supportedLanguages: ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar', 'br', 'la_es'],
+  rtlLanguages: ['he', 'ar', 'fa'],
   
   /**
-   * Initialize the modal system
+   * Initialize the I18n system
    */
   init: function() {
-    // Log initialization if in debug mode
-    this.log('Initializing Modal System');
+    console.log('Initializing I18n System');
     
-    // Get the root path for templates
-    this.rootPath = this.getRootPath();
+    // Initialize event listeners
+    this.initEventListeners();
     
-    // Look for existing modals in the DOM
-    this.findExistingModals();
-    
-    // Load any missing modals
-    this.loadMissingModals().then(() => {
-      // Initialize event listeners
-      this.initEventListeners();
-      
-      // Process URL parameters if any
-      this.processUrlParameters();
-      
-      this.log('Modal System Initialized');
-    }).catch(error => {
-      this.log('Error initializing modal system: ' + error.message, 'error');
-    });
-    
-    // Add global reference (for legacy code)
-    window.ModalSystem = this;
+    // Initialize language based on saved preference or detection
+    this.initLanguage();
   },
   
   /**
-   * Find any modals that already exist in the DOM
-   */
-  findExistingModals: function() {
-    // Check for each registered modal type
-    Object.keys(this.modals).forEach(modalType => {
-      const modalId = this.modals[modalType].id;
-      const element = document.getElementById(modalId);
-      
-      if (element) {
-        this.log(`Found existing ${modalType} modal in DOM`);
-        this.modals[modalType].element = element;
-        this.modals[modalType].loaded = true;
-        
-        // Also look for the form inside the modal
-        const formId = modalType + 'Form';
-        const form = document.getElementById(formId);
-        if (form) {
-          this.modals[modalType].form = form;
-        }
-      }
-    });
-  },
-  
-  /**
-   * Load any modals that aren't already in the DOM
-   * @returns {Promise} Resolves when all modals are loaded
-   */
-  loadMissingModals: function() {
-    return new Promise((resolve, reject) => {
-      // Create or find the modal container
-      let modalContainer = document.getElementById('modal-container');
-      if (!modalContainer) {
-        modalContainer = document.createElement('div');
-        modalContainer.id = 'modal-container';
-        document.body.appendChild(modalContainer);
-      }
-      
-      // Create an array of fetch promises for missing modals
-      const fetchPromises = [];
-      
-      // For each missing modal, create a fetch promise
-      Object.keys(this.modals).forEach(modalType => {
-        if (!this.modals[modalType].loaded) {
-          const templatePath = this.rootPath + this.config.templatePaths[modalType];
-          this.log(`Loading ${modalType} modal from ${templatePath}`);
-          
-          const fetchPromise = fetch(templatePath)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(`Failed to load ${modalType} modal (Status: ${response.status})`);
-              }
-              return response.text();
-            })
-            .then(html => {
-              // Add the modal HTML to the container
-              modalContainer.innerHTML += html;
-              
-              // Get a reference to the modal element
-              const element = document.getElementById(this.modals[modalType].id);
-              if (element) {
-                this.modals[modalType].element = element;
-                this.modals[modalType].loaded = true;
-                
-                // Get a reference to the form inside the modal
-                const formId = modalType + 'Form';
-                const form = document.getElementById(formId);
-                if (form) {
-                  this.modals[modalType].form = form;
-                }
-                
-                this.log(`${modalType} modal loaded successfully`);
-              } else {
-                this.log(`Modal HTML loaded but could not find element with ID ${this.modals[modalType].id}`, 'error');
-              }
-            })
-            .catch(error => {
-              this.log(`Error loading ${modalType} modal: ${error.message}`, 'error');
-            });
-          
-          fetchPromises.push(fetchPromise);
-        }
-      });
-      
-      // If there's nothing to load, resolve immediately
-      if (fetchPromises.length === 0) {
-        resolve();
-        return;
-      }
-      
-      // Wait for all fetches to complete
-      Promise.all(fetchPromises)
-        .then(() => {
-          // Check if any modals were successfully loaded
-          const anyModalLoaded = Object.keys(this.modals).some(
-            modalType => this.modals[modalType].loaded
-          );
-          
-          if (anyModalLoaded) {
-            resolve();
-          } else {
-            reject(new Error('No modals could be loaded'));
-          }
-        })
-        .catch(reject);
-    });
-  },
-  
-  /**
-   * Set up all event listeners for modals
+   * Initialize event listeners for language selection
    */
   initEventListeners: function() {
-    // Modal trigger buttons - supporting both data-form-type and data-modal-type
-    const modalButtons = document.querySelectorAll('.open-modal');
-    this.log(`Found ${modalButtons.length} modal trigger buttons`);
-    
-    modalButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Check both attributes for compatibility
-        const modalType = button.getAttribute('data-modal-type') || button.getAttribute('data-form-type');
-        this.log(`Button clicked with modal type: ${modalType}`);
-        
-        if (modalType) {
-          // Check if service-specific data is provided
-          const serviceType = button.getAttribute('data-service');
-          this.openModal(modalType, serviceType);
-        } else {
-          this.log('Button clicked but no modal type specified', 'warn');
-        }
+    // Language selector dropdown event listener
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', (event) => {
+        this.changeLanguage(event.target.value);
       });
-    });
-    
-    // Modal close buttons
-    const closeButtons = document.querySelectorAll('.modal-close');
-    closeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
-        if (modal) {
-          this.closeModal(modal);
-        }
-      });
-    });
-    
-    // Close on background click
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        this.closeModal(e.target);
-      }
-    });
-    
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const openModals = document.querySelectorAll('.modal.active, .modal[style*="display: block"]');
-        openModals.forEach(modal => this.closeModal(modal));
-      }
-    });
-    
-    // Initialize form submit handlers
-    Object.keys(this.modals).forEach(modalType => {
-      const form = this.modals[modalType].form;
-      if (form) {
-        form.addEventListener('submit', (e) => this.handleFormSubmit(e, modalType));
-        
-        // Add validation listeners to required fields
-        const requiredFields = form.querySelectorAll('[required]');
-        requiredFields.forEach(field => {
-          // Validate on blur
-          field.addEventListener('blur', () => this.validateField(field));
-          
-          // Clear errors on focus
-          field.addEventListener('focus', () => this.clearFieldError(field));
-        });
-      }
-    });
-    
-    // Convert contact links to modal triggers
-    this.convertContactLinksToModalTriggers();
-  },
-  
-  /**
-   * Process URL parameters to open modals if specified
-   */
-  processUrlParameters: function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    // Check for modal triggers in URL
-    if (urlParams.has('consultation')) {
-      this.openModal('consultation');
-    } else if (urlParams.has('inquiry')) {
-      this.openModal('inquiry');
     }
   },
   
   /**
-   * Open a specific modal
-   * @param {string} modalType - Type of modal to open (consultation, inquiry, etc.)
-   * @param {string} serviceType - Optional service type for pre-filling the form
+   * Initialize language based on saved preference or detection
    */
-  openModal: function(modalType, serviceType) {
-    // Log the request
-    this.log(`Request to open modal: ${modalType}`);
-
-    // Check if the modal type is valid
-    if (!this.modals[modalType]) {
-      this.log(`Unknown modal type: ${modalType}`, 'error');
-      return;
-    }
+  initLanguage: async function() {
+    // Try to get language from localStorage
+    const savedLanguage = localStorage.getItem('vci-language');
     
-    // Make sure the modal element exists
-    const modal = this.modals[modalType].element;
-    if (!modal) {
-      this.log(`Modal of type ${modalType} not found in DOM`, 'error');
-      return;
-    }
-    
-    // Save the currently focused element for accessibility
-    this.lastFocusedElement = document.activeElement;
-    
-    // Debug the modal
-    this.log(`Opening modal: ${modalType}`, 'info', modal);
-    this.log(`Modal ID: ${modal.id}`, 'info');
-    this.log(`Modal classList: ${modal.className}`, 'info');
-    this.log(`Modal display before: ${window.getComputedStyle(modal).display}`, 'info');
-    
-    // Show the modal
-    modal.style.display = 'block';
-    
-    // Force repaint to ensure styles are applied
-    modal.offsetHeight;
-    
-    // Debug the modal after style change
-    this.log(`Modal display after setting to block: ${modal.style.display}`, 'info');
-    this.log(`Modal computed style after setting to block: ${window.getComputedStyle(modal).display}`, 'info');
-    
-    // Add active class after a brief delay (for CSS transitions)
-    setTimeout(() => {
-      modal.classList.add('active');
-      this.log(`Added 'active' class to modal: ${modalType}`, 'info');
-    }, this.config.animationTiming.showDelay);
-    
-    // Prevent body scrolling
-    document.body.classList.add('modal-open');
-    
-    // If a service type was specified, pre-fill the form
-    if (serviceType && this.modals[modalType].form) {
-      const serviceField = this.modals[modalType].form.querySelector('[name="service"]');
-      if (serviceField) {
-        serviceField.value = serviceType;
-      }
-    }
-    
-    // Set focus to the first form field
-    setTimeout(() => {
-      // Find the first input field that isn't hidden
-      const firstInput = modal.querySelector('input:not([type="hidden"]), select, textarea');
-      if (firstInput) {
-        firstInput.focus();
-      }
-    }, this.config.animationTiming.focusDelay);
-    
-    // Announce to screen readers
-    this.announceToScreenReaders(`${modalType} dialog opened`);
-  },
-  
-  /**
-   * Close a modal
-   * @param {HTMLElement} modal - The modal element to close
-   */
-  closeModal: function(modal) {
-    if (!modal) return;
-    
-    // Remove active class to trigger CSS transitions
-    modal.classList.remove('active');
-    
-    // After transition completes, hide the modal
-    setTimeout(() => {
-      modal.style.display = 'none';
-      document.body.classList.remove('modal-open');
+    // If no saved language, use browser language or fall back to default
+    if (!savedLanguage) {
+      this.currentLanguage = this.getBrowserLanguage();
       
-      // Restore focus to the element that was focused before the modal was opened
-      if (this.lastFocusedElement) {
-        this.lastFocusedElement.focus();
-        this.lastFocusedElement = null;
+      // If not supported, use default
+      if (!this.supportedLanguages.includes(this.currentLanguage)) {
+        this.currentLanguage = this.defaultLanguage;
       }
-    }, this.config.animationTiming.hideDelay);
+    } else if (this.supportedLanguages.includes(savedLanguage)) {
+      this.currentLanguage = savedLanguage;
+    }
     
-    // Announce to screen readers
-    this.announceToScreenReaders('Dialog closed');
+    console.log(`Selected language: ${this.currentLanguage}`);
+    
+    // Set the language selector to the current language
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+      languageSelect.value = this.currentLanguage;
+    }
+    
+    // Load translations and apply them
+    await this.loadTranslations(this.currentLanguage);
+    this.applyTranslations();
+    
+    // Set the HTML lang attribute
+    document.documentElement.lang = this.currentLanguage;
+    
+    // Handle right-to-left languages
+    this.handleTextDirection(this.currentLanguage);
+    
+    // Load appropriate fonts for the language
+    this.loadFontsForLanguage(this.currentLanguage);
+    
+    console.log(`Language initialized: ${this.currentLanguage}`);
   },
   
   /**
-   * Handle form submission
-   * @param {Event} e - Form submission event
-   * @param {string} modalType - Type of modal the form is in
+   * Handle text direction based on language
+   * @param {string} lang - Language code
    */
-  handleFormSubmit: function(e, modalType) {
-    e.preventDefault();
-    const form = e.target;
-    
-    // Validate the form
-    if (!this.validateForm(form)) {
-      return;
-    }
-    
-    // Collect form data for logging/debugging
-    const formData = new FormData(form);
-    const formValues = {};
-    formData.forEach((value, key) => {
-      formValues[key] = value;
-    });
-    
-    this.log(`Form submitted: ${modalType}`, 'info', formValues);
-    
-    // Show success message
-    this.showFormSuccess(form, modalType);
-    
-    // In a real implementation, you would send the form data to your server
-    // For example:
-    /*
-    fetch('/api/submit-form', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formValues)
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        this.showFormSuccess(form, modalType);
-      } else {
-        this.showFormError(form, data.message || 'An error occurred.');
+  handleTextDirection: function(lang) {
+    if (this.rtlLanguages.includes(lang)) {
+      document.documentElement.dir = 'rtl';
+      document.body.classList.add('rtl');
+      // Add RTL stylesheet if not already added
+      if (!document.getElementById('rtl-stylesheet')) {
+        const rtlStylesheet = document.createElement('link');
+        rtlStylesheet.id = 'rtl-stylesheet';
+        rtlStylesheet.rel = 'stylesheet';
+        rtlStylesheet.href = this.getRootPath() + 'css/rtl.css';
+        document.head.appendChild(rtlStylesheet);
       }
-    })
-    .catch(error => {
-      this.showFormError(form, 'An error occurred while submitting the form.');
-      this.log('Form submission error', 'error', error);
-    });
-    */
-  },
-  
-  /**
-   * Validate an entire form
-   * @param {HTMLFormElement} form - The form to validate
-   * @returns {boolean} True if the form is valid, false otherwise
-   */
-  validateForm: function(form) {
-    const requiredFields = form.querySelectorAll('[required]');
-    let isValid = true;
-    
-    // Validate each required field
-    requiredFields.forEach(field => {
-      if (!this.validateField(field)) {
-        isValid = false;
-      }
-    });
-    
-    return isValid;
-  },
-  
-  /**
-   * Validate a single field
-   * @param {HTMLElement} field - The field to validate
-   * @returns {boolean} True if the field is valid, false otherwise
-   */
-  validateField: function(field) {
-    // Clear any existing error
-    this.clearFieldError(field);
-    
-    // Check if the field is empty
-    if (field.type === 'checkbox' && !field.checked) {
-      this.showFieldError(field, 'This checkbox must be checked');
-      return false;
-    } else if ((field.type !== 'checkbox' && field.value.trim() === '')) {
-      this.showFieldError(field, 'This field is required');
-      return false;
-    }
-    
-    // Check specific field types
-    if (field.type === 'email' && !this.validateEmail(field.value)) {
-      this.showFieldError(field, 'Please enter a valid email address');
-      return false;
-    } else if (field.type === 'tel' && !this.validatePhone(field.value)) {
-      this.showFieldError(field, 'Please enter a valid phone number');
-      return false;
-    }
-    
-    return true;
-  },
-  
-  /**
-   * Show an error message for a field
-   * @param {HTMLElement} field - The field with an error
-   * @param {string} message - The error message to display
-   */
-  showFieldError: function(field, message) {
-    // Add error class to the field
-    field.classList.add('error');
-    
-    // Create an error message element if it doesn't exist
-    let errorMessage = field.parentNode.querySelector('.field-error');
-    if (!errorMessage) {
-      errorMessage = document.createElement('div');
-      errorMessage.className = 'field-error';
-      field.parentNode.appendChild(errorMessage);
-    }
-    
-    // Set the error message text
-    errorMessage.textContent = message;
-  },
-  
-  /**
-   * Clear error styling and message for a field
-   * @param {HTMLElement} field - The field to clear
-   */
-  clearFieldError: function(field) {
-    // Remove error class
-    field.classList.remove('error');
-    
-    // Remove error message if it exists
-    const errorMessage = field.parentNode.querySelector('.field-error');
-    if (errorMessage) {
-      errorMessage.remove();
-    }
-  },
-  
-  /**
-   * Show success message after form submission
-   * @param {HTMLFormElement} form - The form that was submitted
-   * @param {string} modalType - Type of modal (consultation, inquiry, etc.)
-   */
-  showFormSuccess: function(form, modalType) {
-    // Create success message element
-    const successMsg = document.createElement('div');
-    successMsg.className = 'form-success';
-    
-    // Set message based on form type
-    if (modalType === 'consultation') {
-      successMsg.textContent = 'Thank you! Your consultation request has been received. We will contact you shortly.';
-    } else if (modalType === 'inquiry') {
-      successMsg.textContent = 'Thank you for your inquiry. Our team will respond to your questions soon.';
-    } else if (modalType === 'message') {
-      successMsg.textContent = 'Your message has been sent. Thank you for reaching out to us.';
     } else {
-      successMsg.textContent = 'Your form has been submitted successfully. Thank you!';
-    }
-    
-    // Add the message to the top of the form
-    form.prepend(successMsg);
-    
-    // Announce success to screen readers
-    this.announceToScreenReaders(successMsg.textContent);
-    
-    // Reset the form
-    setTimeout(() => {
-      form.reset();
-      
-      // Close the modal after showing success message
-      setTimeout(() => {
-        const modal = form.closest('.modal');
-        if (modal) {
-          this.closeModal(modal);
-        }
-        
-        // Remove success message after modal closes
-        successMsg.remove();
-      }, this.config.successMessageDuration);
-    }, 1000);
-  },
-  
-  /**
-   * Show error message after form submission failure
-   * @param {HTMLFormElement} form - The form that was submitted
-   * @param {string} errorMessage - The error message to display
-   */
-  showFormError: function(form, errorMessage) {
-    // Create error message element
-    const errorMsg = document.createElement('div');
-    errorMsg.className = 'form-error';
-    errorMsg.textContent = errorMessage;
-    
-    // Add the message to the top of the form
-    form.prepend(errorMsg);
-    
-    // Announce error to screen readers
-    this.announceToScreenReaders(`Error: ${errorMessage}`);
-    
-    // Remove the error message after a delay
-    setTimeout(() => {
-      errorMsg.remove();
-    }, 5000);
-  },
-  
-  /**
-   * Convert existing contact page links to modal triggers
-   */
-  convertContactLinksToModalTriggers: function() {
-    // Find contact links that should trigger modals
-    document.querySelectorAll('a[href*="contact.html"]').forEach(link => {
-      const href = link.getAttribute('href');
-      
-      // Skip if explicitly marked to not convert
-      if (link.classList.contains('no-modal')) return;
-      
-      // Determine modal type based on URL
-      let modalType = 'consultation';
-      if (href && (href.includes('inquiry=true') || href.includes('inquiry'))) {
-        modalType = 'inquiry';
+      document.documentElement.dir = 'ltr';
+      document.body.classList.remove('rtl');
+      // Remove RTL stylesheet if it exists
+      const rtlStylesheet = document.getElementById('rtl-stylesheet');
+      if (rtlStylesheet) {
+        rtlStylesheet.remove();
       }
-      
-      // Replace link behavior
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.openModal(modalType);
-      });
-      
-      // Add attributes for clarity
-      link.setAttribute('data-form-type', modalType);
-      link.setAttribute('role', 'button');
-    });
-  },
-  
-  /**
-   * Validate email format
-   * @param {string} email - Email to validate
-   * @returns {boolean} True if valid, false otherwise
-   */
-  validateEmail: function(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  },
-  
-  /**
-   * Validate phone number format
-   * @param {string} phone - Phone number to validate
-   * @returns {boolean} True if valid, false otherwise
-   */
-  validatePhone: function(phone) {
-    // Basic validation that requires at least 10 digits
-    // This can be adjusted based on your specific requirements
-    const digits = phone.replace(/\D/g, '');
-    return digits.length >= 10;
-  },
-  
-  /**
-   * Announce a message to screen readers
-   * @param {string} message - Message to announce
-   */
-  announceToScreenReaders: function(message) {
-    // Find or create the live region
-    let announcer = document.getElementById('a11y-announcer');
-    if (!announcer) {
-      announcer = document.createElement('div');
-      announcer.id = 'a11y-announcer';
-      announcer.className = 'sr-only';
-      announcer.setAttribute('aria-live', 'polite');
-      document.body.appendChild(announcer);
     }
-    
-    // Update the announcer with the message
-    announcer.textContent = message;
   },
   
   /**
-   * Get the root path based on the current page location
-   * @returns {string} The root path for loading templates
+   * Get the root path based on current page location
+   * @returns {string} The root path
    */
   getRootPath: function() {
+    // If on GitHub Pages, use the repository-specific path
+    if (window.location.hostname.includes('github.io')) {
+      return '/vision-clarity-website/';
+    }
+    
     // Check if we're in a subdirectory
     const path = window.location.pathname;
     if (path.includes('/pages/')) {
       return '../';
     }
+    
     return './';
   },
   
   /**
-   * Utility function for logging messages
-   * @param {string} message - Message to log
-   * @param {string} level - Log level (info, warn, error)
-   * @param {object} data - Optional data to log
+   * Simple utility to detect browser language
+   * @returns {string} Language code (e.g., 'en', 'es')
    */
-  log: function(message, level = 'info', data = null) {
-    if (!this.config.debug) return;
-    
-    const prefix = '🔵 ModalSystem:';
-    
-    switch (level) {
-      case 'warn':
-        console.warn(`${prefix} ${message}`, data || '');
-        break;
-      case 'error':
-        console.error(`${prefix} ${message}`, data || '');
-        break;
-      default:
-        console.log(`${prefix} ${message}`, data || '');
-        break;
+  getBrowserLanguage: function() {
+    const fullLang = navigator.language || navigator.userLanguage;
+    return fullLang.split('-')[0].toLowerCase(); // Extract the language code (e.g., 'en' from 'en-US')
+  },
+  
+  /**
+   * Load appropriate fonts for a language
+   * @param {string} lang - Language code
+   */
+  loadFontsForLanguage: function(lang) {
+    // Simplified version that could be expanded based on language needs
+    // For now, just add a class to the body
+    document.body.className = document.body.className.replace(/lang-\w+/g, '');
+    document.body.classList.add(`lang-${lang}`);
+  },
+  
+  /**
+   * Load translations for a specific language
+   * @param {string} lang - Language code
+   * @returns {Promise} Promise that resolves when translations are loaded
+   */
+  loadTranslations: async function(lang) {
+    try {
+      // Check if translations are already loaded
+      if (this.translations[lang]) {
+        console.log(`Using cached translations for ${lang}`);
+        return;
+      }
+      
+      // Determine the correct URL based on environment
+      let translationUrl;
+      
+      // Special case for GitHub Pages
+      if (window.location.hostname.includes('github.io')) {
+        translationUrl = `/vision-clarity-website/js/i18n/${lang}.json`;
+        console.log(`Loading translations from GitHub Pages path: ${translationUrl}`);
+      } else {
+        // For local development or other hosting
+        const rootPath = this.getRootPath();
+        translationUrl = `${rootPath}js/i18n/${lang}.json`;
+        console.log(`Loading translations from standard path: ${translationUrl}`);
+      }
+      
+      // Add cache-busting parameter
+      const cacheBuster = `?_=${new Date().getTime()}`;
+      
+      // Fetch the translation file
+      const response = await fetch(translationUrl + cacheBuster);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load translations for ${lang} (Status: ${response.status})`);
+      }
+      
+      this.translations[lang] = await response.json();
+      console.log(`Successfully loaded translations for ${lang}`);
+    } catch (error) {
+      console.error(`Error loading translations for ${lang}:`, error);
+      
+      // Add empty translations object to prevent repeated failed attempts
+      this.translations[lang] = this.translations[lang] || {};
+      
+      // Fallback to default language if not already trying to load it
+      if (lang !== this.defaultLanguage) {
+        console.warn(`Falling back to ${this.defaultLanguage}`);
+        await this.loadTranslations(this.defaultLanguage);
+      } else {
+        // Create some basic translations for English as fallback
+        console.warn('Creating basic fallback translations for English');
+        this.translations[this.defaultLanguage] = {
+          global: {
+            menu: {
+              home: "Home",
+              services: "Services",
+              technology: "Technology",
+              staff: "Meet Our Team",
+              locations: "Locations",
+              contact: "Contact",
+            },
+            buttons: {
+              schedule: "Schedule Consultation",
+              inquiry: "Request Information"
+            }
+          },
+          services: {
+            header: {
+              title: "LASIK Eye Surgery",
+              subtitle: "Innovative vision correction methods designed specifically for you"
+            }
+          }
+        };
+      }
     }
+  },
+  
+  /**
+   * Change the current language
+   * @param {string} lang - Language code
+   */
+  changeLanguage: async function(lang) {
+    if (!this.supportedLanguages.includes(lang)) {
+      console.error(`Language ${lang} is not supported`);
+      return;
+    }
+    
+    console.log(`Changing language to: ${lang}`);
+    
+    // Save the language preference
+    localStorage.setItem('vci-language', lang);
+    this.currentLanguage = lang;
+    
+    // Load translations if not already loaded
+    await this.loadTranslations(lang);
+    
+    // Apply translations
+    this.applyTranslations();
+    
+    // Update the HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Handle right-to-left languages
+    this.handleTextDirection(lang);
+    
+    // Load appropriate fonts for the language
+    this.loadFontsForLanguage(lang);
+    
+    // Track language change in analytics if available
+    if (window.gtag) {
+      window.gtag('event', 'language_change', {
+        'language': lang
+      });
+    }
+    
+    // Dispatch a custom event for other components to react to language change
+    document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
+  },
+  
+  /**
+   * Apply translations to all elements with data-i18n attributes
+   */
+  applyTranslations: function() {
+    // Return early if translations aren't loaded
+    if (!this.translations[this.currentLanguage]) {
+      console.warn(`Translations for ${this.currentLanguage} not loaded.`);
+      return;
+    }
+    
+    // Find all elements with data-i18n attribute
+    const elements = document.querySelectorAll('[data-i18n]');
+    console.log(`Applying translations to ${elements.length} elements`);
+    
+    elements.forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      const translation = this.getTranslation(key);
+      
+      if (translation) {
+        // Special handling for different element types
+        if (element.tagName === 'INPUT' && element.type === 'placeholder') {
+          element.placeholder = translation;
+        } else if (element.tagName === 'META' && element.getAttribute('name') === 'description') {
+          element.content = translation;
+        } else if (element.tagName === 'IMG' || element.tagName === 'IFRAME') {
+          element.alt = translation;
+        } else {
+          // Default: set as text content
+          element.textContent = translation;
+        }
+      } else {
+        console.warn(`No translation found for key: ${key}`);
+      }
+    });
+    
+    // Update page title if it has a translation
+    const titleElement = document.querySelector('title');
+    if (titleElement && titleElement.getAttribute('data-i18n')) {
+      const titleKey = titleElement.getAttribute('data-i18n');
+      const titleTranslation = this.getTranslation(titleKey);
+      if (titleTranslation) {
+        document.title = titleTranslation;
+      }
+    }
+  },
+  
+  /**
+   * Get a translation by key using dot notation
+   * @param {string} key - Translation key in dot notation (e.g., 'global.menu.home')
+   * @returns {string|null} The translation or null if not found
+   */
+  getTranslation: function(key) {
+    if (!key) return null;
+    
+    // Split the key into parts
+    const parts = key.split('.');
+    
+    // Navigate through the nested translations object
+    let translation = this.translations[this.currentLanguage];
+    for (const part of parts) {
+      if (!translation || typeof translation !== 'object') {
+        return null;
+      }
+      translation = translation[part];
+    }
+    
+    // Fallback to default language if translation is missing
+    if (translation === undefined && this.currentLanguage !== this.defaultLanguage) {
+      let defaultTranslation = this.translations[this.defaultLanguage];
+      for (const part of parts) {
+        if (!defaultTranslation || typeof defaultTranslation !== 'object') {
+          return null;
+        }
+        defaultTranslation = defaultTranslation[part];
+      }
+      return defaultTranslation;
+    }
+    
+    return translation;
+  },
+  
+  /**
+   * Get a formatted translation with variable substitution
+   * @param {string} key - Translation key
+   * @param {Object} vars - Variables for substitution
+   * @returns {string} Formatted translation
+   */
+  formatTranslation: function(key, vars = {}) {
+    let text = this.getTranslation(key);
+    
+    if (!text) return null;
+    
+    // Replace variables in the format {{variableName}}
+    return text.replace(/\{\{(\w+)\}\}/g, (match, variable) => {
+      return vars[variable] !== undefined ? vars[variable] : match;
+    });
   }
 };
 
-// Make the getRootPath function available globally for other modules to use
-window.utilityFunctions = window.utilityFunctions || {};
-window.utilityFunctions.getRootPath = ModalSystem.getRootPath;
-
-// Initialize the modal system
+// Initialize and expose globally
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize the modal system
-  ModalSystem.init();
+  I18nManager.init();
 });
+
+// Make i18n available globally
+window.i18n = I18nManager;
