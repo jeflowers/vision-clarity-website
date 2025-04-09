@@ -3,6 +3,47 @@
  * Implements modal windows for consultation and service inquiry forms
  */
 
+/** Start modal existance check ###################################################### **/
+// Check if modals exist, and if not, load them
+function ensureModalsExist() {
+    if (!document.getElementById('consultationModal') || !document.getElementById('inquiryModal')) {
+        console.log('Modals not found in DOM, attempting to load...');
+        
+        // Create container for modals if needed
+        let modalContainer = document.getElementById('modal-container');
+        if (!modalContainer) {
+            modalContainer = document.createElement('div');
+            modalContainer.id = 'modal-container';
+            document.body.appendChild(modalContainer);
+        }
+        
+        // Determine the root path based on current page
+        const rootPath = window.location.pathname.includes('/pages/') ? '../' : './';
+        
+        // Load consultation modal
+        fetch(`${rootPath}pages/templates/consultation-modal.html`)
+            .then(response => response.text())
+            .then(html => {
+                modalContainer.innerHTML += html;
+                console.log('Consultation modal loaded');
+            })
+            .catch(error => console.error('Error loading consultation modal:', error));
+            
+        // Load inquiry modal
+        fetch(`${rootPath}pages/templates/inquiry-modal.html`)
+            .then(response => response.text())
+            .then(html => {
+                modalContainer.innerHTML += html;
+                console.log('Inquiry modal loaded');
+            })
+            .catch(error => console.error('Error loading inquiry modal:', error));
+    }
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', ensureModalsExist);
+/** End modal existance check ###################################################### **/
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize modal triggers
     const modalButtons = document.querySelectorAll('.open-modal');
