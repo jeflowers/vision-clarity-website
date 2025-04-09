@@ -8,7 +8,7 @@ const I18nManager = {
   translations: {}, // Will store all loaded translations
   currentLanguage: 'en', // Default language
   defaultLanguage: 'en',
-  supportedLanguages: ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'],
+  supportedLanguages: ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar', 'br', 'la_es'],
   rtlLanguages: ['he', 'ar', 'fa'],
   
   /**
@@ -55,6 +55,8 @@ const I18nManager = {
     } else if (this.supportedLanguages.includes(savedLanguage)) {
       this.currentLanguage = savedLanguage;
     }
+    
+    console.log(`Selected language: ${this.currentLanguage}`);
     
     // Set the language selector to the current language
     const languageSelect = document.getElementById('language-select');
@@ -110,20 +112,13 @@ const I18nManager = {
    * @returns {string} The root path
    */
   getRootPath: function() {
-    // Use the globally available function if it exists
-    if (window.utilityFunctions && typeof window.utilityFunctions.getRootPath === 'function') {
-      return window.utilityFunctions.getRootPath();
-    }
-    
-    // Fallback implementation
-    const path = window.location.pathname;
-    
-    // Check if we're on GitHub Pages
-    if (path.includes('github.io')) {
+    // If on GitHub Pages, use the repository-specific path
+    if (window.location.hostname.includes('github.io')) {
       return '/vision-clarity-website/';
     }
     
     // Check if we're in a subdirectory
+    const path = window.location.pathname;
     if (path.includes('/pages/')) {
       return '../';
     }
@@ -160,37 +155,40 @@ const I18nManager = {
     try {
       // Check if translations are already loaded
       if (this.translations[lang]) {
+        console.log(`Using cached translations for ${lang}`);
         return;
       }
       
-      // Get the root path - include a timestamp to prevent caching
-      const rootPath = this.getRootPath();
-      const timestamp = new Date().getTime();
+      // Determine the correct URL based on environment
+      let translationUrl;
       
-      console.log(`Attempting to load translations from ${rootPath}js/i18n/${lang}.json?t=${timestamp}`);
-      
-      // Fetch the translation file
-      const response = await fetch(`${rootPath}js/i18n/${lang}.json?t=${timestamp}`);
-      if (!response.ok) {
-        // Try alternate path for GitHub Pages
-        if (window.location.hostname.includes('github.io')) {
-          const altResponse = await fetch(`/vision-clarity-website/js/i18n/${lang}.json?t=${timestamp}`);
-          if (!altResponse.ok) {
-            throw new Error(`Failed to load translations for ${lang}`);
-          }
-          this.translations[lang] = await altResponse.json();
-        } else {
-          throw new Error(`Failed to load translations for ${lang}`);
-        }
+      // Special case for GitHub Pages
+      if (window.location.hostname.includes('github.io')) {
+        translationUrl = `/vision-clarity-website/js/i18n/${lang}.json`;
+        console.log(`Loading translations from GitHub Pages path: ${translationUrl}`);
       } else {
-        this.translations[lang] = await response.json();
+        // For local development or other hosting
+        const rootPath = this.getRootPath();
+        translationUrl = `${rootPath}js/i18n/${lang}.json`;
+        console.log(`Loading translations from standard path: ${translationUrl}`);
       }
       
-      console.log(`Loaded translations for ${lang}`);
+      // Add cache-busting parameter
+      const cacheBuster = `?_=${new Date().getTime()}`;
+      
+      // Fetch the translation file
+      const response = await fetch(translationUrl + cacheBuster);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load translations for ${lang} (Status: ${response.status})`);
+      }
+      
+      this.translations[lang] = await response.json();
+      console.log(`Successfully loaded translations for ${lang}`);
     } catch (error) {
       console.error(`Error loading translations for ${lang}:`, error);
       
-      // Add empty translations to prevent repeated failed attempts
+      // Add empty translations object to prevent repeated failed attempts
       this.translations[lang] = this.translations[lang] || {};
       
       // Fallback to default language if not already trying to load it
@@ -199,6 +197,7 @@ const I18nManager = {
         await this.loadTranslations(this.defaultLanguage);
       } else {
         // Create some basic translations for English as fallback
+        console.warn('Creating basic fallback translations for English');
         this.translations[this.defaultLanguage] = {
           global: {
             menu: {
@@ -212,6 +211,12 @@ const I18nManager = {
             buttons: {
               schedule: "Schedule Consultation",
               inquiry: "Request Information"
+            }
+          },
+          services: {
+            header: {
+              title: "LASIK Eye Surgery",
+              subtitle: "Innovative vision correction methods designed specifically for you"
             }
           }
         };
@@ -228,6 +233,8 @@ const I18nManager = {
       console.error(`Language ${lang} is not supported`);
       return;
     }
+    
+    console.log(`Changing language to: ${lang}`);
     
     // Save the language preference
     localStorage.setItem('vci-language', lang);
@@ -271,6 +278,7 @@ const I18nManager = {
     
     // Find all elements with data-i18n attribute
     const elements = document.querySelectorAll('[data-i18n]');
+    console.log(`Applying translations to ${elements.length} elements`);
     
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
