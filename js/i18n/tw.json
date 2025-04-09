@@ -1,0 +1,172 @@
+{
+  "global": {
+    "menu": {
+      "home": "Fie",
+      "services": "Nnwuma",
+      "technology": "Mfidie",
+      "staff": "Yɛn Adwumayɛfoɔ",
+      "locations": "Bea Ahodoɔ",
+      "contact": "Ka Yɛn"
+    },
+    "buttons": {
+      "schedule": "Hyehyɛ Nhwehwɛmu",
+      "inquiry": "Bisa Nsɛm"
+    },
+    "footer": {
+      "tagline": "Aniwahwɛ Lasik yareɛ a yɛde mfidie foforɔ a ɛwɔ nyinaa mu yɛ adwuma ma adwuma no yɛ papa.",
+      "quickLinks": "Nkɔtwe Ntɛmntɛm",
+      "contact": "Ka Yɛn",
+      "phone": "Fon: (800) 555-2020",
+      "email": "Email: info@visionclarityinstitute.com",
+      "hours": "Nnɔn",
+      "weekdays": "Dwowda - Fida: 8am - 6pm",
+      "saturday": "Memeneda: 9am - 2pm", 
+      "sunday": "Kwasiada: Yɛatutu mu",
+      "copyright": "© 2025 Vision Clarity Institute. Hokwan nyinaa yɛ yɛn dea.",
+      "privacy": "Banbɔ Mmara",
+      "terms": "Ɔsom Ho Nhyehyɛe",
+      "accessibility": "Mfasoadeɛ"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Yɛn Nnwuma",
+      "subtitle": "Anihwɛ a yɛde mfidie foforɔ yɛ sɛdeɛ ɛfata wo"
+    },
+    "traditional": {
+      "title": "LASIK Atetesɛm",
+      "description": "LASIK Atetesɛm yɛ yɛn anihwɛ a yɛde laser yɛ a ɛaboa nnipa mpempem wɔ wiase nyinaa ama wɔatumi agyae nkataaniwa ne ahwehwɛaniwa yi.",
+      "how_works_title": "Ɛkwan a Ɛfa So Yɛ Adwuma",
+      "how_works_text": "Sɛ yɛreyɛ LASIK Atetesɛm no, yɛn ɔyaresafoɔ de microkeratome (adadeɛ a yɛde yɛ otwam adwuma) bɛyɛ krataa ketewa bi wɔ kornea no so. Afei wɔbɛma krataa no so, na wɔde excimer laser no atwa kornea nsunsuani a ɛwɔ ase no so ama w'aniwa no atumi ahunu adeɛ yie. Akyire no, wɔde krataa no bɛsan ato ne dantabea sɛ akadiɛ bere a ɔyareɛ no resa.",
+      "candidates_title": "Wɔn a Wɔfata",
+      "candidates_text": "Wobɛtumi ayɛ obi a LASIK Atetesɛm no fata wo sɛ:",
+      "candidates": {
+        "item1": "Woadi mfeɛ 18 anaa kɔ soro",
+        "item2": "W'ani ahunu adeɛ papa koraa mfeɛ baako",
+        "item3": "Wowɔ ani a ɛnhunu adeɛ a ɛwɔ akyirikyiri, anaa ɛnhunu adeɛ a ɛbɛn, anaa astigmatism a ɛwɔ mfinimfini",
+        "item4": "Kornea no pigyaa yie",
+        "item5": "Wonnni ani yareɛ kɛseɛ biara"
+      },
+      "recovery_title": "Ayaresa ne Nsosoɛ",
+      "recovery_text": "Nnipa dodoɔ no bɛhunu sɛ wɔn ani adɔre nkakrankakra dɔnhwere 24 akyire. Ayaresa mu nyinaa bɛdi nnawɔtwe 1-2, na w'ani bɛhunu adeɛ papa koraa bosome baako mu. LASIK Atetesɛm no wɔ nkunimdie kɛse, bɛyɛ nnipa 96% na wɔhunu adeɛ sɛdeɛ wɔpɛ."
+    },
+    "custom": {
+      "title": "LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo",
+      "description": "LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo yɛ yɛn LASIK ɔhyɛnsoɔ a yɛde laser nko ara yɛ a ɛma nteaseɛ ne adwuma papa wɔ aniwa mu adwuma paa.",
+      "how_works_title": "Ɛkwan a Ɛfa So Yɛ Adwuma",
+      "how_works_text": "Wɔ LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo mu no, yɛde laser ahoroɔ mmienu di dwuma: femtosecond laser a yɛde yɛ kornea krataa (a yɛmfa dadea nyɛ), ne wavefront-guided excimer laser a ɛka anim kɔ a yɛde siesie kornea no. Saa laser adwuma yi ma yɛtumi yɛ krataa no pɛpɛɛpɛ ne ayaresa a ɛfata wo kornea mfonini a ɛnne obi de.",
+      "benefits_title": "Mfasoɔ a Ɛwɔ Mu",
+      "benefits": {
+        "item1": "Krataa no yɛ a ɛyɛ pɛpɛɛpɛ",
+        "item2": "Ayaresa nhyehyɛe a ɛfata wo aniwa agyinasodeɛ nkoaa",
+        "item3": "Ani a ɛhunu adeɛ wɔ anadwo ne hann a ɛhyerɛn mu a ɛsen LASIK Atetesɛm de no",
+        "item4": "Tumi a ɛwɔ mu sɛ wɔtumi sa nsunsuansoɔ a ɛkɔ nnipa hunu mu (aniwa mu nsosoɔ)",
+        "item5": "Kwan papa a ɛfata nnipa a wɔwɔ kornea tiatia anaa wɔn a wɔn ani ahuna kɛse"
+      },
+      "right_for_you_title": "So LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo Fata Wo?",
+      "right_for_you_text": "Ɛwom sɛ ne boɔ yɛ den kakra sen LASIK Atetesɛm no de, nanso LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo fata sɛ wode w'adwene bɛsi so sɛ wowɔ anihunu nsɛm a ɛyɛ den, nsunsuansoɔ a ɛkɔ ɔhyɛn soro, anaa wopɛ mfidie a ɛkɔ anim koraa. Yɛn adɔkotafoɔ bɛhwɛ w'akwannya pɔtee bere a yɛrebɛhwehwɛ wo mu."
+    },
+    "prk": {
+      "title": "PRK (Photorefractive Keratectomy)",
+      "description": "PRK yɛ kwan foforo a ɛfata wɔn a ɛnsɛ sɛ wɔyɛ krataa wɔ wɔn ani so no. PRK ne adwuma a wɔde laser dii kan yɛeɛ wɔ ani mu, na ɛda so ara ma nsosoɔ papa.",
+      "how_works_title": "Ɛkwan a Ɛfa So Yɛ Adwuma",
+      "how_works_text": "Wɔ PRK mu no, ɔdɔkota no bɛyi kornea no ho nwoma a ɛwɔ akyiri no (epithelium) sen sɛ ɔbɛyɛ krataa. Na afei wɔde excimer laser no asiesie kornea no ama w'ani ahunu adeɛ. Epithelium no bɛsane anyin nnansa bi akyire.",
+      "candidates_title": "Wɔn a PRK Fata",
+      "candidates_text": "Yɛbɛtumi akamfo PRK ama nnipa a:",
+      "candidates": {
+        "item1": "Wɔwɔ kornea tiatia a ɛnfata LASIK",
+        "item2": "Wɔyɛ adwuma anaa wɔwɔ agorɔdie ahodoɔ a ɛbɛtumi ama aniwa mu apira (akofoɔ, akansi agorɔ)",
+        "item3": "Wɔwɔ kornea mu nsunsuansoɔ bi",
+        "item4": "Wɔayɛ LASIK dada na wɔhia mmoa bio"
+      },
+      "recovery_title": "Ayaresa ne Nsosoɛ",
+      "recovery_text": "Ayaresa a ɛfiri PRK mu no fa bere tenten sen LASIK, na ani a ɛhunu adeɛ papa bɛba bɛyɛ abosome 1-3 mu. Nanso, nsosoɛ a ɛwɔ akyirikyiri no te sɛ LASIK de no, na PRK twa krataa mu nsɛm so."
+    },
+    "presbyopia": {
+      "title": "Presbyopia Ayaresa",
+      "description": "Presbyopia yɛ yadeɛ a ɛba mfeɛ a ɛkyere ɛma nnipa pii a wɔadi mfeɛ bɛyɛ 40 anaa ɛboro saa, na ɛma ɛyɛ den sɛ wɔbɛhwɛ nneɛma a ɛbɛn. Wɔ Vision Clarity Institute mu no, yɛwɔ akwan pii a yɛfa so sa presbyopia.",
+      "options_title": "Yɛn Presbyopia Ayaresa Akwan",
+      "monovision_title": "Monovision LASIK",
+      "monovision_text": "Wɔ saa kwan yi mu no, wɔsiesie ani baako ma ɛhunu adeɛ a ɛwɔ akyirikyiri, na ɛbaako nso hunu adeɛ a ɛbɛn. W'adwene sua sɛ ɛbɛfa ani a ɛfata sɛnea deɛ worehwɛ no teɛ. Yei bɛtumi ama woanhia ahwehwɛaniwa.",
+      "multifocal_title": "Multifocal LASIK",
+      "multifocal_text": "Yɛde laser mfidie foforo redi dwuma no, yɛbɛtumi ayɛ beaeɛ ahodoɔ wɔ wo kornea no so a ɛbɛma woahunu adeɛ pefee wɔ akyirikyiri ahodoɔ so. Saa kwan yi ma nsosoɔ papa ma wɔn a ɛfata.",
+      "rle_title": "Refractive Lens Exchange (RLE)",
+      "rle_text": "Ɛfata nnipa bi, nkanka wɔn a wɔadi mfeɛ 50 anaa ɛboro saa, sɛ yɛbɛsesa wɔn aniwa mu lens a ɛwɔ hɔ dada no ama lens foforo a ɛhunu adeɛ wɔ beaeɛ ahodoɔ pii. Saa adwuma yi te sɛ cataract adwuma nanso wɔyɛ ansa na cataract bɛba.",
+      "determination_title": "Sɛnea Yɛbɛhunu Kwan a Ɛfata Wo",
+      "determination_text": "Bere a yɛrebɛhwehwɛ wo mu no, yɛn mmarima a wɔayɛ adesua pii bɛhwɛ w'anihunu, wɔne wo akasa afa w'asetram ne w'anihunu ahiadeɛ ho, na wɔakyerɛ wo ɔkwan a ɛfata wo presbyopia ayaresa."
+    },
+    "cta": {
+      "title": "Woasiesie Wo Ho Sɛ Wobɛhunu Adeɛ a Ɛnhia Ahwehwɛaniwa?",
+      "content": "Hyehyɛ wo nhwehwɛmu a wo ho mfa hwee ɛnnɛ sɛnea wobɛhunu ani ahwɛyie a ɛfata wo."
+    }
+  },
+  "modal": {
+    "consultation": {
+      "title": "Hyehyɛ Nhwehwɛmu",
+      "success": "Medaase! Yɛanya wo nhwehwɛmu abisa no. Yɛbɛka wo ntɛm."
+    },
+    "inquiry": {
+      "title": "Bisa Nsɛm",
+      "success": "Medaase wɔ wo nsɛmbisa ho. Yɛn kuo bɛgye wo nsɛmmisa no so ɛrenkyɛ."
+    },
+    "form": {
+      "title": "Bodin",
+      "name": "Din",
+      "email": "Email",
+      "phone": "Fon",
+      "preferred_language": "Kasa a Wopɛ",
+      "insurance": "Nsiakyibaa (sɛ ɛwɔ hɔ a)",
+      "preferred_contact_time": "Bere a Wopɛ sɛ Yɛbɛka Wo",
+      "service": "Nnwuma a Wopɛ",
+      "additional_info": "Nsɛm Foforɔ",
+      "consent": "Mema kwan sɛ Vision Clarity Institute bɛboaboa nsɛm a makyerɛ wɔ soro ha ano na wɔakora.",
+      "schedule_consultation": "Hyehyɛ Nhwehwɛmu",
+      "submit_inquiry": "Fa Nsɛmbisa No Kɔma",
+      "select": "Yi",
+      "select_service": "Yi ɔsom bi",
+      "time": {
+        "morning": "Anɔpa (8am-12pm)",
+        "afternoon": "Awia (12pm-4pm)",
+        "evening": "Anwummere (4pm-6pm)"
+      },
+      "language": {
+        "english": "Borɔfo",
+        "spanish": "Spanish",
+        "chinese": "Chinese",
+        "korean": "Korean",
+        "armenian": "Armenian",
+        "hebrew": "Hebrew",
+        "russian": "Russian",
+        "farsi": "Farsi",
+        "arabic": "Arabic",
+        "twi": "Twi"
+      },
+      "service": {
+        "traditional_lasik": "LASIK Atetesɛm",
+        "bladeless_lasik": "LASIK a Yɛyɛ No Wo Nkoaa Sɛnea Ɛbɛfata Wo",
+        "prk": "PRK",
+        "presbyopia": "Presbyopia Ayaresa",
+        "other": "Foforɔ (mepawokyɛw kyerɛ)"
+      },
+      "title": {
+        "mr": "Owura",
+        "mrs": "Owurani",
+        "ms": "Obaabun",
+        "dr": "Dɔkota",
+        "prof": "Ɔkyerɛkyerɛni"
+      }
+    }
+  },
+  "language": {
+    "english": "Borɔfo",
+    "spanish": "Spanish",
+    "chinese": "Chinese",
+    "korean": "Korean",
+    "armenian": "Armenian",
+    "hebrew": "Hebrew",
+    "russian": "Russian",
+    "farsi": "Farsi",
+    "arabic": "Arabic",
+    "twi": "Twi"
+  }
+}
