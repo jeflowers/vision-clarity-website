@@ -3,29 +3,31 @@
  * This module handles loading and applying translations based on user language preferences.
  */
 
-// Import our utility modules
-import languageDetector from './language-detector.js';
-import fontLoader from './font-loader.js';
-
-class I18nManager {
-  constructor() {
-    this.translations = {}; // Will store all loaded translations
-    this.currentLanguage = 'en'; // Default language
-    this.defaultLanguage = 'en';
-    this.supportedLanguages = ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'];
-    this.rtlLanguages = ['he', 'ar', 'fa'];
+// Create a simple version without ES6 imports
+const I18nManager = {
+  translations: {}, // Will store all loaded translations
+  currentLanguage: 'en', // Default language
+  defaultLanguage: 'en',
+  supportedLanguages: ['en', 'es', 'zh', 'ko', 'hy', 'he', 'tl', 'ru', 'fa', 'ar'],
+  rtlLanguages: ['he', 'ar', 'fa'],
+  
+  /**
+   * Initialize the I18n system
+   */
+  init: function() {
+    console.log('Initializing I18n System');
     
     // Initialize event listeners
     this.initEventListeners();
     
     // Initialize language based on saved preference or detection
     this.initLanguage();
-  }
+  },
   
   /**
    * Initialize event listeners for language selection
    */
-  initEventListeners() {
+  initEventListeners: function() {
     // Language selector dropdown event listener
     const languageSelect = document.getElementById('language-select');
     if (languageSelect) {
@@ -33,18 +35,23 @@ class I18nManager {
         this.changeLanguage(event.target.value);
       });
     }
-  }
+  },
   
   /**
    * Initialize language based on saved preference or detection
    */
-  async initLanguage() {
+  initLanguage: async function() {
     // Try to get language from localStorage
     const savedLanguage = localStorage.getItem('vci-language');
     
-    // If no saved language, use our advanced language detector
+    // If no saved language, use browser language or fall back to default
     if (!savedLanguage) {
-      this.currentLanguage = await languageDetector.detectLanguage();
+      this.currentLanguage = this.getBrowserLanguage();
+      
+      // If not supported, use default
+      if (!this.supportedLanguages.includes(this.currentLanguage)) {
+        this.currentLanguage = this.defaultLanguage;
+      }
     } else if (this.supportedLanguages.includes(savedLanguage)) {
       this.currentLanguage = savedLanguage;
     }
@@ -66,16 +73,16 @@ class I18nManager {
     this.handleTextDirection(this.currentLanguage);
     
     // Load appropriate fonts for the language
-    fontLoader.loadFontsForLanguage(this.currentLanguage);
+    this.loadFontsForLanguage(this.currentLanguage);
     
     console.log(`Language initialized: ${this.currentLanguage}`);
-  }
+  },
   
   /**
    * Handle text direction based on language
    * @param {string} lang - Language code
    */
-  handleTextDirection(lang) {
+  handleTextDirection: function(lang) {
     if (this.rtlLanguages.includes(lang)) {
       document.documentElement.dir = 'rtl';
       document.body.classList.add('rtl');
@@ -84,7 +91,7 @@ class I18nManager {
         const rtlStylesheet = document.createElement('link');
         rtlStylesheet.id = 'rtl-stylesheet';
         rtlStylesheet.rel = 'stylesheet';
-        rtlStylesheet.href = '../css/rtl.css';
+        rtlStylesheet.href = this.getRootPath() + 'css/rtl.css';
         document.head.appendChild(rtlStylesheet);
       }
     } else {
@@ -96,31 +103,63 @@ class I18nManager {
         rtlStylesheet.remove();
       }
     }
-  }
+  },
   
   /**
-   * Get the user's browser language
+   * Get the root path based on current page location
+   * @returns {string} The root path
+   */
+  getRootPath: function() {
+    // Use the globally available function if it exists
+    if (window.utilityFunctions && typeof window.utilityFunctions.getRootPath === 'function') {
+      return window.utilityFunctions.getRootPath();
+    }
+    
+    // Fallback implementation
+    const path = window.location.pathname;
+    if (path.includes('/pages/')) {
+      return '../';
+    }
+    return './';
+  },
+  
+  /**
+   * Simple utility to detect browser language
    * @returns {string} Language code (e.g., 'en', 'es')
    */
-  getBrowserLanguage() {
+  getBrowserLanguage: function() {
     const fullLang = navigator.language || navigator.userLanguage;
     return fullLang.split('-')[0].toLowerCase(); // Extract the language code (e.g., 'en' from 'en-US')
-  }
+  },
+  
+  /**
+   * Load appropriate fonts for a language
+   * @param {string} lang - Language code
+   */
+  loadFontsForLanguage: function(lang) {
+    // Simplified version that could be expanded based on language needs
+    // For now, just add a class to the body
+    document.body.className = document.body.className.replace(/lang-\w+/g, '');
+    document.body.classList.add(`lang-${lang}`);
+  },
   
   /**
    * Load translations for a specific language
    * @param {string} lang - Language code
    * @returns {Promise} Promise that resolves when translations are loaded
    */
-  async loadTranslations(lang) {
+  loadTranslations: async function(lang) {
     try {
       // Check if translations are already loaded
       if (this.translations[lang]) {
         return;
       }
       
+      // Get the root path
+      const rootPath = this.getRootPath();
+      
       // Fetch the translation file
-      const response = await fetch(`../js/i18n/${lang}.json`);
+      const response = await fetch(`${rootPath}js/i18n/${lang}.json`);
       if (!response.ok) {
         throw new Error(`Failed to load translations for ${lang}`);
       }
@@ -136,13 +175,13 @@ class I18nManager {
         await this.loadTranslations(this.defaultLanguage);
       }
     }
-  }
+  },
   
   /**
    * Change the current language
    * @param {string} lang - Language code
    */
-  async changeLanguage(lang) {
+  changeLanguage: async function(lang) {
     if (!this.supportedLanguages.includes(lang)) {
       console.error(`Language ${lang} is not supported`);
       return;
@@ -165,7 +204,7 @@ class I18nManager {
     this.handleTextDirection(lang);
     
     // Load appropriate fonts for the language
-    fontLoader.loadFontsForLanguage(lang);
+    this.loadFontsForLanguage(lang);
     
     // Track language change in analytics if available
     if (window.gtag) {
@@ -176,12 +215,12 @@ class I18nManager {
     
     // Dispatch a custom event for other components to react to language change
     document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
-  }
+  },
   
   /**
    * Apply translations to all elements with data-i18n attributes
    */
-  applyTranslations() {
+  applyTranslations: function() {
     // Return early if translations aren't loaded
     if (!this.translations[this.currentLanguage]) {
       console.warn(`Translations for ${this.currentLanguage} not loaded.`);
@@ -221,14 +260,14 @@ class I18nManager {
         document.title = titleTranslation;
       }
     }
-  }
+  },
   
   /**
    * Get a translation by key using dot notation
    * @param {string} key - Translation key in dot notation (e.g., 'global.menu.home')
    * @returns {string|null} The translation or null if not found
    */
-  getTranslation(key) {
+  getTranslation: function(key) {
     // Split the key into parts
     const parts = key.split('.');
     
@@ -254,7 +293,7 @@ class I18nManager {
     }
     
     return translation;
-  }
+  },
   
   /**
    * Get a formatted translation with variable substitution
@@ -262,7 +301,7 @@ class I18nManager {
    * @param {Object} vars - Variables for substitution
    * @returns {string} Formatted translation
    */
-  formatTranslation(key, vars = {}) {
+  formatTranslation: function(key, vars = {}) {
     let text = this.getTranslation(key);
     
     if (!text) return null;
@@ -272,17 +311,12 @@ class I18nManager {
       return vars[variable] !== undefined ? vars[variable] : match;
     });
   }
-}
+};
 
-// Create and export a singleton instance
-const i18n = new I18nManager();
-
-// Make i18n available globally
-window.i18n = i18n;
-
-// Initialize when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // i18n is already initialized, but we can add any page-specific handling here
+// Initialize and expose globally
+document.addEventListener('DOMContentLoaded', function() {
+  I18nManager.init();
 });
 
-export default i18n;
+// Make i18n available globally
+window.i18n = I18nManager;
