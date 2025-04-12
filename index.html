@@ -243,6 +243,8 @@
 
 <!-- component-loader.js needs to load and use the PathResolver to get the correct root path -->
     <script src="js/component-loader.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/flag-language-selector.js"></script>
 <!-- Scripts - load JS files in the correct sequence -->
     <script>
         window.ResourceLoader.loadJsSequence([
@@ -250,7 +252,6 @@
             'font-loader.js',
             'i18n.js',
             'language-detector.js',
-            'header.js',
             'content-localizer.js',
             'scripts.js',
             'chatbot.js',
