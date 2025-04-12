@@ -90,7 +90,7 @@ const ComponentLoader = {
   },
   
   // Get the root path based on current page location
-  getRootPath: function() {
+  /*getRootPath: function() {
     // Get the current path
     const path = window.location.pathname;
     
@@ -101,7 +101,24 @@ const ComponentLoader = {
     
     // For all other pages (assuming they're in the /pages/ directory)
     return '../';
-  },
+  },*/
+
+  /* ######## Start New getRootPath ############## */
+  getRootPath: function() {
+  // Use the shared PathResolver if available
+  if (window.PathResolver) {
+    return window.PathResolver.getRootPath();
+  }
+  
+  // Fallback to original implementation
+  const path = window.location.pathname;
+  if (path === '/' || path === '/index.html' || path.endsWith('/index.html')) {
+    return './';
+  }
+  return '../';
+},
+
+/* ######## End New getRootPath ############## */
   
   // Process after all components are loaded
   postLoadProcessing: function() {
