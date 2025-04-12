@@ -1,0 +1,133 @@
+/**
+ * Vision Clarity Institute - Dropdown Menu Fix
+ * Fixes styling issues with select dropdown menus
+ */
+
+/* Style for select options in dropdown */
+select.flag-enabled option {
+    padding: 8px 12px;
+    color: #333;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Style for selected option */
+select.flag-enabled option:checked {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for hover state */
+select.flag-enabled option:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+/* Fix for dropdown when open */
+select.flag-enabled:focus {
+    border-radius: 4px 4px 0 0;
+}
+
+/* Adjust padding and size for dropdown items */
+select.flag-enabled {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+/* Modern select styling for browsers that support it */
+@supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+    select.flag-enabled {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path fill="%23555" d="M0 0l6 6 6-6z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+    }
+
+    /* For Firefox - special styling */
+    @-moz-document url-prefix() {
+        select.flag-enabled {
+            text-overflow: ellipsis;
+        }
+        
+        select.flag-enabled option {
+            padding: 6px 10px;
+        }
+    }
+    
+    /* For Webkit browsers */
+    select.flag-enabled::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    select.flag-enabled::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    select.flag-enabled::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    
+    select.flag-enabled::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+/* Fix for dropdown height */
+.flag-enabled option {
+    min-height: 24px;
+}
+
+/* Fix for dropdown width ensuring it's at least as wide as the select */
+select.flag-enabled option {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Fix for optgroup */
+select.flag-enabled optgroup {
+    font-weight: bold;
+    font-style: normal;
+    padding: 5px;
+}
+
+/* Ensure dropdown is visible when opened */
+select.flag-enabled:focus {
+    z-index: 1001;
+    position: relative;
+}
+
+/* Fix for the dropdown container */
+.flag-select-wrapper {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+}
+
+/* Fix for arrow positioning */
+.select-icon {
+    pointer-events: none;
+}
+
+/* Prevent text from being cut off */
+select.flag-enabled,
+select.header-language-select {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+}
+
+/* Add spacing between flag and text */
+.flag-display + select.flag-enabled option {
+    padding-left: 30px;
+}
+
+/* Fix active state color */
+select.flag-enabled:active,
+select.flag-enabled:focus {
+    background-color: #fff;
+}

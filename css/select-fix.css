@@ -1,0 +1,73 @@
+/**
+ * Vision Clarity Institute - Select Element Fix
+ * Fixes styling and appearance of select elements in modern browsers
+ */
+
+/* Reset browser-specific styling */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Specifically style the dropdown menu */
+select.flag-enabled {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0.5rem 2rem 0.5rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  width: auto;
+  position: relative;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Ensure dropdown options are styled consistently */
+select.flag-enabled option {
+  padding: 0.5rem;
+  font-size: 14px;
+}
+
+/* Force showing dropdown arrow */
+select.flag-enabled {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+/* Fix select padding for different browsers */
+@-moz-document url-prefix() {
+  select.flag-enabled {
+    padding-left: 2.5rem;
+  }
+}
+
+/* Make sure options don't inherit background image */
+select.flag-enabled option {
+  background-image: none;
+}
+
+/* Fix checkbox appearance in some browsers */
+select.flag-enabled option::before {
+  content: "";
+  display: none;
+}
+
+/* Ensure text fits and doesn't get cut off */
+select.flag-enabled option {
+  white-space: normal;
+}
+
+/* Fix height to match other form elements */
+select.flag-enabled {
+  height: 38px; /* Match the standard button height */
+}
+
+/* Fix spacing for the flag icon */
+.flag-display {
+  left: 10px !important;
+  z-index: 3;
+}

@@ -28,6 +28,57 @@
       "accessibility": "Accessibility"
     }
   },
+  "home": {
+    "hero": {
+      "title": "Advanced Laser Vision Correction",
+      "subtitle": "Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts."
+    },
+    "intro": {
+      "title": "Experience the Vision Clarity Difference",
+      "paragraph1": "At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs.",
+      "paragraph2": "With over 50,000 successful procedures performed, our board-certified ophthalmologists have the expertise to provide you with the highest standard of care in laser vision correction."
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive vision correction solutions to fit your needs",
+      "traditional": {
+        "title": "Traditional LASIK",
+        "description": "Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time."
+      },
+      "custom": {
+        "title": "Custom Bladeless LASIK",
+        "description": "Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications."
+      },
+      "prk": {
+        "title": "PRK",
+        "description": "An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas."
+      },
+      "presbyopia": {
+        "title": "Presbyopia Correction",
+        "description": "Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses."
+      }
+    },
+    "testimonials": {
+      "title": "Patient Testimonials",
+      "subtitle": "Hear from our satisfied patients"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "question1": "Am I a good candidate for LASIK?",
+      "answer1": "Good candidates for LASIK are typically 18 years or older with stable vision for at least one year. A comprehensive eye exam during your consultation will determine if LASIK is right for you based on your eye health, prescription, and corneal thickness.",
+      "question2": "Is LASIK painful?",
+      "answer2": "LASIK is generally not painful. We use numbing eye drops before the procedure, and patients typically feel only slight pressure during the brief surgery. Some mild discomfort, irritation, or dryness may occur during the first 24-48 hours of recovery.",
+      "question3": "How long does recovery take?",
+      "answer3": "Most patients notice improved vision immediately after surgery, with vision continuing to stabilize over the next few days. Many return to work within 1-2 days. Complete healing may take 3-6 months, though most visual stabilization occurs within the first few weeks.",
+      "question4": "How much does LASIK cost?",
+      "answer4": "The cost of LASIK at Vision Clarity Institute ranges from $1,800 to $2,500 per eye, depending on your specific vision needs and the technology selected. We offer flexible financing options with affordable monthly payments."
+    },
+    "cta": {
+      "title": "Ready to Experience Clear Vision?",
+      "content": "Take the first step toward visual freedom. Our experts are ready to help you achieve better vision without glasses or contacts.",
+      "button": "Schedule Your Free Consultation"
+    }
+  },
   "services": {
     "header": {
       "title": "Our Services",
@@ -166,5 +217,272 @@
     "russian": "Russian",
     "farsi": "Farsi",
     "arabic": "Arabic"
+  },
+  "technology": {
+    "meta": {
+      "title": "Our Technology - Vision Clarity Institute",
+      "description": "Learn about the advanced laser vision correction technology used at Vision Clarity Institute for optimal results."
+    },
+    "hero": {
+      "title": "Our Technology",
+      "subtitle": "Cutting-edge tools for unparalleled clarity in vision restoration",
+      "primary_button": "Schedule Free Consultation",
+      "secondary_button": "Explore Our Technology"
+    },
+    "overview": {
+      "title": "Cutting-Edge Vision Correction Technology",
+      "paragraph1": "At Vision Clarity Institute, we're committed to providing patients with the most advanced technological solutions for laser vision correction. Our investment in state-of-the-art equipment ensures that you receive the safest, most precise, and effective treatment possible.",
+      "paragraph2": "Our ophthalmologists are highly trained in using these advanced systems and stay at the forefront of technological innovations through continuous education and training.",
+      "paragraph3": "From comprehensive diagnostic equipment to precision laser systems, every aspect of our technology is designed to optimize your visual outcomes."
+    },
+    "diagnostic": {
+      "title": "Diagnostic Technology",
+      "subtitle": "Precision mapping and analysis for personalized treatment plans",
+      "wavefront": {
+        "title": "Wavefront Analyzer",
+        "description": "Our advanced wavefront technology creates a detailed 3D map of your eye's unique optical system, measuring and identifying even the most subtle vision imperfections that traditional methods might miss. This allows for completely personalized treatments that address your specific visual needs."
+      },
+      "topographer": {
+        "title": "Corneal Topographer",
+        "description": "This sophisticated imaging system maps the exact shape and curvature of your cornea with microscopic precision. By analyzing the corneal surface, we can identify irregularities and ensure optimal treatment planning, especially important for patients with astigmatism or unusual corneal conditions."
+      },
+      "oct": {
+        "title": "Optical Coherence Tomography (OCT)",
+        "description": "Our OCT system provides ultra-high resolution cross-sectional imaging of your cornea and retina. This non-invasive technology allows us to visualize the distinct layers of your eye to precisely measure corneal thickness and detect any abnormalities that might affect your treatment plan."
+      }
+    },
+    "laser": {
+      "title": "Laser Technology",
+      "subtitle": "Precision instruments for optimal vision correction",
+      "femtosecond": {
+        "title": "Femtosecond Laser",
+        "description": "Used in our bladeless LASIK procedures, this ultra-fast laser creates precise corneal flaps with accuracy measured in microns. The femtosecond laser produces extremely short pulses of energy, allowing for incredibly precise tissue separation without generating heat, resulting in more consistent flap thickness and reduced complications."
+      },
+      "excimer": {
+        "title": "Wavefront-Guided Excimer Laser",
+        "description": "Our advanced excimer laser system reshapes your cornea with extreme precision to correct your vision. Integrated with wavefront technology, the laser treatment is customized to your unique visual profile. The system features high-speed eye tracking that adjusts for even the smallest eye movements during the procedure, ensuring perfect alignment."
+      },
+      "eyetracking": {
+        "title": "Advanced Eye Tracking System",
+        "description": "Our laser systems incorporate sophisticated eye-tracking technology that monitors your eye position more than 1,000 times per second. This ensures that the laser treatment remains perfectly centered even with microscopic eye movements, delivering consistent results and enhancing safety throughout the procedure."
+      }
+    },
+    "timeline": {
+      "title": "Our Technology Evolution",
+      "subtitle": "Committed to innovation in vision correction",
+      "event2010": {
+        "title": "Vision Clarity Institute Founded",
+        "description": "Established with a commitment to using the most advanced technology available for vision correction."
+      },
+      "event2013": {
+        "title": "First Wavefront-Guided System",
+        "description": "Implemented our first advanced wavefront-guided LASIK system, offering more personalized vision correction."
+      },
+      "event2016": {
+        "title": "Advanced Corneal Imaging",
+        "description": "Added high-resolution corneal mapping technology for enhanced diagnostic capabilities."
+      },
+      "event2019": {
+        "title": "Next-Generation Femtosecond Laser",
+        "description": "Upgraded to the latest femtosecond laser technology for bladeless flap creation with unparalleled precision."
+      },
+      "event2023": {
+        "title": "Latest Excimer Laser Platform",
+        "description": "Implemented the newest generation of excimer laser technology with advanced eye tracking and treatment customization."
+      },
+      "event2025": {
+        "title": "Looking Ahead",
+        "description": "Committed to continuous technological advancement to provide our patients with the best possible outcomes."
+      }
+    },
+    "cta": {
+      "title": "Experience Advanced Technology in Action",
+      "content": "Schedule your free consultation to see how our cutting-edge technology can improve your vision.",
+      "button": "Book Your Free Consultation"
+    }
+  },
+  "team": {
+    "meta": {
+      "title": "Meet Our Team - Vision Clarity Institute",
+      "description": "Meet the experienced eye care specialists at Vision Clarity Institute who provide exceptional LASIK and vision correction services."
+    },
+    "hero": {
+      "title": "Meet Our Team",
+      "subtitle": "Our experienced specialists are dedicated to providing exceptional eye care",
+      "schedule_button": "Schedule Consultation",
+      "info_button": "Request Information"
+    },
+    "intro": {
+      "title": "Experienced Vision Care Specialists",
+      "content": "At Vision Clarity Institute, our team of highly trained eye care specialists is committed to providing personalized care using the latest technology. We combine extensive expertise with a compassionate approach to ensure optimal outcomes for our patients."
+    },
+    "filters": {
+      "all": "All Specialists",
+      "surgeons": "LASIK Surgeons",
+      "optometrists": "Optometrists",
+      "staff": "Clinical Staff"
+    },
+    "doctors": {
+      "chen": {
+        "name": "Dr. Sarah Chen",
+        "title": "LASIK & Refractive Surgery Specialist",
+        "bio": "Dr. Chen is a board-certified ophthalmologist specializing in LASIK, PRK, and other refractive procedures. With over 15 years of experience, she has performed more than 25,000 successful LASIK procedures.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "University of California, San Francisco (UCSF) Medical School",
+          "Residency in Ophthalmology at Johns Hopkins University",
+          "Fellowship in Cornea and Refractive Surgery at Bascom Palmer Eye Institute"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "Board Certified by the American Board of Ophthalmology",
+          "Fellow of the American Academy of Ophthalmology",
+          "Member of the American Society of Cataract and Refractive Surgery"
+        ],
+        "specialties_title": "Specialties",
+        "specialties": [
+          "LASIK Surgery",
+          "PRK",
+          "Refractive Lens Exchange",
+          "Corneal Crosslinking"
+        ],
+        "book_button": "Book Appointment"
+      },
+      "patel": {
+        "name": "Dr. Michael Patel",
+        "title": "Cornea & Refractive Surgery Specialist",
+        "bio": "Dr. Patel specializes in corneal disorders and refractive surgery. He is dedicated to providing patients with personalized care using the most advanced techniques in vision correction.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "Harvard Medical School",
+          "Residency in Ophthalmology at Massachusetts Eye and Ear",
+          "Fellowship in Cornea and External Diseases at Wills Eye Hospital"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "Board Certified by the American Board of Ophthalmology",
+          "Fellow of the American Academy of Ophthalmology",
+          "Member of the Cornea Society"
+        ],
+        "specialties_title": "Specialties",
+        "specialties": [
+          "Corneal Transplantation",
+          "LASIK Surgery",
+          "Keratoconus Treatment",
+          "Dry Eye Management"
+        ],
+        "book_button": "Book Appointment"
+      },
+      "johnson": {
+        "name": "Dr. Emily Johnson",
+        "title": "Clinical Optometrist",
+        "bio": "Dr. Johnson provides comprehensive eye examinations and specializes in pre and post-operative care for LASIK patients. She is passionate about helping patients achieve their best possible vision.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "New England College of Optometry",
+          "Residency in Ocular Disease at VA Boston Healthcare System"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "American Board of Optometry Certification",
+          "Member of the American Optometric Association",
+          "Therapeutic Pharmaceutical Agent Certification"
+        ],
+        "specialties_title": "Specialties",
+        "specialties": [
+          "Comprehensive Eye Exams",
+          "Contact Lens Fittings",
+          "LASIK Pre/Post-Op Care",
+          "Dry Eye Management"
+        ],
+        "book_button": "Book Appointment"
+      },
+      "wilson": {
+        "name": "Dr. David Wilson",
+        "title": "Senior Optometrist",
+        "bio": "Dr. Wilson brings over 20 years of experience in clinical optometry. He specializes in complex contact lens fittings and managing ocular surface diseases.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "Southern California College of Optometry",
+          "Residency in Contact Lenses at University of California, Berkeley"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "American Board of Optometry Certification",
+          "Fellow of the American Academy of Optometry",
+          "Scleral Lens Education Society Member"
+        ],
+        "specialties_title": "Specialties",
+        "specialties": [
+          "Specialty Contact Lenses",
+          "Dry Eye Treatment",
+          "Keratoconus Management",
+          "Pediatric Optometry"
+        ],
+        "book_button": "Book Appointment"
+      }
+    },
+    "staff": {
+      "roberts": {
+        "name": "Jennifer Roberts",
+        "title": "Clinical Director",
+        "bio": "Jennifer oversees all clinical operations at Vision Clarity Institute. With her extensive background in healthcare administration and patient care, she ensures that our patients receive the highest quality service.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "Bachelor of Science in Nursing, University of Washington",
+          "Master's in Healthcare Administration, University of Michigan"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "Registered Nurse",
+          "Certified Ophthalmic Assistant (COA)",
+          "Healthcare Management Certification"
+        ],
+        "expertise_title": "Expertise",
+        "expertise": [
+          "Clinical Operations",
+          "Patient Care Coordination",
+          "Staff Management",
+          "Quality Assurance"
+        ]
+      },
+      "thompson": {
+        "name": "Marcus Thompson",
+        "title": "Ophthalmic Technician",
+        "bio": "Marcus provides essential clinical support to our doctors. He conducts preliminary vision tests, assists during procedures, and helps patients understand their treatment plans.",
+        "view_credentials": "View Credentials",
+        "education_title": "Education",
+        "education": [
+          "Associate Degree in Allied Health Sciences",
+          "Ophthalmic Technician Training, Wills Eye Hospital"
+        ],
+        "certifications_title": "Certifications",
+        "certifications": [
+          "Certified Ophthalmic Technician (COT)",
+          "CPR and First Aid Certification",
+          "Diagnostic Testing Certification"
+        ],
+        "expertise_title": "Expertise",
+        "expertise": [
+          "Diagnostic Testing",
+          "Patient Education",
+          "Pre-Op Assessments",
+          "LASIK Assistance"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Expert Eye Care?",
+      "content": "Schedule your consultation today with one of our specialists and take the first step toward clearer vision.",
+      "button": "Book Your Free Consultation"
+    }
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content"
   }
 }

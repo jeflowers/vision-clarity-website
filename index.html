@@ -3,68 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision Clarity Institute - Advanced Lasik Eye Surgery</title>
-    <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results.">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/chatbot.css">
-    <link rel="stylesheet" href="css/button-refinements.css">
-    <!-- Modal Styles -->
-    <link rel="stylesheet" href="css/modal.css">
-    <!-- Checkmark Fix -->
-    <link rel="stylesheet" href="css/checkmark-fix.css">
+    <title data-i18n="home.meta.title">Vision Clarity Institute - Advanced Lasik Eye Surgery</title>
+    <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results." data-i18n="home.meta.description">
+
+    <!-- Core path resolution - must be loaded first -->
+    <script src="js/path-resolver.js"></script>
+    <script src="js/resource-loader.js"></script>
+    
+    <!-- Load CSS files dynamically -->
+    <script>
+        window.ResourceLoader.loadCssFiles([
+            'styles.css',
+            'chatbot.css',
+            'button-refinements.css',
+            'modal.css',
+            'checkmark-fix.css',
+            'header-improvements.css',
+            'language-selector.css', // Keep only this one CSS file for language selector styling
+        ]);
+    </script>
+    
 </head>
 <body>
-    <!-- Header for index.html with Modal Button Implementation -->
-<header class="header">
-    <div class="container">
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
-            </a>
-        </div>
-        <nav class="main-nav">
-            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-                <img src="assets/images/icons/menu.svg" alt="Menu">
-            </button>
-            <ul class="nav-list">
-                <li><a href="index.html" class="active" data-i18n="global.menu.home">Home</a></li>
-                <li><a href="pages/services.html" data-i18n="global.menu.services">Services</a></li>
-                <li><a href="pages/technology.html" data-i18n="global.menu.technology">Technology</a></li>
-                <li><a href="pages/staff.html" data-i18n="global.menu.staff">Our Staff</a></li>
-                <li><a href="pages/locations.html" data-i18n="global.menu.locations">Locations</a></li>
-                <li><a href="pages/contact.html" data-i18n="global.menu.contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <div class="language-selector">
-                <select id="language-select" aria-label="Select Language">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="zh">中文</option>
-                    <option value="ko">한국어</option>
-                    <option value="hy">Հայերեն</option>
-                    <option value="he">עברית</option>
-                    <option value="ru">Русский</option>
-                    <option value="fa">فارسی</option>
-                    <option value="ar">العربية</option>
-                </select>
-            </div>
-            <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
-            <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
-        </div>
-    </div>
-</header>
+    <header class="header"></header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1>Advanced Laser Vision Correction</h1>
-                    <p>Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts.</p>
+                    <h1 data-i18n="home.hero.title">Advanced Laser Vision Correction</h1>
+                    <p data-i18n="home.hero.subtitle">Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts.</p>
                     <div class="hero-cta">
-                        <button class="btn btn-primary btn-large open-modal" data-form-type="consultation">Schedule Free Consultation</button>
-                        <a href="pages/technology.html" class="btn btn-outline">Explore Our Technology</a>
+                        <button class="btn btn-primary btn-large open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Free Consultation</button>
+                        <a href="pages/technology.html" class="btn btn-secondary" data-i18n="home.hero.secondary_button">Explore Our Technology</a>
                     </div>
                 </div>
                 <div class="hero-images">
@@ -92,16 +64,16 @@
                     <img src="assets/images/intro/doctor-patient.jpg" alt="Doctor consulting with a patient at Vision Clarity Institute">
                 </div>
                 <div class="intro-content">
-                    <h2>Experience the Vision Clarity Difference</h2>
-                    <p>At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs.</p>
-                    <p>With over 50,000 successful procedures performed, our board-certified ophthalmologists have the expertise to provide you with the highest standard of care in laser vision correction.</p>
+                    <h2 data-i18n="home.intro.title">Experience the Vision Clarity Difference</h2>
+                    <p data-i18n="home.intro.paragraph1">At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs.</p>
+                    <p data-i18n="home.intro.paragraph2">With over 50,000 successful procedures performed, our board-certified ophthalmologists have the expertise to provide you with the highest standard of care in laser vision correction.</p>
                     <ul class="intro-features">
-                        <li>Advanced bladeless LASIK technology</li>
-                        <li>Comprehensive consultation and eye analysis</li>
-                        <li>Personalized treatment plans</li>
-                        <li>Exceptional post-operative care</li>
+                        <li data-i18n="home.intro.feature1">Advanced bladeless LASIK technology</li>
+                        <li data-i18n="home.intro.feature2">Comprehensive consultation and eye analysis</li>
+                        <li data-i18n="home.intro.feature3">Personalized treatment plans</li>
+                        <li data-i18n="home.intro.feature4">Exceptional post-operative care</li>
                     </ul>
-                    <a href="pages/technology.html" class="btn btn-secondary">Our Technology</a>
+                    <a href="pages/technology.html" class="btn btn-secondary" data-i18n="home.intro.button">Our Technology</a>
                 </div>
             </div>
         </div>
@@ -110,19 +82,19 @@
     <!-- Services Section -->
     <section class="services-overview section bg-light">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive vision correction solutions to fit your needs</p>
+            <h2 class="section-title" data-i18n="home.services.title">Our Services</h2>
+            <p class="section-subtitle" data-i18n="home.services.subtitle">Comprehensive vision correction solutions to fit your needs</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
                     </div>
-                    <h3>Traditional LASIK</h3>
-                    <p>Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
+                    <h3 data-i18n="home.services.traditional.title">Traditional LASIK</h3>
+                    <p data-i18n="home.services.traditional.description">Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#traditional" class="service-link">Learn More</a>
-                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik">Request Consultation</button>
+                        <a href="pages/services.html#traditional" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik" data-i18n="home.services.request_consultation">Request Consultation</button>
                     </div>
                 </div>
                 
@@ -130,11 +102,11 @@
                     <div class="service-icon">
                         <img src="assets/images/icons/custom-lasik.svg" alt="Custom Bladeless LASIK Icon">
                     </div>
-                    <h3>Custom Bladeless LASIK</h3>
-                    <p>Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
+                    <h3 data-i18n="home.services.custom.title">Custom Bladeless LASIK</h3>
+                    <p data-i18n="home.services.custom.description">Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#custom" class="service-link">Learn More</a>
-                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="bladeless_lasik">Request Consultation</button>
+                        <a href="pages/services.html#custom" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="bladeless_lasik" data-i18n="home.services.request_consultation">Request Consultation</button>
                     </div>
                 </div>
                 
@@ -142,11 +114,11 @@
                     <div class="service-icon">
                         <img src="assets/images/icons/prk.svg" alt="PRK Icon">
                     </div>
-                    <h3>PRK</h3>
-                    <p>An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
+                    <h3 data-i18n="home.services.prk.title">PRK</h3>
+                    <p data-i18n="home.services.prk.description">An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#prk" class="service-link">Learn More</a>
-                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk">Request Consultation</button>
+                        <a href="pages/services.html#prk" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk" data-i18n="home.services.request_consultation">Request Consultation</button>
                     </div>
                 </div>
                 
@@ -154,11 +126,11 @@
                     <div class="service-icon">
                         <img src="assets/images/icons/presbyopia.svg" alt="Presbyopia Correction Icon">
                     </div>
-                    <h3>Presbyopia Correction</h3>
-                    <p>Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
+                    <h3 data-i18n="home.services.presbyopia.title">Presbyopia Correction</h3>
+                    <p data-i18n="home.services.presbyopia.description">Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
                     <div class="service-actions">
-                        <a href="pages/services.html#presbyopia" class="service-link">Learn More</a>
-                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="presbyopia">Request Consultation</button>
+                        <a href="pages/services.html#presbyopia" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="presbyopia" data-i18n="home.services.request_consultation">Request Consultation</button>
                     </div>
                 </div>
             </div>
@@ -168,8 +140,8 @@
     <!-- Testimonials Section -->
     <section class="testimonials section">
         <div class="container">
-            <h2 class="section-title">Patient Testimonials</h2>
-            <p class="section-subtitle">Hear from our satisfied patients</p>
+            <h2 class="section-title" data-i18n="home.testimonials.title">Patient Testimonials</h2>
+            <p class="section-subtitle" data-i18n="home.testimonials.subtitle">Hear from our satisfied patients</p>
             
             <div class="testimonial-slider">
                 <div class="testimonial-slide">
@@ -182,13 +154,13 @@
                             <span class="star">★</span>
                         </div>
                         <blockquote>
-                            <p>"After 20 years of wearing glasses, I can finally see clearly without them. The procedure was quick and painless, and the staff made me feel completely at ease. I wish I had done this years ago!"</p>
+                            <p data-i18n="home.testimonials.testimonial1">After 20 years of wearing glasses, I can finally see clearly without them. The procedure was quick and painless, and the staff made me feel completely at ease. I wish I had done this years ago!</p>
                         </blockquote>
                         <div class="testimonial-author">
                             <img src="assets/images/testimonials/jennifer-t.jpg" alt="Jennifer T." class="author-image">
                             <div class="author-info">
-                                <h4>Jennifer T.</h4>
-                                <p>Los Angeles, CA</p>
+                                <h4 data-i18n="home.testimonials.author1_name">Jennifer T.</h4>
+                                <p data-i18n="home.testimonials.author1_location">Los Angeles, CA</p>
                             </div>
                         </div>
                     </div>
@@ -214,40 +186,40 @@
     <!-- FAQ Section -->
     <section class="faq-overview section bg-light">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <h2 class="section-title" data-i18n="home.faq.title">Frequently Asked Questions</h2>
             
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3 class="faq-question">Am I a good candidate for LASIK?</h3>
+                    <h3 class="faq-question" data-i18n="home.faq.question1">Am I a good candidate for LASIK?</h3>
                     <div class="faq-answer">
-                        <p>Good candidates for LASIK are typically 18 years or older with stable vision for at least one year. A comprehensive eye exam during your consultation will determine if LASIK is right for you based on your eye health, prescription, and corneal thickness.</p>
+                        <p data-i18n="home.faq.answer1">Good candidates for LASIK are typically 18 years or older with stable vision for at least one year. A comprehensive eye exam during your consultation will determine if LASIK is right for you based on your eye health, prescription, and corneal thickness.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">Is LASIK painful?</h3>
+                    <h3 class="faq-question" data-i18n="home.faq.question2">Is LASIK painful?</h3>
                     <div class="faq-answer">
-                        <p>LASIK is generally not painful. We use numbing eye drops before the procedure, and patients typically feel only slight pressure during the brief surgery. Some mild discomfort, irritation, or dryness may occur during the first 24-48 hours of recovery.</p>
+                        <p data-i18n="home.faq.answer2">LASIK is generally not painful. We use numbing eye drops before the procedure, and patients typically feel only slight pressure during the brief surgery. Some mild discomfort, irritation, or dryness may occur during the first 24-48 hours of recovery.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">How long does recovery take?</h3>
+                    <h3 class="faq-question" data-i18n="home.faq.question3">How long does recovery take?</h3>
                     <div class="faq-answer">
-                        <p>Most patients notice improved vision immediately after surgery, with vision continuing to stabilize over the next few days. Many return to work within 1-2 days. Complete healing may take 3-6 months, though most visual stabilization occurs within the first few weeks.</p>
+                        <p data-i18n="home.faq.answer3">Most patients notice improved vision immediately after surgery, with vision continuing to stabilize over the next few days. Many return to work within 1-2 days. Complete healing may take 3-6 months, though most visual stabilization occurs within the first few weeks.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question">How much does LASIK cost?</h3>
+                    <h3 class="faq-question" data-i18n="home.faq.question4">How much does LASIK cost?</h3>
                     <div class="faq-answer">
-                        <p>The cost of LASIK at Vision Clarity Institute ranges from $1,800 to $2,500 per eye, depending on your specific vision needs and the technology selected. We offer flexible financing options with affordable monthly payments.</p>
+                        <p data-i18n="home.faq.answer4">The cost of LASIK at Vision Clarity Institute ranges from $1,800 to $2,500 per eye, depending on your specific vision needs and the technology selected. We offer flexible financing options with affordable monthly payments.</p>
                     </div>
                 </div>
             </div>
             
             <div class="faq-cta">
-                <button class="btn btn-primary open-modal" data-form-type="consultation">Schedule a Free Consultation</button>
+                <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule a Free Consultation</button>
             </div>
         </div>
     </section>
@@ -262,107 +234,84 @@
     </div>
 </section>
 
-<!-- Another example for service-specific CTA -->
-<section class="service-cta">
-    <div class="container">
-        <h3 data-i18n="home.service_cta.title">Interested in LASIK?</h3>
-        <p data-i18n="home.service_cta.content">Learn more about our advanced LASIK procedures. Our specialists will assess your vision and recommend the best solution.</p>
-        <button class="btn btn-primary open-modal" data-form-type="inquiry" data-service="traditional_lasik" data-i18n="home.service_cta.button">Request Information</button>
-    </div>
-</section>
+<!-- Footer -->
+<footer class="footer"></footer>
+    
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <img src="assets/images/logo.svg" alt="Vision Clarity Institute" class="footer-logo">
-                    <p>Advanced Lasik eye surgery using cutting-edge technology for optimal results and patient satisfaction.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="pages/services.html">Services</a></li>
-                        <li><a href="pages/technology.html">Technology</a></li>
-                        <li><a href="pages/staff.html">Our Staff</a></li>
-                        <li><a href="pages/locations.html">Locations</a></li>
-                        <li><a href="pages/contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <address>
-                        <p>1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
-                        <p>Phone: (800) 555-2020</p>
-                        <p>Email: info@visionclarityinstitute.com</p>
-                    </address>
-                </div>
-                <div class="footer-column">
-                    <h3>Hours</h3>
-                    <p>Monday - Friday: 8am - 6pm</p>
-                    <p>Saturday: 9am - 2pm</p>
-                    <p>Sunday: Closed</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Vision Clarity Institute. All rights reserved.</p>
-                <ul class="footer-legal">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Chatbot Interface -->
-    <div id="vision-clarity-chatbot" class="vision-clarity-chatbot">
-        <button class="chatbot-button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/>
-            </svg>
-        </button>
-        <div class="chat-window">
-            <div class="chat-header">
-                <svg height="24" width="24" viewBox="0 0 24 24" fill="#76b900" class="chat-logo">
-                    <circle cx="12" cy="12" r="10" fill="#76b900"/>
-                    <path d="M8 12 L16 12 M12 8 L12 16" stroke="white" stroke-width="2"/>
-                </svg>
-                <span>Vision Clarity Assistant</span>
-                <div class="ai-toggle-container">
-                    <label class="ai-toggle">
-                        <input type="checkbox" id="ai-toggle-checkbox" checked>
-                        <span class="ai-toggle-slider"></span>
-                        <span class="ai-toggle-label">Claude</span>
-                    </label>
-                </div>
-                <button class="close-chat">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class="chat-messages"></div>
-            <div class="chat-input-container">
-                <textarea class="chat-input" placeholder="Type your question here..." rows="1"></textarea>
-                <button class="send-button">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
+<!-- component-loader.js needs to load and use the PathResolver to get the correct root path 
+    <script src="js/component-loader.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/flag-language-selector.js"></script>
+-->
     <!-- Scripts -->
     <script src="js/scripts.js"></script>
     <script src="js/chatbot.js"></script>
+    <!-- Component loader script -->
+    <script src="js/component-loader.js"></script>
     <script src="js/modal.js"></script>
-    
-    <!-- Accessibility announcer for screen readers -->
+    <script src="js/i18n.js"></script>
+    <!-- header and flag js -->
+    <script src="js/header.js"></script>
+    <script src="js/flag-language-selector.js"></script>
+    <!-- Team page specific scripts -->
+    <script src="js/team-scripts.js"></script>
+<!-- Scripts - load JS files in the correct sequence -->
+   <!-- <script>
+        window.ResourceLoader.loadJsSequence([
+            'error-tracker.js',
+            'font-loader.js',
+            'i18n.js',
+            'language-detector.js',
+            'content-localizer.js',
+            'scripts.js',
+            'chatbot.js',
+            'modal-handler.js',
+            'unified-modal.js'
+        ]);
+    </script>
+    -->
+ <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+
+<!-- ###### Start Debug ######-->
+    <script>
+  // Debug check to see if components loaded correctly
+  console.log('Current pathname:', window.location.pathname);
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    console.log('PathResolver available:', !!window.PathResolver);
+    console.log('ResourceLoader available:', !!window.ResourceLoader);
+    console.log('ComponentLoader available:', !!window.ComponentLoader);
+    
+    // Check if header and footer are empty
+    const header = document.querySelector('header.header');
+    const footer = document.querySelector('footer.footer');
+    
+    console.log('Header element exists:', !!header);
+    console.log('Footer element exists:', !!footer);
+    console.log('Header content:', header ? header.innerHTML.length : 'N/A');
+    console.log('Footer content:', footer ? footer.innerHTML.length : 'N/A');
+    
+    // Force component loading after a small delay
+    setTimeout(function() {
+      if (window.ComponentLoader) {
+        console.log('Explicitly calling loadAllComponents()');
+        window.ComponentLoader.loadAllComponents();
+      }
+    }, 500);
+  });
+  
+  // Component loading events
+  document.addEventListener('componentLoaded', function(event) {
+    console.log('Component loaded event:', event.detail.component);
+  });
+  
+  document.addEventListener('allComponentsLoaded', function() {
+    console.log('All components loaded event fired');
+  });
+</script>
+<!-- ###### End Debug ######-->
+    
 </body>
 </html>

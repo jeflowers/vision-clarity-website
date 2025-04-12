@@ -1,0 +1,339 @@
+/* Vision Clarity Institute - Unified Language Selector Styling
+ * Consolidated styling for language selectors with flag display
+ */
+
+/* ===== CORE LANGUAGE SELECTOR STYLES ===== */
+
+/* Container styling */
+.language-selector-field {
+  margin-bottom: 1rem;
+}
+
+/* Select wrapper positioning */
+.select-wrapper,
+.flag-select-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+/* Form styling */
+.form-select-wrapper {
+  display: block;
+  width: 100%;
+}
+
+/* Base select styling */
+select.flag-enabled {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 32px !important; /* Space for arrow */
+  padding-left: 32px !important; /* Space for flag */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: normal;
+  height: 38px;
+  line-height: 38px;
+  min-width: 120px;
+  text-align: left;
+  cursor: pointer;
+  
+  /* IMPORTANT: Remove background images which can cause duplicate arrows */
+  background-image: none !important;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Remove native dropdown arrow */
+select.flag-enabled::-ms-expand {
+  display: none;
+}
+
+/* Focus styles */
+select.flag-enabled:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  z-index: 1001;
+  position: relative;
+}
+
+/* Select options styling */
+select.flag-enabled option {
+  padding: 8px 12px;
+  color: #333;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 24px;
+  
+  /* Ensure no clipping */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* Important: No background image */
+  background-image: none;
+}
+
+/* Style for selected option */
+select.flag-enabled option:checked {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for hover state */
+select.flag-enabled option:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+/* Fix for dropdown when open */
+select.flag-enabled:focus {
+  border-radius: 4px 4px 0 0;
+}
+
+/* ===== FLAG DISPLAY ===== */
+
+/* Flag display positioning */
+.flag-display {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 3;
+  display: block; /* Ensure visibility */
+}
+
+/* Context-specific flag styling */
+.form-flag-display {
+  font-size: 18px;
+}
+
+.header-flag-display {
+  font-size: 16px;
+}
+
+/* ===== DROPDOWN ARROW ===== */
+
+/* The select-icon container */
+.select-icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none; /* Allow clicks to pass through */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Single arrow styling with CSS triangles */
+.select-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #555;
+  pointer-events: none;
+}
+
+/* Header specific */
+.header-select-icon-container {
+  width: 28px;
+}
+
+/* Form specific */
+.form-select-icon-container {
+  width: 32px;
+}
+
+/* ===== TOOLTIP STYLING ===== */
+
+.language-tooltip-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.field-description.tooltip-text {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 240px;
+  padding: 8px 12px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  white-space: normal;
+  text-align: left;
+}
+
+/* Tooltip arrow */
+.field-description.tooltip-text:before,
+.tooltip-arrow {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #333;
+}
+
+/* Show tooltip on hover/focus */
+.flag-select-wrapper:hover + .language-tooltip-container .field-description,
+.flag-select-wrapper:hover ~ .language-tooltip-container .field-description,
+.language-tooltip-container:hover .field-description {
+  display: block !important;
+}
+
+/* Focus-based tooltip for accessibility */
+select.flag-enabled:focus ~ .language-tooltip-container .field-description.tooltip-text {
+  display: block !important;
+}
+
+/* ===== HEADER-SPECIFIC STYLING ===== */
+
+/* Hide field descriptions in header by default */
+.header-actions .field-description {
+  display: none !important;
+}
+
+/* Header language select */
+.header-language-select {
+  min-width: 120px;
+  background-color: #f8f8f8;
+}
+
+/* Fix for header instance */
+#header_language_description {
+  width: 240px;
+  font-size: 12px;
+  white-space: normal;
+}
+
+/* ===== FORM-SPECIFIC STYLING ===== */
+
+/* Form language select */
+.form-language-select {
+  width: 100%;
+}
+
+/* ===== RTL LANGUAGE SUPPORT ===== */
+
+[dir="rtl"] .flag-display {
+  left: auto;
+  right: 10px;
+}
+
+[dir="rtl"] .select-icon-container {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .flag-language-select,
+[dir="rtl"] .flag-enabled {
+  padding-right: 32px !important;
+  padding-left: 32px !important;
+}
+
+[dir="rtl"] .field-description.tooltip-text:before,
+[dir="rtl"] .tooltip-arrow {
+  left: auto;
+  right: 20px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+@media (max-width: 768px) {
+  .header-language-select {
+    min-width: 100px;
+  }
+  
+  .field-description.tooltip-text {
+    width: 180px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-language-select {
+    min-width: 90px;
+    padding-left: 28px !important;
+  }
+  
+  .flag-display {
+    font-size: 14px;
+    left: 8px;
+  }
+  
+  [dir="rtl"] .flag-display {
+    left: auto;
+    right: 8px;
+  }
+  
+  .field-description.tooltip-text {
+    left: -70px;
+  }
+  
+  [dir="rtl"] .field-description.tooltip-text {
+    left: auto;
+    right: -70px;
+  }
+  
+  .field-description.tooltip-text:before,
+  .tooltip-arrow {
+    left: 90px;
+  }
+  
+  [dir="rtl"] .field-description.tooltip-text:before,
+  [dir="rtl"] .tooltip-arrow {
+    left: auto;
+    right: 90px;
+  }
+}
+
+/* ===== BROWSER-SPECIFIC FIXES ===== */
+
+/* Firefox fix */
+@-moz-document url-prefix() {
+  select.flag-enabled {
+    text-overflow: ellipsis;
+    background-image: none !important;
+  }
+  
+  select.flag-enabled option {
+    padding: 6px 10px;
+  }
+}
+
+/* Webkit scrollbar styling */
+select.flag-enabled::-webkit-scrollbar {
+  width: 8px;
+}
+
+select.flag-enabled::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+select.flag-enabled::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+select.flag-enabled::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

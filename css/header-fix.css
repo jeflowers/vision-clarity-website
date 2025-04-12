@@ -1,0 +1,88 @@
+/* Comprehensive header layout fixes */
+
+/* Fix for "Meet Our Team" navigation link to ensure it stays on one line */
+.nav-list a {
+    white-space: nowrap;
+}
+
+/* Fix for header layout when language selector is present */
+.header .container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+/* Add specific spacing between Contact link and language selector */
+.nav-list li:last-child {
+    margin-right: 20px;
+}
+
+/* Make language selector more compact */
+.flag-language-select,
+.flag-enabled {
+    padding-right: 36px !important;
+    padding-left: 28px !important;
+    min-width: 90px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1100px) {
+    .header-actions .btn {
+        padding: 0 12px;
+        min-width: 120px;
+    }
+    
+    /* Adjust spacing on smaller screens */
+    .nav-list li:last-child {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .main-nav {
+        justify-content: flex-end;
+        margin-right: 10px;
+    }
+    
+    .header-actions .btn {
+        display: none;
+    }
+    
+    .header-actions {
+        justify-content: flex-end;
+    }
+    
+    /* Show buttons in dropdown when menu is activated */
+    .nav-list.active .header-action-buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .nav-list.active .header-action-buttons .btn {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Adjust spacing for mobile */
+    .nav-list li:last-child {
+        margin-right: 0;
+    }
+}

@@ -1,29 +1,63 @@
 <!-- Dynamic Header Component -->
-<!-- This component will be dynamically modified based on current page location -->
-<header class="header">
+<!-- This component provides consistent navigation across all pages with improved accessibility and responsive design -->
+<header class="header" role="banner">
     <div class="container">
         <div class="logo-container">
-            <a href="{{rootPath}}index.html">
+            <a href="{{rootPath}}index.html" aria-label="Vision Clarity Institute Home">
                 <img src="{{rootPath}}assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
             </a>
         </div>
-        <nav class="main-nav">
-            <button class="mobile-menu-toggle" aria-label="Toggle Menu" data-a11y-label="ariaLabels.mobileMenuButton">
-                <img src="{{rootPath}}assets/images/icons/menu.svg" alt="Menu">
+        
+        <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+            <button class="mobile-menu-toggle" 
+                    aria-expanded="false" 
+                    aria-controls="main-menu" 
+                    aria-label="Toggle Menu">
+                <img src="{{rootPath}}assets/images/icons/menu.svg" alt="">
             </button>
-            <ul class="nav-list">
-                <li><a href="{{rootPath}}index.html" data-nav-id="home" data-i18n="global.menu.home">Home</a></li>
-                <li><a href="{{rootPath}}pages/services.html" data-nav-id="services" data-i18n="global.menu.services">Services</a></li>
-                <li><a href="{{rootPath}}pages/technology.html" data-nav-id="technology" data-i18n="global.menu.technology">Technology</a></li>
-                <li><a href="{{rootPath}}pages/our-staff.html" data-nav-id="staff" data-i18n="global.menu.staff">Our Staff</a></li>
-                <li><a href="{{rootPath}}pages/locations.html" data-nav-id="locations" data-i18n="global.menu.locations">Locations</a></li>
-                <li><a href="{{rootPath}}pages/contact.html" data-nav-id="contact" data-i18n="global.menu.contact">Contact</a></li>
+            
+            <ul class="nav-list" id="main-menu">
+                <li><a href="{{rootPath}}index.html" 
+                       data-nav-id="home" 
+                       data-i18n="global.menu.home">Home</a></li>
+                <li><a href="{{rootPath}}pages/services.html" 
+                       data-nav-id="services" 
+                       data-i18n="global.menu.services">Services</a></li>
+                <li><a href="{{rootPath}}pages/technology.html" 
+                       data-nav-id="technology" 
+                       data-i18n="global.menu.technology">Technology</a></li>
+                <li><a href="{{rootPath}}pages/team.html" 
+                       data-nav-id="team" 
+                       data-i18n="global.menu.staff">Meet Our Team</a></li>
+                <li><a href="{{rootPath}}pages/locations.html" 
+                       data-nav-id="locations" 
+                       data-i18n="global.menu.locations">Locations</a></li>
+                <li><a href="{{rootPath}}pages/contact.html" 
+                       data-nav-id="contact" 
+                       data-i18n="global.menu.contact">Contact</a></li>
             </ul>
         </nav>
+        
         <div class="header-actions">
-            <!-- Language selector will be inserted here by the language-selector-loader.js -->
-            <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
-            <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+            <!-- Include language selector component -->
+            <div id="header-language-component"></div>
+            
+            <button class="btn btn-primary open-modal" 
+                    data-form-type="consultation" 
+                    data-i18n="global.buttons.schedule"
+                    aria-haspopup="dialog">Schedule Consultation</button>
+            
+            <button class="btn btn-secondary open-modal" 
+                    data-form-type="inquiry" 
+                    data-i18n="global.buttons.inquiry"
+                    aria-haspopup="dialog">Request Information</button>
         </div>
     </div>
 </header>
+
+<!-- Skip link for keyboard users -->
+<a href="#main-content" class="skip-link" data-i18n="accessibility.skipToContent">Skip to main content</a>
+
+<!-- Include the header fix CSS -->
+<link rel="stylesheet" href="{{rootPath}}css/header-fix.css">
+<link rel="stylesheet" href="{{rootPath}}css/language-selector-improvements.css">

@@ -1,0 +1,174 @@
+{
+  "global": {
+    "menu": {
+      "home": "Awaka",
+      "services": "Empeereza",
+      "technology": "Tekinologiya",
+      "staff": "Abakozi Baffe",
+      "locations": "Ebifo",
+      "contact": "Tutukirire"
+    },
+    "buttons": {
+      "schedule": "Teeka Okulambulwa",
+      "inquiry": "Buuza Ebibuuzo"
+    },
+    "footer": {
+      "tagline": "Obujjanjabi bw'amaaso obwa Lasik nga tukozesa tekinologiya eyomutindo okusobozesa abalwadde okumalibwamu.",
+      "quickLinks": "Amapeesa Amangu",
+      "contact": "Tutukirire",
+      "phone": "Essimu: (800) 555-2020",
+      "email": "Email: info@visionclarityinstitute.com",
+      "hours": "Essaawa",
+      "weekdays": "Lwokulwokuna - Lwokutaano: 8am - 6pm",
+      "saturday": "Lwomukaaga: 9am - 2pm", 
+      "sunday": "Sabbiiti: Tuggadde",
+      "copyright": "© 2025 Vision Clarity Institute. Ddembe lyonna lyaffe.",
+      "privacy": "Amateeka g'Obukuumi",
+      "terms": "Amateeka g'Empeereza",
+      "accessibility": "Okuyambibwa"
+    }
+  },
+  "services": {
+    "header": {
+      "title": "Empeereza Zaffe",
+      "subtitle": "Obujjanjabi bw'amaaso obw'omutindo nga bukoledwa okusinziira ku byetaago byo"
+    },
+    "traditional": {
+      "title": "LASIK Eyabulijjo",
+      "description": "LASIK Eyabulijjo ye ngeri yaffe eyabulijjo ey'okulongoosa okulaba nga tukozesa ekiziyiza amaaso, era etuyambyeko okuwonyeza abantu obukadde bungi mu nsi yonna nga basobola okuva ku gaggali n'endabi.",
+      "how_works_title": "Engeri Gyekola",
+      "how_works_text": "Mu LASIK Eyabulijjo, omusawo akozesa microkeratome (ekiso eky'obujjanjabi) okukola ekibikka ekitono ku cornea. Ekibikka kino kizuulibwa, naye ekitundu eky'omunda kya cornea kisalibwa laser ekiyitibwa excimer okukyuusa okulaba kwo. Ekibikka kino kizzibwayo nga kizingibwa okukuuma ebitundu ebirala nga biwona.",
+      "candidates_title": "Abagwanira",
+      "candidates_text": "Oyinza okuba nga olina ebyetaago byonna bya LASIK Eyabulijjo bwoba:",
+      "candidates": {
+        "item1": "Nga olina emyaka 18 oba okusingawo",
+        "item2": "Okulaba kwo nga tekukyukakyuka okumala omwaka ogumu oba okusingawo",
+        "item3": "Nga olina okutolaba, okulabirako, oba astigmatism eyabulijjo",
+        "item4": "Nga cornea yo eri munene ekimala",
+        "item5": "Nga tolina ndwade ndala mu maaso"
+      },
+      "recovery_title": "Okuwona n'Ebiva mu Kubaddewo",
+      "recovery_text": "Abalwadde abasinga balaba nga bakyuse mu maaso gaabwe mu ngeri ennungi oluvannyuma lwa ssaawa 24. Okuwona okutuukiridde kitwala sabbiiti 1-2, naye okulaba okutuukiridde kugwanira kubeera mu mwezi gumu. LASIK Eyabulijjo erina amanyi mangi, ng'abantu 96% bafuna okulaba kwe baagala."
+    },
+    "custom": {
+      "title": "LASIK Etali ya Kiso",
+      "description": "LASIK Etali ya Kiso y'engeri eyawaggulu, obukoledwa na laser bokka, ng'erina obulungi bungi n'okutegekebwa okw'omuntu ssekinnoomu okusobola okutuusa okulaba okw'okuntikko.",
+      "how_works_title": "Engeri Gyekola",
+      "how_works_text": "Mu LASIK Etali ya Kiso, tukozesa laser bbiri eza njawulo: femtosecond laser okukola ekibikka ku cornea (mu kifo ky'ekiso), ne wavefront-guided excimer laser okukyuusa cornea. Enkola eno eyamba okukola ekibikka n'obulungi obusingawo n'okujjanjaba okukolebwa okusinziira ku ndabi yo entuufu.",
+      "benefits_title": "Emiganyulo Egisinga",
+      "benefits": {
+        "item1": "Obulungi obusinga mu kukola ekibikka",
+        "item2": "Enteekateeka ey'obujjanjabi ng'esinziira ku mbeera z'amaaso ago",
+        "item3": "Okusobola okulaba obulungi mu kiro n'awali ekitangaala okusingako ku LASIK Eyabulijjo",
+        "item4": "Obusobozi okukyusa aberrations eza higher-order (okutabulwatabulwa mu kulaba)",
+        "item5": "Ky'ekisinga obulungi eri abali ne cornea entono oba bakozesa gaggali ennyingi"
+      },
+      "right_for_you_title": "LASIK Etali ya Kiso Ekugwanira?",
+      "right_for_you_text": "Newankubadde nga esinga okuba ey'omuwendo okusingako ku LASIK Eyabulijjo, LASIK Etali ya Kiso etera okuba ekintu ekisaanye okulowoozebwako singa olina ebizibu eby'okulaba ebizibu, higher-order aberrations, oba oyagala tekinologiya esinga. Abasawo baffe banaakulaga bye weetaaga mu kukulaba."
+    },
+    "prk": {
+      "title": "PRK (Photorefractive Keratectomy)",
+      "description": "PRK y'ekirala ekirungi mu bifanaganako ne LASIK eri abalwadde abatayinza kukolerwa mu nkola za flap. PRK ye yali enkola eyasooka eya laser era ekyaleeta ebiva mu kubaddewo ebirungi.",
+      "how_works_title": "Engeri Gyekola",
+      "how_works_text": "Mu PRK, omusawo aggya ekisaanikira eky'olubereberye ekya cornea (epithelium) mu kifo ky'okukola ekibikka. Laser ya excimer n'ekyusa cornea okukyusa okulaba kwo. Epithelium ekulukuta eyinza okuzaala nate mu nnaku ntono oluvannyuma lw'okukolebwako.",
+      "candidates_title": "Abagwanira PRK",
+      "candidates_text": "PRK eyinza okukuwa obulungi bwoba:",
+      "candidates": {
+        "item1": "Nga olina cornea entono etakugwanira LASIK",
+        "item2": "Nga okola emirimu oba ng'ozannya emizannyo egyinza okuletawo obuzibu ku maaso go (ng'amagye, emizannyo gye kugwangana)",
+        "item3": "Ng'olina obutali butuufu mu cornea",
+        "item4": "Ng'ozze okukolerwa LASIK n'olina okwongeramu"
+      },
+      "recovery_title": "Okuwona n'Ebiva mu Kubaddewo",
+      "recovery_text": "Okuwona oluvannyuma lwa PRK kitwala ekiseera kinene okukira LASIK, naye okulaba okutuukirivu kujja mu myezi 1-3. Eky'okumanya nti ebiva mu kubaddewo ku PRK biri ku mutindo gwe gumu ne LASIK, ate PRK tegenda kukuwa buzibu buva ku bibikka."
+    },
+    "presbyopia": {
+      "title": "Okujjanjaba Presbyopia",
+      "description": "Presbyopia ndwadde ey'emyaka egitera okukwaata abantu bonna abaweza emyaka 40, nga bagenda mu maaso baremererwa okulaba ebintu ebiri okumpi. E Vision Clarity Institute, tulina enkola nnyingi okukolako ku presbyopia.",
+      "options_title": "Enkola Zaffe ez'Okujjanjaba Presbyopia",
+      "monovision_title": "Monovision LASIK",
+      "monovision_text": "Mu nkola eno, eriiso limu litereezebwa okulaba wala, n'eddala okulaba kumpi. Obwongo bwo buyiga okukozesa eriiso elisaanidde okusinziira ku ky'olaba. Kino kiyiza okukendeeza obwetaavu bw'endabi z'okusoma.",
+      "multifocal_title": "Multifocal LASIK",
+      "multifocal_text": "Nga tukozesa tekinologiya ya laser eyomulembe, tusobola okuteekamu enfo z'okulaba ezenjawulo ku cornea yo, okusobozesa okulaba bulungi ku nfo z'enjawulo. Enkola eno eyomulembe esobola okutuusa ebivamu ebirungi eri abagikwanira.",
+      "rle_title": "Refractive Lens Exchange (RLE)",
+      "rle_text": "Eri abamu, naddala abaweza emyaka 50 n'okusingawo, okukyusa lenssi eyabulijjo ey'eriiso n'eyo ey'emirundi emingi eyinza okuba ekisinga obulungi. Enkola eno efaanagana n'eyo ey'okujjanjaba eriiso eritategeerekeka, naye ekolebwa nga eddogo terinajja.",
+      "determination_title": "Okulonda Enkola Esinga Okukugwanira",
+      "determination_text": "Mu kukulambula, abakugu baffe banaayekeneenya okulaba kwo, ne bakwogerako ku nkola yo ey'obulamu n'ebyetaago byo mu kulaba, era balikuwabula mu kukegera enkola esinga okukugwanira ey'okujjanjaba presbyopia."
+    },
+    "cta": {
+      "title": "Olina Okuteekateeka Okulaba Bulungi Nga Tokozesa Gaggali?",
+      "content": "Teekawo okukebera okutaliimu sente leero okusobola okumanya enkola ey'okulongoosa okulaba ekusaanira."
+    }
+  },
+  "modal": {
+    "consultation": {
+      "title": "Teeka Okulambulwa",
+      "success": "Weebale! Okusaba kwo kutuusizzwa. Tujakukutukiirira mangu."
+    },
+    "inquiry": {
+      "title": "Buuza Ebibuuzo",
+      "success": "Weebale olw'okusaba. Ekibinja kyaffe kijakuddamu ebibuuzo byo mangu."
+    },
+    "form": {
+      "title": "Kitiibwa",
+      "name": "Erinnya",
+      "email": "Email",
+      "phone": "Essimu",
+      "preferred_language": "Olulimi Lwoyagala",
+      "insurance": "Kompuni ya Nsiwukiriza (bwekiba nga kiri)",
+      "preferred_contact_time": "Obudde Bwoyagala Tutukirirwe",
+      "service": "Empeereza Gyoyagala",
+      "additional_info": "Amawulire Amalala",
+      "consent": "Nzikiriza Vision Clarity Institute okukunga n'okukuuma ebiwandiiko byonna wakati waffe.",
+      "schedule_consultation": "Teeka Okulambulwa",
+      "submit_inquiry": "Weereza Okusaba",
+      "select": "Londa",
+      "select_service": "Londa empeereza",
+      "time": {
+        "morning": "Enkya (8am-12pm)",
+        "afternoon": "Olweggulo (12pm-4pm)",
+        "evening": "Akawungeezi (4pm-6pm)"
+      },
+      "language": {
+        "english": "Olungereza",
+        "spanish": "Olusipanya",
+        "chinese": "Oluchina",
+        "korean": "Olukoriya",
+        "armenian": "Oluarmeniya",
+        "hebrew": "Olwebbulaniya",
+        "russian": "Oluluusi",
+        "farsi": "Olufalisi",
+        "arabic": "Oluwalabu",
+        "twi": "Olutwi",
+        "luganda": "Oluganda"
+      },
+      "service": {
+        "traditional_lasik": "LASIK Eyabulijjo",
+        "bladeless_lasik": "LASIK Etali ya Kiso",
+        "prk": "PRK",
+        "presbyopia": "Okujjanjaba Presbyopia",
+        "other": "Ekirala (nsaba onnyonyole)"
+      },
+      "title": {
+        "mr": "Mw.",
+        "mrs": "Mu.",
+        "ms": "Muz.",
+        "dr": "Dr.",
+        "prof": "Prof."
+      }
+    }
+  },
+  "language": {
+    "english": "Olungereza",
+    "spanish": "Olusipanya",
+    "chinese": "Oluchina",
+    "korean": "Olukoriya",
+    "armenian": "Oluarmeniya",
+    "hebrew": "Olwebbulaniya",
+    "russian": "Oluluusi",
+    "farsi": "Olufalisi",
+    "arabic": "Oluwalabu",
+    "twi": "Olutwi",
+    "luganda": "Oluganda"
+  }
+}

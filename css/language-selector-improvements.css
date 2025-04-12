@@ -1,0 +1,182 @@
+/**
+ * Vision Clarity Institute - Language Selector Improvements
+ * Enhances the language selector component with better styling and accessibility
+ */
+
+/* Container styles */
+.language-selector-field {
+    position: relative;
+}
+
+/* Wrapper improvements */
+.flag-select-wrapper {
+    position: relative;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.flag-select-wrapper:focus-within {
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+/* Header specific wrapper */
+.header-select-wrapper {
+    min-width: 120px;
+    max-width: 150px;
+}
+
+/* Improved select appearance */
+.flag-language-select,
+.flag-enabled {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 38px;
+    width: 100%;
+    padding: 0 34px 0 36px !important; /* More compact padding */
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Header specific select styling */
+.header-language-select {
+    background-color: #f8f8f8;
+    height: 34px;
+    font-size: 13px;
+}
+
+/* Improved focus state */
+.flag-language-select:focus,
+.flag-enabled:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* Better flag positioning */
+.flag-display {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Dropdown icon container */
+.select-icon-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+/* Improved dropdown icon */
+.select-icon {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #555;
+    margin-top: 2px;
+}
+
+/* Enhanced tooltip */
+.language-tooltip-container {
+    position: absolute;
+    z-index: 1000;
+    width: 200px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+}
+
+.tooltip-text {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #333;
+}
+
+.tooltip-content {
+    line-height: 1.4;
+}
+
+/* Hover and focus behaviors */
+.flag-select-wrapper:hover .tooltip-text,
+.flag-enabled:focus ~ .language-tooltip-container .tooltip-text {
+    display: block !important;
+}
+
+/* RTL language support */
+[dir="rtl"] .flag-display {
+    left: auto;
+    right: 10px;
+}
+
+[dir="rtl"] .select-icon-container {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 0 0 4px;
+}
+
+[dir="rtl"] .flag-language-select,
+[dir="rtl"] .flag-enabled {
+    padding: 0 36px 0 34px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-select-wrapper {
+        min-width: 100px;
+    }
+    
+    .header-language-select {
+        font-size: 12px;
+    }
+    
+    .language-tooltip-container {
+        width: 180px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-select-wrapper {
+        min-width: 90px;
+    }
+    
+    .flag-display {
+        font-size: 14px;
+    }
+}

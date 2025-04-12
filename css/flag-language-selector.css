@@ -1,0 +1,200 @@
+/* Flag-based Language Selector CSS
+ * Enhances language selectors with country flags
+ */
+
+/* Common styles for flag-enabled selects */
+.flag-select-wrapper,
+.form-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.flag-language-select,
+.flag-enabled {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 46px !important; /* Space for flag and dropdown icon */
+    padding-left: 32px !important; /* Space for flag on the left */
+    text-indent: 8px; /* Text indentation for better appearance with flag */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 38px;
+    line-height: 36px;
+    min-width: 120px; /* Ensure enough width for text */
+}
+
+/* Hide native dropdown arrow */
+.flag-language-select::-ms-expand,
+.flag-enabled::-ms-expand {
+    display: none;
+}
+
+/* Flag display */
+.flag-display {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 2;
+    display: block; /* Ensure flag is always visible */
+}
+
+.form-flag-display {
+    left: 10px;
+    font-size: 18px;
+}
+
+.header-flag-display {
+    left: 8px;
+    font-size: 16px;
+}
+
+/* Dropdown icon */
+.select-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #555;
+}
+
+/* Header-specific styling */
+.header-language-select {
+    min-width: 120px;
+    background-color: #f8f8f8;
+}
+
+/* Form-specific styling */
+.form-language-select {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* Tooltip styling for language description */
+.language-tooltip-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+.field-description.tooltip-text {
+    display: none;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 220px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: left;
+}
+
+/* Show tooltip on hover */
+.flag-select-wrapper:hover .field-description.tooltip-text {
+    display: block;
+}
+
+/* Arrow for tooltip */
+.field-description.tooltip-text:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #333;
+}
+
+/* Focus styles */
+.flag-language-select:focus,
+.flag-enabled:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Show tooltip on focus for accessibility */
+.flag-enabled:focus ~ .language-tooltip-container .field-description.tooltip-text {
+    display: block;
+}
+
+/* RTL language support */
+[dir="rtl"] .flag-display {
+    left: auto;
+    right: 8px;
+}
+
+[dir="rtl"] .form-flag-display {
+    left: auto;
+    right: 10px;
+}
+
+[dir="rtl"] .select-icon {
+    right: auto;
+    left: 10px;
+}
+
+[dir="rtl"] .flag-language-select,
+[dir="rtl"] .flag-enabled {
+    padding-right: 32px !important;
+    padding-left: 46px !important;
+}
+
+[dir="rtl"] .field-description.tooltip-text:before {
+    left: auto;
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-language-select {
+        min-width: 100px;
+    }
+    
+    .field-description.tooltip-text {
+        width: 180px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-language-select {
+        min-width: 90px;
+        padding-left: 28px !important;
+    }
+    
+    .flag-display {
+        font-size: 14px;
+        left: 6px;
+    }
+    
+    .field-description.tooltip-text {
+        left: -70px;
+    }
+    
+    .field-description.tooltip-text:before {
+        left: 90px;
+    }
+}
+
+/* Fix for header instance */
+#header_language_description {
+    width: 240px;
+    font-size: 12px;
+    white-space: normal;
+}
