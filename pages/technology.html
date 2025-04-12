@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="technology.meta.title">Our Technology - Vision Clarity Institute</title>
     <meta name="description" content="Learn about the advanced laser vision correction technology used at Vision Clarity Institute for optimal results." data-i18n="technology.meta.description">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/button-refinements.css">
-    <!-- Modal Styles -->
-    <link rel="stylesheet" href="../css/modal.css">
-    <!-- Checkmark Fix -->
-    <link rel="stylesheet" href="../css/checkmark-fix.css">
-    <!-- header and flag -->
-    <link rel="stylesheet" href="../css/header-improvements.css">
-    <link rel="stylesheet" href="../css/flag-language-selector.css">
-    <!-- Language tooltip fix -->
-    <link rel="stylesheet" href="../css/header-tooltip-fix.css">
-    <!-- Dropdown menu fix -->
-    <link rel="stylesheet" href="../css/dropdown-menu-fix.css">
-    <!-- Select element fix -->
-    <link rel="stylesheet" href="../css/select-fix.css">
+    
+    <!-- Core path resolution - must be loaded first -->
+    <script src="../js/path-resolver.js"></script>
+    <script src="../js/resource-loader.js"></script>
+    
+    <!-- Load CSS files dynamically -->
+    <script>
+        window.ResourceLoader.loadCssFiles([
+            'styles.css',
+            'chatbot.css',
+            'button-refinements.css',
+            'modal.css',
+            'checkmark-fix.css',
+            'header-improvements.css',
+            'language-selector.css', // Keep only this one CSS file for language selector styling
+        ]);
+    </script>
+    
 </head>
 <body>
     <header class="header"></header>
@@ -253,7 +255,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+     <!-- Scripts -->
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
     <!-- Component loader script -->
@@ -263,6 +265,24 @@
     <!-- header and flag js -->
     <script src="../js/header.js"></script>
     <script src="../js/flag-language-selector.js"></script>
+    <!-- Team page specific scripts -->
+    <script src="../js/team-scripts.js"></script>
+
+    <!-- Scripts - load JS files in the correct sequence -->
+       <!-- <script>
+            window.ResourceLoader.loadJsSequence([
+                'error-tracker.js',
+                'font-loader.js',
+                'i18n.js',
+                'language-detector.js',
+                'content-localizer.js',
+                'scripts.js',
+                'chatbot.js',
+                'modal-handler.js',
+                'unified-modal.js'
+            ]);
+        </script>
+        -->
     
     <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>

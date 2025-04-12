@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="services.meta.title">Lasik - Vision Clarity Institute</title>
     <meta name="description" content="Explore Vision Clarity Institute's advanced laser vision correction services, including LASIK, PRK, and presbyopia treatment." data-i18n="services.meta.description">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/chatbot.css">
-    <link rel="stylesheet" href="../css/button-refinements.css">
-    <!-- Modal Styles -->
-    <link rel="stylesheet" href="../css/modal.css">
-    <!-- Checkmark Fix -->
-    <link rel="stylesheet" href="../css/checkmark-fix.css">
-    <!-- header and flag -->
-    <link rel="stylesheet" href="../css/header-improvements.css">
-    <link rel="stylesheet" href="../css/flag-language-selector.css">
-    <!-- Language tooltip fix -->
-    <link rel="stylesheet" href="../css/header-tooltip-fix.css">
-    <!-- Dropdown menu fix -->
-    <link rel="stylesheet" href="../css/dropdown-menu-fix.css">
-    <!-- Select element fix -->
-    <link rel="stylesheet" href="../css/select-fix.css">
+    
+    <!-- Core path resolution - must be loaded first -->
+    <script src="../js/path-resolver.js"></script>
+    <script src="../js/resource-loader.js"></script>
+    
+    <!-- Load CSS files dynamically -->
+    <script>
+        /* Start debug */
+        console.log("Root path:", window.PathResolver.getRootPath());
+        console.log("CSS path example:", window.PathResolver.getCssPath('styles.css'));
+        /* End Debug */
+        window.ResourceLoader.loadCssFiles([
+            'styles.css',
+            'chatbot.css',
+            'button-refinements.css',
+            'modal.css',
+            'checkmark-fix.css',
+            'header-improvements.css',
+            'language-selector.css', // Keep only this one CSS file for language selector styling
+        ]);
+    </script>
+    
 </head>
 <body>
     <header class="header"></header>

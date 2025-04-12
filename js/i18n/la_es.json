@@ -9,8 +9,12 @@
       "contact": "Contacto"
     },
     "buttons": {
-      "schedule": "Agendar Consulta",
-      "inquiry": "Realizar Consulta"
+      "learn_more": "Más Información",
+      "read_more": "Leer Más",
+      "submit": "Enviar",
+      "send": "Enviar Mensaje",
+      "explore": "Explorar",
+      "schedule_free": "Agendar Consulta Gratuita"
     },
     "footer": {
       "tagline": "Cirugía ocular Lasik avanzada utilizando tecnología de punta para obtener resultados óptimos y satisfacción del paciente.",
@@ -481,6 +485,79 @@
       "content": "Agenda tu consulta hoy con uno de nuestros especialistas y da el primer paso hacia una visión más clara.",
       "button": "Reserva tu Consulta Gratuita"
     }
+  },
+"ui": {
+    "technology_button": "Explorar Nuestra Tecnología",
+    "learn_more": "Más Información",
+    "request_consultation": "Solicitar Consulta",
+    "schedule_consultation": "Agendar Consulta"
+  },
+  "common": {
+    "bullets": {
+      "advanced_bladeless": "Tecnología LASIK avanzada sin bisturí",
+      "comprehensive_consultation": "Consulta completa y análisis ocular",
+      "personalized_treatment": "Planes de tratamiento personalizados",
+      "post_operative": "Cuidado post-operatorio excepcional"
+    }
+  },
+  "conditions": {
+    "astigmatism": "Astigmatismo — una condición que afecta cómo se enfoca la luz en la retina",
+    "farsightedness": "Hipermetropía — una condición que causa que los objetos distantes se vean más claramente que los objetos cercanos",
+    "nearsightedness": "Miopía — una condición que causa que los objetos cercanos se vean claramente y los objetos distantes aparezcan borrosos",
+    "presbyopia": "Presbicia — una condición natural relacionada con la edad que afecta la capacidad del ojo para enfocar objetos cercanos"
+  },
+  "understanding_lasik": {
+    "title": "Entendiendo LASIK",
+    "subtitle": "Soluciones completas de corrección visual para satisfacer tus necesidades",
+    "what_is_title": "¿Qué Es la Cirugía Ocular LASIK?",
+    "what_is_text": "La cirugía refractiva láser como LASIK corrige la miopía, hipermetropía y astigmatismo mediante la remodelación de la córnea. La mayoría de los pacientes pueden ver mejor sin gafas o lentes de contacto después de que un cirujano produce un pequeño colgajo en la córnea, usa un láser para reestructurar el tejido corneal, y luego reposiciona el colgajo.",
+    "who_can_title": "¿Quién Puede Someterse a LASIK?",
+    "who_can_text": "La cirugía ocular LASIK ha demostrado ser segura y efectiva, pero no todos son candidatos. Si estás sano, tienes visión estable y ojos saludables — libres de infecciones o condiciones como glaucoma o cataratas — y si has sido diagnosticado con miopía, hipermetropía o astigmatismo, puedes ser un candidato.",
+    "prk_alternative_title": "Alternativa PRK",
+    "prk_alternative_text": "Para pacientes que no son buenos candidatos para LASIK, PRK ofrece una excelente alternativa. Este procedimiento logra resultados visuales similares pero usa un enfoque diferente que es más adecuado para ciertas condiciones oculares como córneas delgadas o superficies corneales irregulares."
+  },
+  "benefits_lasik": {
+    "title": "Beneficios de LASIK",
+    "intro": "La mayoría de las personas que se han sometido a LASIK encuentran que ya no necesitan depender de gafas o lentes de contacto. La cirugía puede beneficiarte si has sido diagnosticado con miopía, astigmatismo o hipermetropía. Hay muchos beneficios de la cirugía ocular LASIK, incluyendo:",
+    "bullets": {
+      "approach": "Enfoque suave y centrado en el paciente, cirugía que no requiere vendajes ni puntos, facilitando la recuperación.",
+      "vision": "Visión mejorada, con muchos logrando visión 20/20 o mejor",
+      "quick": "Procedimiento rápido y mínimamente invasivo, que generalmente toma solo 10 minutos por ojo",
+      "recovery": "Fácil recuperación con mejoras en la visión comenzando desde pocas horas hasta pocos días después del procedimiento",
+      "discomfort": "Molestias mínimas con solo una ligera presión en los ojos",
+      "results": "Resultados duraderos",
+      "allergy": "Riesgo reducido de alergias e infecciones, ya que no hay necesidad de lentes de contacto después de LASIK"
+    },
+    "best_vision": {
+      "title": "Logra Tu Mejor Visión Posible",
+      "bullets": {
+        "first": "Nuestro centro de visión fue uno de los primeros en la nación en ofrecer corrección visual con láser.",
+        "dedicated": "Estamos dedicados a preservar, restaurar y mejorar tu visión.",
+        "advanced": "Utilizamos uno de los láseres excimer más avanzados del mundo, y hemos realizado ensayos clínicos para verificar su seguridad y eficacia.",
+        "femtosecond": "Utilizamos uno de los láseres de femtosegundo más sofisticados del mundo para realizar LASIK totalmente láser.",
+        "alternative": "Si no eres un buen candidato para cirugía ocular con láser, podemos ayudarte con procedimientos alternativos para ayudarte a lograr tu mejor visión."
+      }
+    },
+    "schedule_button": "Agenda una Consulta Gratuita"
+  },
+  "procedures": {
+    "title": "Nuestros Procedimientos de Corrección Visual con Láser",
+    "subtitle": "Explora nuestros procedimientos especializados y selecciona una tarjeta para obtener más información sobre cada opción",
+    "traditional": {
+      "description": "El procedimiento de corrección visual con láser más ampliamente realizado, usando una cuchilla microqueratomo para crear un colgajo corneal antes de remodelar el tejido subyacente."
+    },
+    "bladeless": {
+      "title": "LASIK Personalizado Sin Bisturí",
+      "description": "LASIK avanzado sin bisturí utilizando tecnología láser de femtosegundo para mayor precisión y corrección visual personalizada con potencialmente menos complicaciones."
+    },
+    "prk": {
+      "description": "La Queratectomía Fotorrefractiva es una excelente alternativa para pacientes que no son adecuados para LASIK, particularmente aquellos con córneas delgadas o superficies corneales irregulares."
+    },
+    "presbyopia": {
+      "title": "Corrección de Presbicia",
+      "description": "Procedimientos especializados para abordar dificultades de visión cercana relacionadas con la edad, ayudando a reducir la dependencia de gafas de lectura para adultos típicamente mayores de 40 años."
+    },
+    "learn_more": "Más Información"
   },
   "accessibility": {
     "skipToContent": "Saltar al contenido principal"
