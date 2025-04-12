@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="home.meta.title">Vision Clarity Institute - Advanced Lasik Eye Surgery</title>
     <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results." data-i18n="home.meta.description">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/chatbot.css">
-    <link rel="stylesheet" href="css/button-refinements.css">
-    <!-- Modal Styles -->
-    <link rel="stylesheet" href="css/modal.css">
-    <!-- Checkmark Fix -->
-    <link rel="stylesheet" href="css/checkmark-fix.css">
-    <!-- header and flag -->
-    <link rel="stylesheet" href="css/header-improvements.css">
-    <link rel="stylesheet" href="css/flag-language-selector.css">
-    <!-- Language tooltip fix -->
-    <link rel="stylesheet" href="css/header-tooltip-fix.css">
-    <!-- Dropdown menu fix -->
-    <link rel="stylesheet" href="css/dropdown-menu-fix.css">
-    <!-- Select element fix -->
-    <link rel="stylesheet" href="css/select-fix.css">
+
+    <!-- Core path resolution - must be loaded first -->
+    <script src="js/path-resolver.js"></script>
+    <script src="js/resource-loader.js"></script>
+    
+    <!-- Load CSS files dynamically -->
+    <script>
+        window.ResourceLoader.loadCssFiles([
+            'styles.css',
+            'chatbot.css',
+            'button-refinements.css',
+            'modal.css',
+            'checkmark-fix.css',
+            'header-improvements.css',
+            'flag-language-selector.css',
+            'header-tooltip-fix.css',
+            'dropdown-menu-fix.css',
+            'select-fix.css'
+        ]);
+    </script>
+    
 </head>
 <body>
     <header class="header"></header>
@@ -236,39 +241,23 @@
 <footer class="footer"></footer>
     
 
-    <!-- Chatbot Interface -->
-    <div id="vision-clarity-chatbot" class="vision-clarity-chatbot">
-        <button class="chatbot-button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/>
-            </svg>
-        </button>
-        <div class="chat-window">
-            <div class="chat-header">
-                <svg height="24" width="24" viewBox="0 0 24 24" fill="#76b900" class="chat-logo">
-                    <circle cx="12" cy="12" r="10" fill="#76b900"/>
-                    <path d="M8 12 L16 12 M12 8 L12 16" stroke="white" stroke-width="2"/>
-                </svg>
-                <span data-i18n="home.chatbot.title">Vision Clarity Assistant</span>
-                <div class="ai-toggle-container">
-                    <label class="ai-toggle">
-                        <input type="checkbox" id="ai-toggle-checkbox" checked>
-                        <span class="ai-toggle-slider"></span>
-                        <span class="ai-toggle-label" data-i18n="home.chatbot.ai_label">Claude</span>
-                    </label>
-                </div>
-                <button class="close-chat">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class="chat-messages"></div>
-            <div class="chat-input-container">
-                <textarea class="chat-input" placeholder="Type your question here..." data-i18n="home.chatbot.placeholder" rows="1"></textarea>
-                <button class="send-button">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
+<!-- Scripts - load JS files in the correct sequence -->
+    <script>
+        window.ResourceLoader.loadJsSequence([
+            'error-tracker.js',
+            'font-loader.js',
+            'i18n.js',
+            'language-detector.js',
+            'component-loader.js',
+            'header.js',
+            'content-localizer.js',
+            'scripts.js',
+            'chatbot.js',
+            'modal-handler.js',
+            'unified-modal.js'
+        ]);
+    </script>
+ <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
