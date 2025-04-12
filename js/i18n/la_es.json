@@ -10,26 +10,73 @@
     },
     "buttons": {
       "schedule": "Agendar Consulta",
-      "inquiry": "Realizar Consulta",
-      "learn_more": "Más Información",
-      "read_more": "Leer Más",
-      "submit": "Enviar",
-      "send": "Enviar Mensaje"
+      "inquiry": "Realizar Consulta"
     },
     "footer": {
       "tagline": "Cirugía ocular Lasik avanzada utilizando tecnología de punta para obtener resultados óptimos y satisfacción del paciente.",
       "quickLinks": "Enlaces Rápidos",
       "contact": "Contacto",
+      "phone": "Teléfono: (800) 555-2020",
+      "email": "Correo: info@visionclarityinstitute.com",
       "hours": "Horario",
       "weekdays": "Lunes - Viernes: 8:00 - 18:00",
       "saturday": "Sábado: 9:00 - 14:00",
       "sunday": "Domingo: Cerrado",
-      "phone": "Teléfono: (800) 555-2020",
-      "email": "Correo: info@visionclarityinstitute.com",
       "copyright": "© 2025 Vision Clarity Institute. Todos los derechos reservados.",
       "privacy": "Política de Privacidad",
       "terms": "Términos de Servicio",
       "accessibility": "Accesibilidad"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Corrección Avanzada de Visión con Láser",
+      "subtitle": "Consigue una visión cristalina con tecnología LASIK de vanguardia y nuestro equipo quirúrgico experto. Experimenta la vida sin gafas o lentes de contacto."
+    },
+    "intro": {
+      "title": "Experimenta la Diferencia de Vision Clarity",
+      "paragraph1": "En Vision Clarity Institute, combinamos tecnología de vanguardia con cirujanos experimentados para ofrecer resultados excepcionales. Nuestro enfoque personalizado asegura que cada paciente reciba un tratamiento específicamente adaptado a sus necesidades visuales únicas.",
+      "paragraph2": "Con más de 50,000 procedimientos exitosos realizados, nuestros oftalmólogos certificados tienen la experiencia para proporcionarte el más alto estándar de atención en corrección visual con láser."
+    },
+    "services": {
+      "title": "Nuestros Servicios",
+      "subtitle": "Soluciones completas de corrección visual para satisfacer tus necesidades",
+      "traditional": {
+        "title": "LASIK Tradicional",
+        "description": "Nuestro procedimiento LASIK estándar corrige miopía, hipermetropía y astigmatismo con un tiempo de recuperación rápido."
+      },
+      "custom": {
+        "title": "LASIK Personalizado Sin Bisturí",
+        "description": "Nuestro procedimiento premium LASIK totalmente láser ofrece mayor precisión para casos complejos y reduce el riesgo de complicaciones."
+      },
+      "prk": {
+        "title": "PRK",
+        "description": "Una excelente alternativa para pacientes que no son candidatos para LASIK, particularmente aquellos con córneas delgadas."
+      },
+      "presbyopia": {
+        "title": "Corrección de Presbicia",
+        "description": "Procedimientos especializados para abordar la pérdida de visión cercana relacionada con la edad, reduciendo o eliminando la dependencia de gafas de lectura."
+      }
+    },
+    "testimonials": {
+      "title": "Testimonios de Pacientes",
+      "subtitle": "Escucha a nuestros pacientes satisfechos"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "question1": "¿Soy un buen candidato para LASIK?",
+      "answer1": "Los buenos candidatos para LASIK típicamente tienen 18 años o más con visión estable durante al menos un año. Un examen ocular completo durante tu consulta determinará si LASIK es adecuado para ti según tu salud ocular, prescripción y grosor corneal.",
+      "question2": "¿Es doloroso el LASIK?",
+      "answer2": "LASIK generalmente no es doloroso. Usamos gotas para los ojos con anestesia antes del procedimiento, y los pacientes típicamente solo sienten una ligera presión durante la breve cirugía. Puede ocurrir algo de molestia leve, irritación o sequedad durante las primeras 24-48 horas de recuperación.",
+      "question3": "¿Cuánto dura la recuperación?",
+      "answer3": "La mayoría de los pacientes notan una visión mejorada inmediatamente después de la cirugía, y la visión continúa estabilizándose durante los siguientes días. Muchos regresan al trabajo en 1-2 días. La curación completa puede tomar de 3 a 6 meses, aunque la mayoría de la estabilización visual ocurre dentro de las primeras semanas.",
+      "question4": "¿Cuánto cuesta LASIK?",
+      "answer4": "El costo de LASIK en Vision Clarity Institute varía de $1,800 a $2,500 por ojo, dependiendo de tus necesidades visuales específicas y la tecnología seleccionada. Ofrecemos opciones de financiamiento flexibles con pagos mensuales accesibles."
+    },
+    "cta": {
+      "title": "¿Listo para Experimentar una Visión Clara?",
+      "content": "Da el primer paso hacia la libertad visual. Nuestros expertos están listos para ayudarte a lograr una mejor visión sin gafas o lentes de contacto.",
+      "button": "Agenda tu Consulta Gratuita"
     }
   },
   "services": {
@@ -136,13 +183,13 @@
       "language": {
         "english": "Inglés",
         "spanish": "Español",
-        "portuguese": "Portugués",
-        "french": "Francés",
-        "german": "Alemán",
-        "italian": "Italiano",
-        "mandarin": "Mandarín",
+        "chinese": "Chino",
         "korean": "Coreano",
-        "japanese": "Japonés"
+        "armenian": "Armenio",
+        "hebrew": "Hebreo",
+        "russian": "Ruso",
+        "farsi": "Farsi",
+        "arabic": "Árabe"
       },
       "service": {
         "traditional_lasik": "LASIK Tradicional",
@@ -163,12 +210,279 @@
   "language": {
     "english": "Inglés",
     "spanish": "Español",
-    "portuguese": "Portugués",
-    "french": "Francés",
-    "german": "Alemán",
-    "italian": "Italiano",
-    "mandarin": "Mandarín",
+    "chinese": "Chino",
     "korean": "Coreano",
-    "japanese": "Japonés"
+    "armenian": "Armenio",
+    "hebrew": "Hebreo",
+    "russian": "Ruso",
+    "farsi": "Farsi",
+    "arabic": "Árabe"
+  },
+  "technology": {
+    "meta": {
+      "title": "Nuestra Tecnología - Vision Clarity Institute",
+      "description": "Conoce la tecnología avanzada de corrección visual con láser utilizada en Vision Clarity Institute para obtener resultados óptimos."
+    },
+    "hero": {
+      "title": "Nuestra Tecnología",
+      "subtitle": "Herramientas de vanguardia para una claridad incomparable en la restauración de la visión",
+      "primary_button": "Agendar Consulta Gratuita",
+      "secondary_button": "Explorar Nuestra Tecnología"
+    },
+    "overview": {
+      "title": "Tecnología de Corrección Visual de Vanguardia",
+      "paragraph1": "En Vision Clarity Institute, estamos comprometidos a proporcionar a los pacientes las soluciones tecnológicas más avanzadas para la corrección visual con láser. Nuestra inversión en equipos de última generación garantiza que recibas el tratamiento más seguro, preciso y efectivo posible.",
+      "paragraph2": "Nuestros oftalmólogos están altamente capacitados en el uso de estos sistemas avanzados y se mantienen a la vanguardia de las innovaciones tecnológicas a través de la educación y capacitación continuas.",
+      "paragraph3": "Desde equipos de diagnóstico completos hasta sistemas láser de precisión, cada aspecto de nuestra tecnología está diseñado para optimizar tus resultados visuales."
+    },
+    "diagnostic": {
+      "title": "Tecnología de Diagnóstico",
+      "subtitle": "Mapeo y análisis de precisión para planes de tratamiento personalizados",
+      "wavefront": {
+        "title": "Analizador de Frente de Onda",
+        "description": "Nuestra avanzada tecnología de frente de onda crea un mapa 3D detallado del sistema óptico único de tu ojo, midiendo e identificando incluso las imperfecciones visuales más sutiles que los métodos tradicionales podrían pasar por alto. Esto permite tratamientos completamente personalizados que abordan tus necesidades visuales específicas."
+      },
+      "topographer": {
+        "title": "Topógrafo Corneal",
+        "description": "Este sofisticado sistema de imágenes mapea la forma y curvatura exactas de tu córnea con precisión microscópica. Al analizar la superficie corneal, podemos identificar irregularidades y garantizar una planificación óptima del tratamiento, especialmente importante para pacientes con astigmatismo o condiciones corneales inusuales."
+      },
+      "oct": {
+        "title": "Tomografía de Coherencia Óptica (OCT)",
+        "description": "Nuestro sistema OCT proporciona imágenes transversales de ultra-alta resolución de tu córnea y retina. Esta tecnología no invasiva nos permite visualizar las distintas capas de tu ojo para medir con precisión el grosor corneal y detectar cualquier anomalía que pueda afectar tu plan de tratamiento."
+      }
+    },
+    "laser": {
+      "title": "Tecnología Láser",
+      "subtitle": "Instrumentos de precisión para una corrección visual óptima",
+      "femtosecond": {
+        "title": "Láser de Femtosegundo",
+        "description": "Utilizado en nuestros procedimientos LASIK sin bisturí, este láser ultrarrápido crea colgajos corneales precisos con una precisión medida en micras. El láser de femtosegundo produce pulsos de energía extremadamente cortos, permitiendo una separación de tejido increíblemente precisa sin generar calor, resultando en un grosor de colgajo más consistente y complicaciones reducidas."
+      },
+      "excimer": {
+        "title": "Láser Excimer Guiado por Frente de Onda",
+        "description": "Nuestro avanzado sistema de láser excimer remodela tu córnea con extrema precisión para corregir tu visión. Integrado con tecnología de frente de onda, el tratamiento láser se personaliza según tu perfil visual único. El sistema cuenta con seguimiento ocular de alta velocidad que se ajusta incluso a los movimientos oculares más pequeños durante el procedimiento, garantizando una alineación perfecta."
+      },
+      "eyetracking": {
+        "title": "Sistema Avanzado de Seguimiento Ocular",
+        "description": "Nuestros sistemas láser incorporan tecnología sofisticada de seguimiento ocular que monitorea la posición de tu ojo más de 1,000 veces por segundo. Esto asegura que el tratamiento con láser permanezca perfectamente centrado incluso con movimientos oculares microscópicos, ofreciendo resultados consistentes y mejorando la seguridad durante todo el procedimiento."
+      }
+    },
+    "timeline": {
+      "title": "Nuestra Evolución Tecnológica",
+      "subtitle": "Comprometidos con la innovación en corrección visual",
+      "event2010": {
+        "title": "Fundación de Vision Clarity Institute",
+        "description": "Establecido con el compromiso de utilizar la tecnología más avanzada disponible para la corrección visual."
+      },
+      "event2013": {
+        "title": "Primer Sistema Guiado por Frente de Onda",
+        "description": "Implementamos nuestro primer sistema LASIK avanzado guiado por frente de onda, ofreciendo una corrección visual más personalizada."
+      },
+      "event2016": {
+        "title": "Imágenes Corneales Avanzadas",
+        "description": "Añadimos tecnología de mapeo corneal de alta resolución para capacidades de diagnóstico mejoradas."
+      },
+      "event2019": {
+        "title": "Láser de Femtosegundo de Próxima Generación",
+        "description": "Actualizamos a la última tecnología de láser de femtosegundo para la creación de colgajos sin bisturí con precisión incomparable."
+      },
+      "event2023": {
+        "title": "Plataforma Láser Excimer de Última Generación",
+        "description": "Implementamos la más nueva generación de tecnología de láser excimer con seguimiento ocular avanzado y personalización del tratamiento."
+      },
+      "event2025": {
+        "title": "Mirando Hacia el Futuro",
+        "description": "Comprometidos con el avance tecnológico continuo para proporcionar a nuestros pacientes los mejores resultados posibles."
+      }
+    },
+    "cta": {
+      "title": "Experimenta la Tecnología Avanzada en Acción",
+      "content": "Agenda tu consulta gratuita para ver cómo nuestra tecnología de vanguardia puede mejorar tu visión.",
+      "button": "Reserva tu Consulta Gratuita"
+    }
+  },
+  "team": {
+    "meta": {
+      "title": "Conoce a Nuestro Equipo - Vision Clarity Institute",
+      "description": "Conoce a los especialistas experimentados en cuidado ocular en Vision Clarity Institute que proporcionan servicios excepcionales de LASIK y corrección visual."
+    },
+    "hero": {
+      "title": "Conoce a Nuestro Equipo",
+      "subtitle": "Nuestros especialistas experimentados están dedicados a brindar un cuidado ocular excepcional",
+      "schedule_button": "Agendar Consulta",
+      "info_button": "Solicitar Información"
+    },
+    "intro": {
+      "title": "Especialistas Experimentados en Cuidado Visual",
+      "content": "En Vision Clarity Institute, nuestro equipo de especialistas en cuidado ocular altamente capacitados está comprometido a proporcionar atención personalizada utilizando la última tecnología. Combinamos amplia experiencia con un enfoque compasivo para garantizar resultados óptimos para nuestros pacientes."
+    },
+    "filters": {
+      "all": "Todos los Especialistas",
+      "surgeons": "Cirujanos LASIK",
+      "optometrists": "Optometristas",
+      "staff": "Personal Clínico"
+    },
+    "doctors": {
+      "chen": {
+        "name": "Dra. Sarah Chen",
+        "title": "Especialista en Cirugía LASIK y Refractiva",
+        "bio": "La Dra. Chen es una oftalmóloga certificada especializada en LASIK, PRK y otros procedimientos refractivos. Con más de 15 años de experiencia, ha realizado más de 25,000 procedimientos LASIK exitosos.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Facultad de Medicina de la Universidad de California, San Francisco (UCSF)",
+          "Residencia en Oftalmología en la Universidad Johns Hopkins",
+          "Fellowship en Córnea y Cirugía Refractiva en el Instituto Ocular Bascom Palmer"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Certificada por el Consejo Americano de Oftalmología",
+          "Miembro de la Academia Americana de Oftalmología",
+          "Miembro de la Sociedad Americana de Cirugía de Cataratas y Refractiva"
+        ],
+        "specialties_title": "Especialidades",
+        "specialties": [
+          "Cirugía LASIK",
+          "PRK",
+          "Reemplazo de Lente Refractivo",
+          "Crosslinking Corneal"
+        ],
+        "book_button": "Agendar Cita"
+      },
+      "patel": {
+        "name": "Dr. Michael Patel",
+        "title": "Especialista en Córnea y Cirugía Refractiva",
+        "bio": "El Dr. Patel se especializa en trastornos corneales y cirugía refractiva. Está dedicado a proporcionar a los pacientes atención personalizada utilizando las técnicas más avanzadas en corrección visual.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Escuela de Medicina de Harvard",
+          "Residencia en Oftalmología en Massachusetts Eye and Ear",
+          "Fellowship en Córnea y Enfermedades Externas en el Hospital Ocular Wills"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Certificado por el Consejo Americano de Oftalmología",
+          "Miembro de la Academia Americana de Oftalmología",
+          "Miembro de la Sociedad de Córnea"
+        ],
+        "specialties_title": "Especialidades",
+        "specialties": [
+          "Trasplante de Córnea",
+          "Cirugía LASIK",
+          "Tratamiento de Queratocono",
+          "Tratamiento de Ojo Seco"
+        ],
+        "book_button": "Agendar Cita"
+      },
+      "johnson": {
+        "name": "Dra. Emily Johnson",
+        "title": "Optometrista Clínica",
+        "bio": "La Dra. Johnson proporciona exámenes oculares completos y se especializa en cuidados pre y post-operatorios para pacientes de LASIK. Tiene pasión por ayudar a los pacientes a lograr la mejor visión posible.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Facultad de Optometría de Nueva Inglaterra",
+          "Residencia en Enfermedades Oculares en el Sistema de Atención Médica VA Boston"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Certificación del Consejo Americano de Optometría",
+          "Miembro de la Asociación Americana de Optometría",
+          "Certificación de Agente Farmacéutico Terapéutico"
+        ],
+        "specialties_title": "Especialidades",
+        "specialties": [
+          "Exámenes Oculares Completos",
+          "Adaptación de Lentes de Contacto",
+          "Cuidado Pre/Post-Op de LASIK",
+          "Tratamiento de Ojo Seco"
+        ],
+        "book_button": "Agendar Cita"
+      },
+      "wilson": {
+        "name": "Dr. David Wilson",
+        "title": "Optometrista Senior",
+        "bio": "El Dr. Wilson aporta más de 20 años de experiencia en optometría clínica. Se especializa en adaptaciones complejas de lentes de contacto y en el manejo de enfermedades de la superficie ocular.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Facultad de Optometría del Sur de California",
+          "Residencia en Lentes de Contacto en la Universidad de California, Berkeley"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Certificación del Consejo Americano de Optometría",
+          "Miembro de la Academia Americana de Optometría",
+          "Miembro de la Sociedad de Educación de Lentes Esclerales"
+        ],
+        "specialties_title": "Especialidades",
+        "specialties": [
+          "Lentes de Contacto Especializados",
+          "Tratamiento de Ojo Seco",
+          "Manejo de Queratocono",
+          "Optometría Pediátrica"
+        ],
+        "book_button": "Agendar Cita"
+      }
+    },
+    "staff": {
+      "roberts": {
+        "name": "Jennifer Roberts",
+        "title": "Directora Clínica",
+        "bio": "Jennifer supervisa todas las operaciones clínicas en Vision Clarity Institute. Con su amplia experiencia en administración de atención médica y cuidado de pacientes, garantiza que nuestros pacientes reciban el servicio de la más alta calidad.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Licenciatura en Enfermería, Universidad de Washington",
+          "Maestría en Administración de Salud, Universidad de Michigan"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Enfermera Registrada",
+          "Asistente Oftalmológica Certificada (COA)",
+          "Certificación en Gestión de Atención Médica"
+        ],
+        "expertise_title": "Experiencia",
+        "expertise": [
+          "Operaciones Clínicas",
+          "Coordinación de Atención al Paciente",
+          "Gestión de Personal",
+          "Garantía de Calidad"
+        ]
+      },
+      "thompson": {
+        "name": "Marcus Thompson",
+        "title": "Técnico Oftalmológico",
+        "bio": "Marcus proporciona apoyo clínico esencial a nuestros médicos. Realiza pruebas preliminares de visión, asiste durante los procedimientos y ayuda a los pacientes a comprender sus planes de tratamiento.",
+        "view_credentials": "Ver Credenciales",
+        "education_title": "Educación",
+        "education": [
+          "Título Asociado en Ciencias de la Salud Aliadas",
+          "Formación de Técnico Oftalmológico, Hospital Ocular Wills"
+        ],
+        "certifications_title": "Certificaciones",
+        "certifications": [
+          "Técnico Oftalmológico Certificado (COT)",
+          "Certificación en RCP y Primeros Auxilios",
+          "Certificación en Pruebas Diagnósticas"
+        ],
+        "expertise_title": "Experiencia",
+        "expertise": [
+          "Pruebas Diagnósticas",
+          "Educación al Paciente",
+          "Evaluaciones Pre-Operatorias",
+          "Asistencia en LASIK"
+        ]
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Experimentar Atención Ocular de Expertos?",
+      "content": "Agenda tu consulta hoy con uno de nuestros especialistas y da el primer paso hacia una visión más clara.",
+      "button": "Reserva tu Consulta Gratuita"
+    }
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido principal"
   }
 }
