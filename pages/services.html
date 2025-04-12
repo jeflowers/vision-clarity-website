@@ -12,6 +12,10 @@
     
     <!-- Load CSS files dynamically -->
     <script>
+        /* Start debug */
+        console.log("Root path:", window.PathResolver.getRootPath());
+        console.log("CSS path example:", window.PathResolver.getCssPath('styles.css'));
+        /* End Debug */
         window.ResourceLoader.loadCssFiles([
             'styles.css',
             'chatbot.css',
