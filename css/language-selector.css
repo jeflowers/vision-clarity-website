@@ -1,309 +1,339 @@
-/**
- * Vision Clarity Institute - Unified Language Selector Styles
- * Comprehensive styling for language dropdowns, flags, and tooltips
+/* Vision Clarity Institute - Unified Language Selector Styling
+ * Consolidated styling for language selectors with flag display
  */
 
 /* ===== CORE LANGUAGE SELECTOR STYLES ===== */
 
-/* Select container and positioning */
-.flag-select-wrapper,
+/* Container styling */
+.language-selector-field {
+  margin-bottom: 1rem;
+}
+
+/* Select wrapper positioning */
+.select-wrapper,
+.flag-select-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+/* Form styling */
 .form-select-wrapper {
-    position: relative;
-    display: inline-block;
-    z-index: 10;
+  display: block;
+  width: 100%;
 }
 
-/* Base select styling with consistent heights */
-.flag-language-select,
-.flag-enabled {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 30px !important; /* Space for dropdown icon */
-    padding-left: 32px !important; /* Space for flag on the left */
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: normal;
-    height: 38px;
-    line-height: 38px;
-    min-width: 120px;
-    text-align: left;
-    cursor: pointer;
-    z-index: 2;
-    background-image: none; /* Explicitly remove any background image */
+/* Base select styling */
+select.flag-enabled {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 32px !important; /* Space for arrow */
+  padding-left: 32px !important; /* Space for flag */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: normal;
+  height: 38px;
+  line-height: 38px;
+  min-width: 120px;
+  text-align: left;
+  cursor: pointer;
+  
+  /* IMPORTANT: Remove background images which can cause duplicate arrows */
+  background-image: none !important;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
 }
 
-/* Remove browser default arrow */
-.flag-language-select::-ms-expand,
-.flag-enabled::-ms-expand {
-    display: none;
+/* Remove native dropdown arrow */
+select.flag-enabled::-ms-expand {
+  display: none;
+}
+
+/* Focus styles */
+select.flag-enabled:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  z-index: 1001;
+  position: relative;
 }
 
 /* Select options styling */
-.flag-enabled option {
-    padding: 8px 12px;
-    color: #333;
-    background-color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 24px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+select.flag-enabled option {
+  padding: 8px 12px;
+  color: #333;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 24px;
+  
+  /* Ensure no clipping */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* Important: No background image */
+  background-image: none;
 }
 
-/* Selected option styling */
-.flag-enabled option:checked {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    color: #333;
+/* Style for selected option */
+select.flag-enabled option:checked {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  color: #333;
 }
 
-/* Hover state for options */
-.flag-enabled option:hover {
-    background-color: #e0e0e0;
-    cursor: pointer;
+/* Style for hover state */
+select.flag-enabled option:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
 }
 
-/* Focus states */
-.flag-language-select:focus,
-.flag-enabled:focus {
-    outline: none;
-    border-color: #4CAF50;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-    border-radius: 4px 4px 0 0;
-    z-index: 1001;
-    position: relative;
-}
-
-/* Remove background image from options */
-.flag-enabled option {
-    background-image: none;
-}
-
-/* Fix for optgroup */
-.flag-enabled optgroup {
-    font-weight: bold;
-    font-style: normal;
-    padding: 5px;
+/* Fix for dropdown when open */
+select.flag-enabled:focus {
+  border-radius: 4px 4px 0 0;
 }
 
 /* ===== FLAG DISPLAY ===== */
 
-/* Base flag positioning */
+/* Flag display positioning */
 .flag-display {
-    position: absolute;
-    top: 50%;
-    left: 10px !important;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    z-index: 3;
-    display: block;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 3;
+  display: block; /* Ensure visibility */
 }
 
 /* Context-specific flag styling */
 .form-flag-display {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .header-flag-display {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 /* ===== DROPDOWN ARROW ===== */
 
-/* Single, consistent dropdown arrow */
-.select-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #555;
-}
-
-/* Container for icon */
+/* The select-icon container */
 .select-icon-container {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 30px;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  pointer-events: none; /* Allow clicks to pass through */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== TOOLTIP STYLES ===== */
+/* Single arrow styling with CSS triangles */
+.select-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #555;
+  pointer-events: none;
+}
 
-/* Tooltip container */
+/* Header specific */
+.header-select-icon-container {
+  width: 28px;
+}
+
+/* Form specific */
+.form-select-icon-container {
+  width: 32px;
+}
+
+/* ===== TOOLTIP STYLING ===== */
+
 .language-tooltip-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Tooltip text styling */
 .field-description.tooltip-text {
-    display: none;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 240px;
-    z-index: 1000;
-    padding: 8px 12px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    white-space: normal;
-    text-align: left;
-}
-
-/* Tooltip visibility on hover and focus */
-.flag-select-wrapper:hover + .language-tooltip-container .field-description,
-.flag-select-wrapper:hover ~ .language-tooltip-container .field-description,
-.language-tooltip-container:hover .field-description,
-.flag-enabled:focus ~ .language-tooltip-container .field-description.tooltip-text {
-    display: block;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 240px;
+  padding: 8px 12px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  white-space: normal;
+  text-align: left;
 }
 
 /* Tooltip arrow */
-.field-description.tooltip-text:before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 20px;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #333;
+.field-description.tooltip-text:before,
+.tooltip-arrow {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 20px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #333;
 }
 
-/* ===== HEADER-SPECIFIC STYLES ===== */
-
-/* Header language select */
-.header-language-select {
-    min-width: 120px;
-    background-color: #f8f8f8;
+/* Show tooltip on hover/focus */
+.flag-select-wrapper:hover + .language-tooltip-container .field-description,
+.flag-select-wrapper:hover ~ .language-tooltip-container .field-description,
+.language-tooltip-container:hover .field-description {
+  display: block !important;
 }
+
+/* Focus-based tooltip for accessibility */
+select.flag-enabled:focus ~ .language-tooltip-container .field-description.tooltip-text {
+  display: block !important;
+}
+
+/* ===== HEADER-SPECIFIC STYLING ===== */
 
 /* Hide field descriptions in header by default */
 .header-actions .field-description {
-    display: none !important;
+  display: none !important;
 }
 
-/* Show on hover */
-.header-actions .flag-select-wrapper:hover + .language-tooltip-container .field-description,
-.header-actions .flag-select-wrapper:hover ~ .language-tooltip-container .field-description,
-.header-actions .language-tooltip-container:hover .field-description {
-    display: block !important;
+/* Header language select */
+.header-language-select {
+  min-width: 120px;
+  background-color: #f8f8f8;
 }
 
-/* Header tooltip sizing */
+/* Fix for header instance */
 #header_language_description {
-    width: 240px;
-    font-size: 12px;
-    white-space: normal;
+  width: 240px;
+  font-size: 12px;
+  white-space: normal;
 }
 
-/* ===== FORM-SPECIFIC STYLES ===== */
+/* ===== FORM-SPECIFIC STYLING ===== */
 
 /* Form language select */
 .form-language-select {
-    width: 100%;
+  width: 100%;
 }
 
 /* ===== RTL LANGUAGE SUPPORT ===== */
 
 [dir="rtl"] .flag-display {
-    left: auto !important;
-    right: 10px;
+  left: auto;
+  right: 10px;
 }
 
-[dir="rtl"] .select-icon {
-    right: auto;
-    left: 10px;
+[dir="rtl"] .select-icon-container {
+  right: auto;
+  left: 0;
 }
 
 [dir="rtl"] .flag-language-select,
 [dir="rtl"] .flag-enabled {
-    padding-right: 32px !important;
-    padding-left: 30px !important;
+  padding-right: 32px !important;
+  padding-left: 32px !important;
 }
 
-[dir="rtl"] .field-description.tooltip-text:before {
-    left: auto;
-    right: 20px;
+[dir="rtl"] .field-description.tooltip-text:before,
+[dir="rtl"] .tooltip-arrow {
+  left: auto;
+  right: 20px;
 }
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
 
 @media (max-width: 768px) {
-    .header-language-select {
-        min-width: 100px;
-    }
-    
-    .field-description.tooltip-text {
-        width: 180px;
-        font-size: 11px;
-    }
+  .header-language-select {
+    min-width: 100px;
+  }
+  
+  .field-description.tooltip-text {
+    width: 180px;
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 576px) {
-    .header-language-select {
-        min-width: 90px;
-        padding-left: 28px !important;
-    }
-    
-    .flag-display {
-        font-size: 14px;
-    }
-    
-    .field-description.tooltip-text {
-        left: -70px;
-    }
-    
-    .field-description.tooltip-text:before {
-        left: 90px;
-    }
+  .header-language-select {
+    min-width: 90px;
+    padding-left: 28px !important;
+  }
+  
+  .flag-display {
+    font-size: 14px;
+    left: 8px;
+  }
+  
+  [dir="rtl"] .flag-display {
+    left: auto;
+    right: 8px;
+  }
+  
+  .field-description.tooltip-text {
+    left: -70px;
+  }
+  
+  [dir="rtl"] .field-description.tooltip-text {
+    left: auto;
+    right: -70px;
+  }
+  
+  .field-description.tooltip-text:before,
+  .tooltip-arrow {
+    left: 90px;
+  }
+  
+  [dir="rtl"] .field-description.tooltip-text:before,
+  [dir="rtl"] .tooltip-arrow {
+    left: auto;
+    right: 90px;
+  }
 }
 
-/* Browser-specific fixes */
+/* ===== BROWSER-SPECIFIC FIXES ===== */
+
+/* Firefox fix */
 @-moz-document url-prefix() {
-    select.flag-enabled {
-        text-overflow: ellipsis;
-    }
-    
-    select.flag-enabled option {
-        padding: 6px 10px;
-    }
+  select.flag-enabled {
+    text-overflow: ellipsis;
+    background-image: none !important;
+  }
+  
+  select.flag-enabled option {
+    padding: 6px 10px;
+  }
 }
 
 /* Webkit scrollbar styling */
 select.flag-enabled::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 select.flag-enabled::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 select.flag-enabled::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+  background: #888;
+  border-radius: 4px;
 }
 
 select.flag-enabled::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
