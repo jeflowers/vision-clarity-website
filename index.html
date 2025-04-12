@@ -241,6 +241,8 @@
 <footer class="footer"></footer>
     
 
+<!-- component-loader.js needs to load and use the PathResolver to get the correct root path -->
+    <script src="js/component-loader.js"></script>
 <!-- Scripts - load JS files in the correct sequence -->
     <script>
         window.ResourceLoader.loadJsSequence([
@@ -248,7 +250,6 @@
             'font-loader.js',
             'i18n.js',
             'language-detector.js',
-            'component-loader.js',
             'header.js',
             'content-localizer.js',
             'scripts.js',
@@ -259,5 +260,46 @@
     </script>
  <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+
+<!-- ###### Start Debug ######-->
+    <script>
+  // Debug check to see if components loaded correctly
+  console.log('Current pathname:', window.location.pathname);
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    console.log('PathResolver available:', !!window.PathResolver);
+    console.log('ResourceLoader available:', !!window.ResourceLoader);
+    console.log('ComponentLoader available:', !!window.ComponentLoader);
+    
+    // Check if header and footer are empty
+    const header = document.querySelector('header.header');
+    const footer = document.querySelector('footer.footer');
+    
+    console.log('Header element exists:', !!header);
+    console.log('Footer element exists:', !!footer);
+    console.log('Header content:', header ? header.innerHTML.length : 'N/A');
+    console.log('Footer content:', footer ? footer.innerHTML.length : 'N/A');
+    
+    // Force component loading after a small delay
+    setTimeout(function() {
+      if (window.ComponentLoader) {
+        console.log('Explicitly calling loadAllComponents()');
+        window.ComponentLoader.loadAllComponents();
+      }
+    }, 500);
+  });
+  
+  // Component loading events
+  document.addEventListener('componentLoaded', function(event) {
+    console.log('Component loaded event:', event.detail.component);
+  });
+  
+  document.addEventListener('allComponentsLoaded', function() {
+    console.log('All components loaded event fired');
+  });
+</script>
+<!-- ###### End Debug ######-->
+    
 </body>
 </html>
