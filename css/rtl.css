@@ -115,3 +115,32 @@ html[dir="rtl"] ::-webkit-scrollbar {
     flex-direction: column;
   }
 }
+
+/* 
+ * RTL Button Spacing Fix for Vision Clarity Website
+ * Add these rules to the end of css/rtl.css
+ */
+
+/* Fix button spacing in the header for RTL languages */
+html[dir="rtl"] .header-actions {
+  margin-right: 15px;
+}
+
+html[dir="rtl"] .btn,
+html[dir="rtl"] button {
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+/* Specifically target the language selector in the header */
+html[dir="rtl"] #header_preferred_language,
+html[dir="rtl"] #language-select {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+/* Improve header layout for RTL mode */
+html[dir="rtl"] .header .container {
+  padding-right: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+}
