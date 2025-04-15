@@ -1,12 +1,13 @@
-<!-- Service Inquiry Form Modal -->
+<!-- Service Inquiry Modal -->
 <div id="inquiryModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
         <div class="modal-header">
-            <h3 data-i18n="modal.inquiry.title">Request Information</h3>
+            <h3 id="modal-title" data-i18n="modal.inquiry.title">Request Information</h3>
             <button class="modal-close" aria-label="Close" data-a11y-label="ariaLabels.closeButton">&times;</button>
         </div>
-        <div class="modal-body">
-            <form id="inquiryForm" class="contact-form">
+        <div class="modal-content">
+            <form id="inquiryForm" class="modal-form">
                 <div class="form-field required" data-field="name">
                     <label for="inquiry_name" data-i18n="modal.form.name">Name</label>
                     <input type="text" id="inquiry_name" name="name" required aria-required="true">
@@ -17,50 +18,38 @@
                     <input type="email" id="inquiry_email" name="email" required aria-required="true">
                 </div>
                 
-                <div class="form-field required" data-field="phone">
+                <div class="form-field" data-field="phone">
                     <label for="inquiry_phone" data-i18n="modal.form.phone">Phone</label>
-                    <input type="tel" id="inquiry_phone" name="phone" required aria-required="true">
+                    <input type="tel" id="inquiry_phone" name="phone">
                 </div>
                 
-                <div class="form-field" data-field="preferred_language">
-                    <label for="inquiry_preferred_language" data-i18n="modal.form.preferred_language">Preferred Language</label>
-                    <select id="inquiry_preferred_language" name="preferred_language">
-                        <option value="en" data-i18n="modal.form.language.english">English</option>
-                        <option value="es" data-i18n="modal.form.language.spanish">Spanish</option>
-                        <option value="zh" data-i18n="modal.form.language.chinese">Chinese</option>
-                        <option value="ko" data-i18n="modal.form.language.korean">Korean</option>
-                        <option value="hy" data-i18n="modal.form.language.armenian">Armenian</option>
-                        <option value="he" data-i18n="modal.form.language.hebrew">Hebrew</option>
-                        <option value="ru" data-i18n="modal.form.language.russian">Russian</option>
-                        <option value="fa" data-i18n="modal.form.language.farsi">Farsi</option>
-                        <option value="ar" data-i18n="modal.form.language.arabic">Arabic</option>
-                    </select>
-                </div>
+                <!-- Language Selector Component - Loaded Dynamically -->
+                <div class="form-field language-selector-container" data-field="preferred_language" data-component="language-selector-form" data-form-prefix="inquiry"></div>
                 
                 <div class="form-field required" data-field="service">
-                    <label for="service" data-i18n="modal.form.service">Service of Interest</label>
-                    <select id="service" name="service" required aria-required="true">
-                        <option value="" data-i18n="modal.form.select_service">Select a service</option>
-                        <option value="traditional_lasik" data-i18n="modal.form.service.traditional_lasik">Traditional LASIK</option>
-                        <option value="bladeless_lasik" data-i18n="modal.form.service.bladeless_lasik">Custom Bladeless LASIK</option>
+                    <label for="inquiry_service" data-i18n="modal.form.service">Service of Interest</label>
+                    <select id="inquiry_service" name="service" required aria-required="true">
+                        <option value="select" data-i18n="modal.form.select">Select</option>
+                        <option value="traditional_lasik" data-i18n="modal.form.service.traditional">Traditional LASIK</option>
+                        <option value="bladeless_lasik" data-i18n="modal.form.service.bladeless">Custom Bladeless LASIK</option>
                         <option value="prk" data-i18n="modal.form.service.prk">PRK</option>
                         <option value="presbyopia" data-i18n="modal.form.service.presbyopia">Presbyopia Correction</option>
-                        <option value="other" data-i18n="modal.form.service.other">Other (please specify)</option>
+                        <option value="other" data-i18n="modal.form.service.other">Other</option>
                     </select>
                 </div>
                 
-                <div class="form-field" data-field="message">
-                    <label for="inquiry_message" data-i18n="modal.form.additional_info">Additional Information</label>
-                    <textarea id="inquiry_message" name="message" rows="4"></textarea>
+                <div class="form-field required" data-field="message">
+                    <label for="inquiry_message" data-i18n="modal.form.inquiry_details">Inquiry Details</label>
+                    <textarea id="inquiry_message" name="message" required aria-required="true" rows="4"></textarea>
                 </div>
                 
-                <div class="form-field required" data-field="consent">
+                <div class="form-field required checkbox-container" data-field="consent">
                     <input type="checkbox" id="inquiry_consent" name="consent" required aria-required="true">
-                    <label for="inquiry_consent" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                    <label for="inquiry_consent" class="checkbox-label" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
                 </div>
                 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary" data-i18n="modal.form.submit_inquiry">Submit Inquiry</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="modal.form.send_inquiry">Send Inquiry</button>
                 </div>
             </form>
         </div>
