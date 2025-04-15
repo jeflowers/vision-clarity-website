@@ -27,22 +27,6 @@
         ]);
     </script>
     
-    <!-- Scripts - load JS files in the correct sequence -->
-    <script>
-        window.ResourceLoader.loadJsSequence([
-            'error-tracker.js',
-            'i18n.js',
-            'language-detector.js',
-            'content-localizer.js',
-            'scripts.js',
-            'component-loader.js',
-            'header.js',
-            'flag-language-selector.js',
-            'modal-handler.js', // Use our consolidated modal handler
-            'chatbot.js'
-        ]);
-    </script>
-    
 </head>
 <body>
     <header class="header"></header>
@@ -285,7 +269,7 @@
     <script src="../js/chatbot.js"></script>
     <!-- Component loader script -->
     <script src="../js/component-loader.js"></script>
-    <script src="../js/modal-handler.js"></script>
+    <script src="../js/modal.js"></script>
     <script src="../js/i18n.js"></script>
     <!-- header and flag js -->
     <script src="../js/header.js"></script>
