@@ -1,227 +1,156 @@
 /**
  * Vision Clarity Institute - Component Loader
- * This script loads header, footer, and other common components
+ * Handles dynamic loading of reusable components
  */
 
-const ComponentLoader = {
-  // Components to load
-  components: [
-    { path: 'components/header.html', target: 'header', loaded: false },
-    { path: 'components/footer.html', target: 'footer', loaded: false }
-  ],
-  
-  // Service components mapping
-  serviceComponents: {
-    'traditional': 'components/services/traditional-lasik.html',
-    'custom': 'components/services/custom-bladeless-lasik.html',
-    'prk': 'components/services/prk.html',
-    'presbyopia': 'components/services/presbyopia-correction.html'
-  },
-  
-  // Initialize the component loader
-  init: function() {
-    // Load components when the DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
+// Check if ComponentLoader already exists
+if (!window.ComponentLoader) {
+  window.ComponentLoader = {
+    initialized: false,
+    componentCache: {},
+    
+    init: function() {
+      // Prevent multiple initializations
+      if (this.initialized) {
+        console.log('ComponentLoader already initialized');
+        return;
+      }
+      
+      this.initialized = true;
+      console.log('Initializing ComponentLoader');
+      
+      // Load all components by default
       this.loadAllComponents();
-      this.initServiceComponents();
-    });
-    
-    // Set up component loaded event listener
-    document.addEventListener('componentLoaded', (event) => {
-      const { component } = event.detail;
       
-      // Mark the component as loaded
-      this.components.forEach(comp => {
-        if (comp.path === component) {
-          comp.loaded = true;
+      // Setup event listeners
+      this.setupEventListeners();
+    },
+    
+    setupEventListeners: function() {
+      // Listen for manual component load requests
+      document.addEventListener('loadComponent', (event) => {
+        if (event.detail && event.detail.path) {
+          this.loadComponent(event.detail.path, event.detail.target);
         }
       });
+    },
+    
+    loadAllComponents: function() {
+      // Find all component placeholders
+      const containers = document.querySelectorAll('[data-component]');
       
-      // Check if all components are loaded
-      const allLoaded = this.components.every(comp => comp.loaded);
-      if (allLoaded) {
-        this.postLoadProcessing();
+      // Load each component
+      containers.forEach(container => {
+        const componentPath = container.getAttribute('data-component');
+        this.loadComponent(componentPath, container);
+      });
+    },
+    
+    loadComponent: function(path, targetElement) {
+      if (!path) {
+        console.error('Component path is required');
+        return Promise.reject('Component path is required');
       }
-    });
-  },
-  
-  // Load all registered components
-  loadAllComponents: function() {
-    this.components.forEach(component => {
-      const { path, target } = component;
-      this.loadComponent(path, target);
-    });
-  },
-  
-  // Load a component
-  loadComponent: function(componentPath, targetSelector) {
-    const targetElement = typeof targetSelector === 'string' 
-      ? document.querySelector(targetSelector) 
-      : targetSelector;
-    
-    if (!targetElement) {
-      console.error(`Target element not found: ${targetSelector}`);
-      return;
-    }
-    
-    // Determine the root path
-    const rootPath = this.getRootPath();
-    
-    // Fetch the component
-    fetch(`${rootPath}${componentPath}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Failed to load component: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(html => {
-        // Replace {{rootPath}} with actual path
-        const processedHtml = html.replace(/\{\{rootPath\}\}/g, rootPath);
-        
-        // Insert the component
-        targetElement.innerHTML = processedHtml;
-        
-        // Dispatch event
-        document.dispatchEvent(new CustomEvent('componentLoaded', {
-          detail: {
-            component: componentPath,
-            target: targetElement
+      
+      // Determine full component path
+      const rootPath = this.getRootPath();
+      const fullPath = path.startsWith('/') ? path : `${rootPath}${path}`;
+      
+      // Return from cache if available
+      if (this.componentCache[fullPath]) {
+        return Promise.resolve(this.componentCache[fullPath])
+          .then(content => {
+            if (targetElement) {
+              targetElement.innerHTML = content;
+              this.postLoadProcessing(targetElement);
+            }
+            return content;
+          });
+      }
+      
+      // Fetch the component
+      return fetch(fullPath)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Failed to load component: ${fullPath} (${response.status})`);
           }
-        }));
-        
-        // Initialize header if applicable
-        if (targetSelector === 'header' && window.initializeHeader) {
-          window.initializeHeader();
-        }
-      })
-      .catch(error => console.error('Error loading component:', error));
-  },
-  
-  // Initialize service components
-  initServiceComponents: function() {
-    // Only run this on the services page
-    const serviceContainer = document.getElementById('service-content-container');
-    if (!serviceContainer) {
-      return; // Not on services page
-    }
+          return response.text();
+        })
+        .then(content => {
+          // Cache the component content
+          this.componentCache[fullPath] = content;
+          
+          // Insert the component if target element provided
+          if (targetElement) {
+            targetElement.innerHTML = content;
+            this.postLoadProcessing(targetElement);
+          }
+          
+          // Dispatch component loaded event
+          document.dispatchEvent(new CustomEvent('componentLoaded', { 
+            detail: { path, element: targetElement }
+          }));
+          
+          console.log(`Component loaded event: ${path}`);
+          
+          return content;
+        })
+        .catch(error => {
+          console.error(`Error loading component ${path}:`, error);
+          return Promise.reject(error);
+        });
+    },
     
-    console.log('Initializing service components');
-    
-    // Handle service navigation links
-    document.querySelectorAll('.service-card .service-actions a').forEach(link => {
-      link.addEventListener('click', (event) => {
-        // Prevent default anchor behavior
-        event.preventDefault();
-        
-        // Get the service ID from the href attribute
-        const serviceId = link.getAttribute('href').substring(1); // Remove the # prefix
-        
-        // Update the URL hash without scrolling
-        history.pushState(null, null, `#${serviceId}`);
-        
-        // Load the corresponding service component
-        this.loadServiceComponent(serviceId);
-      });
-    });
-    
-    // Handle URL hash changes
-    window.addEventListener('hashchange', () => {
-      const serviceId = window.location.hash.substring(1); // Remove the # prefix
-      if (serviceId && this.serviceComponents[serviceId]) {
-        this.loadServiceComponent(serviceId);
+    getRootPath: function() {
+      // Same logic as in I18nManager
+      if (window.location.hostname.includes('github.io')) {
+        return '/vision-clarity-website/';
       }
-    });
-    
-    // Load the default service component based on URL hash or default to 'traditional'
-    const initialServiceId = window.location.hash.substring(1);
-    if (initialServiceId && this.serviceComponents[initialServiceId]) {
-      this.loadServiceComponent(initialServiceId);
-    } else {
-      this.loadServiceComponent('traditional'); // Default service
-    }
-  },
-  
-  // Load a service component
-  loadServiceComponent: function(serviceId) {
-    // Get the component container
-    const container = document.getElementById('service-content-container');
-    if (!container) {
-      console.error('Service content container not found');
-      return;
-    }
-    
-    // Check if the serviceId is valid
-    if (!this.serviceComponents[serviceId]) {
-      console.error('Invalid service ID:', serviceId);
-      return;
-    }
-    
-    // Get the component path
-    const componentPath = this.serviceComponents[serviceId];
-    
-    console.log(`Loading service component: ${serviceId} from ${componentPath}`);
-    
-    // Show loading indicator
-    container.innerHTML = '<div class="loading-indicator">Loading...</div>';
-    
-    // Load the component
-    this.loadComponent(componentPath, container);
-    
-    // Highlight the active service
-    this.highlightActiveService(serviceId);
-  },
-  
-  // Highlight the active service in the navigation
-  highlightActiveService: function(serviceId) {
-    // Remove active class from all service links
-    document.querySelectorAll('.service-card .service-actions a').forEach(link => {
-      link.classList.remove('active');
-      // If the parent has an active class, remove it too
-      const card = link.closest('.service-card');
-      if (card) {
-        card.classList.remove('active');
+      
+      const path = window.location.pathname;
+      if (path.includes('/pages/')) {
+        return '../';
       }
-    });
-    
-    // Add active class to the selected service link
-    const activeLink = document.querySelector(`.service-card .service-actions a[href="#${serviceId}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-      // Also add active class to the parent card
-      const card = activeLink.closest('.service-card');
-      if (card) {
-        card.classList.add('active');
-      }
-    }
-  },
-  
-  // Get the root path based on current page location
-  getRootPath: function() {
-    // Use the shared PathResolver if available
-    if (window.PathResolver) {
-      return window.PathResolver.getRootPath();
-    }
-    
-    // Fallback to original implementation
-    const path = window.location.pathname;
-    if (path === '/' || path === '/index.html' || path.endsWith('/index.html')) {
+      
       return './';
-    }
-    return '../';
-  },
-  
-  // Process after all components are loaded
-  postLoadProcessing: function() {
-    // Apply i18n translations if available
-    if (window.i18n && typeof window.i18n.applyTranslations === 'function') {
-      window.i18n.applyTranslations();
-    }
+    },
     
-    // Dispatch event that all components have loaded
-    document.dispatchEvent(new CustomEvent('allComponentsLoaded'));
-  }
-};
+    postLoadProcessing: function(container) {
+      // Apply translations if I18nManager is available
+      if (window.I18nManager && typeof window.I18nManager.applyTranslations === 'function') {
+        window.I18nManager.applyTranslations();
+      }
+      
+      // Initialize any scripts within the container
+      this.initComponentScripts(container);
+    },
+    
+    initComponentScripts: function(container) {
+      // Find and execute any script tags in the component
+      const scripts = container.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        
+        // Copy attributes
+        Array.from(oldScript.attributes).forEach(attr => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+        
+        // Copy content
+        newScript.textContent = oldScript.textContent;
+        
+        // Replace old script with new one to execute it
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
+    }
+  };
+} else {
+  console.log('ComponentLoader already defined, using existing instance');
+}
 
-// Initialize the component loader
-ComponentLoader.init();
+// Initialize safely
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.ComponentLoader && typeof window.ComponentLoader.init === 'function') {
+    window.ComponentLoader.init();
+  }
+});
