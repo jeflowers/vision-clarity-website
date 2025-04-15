@@ -35,7 +35,6 @@ if (!window.I18nManager) {
       this.initLanguage();
     },
     
-    // Rest of the methods remain the same as in your original code
     initEventListeners: function() {
       // Language selector dropdown event listener
       const languageSelect = document.getElementById('language-select');
@@ -297,6 +296,83 @@ if (!window.I18nManager) {
       
       // Report missing translations if any
       this.reportMissingTranslations();
+      
+      // Ensure critical translations persist
+      this.ensureCriticalTranslations();
+    },
+    
+    ensureCriticalTranslations: function() {
+      // This function specifically ensures the intro features and other critical elements
+      // retain their translations even if there are timing issues
+      const criticalKeys = [
+        'home.intro.feature1',
+        'home.intro.feature2',
+        'home.intro.feature3',
+        'home.intro.feature4',
+        'home.intro.button',
+        'home.hero.secondary_button'
+      ];
+      
+      // Create a fallback set of translations if they're missing
+      const fallbackTranslations = {
+        'home.intro.feature1': 'Advanced bladeless LASIK technology',
+        'home.intro.feature2': 'Comprehensive consultation and eye analysis',
+        'home.intro.feature3': 'Personalized treatment plans',
+        'home.intro.feature4': 'Exceptional post-operative care',
+        'home.intro.button': 'Our Technology',
+        'home.hero.secondary_button': 'Learn More'
+      };
+      
+      // Apply these translations to the elements
+      criticalKeys.forEach(key => {
+        const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
+        elements.forEach(element => {
+          // Check if element has content or just the key
+          if (element.textContent === key || 
+              element.textContent.includes('feature') ||
+              element.textContent === 'button') {
+            element.textContent = fallbackTranslations[key] || key;
+          }
+        });
+      });
+      
+      // Add a mutation observer to detect if translations get overwritten
+      this.setupTranslationObserver(criticalKeys, fallbackTranslations);
+    },
+    
+    setupTranslationObserver: function(keys, fallbacks) {
+      // If browser doesn't support MutationObserver, skip this
+      if (!window.MutationObserver) return;
+      
+      // Find elements with these critical translations
+      keys.forEach(key => {
+        const elements = document.querySelectorAll(`[data-i18n="${key}"]`);
+        
+        elements.forEach(element => {
+          // Set up observer for this element
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              // If the text content was changed and now looks like a key
+              if (mutation.type === 'characterData' || mutation.type === 'childList') {
+                const currentText = element.textContent;
+                if (currentText === key || 
+                    currentText.includes('feature') ||
+                    currentText === 'button') {
+                  // Restore the translation
+                  element.textContent = fallbacks[key] || key;
+                }
+              }
+            });
+          });
+          
+          // Start observing
+          observer.observe(element, { 
+            characterData: true, 
+            childList: true,
+            subtree: true
+          });
+        });
+      });
     },
     
     getTranslation: function(key, options = {}) {
