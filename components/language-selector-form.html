@@ -1,13 +1,13 @@
 <!-- Language Selector Component -->
 <div class="form-field language-selector-field" data-field="preferred_language">
-    <label for="{{form_prefix}}_preferred_language"
+    <label for="{{form_prefix}}_preferred_language" 
            data-i18n="modal.form.preferred_language">
         Preferred Language
     </label>
-
+    
     <div class="select-wrapper flag-select-wrapper">
-        <select id="{{form_prefix}}_preferred_language"
-                name="preferred_language"
+        <select id="{{form_prefix}}_preferred_language" 
+                name="preferred_language" 
                 class="form-language-select flag-enabled"
                 aria-describedby="{{form_prefix}}_language_description">
             <option value="en" data-flag="🇺🇸" data-i18n="modal.form.language.english">English</option>
@@ -21,22 +21,10 @@
             <option value="fa" data-flag="🇮🇷" data-i18n="modal.form.language.farsi">Farsi</option>
             <option value="ar" data-flag="🇸🇦" data-i18n="modal.form.language.arabic">Arabic</option>
         </select>
-        <div class="select-icon-container form-select-icon-container">
-            <span class="select-icon"></span>
+        <!-- Modified arrow container to ensure visibility -->
+        <div class="select-arrow-container">
+            <span class="select-arrow"></span>
         </div>
         <span class="flag-display form-flag-display" aria-hidden="true">🇺🇸</span>
-    </div>
-
-    <!-- Language description as tooltip (hidden by default, shown on hover/focus) -->
-    <div class="language-tooltip-container">
-        <div id="{{form_prefix}}_language_description"
-             class="field-description tooltip-text"
-             data-i18n="modal.form.language_description"
-             style="display: none;">
-            <div class="tooltip-arrow"></div>
-            <div class="tooltip-content">
-                Select the language you prefer for communication with our staff
-            </div>
-        </div>
     </div>
 </div>
