@@ -1,12 +1,13 @@
 <!-- Consultation Form Modal -->
 <div id="consultationModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
         <div class="modal-header">
-            <h3 data-i18n="modal.consultation.title">Schedule a Consultation</h3>
+            <h3 id="modal-title" data-i18n="modal.consultation.title">Schedule a Consultation</h3>
             <button class="modal-close" aria-label="Close" data-a11y-label="ariaLabels.closeButton">&times;</button>
         </div>
-        <div class="modal-body">
-            <form id="consultationForm" class="contact-form">
+        <div class="modal-content">
+            <form id="consultationForm" class="modal-form">
                 <div class="form-field" data-field="title">
                     <label for="title" data-i18n="modal.form.title">Title</label>
                     <select id="title" name="title">
@@ -33,20 +34,8 @@
                     <input type="tel" id="phone" name="phone" required aria-required="true">
                 </div>
                 
-                <div class="form-field" data-field="preferred_language">
-                    <label for="preferred_language" data-i18n="modal.form.preferred_language">Preferred Language</label>
-                    <select id="preferred_language" name="preferred_language">
-                        <option value="en" data-i18n="modal.form.language.english">English</option>
-                        <option value="es" data-i18n="modal.form.language.spanish">Spanish</option>
-                        <option value="zh" data-i18n="modal.form.language.chinese">Chinese</option>
-                        <option value="ko" data-i18n="modal.form.language.korean">Korean</option>
-                        <option value="hy" data-i18n="modal.form.language.armenian">Armenian</option>
-                        <option value="he" data-i18n="modal.form.language.hebrew">Hebrew</option>
-                        <option value="ru" data-i18n="modal.form.language.russian">Russian</option>
-                        <option value="fa" data-i18n="modal.form.language.farsi">Farsi</option>
-                        <option value="ar" data-i18n="modal.form.language.arabic">Arabic</option>
-                    </select>
-                </div>
+                <!-- Language Selector Component - Loaded Dynamically -->
+                <div class="form-field language-selector-container" data-field="preferred_language" data-component="language-selector-form" data-form-prefix="consultation"></div>
                 
                 <div class="form-field" data-field="insurance">
                     <label for="insurance" data-i18n="modal.form.insurance">Insurance Provider (if applicable)</label>
@@ -67,9 +56,9 @@
                     <textarea id="consultation_message" name="message" rows="4"></textarea>
                 </div>
                 
-                <div class="form-field required" data-field="consent">
+                <div class="form-field required checkbox-container" data-field="consent">
                     <input type="checkbox" id="consultation_consent" name="consent" required aria-required="true">
-                    <label for="consultation_consent" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
+                    <label for="consultation_consent" class="checkbox-label" data-i18n="modal.form.consent">I consent to Vision Clarity Institute collecting and storing the information provided above.</label>
                 </div>
                 
                 <div class="form-actions">
