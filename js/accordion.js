@@ -2,7 +2,17 @@
  * Vision Clarity Institute - Accordion Functionality
  */
 
+/*
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize accordion functionality
+    initAccordions();
+});
+*/
+
+console.log('Accordion script loaded and running');
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM content loaded - initializing accordions');
     // Initialize accordion functionality
     initAccordions();
 });
