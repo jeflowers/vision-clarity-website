@@ -1,241 +1,572 @@
 /**
  * Vision Clarity Institute - Unified Modal Handler
- * Handles all modal windows including consultation and inquiry forms
+ * Consolidated modal system that handles all modal windows including consultation and inquiry forms
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize modal triggers with both data-modal-type and data-form-type support
-    const modalButtons = document.querySelectorAll('.open-modal');
+class ModalManager {
+  constructor() {
+    // Modal elements - will be loaded dynamically
+    this.consultationModal = null;
+    this.inquiryModal = null;
     
-    // First, load modal templates if they're not in the DOM already
-    loadModalTemplates().then(() => {
-        // Set up event listeners for modal buttons
-        modalButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Check both attributes for backward compatibility
-                const modalType = this.getAttribute('data-modal-type') || this.getAttribute('data-form-type');
-                openModal(modalType);
-            });
-        });
-
-        // Initialize close buttons
-        const closeButtons = document.querySelectorAll('.modal-close');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                closeModal(this.closest('.modal'));
-            });
-        });
-
-        // Close when clicking outside the modal content
-        window.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                closeModal(e.target);
-            }
-        });
-
-        // Close on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const openModals = document.querySelectorAll('.modal.active');
-                openModals.forEach(modal => closeModal(modal));
-            }
-        });
-
-        // Initialize form handlers
-        initFormHandlers();
-
-        // Convert contact links to modal triggers
-        convertContactLinksToModalTriggers();
-        
-        // Log success message
-        console.log('Modal system initialized successfully');
-    }).catch(error => {
-        console.error('Error initializing modal system:', error);
+    // Form elements
+    this.consultationForm = null;
+    this.inquiryForm = null;
+    
+    // Last focused element before modal open (for accessibility)
+    this.lastFocusedElement = null;
+    
+    // Flag to check if modals are loaded
+    this.modalsLoaded = false;
+    
+    // Initialize the modal system
+    this.init();
+  }
+  
+  /**
+   * Initialize the modal system
+   */
+  init() {
+    // Load modals when the DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.loadModals());
+    } else {
+      this.loadModals();
+    }
+    
+    // Handle URL query parameters after modals are loaded
+    document.addEventListener('modalsLoaded', () => {
+      this.checkQueryParameters();
     });
-});
-
-/**
- * Load modal templates if they're not already in the DOM
- * @returns {Promise} A promise that resolves when templates are loaded
- */
-function loadModalTemplates() {
-    return new Promise((resolve, reject) => {
-        // Check if modals already exist in the DOM
-        if (document.getElementById('consultationModal') && document.getElementById('inquiryModal')) {
-            resolve();
-            return;
-        }
-        
-        // Create container for modals if it doesn't exist
-        let modalContainer = document.getElementById('modal-container');
-        if (!modalContainer) {
-            modalContainer = document.createElement('div');
-            modalContainer.id = 'modal-container';
-            document.body.appendChild(modalContainer);
-        }
-        
-        // Determine the root path based on the current page
-        const rootPath = window.location.pathname.includes('/pages/') ? '../' : './';
-        
-        // Load both modal templates
-        Promise.all([
-            fetch(`${rootPath}pages/templates/consultation-modal.html`).then(response => response.text()),
-            fetch(`${rootPath}pages/templates/inquiry-modal.html`).then(response => response.text())
-        ])
-        .then(([consultationHTML, inquiryHTML]) => {
-            // Add modals to the DOM
-            modalContainer.innerHTML = consultationHTML + inquiryHTML;
-            resolve();
-        })
-        .catch(error => {
-            console.error('Error loading modal templates:', error);
-            reject(error);
-        });
+  }
+  
+  /**
+   * Load modal HTML components
+   */
+  async loadModals() {
+    try {
+      console.log('Loading modals...');
+      
+      // Determine the root path based on the current page
+      const rootPath = this.getRootPath();
+      console.log('Using root path:', rootPath);
+      
+      // Load consultation modal
+      const consultationResponse = await fetch(`${rootPath}components/consultation-modal.html`);
+      const consultationHTML = await consultationResponse.text();
+      
+      // Load service inquiry modal
+      const inquiryResponse = await fetch(`${rootPath}components/service-inquiry-modal.html`);
+      const inquiryHTML = await inquiryResponse.text();
+      
+      // Create container for modals if it doesn't exist
+      let modalContainer = document.getElementById('modal-container');
+      if (!modalContainer) {
+        modalContainer = document.createElement('div');
+        modalContainer.id = 'modal-container';
+        document.body.appendChild(modalContainer);
+      }
+      
+      // Add modals to the DOM
+      modalContainer.innerHTML = consultationHTML + inquiryHTML;
+      
+      // Create accessibility announcer if it doesn't exist
+      if (!document.getElementById('a11y-announcer')) {
+        const announcer = document.createElement('div');
+        announcer.id = 'a11y-announcer';
+        announcer.className = 'sr-only';
+        announcer.setAttribute('aria-live', 'polite');
+        document.body.appendChild(announcer);
+      }
+      
+      // Get references to modal elements
+      this.consultationModal = document.getElementById('consultationModal');
+      this.inquiryModal = document.getElementById('inquiryModal');
+      this.consultationForm = document.getElementById('consultationForm');
+      this.inquiryForm = document.getElementById('inquiryForm');
+      
+      console.log('Modal elements found:', {
+        consultationModal: !!this.consultationModal,
+        inquiryModal: !!this.inquiryModal,
+        consultationForm: !!this.consultationForm,
+        inquiryForm: !!this.inquiryForm
+      });
+      
+      // Initialize event listeners
+      this.initEventListeners();
+      
+      // Set flag indicating modals are loaded
+      this.modalsLoaded = true;
+      
+      // Dispatch event that modals are loaded
+      document.dispatchEvent(new CustomEvent('modalsLoaded'));
+      
+      console.log('Modals loaded successfully');
+    } catch (error) {
+      console.error('Error loading modal components:', error);
+    }
+  }
+  
+  /**
+   * Get the root path based on current page location
+   * @returns {string} The root path
+   */
+  getRootPath() {
+    // Use the shared PathResolver if available
+    if (window.PathResolver && typeof window.PathResolver.getRootPath === 'function') {
+      return window.PathResolver.getRootPath();
+    }
+    
+    // If on GitHub Pages, use the repository-specific path
+    if (window.location.hostname.includes('github.io')) {
+      return '/vision-clarity-website/';
+    }
+    
+    // Check if we're in a subdirectory
+    const path = window.location.pathname;
+    if (path.includes('/pages/')) {
+      return '../';
+    }
+    
+    return './';
+  }
+  
+  /**
+   * Initialize event listeners
+   */
+  initEventListeners() {
+    // Re-scan for modal trigger buttons
+    this.initModalTriggers();
+    
+    // Close buttons
+    const closeButtons = document.querySelectorAll('.modal-close');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        this.closeAllModals();
+      });
     });
-}
-
-/**
- * Open a specific modal
- * @param {string} modalType - consultation or inquiry
- */
-function openModal(modalType) {
+    
+    // Close on outside click
+    if (this.consultationModal) {
+      this.consultationModal.addEventListener('click', (event) => {
+        if (event.target === this.consultationModal) {
+          this.closeModal(this.consultationModal);
+        }
+      });
+    }
+    
+    if (this.inquiryModal) {
+      this.inquiryModal.addEventListener('click', (event) => {
+        if (event.target === this.inquiryModal) {
+          this.closeModal(this.inquiryModal);
+        }
+      });
+    }
+    
+    // Handle form submissions
+    if (this.consultationForm) {
+      this.consultationForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+    }
+    
+    if (this.inquiryForm) {
+      this.inquiryForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+    }
+    
+    // Handle escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this.closeAllModals();
+      }
+    });
+    
+    // Re-initialize modal triggers when DOM changes
+    const observer = new MutationObserver(() => {
+      this.initModalTriggers();
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  /**
+   * Initialize modal trigger buttons
+   */
+  initModalTriggers() {
+    // Modal trigger buttons
+    const modalTriggers = document.querySelectorAll('.open-modal');
+    
+    modalTriggers.forEach(button => {
+      // Check if this button already has an event listener (using a data attribute flag)
+      if (button.getAttribute('data-modal-listener') !== 'true') {
+        button.addEventListener('click', (event) => {
+          event.preventDefault(); // Prevent default link behavior if it's an anchor
+          const formType = button.getAttribute('data-form-type') || button.getAttribute('data-modal-type');
+          console.log('Modal button clicked, type:', formType);
+          this.openModal(formType);
+        });
+        
+        // Mark this button as having an event listener
+        button.setAttribute('data-modal-listener', 'true');
+      }
+    });
+  }
+  
+  /**
+   * Check URL query parameters to see if a modal should be opened
+   */
+  checkQueryParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('consultation')) {
+      this.openModal('consultation');
+    } else if (urlParams.has('inquiry')) {
+      this.openModal('inquiry');
+    }
+  }
+  
+  /**
+   * Open a specific modal
+   * @param {string} formType - Type of form to open ('consultation' or 'inquiry')
+   */
+  openModal(formType) {
+    console.log('Opening modal:', formType);
+    
+    // If modals aren't loaded yet, wait and try again
+    if (!this.modalsLoaded) {
+      console.log('Modals not loaded yet, waiting...');
+      setTimeout(() => {
+        this.openModal(formType);
+      }, 500);
+      return;
+    }
+    
+    // Save the last focused element for accessibility
+    this.lastFocusedElement = document.activeElement;
+    
     let modal;
     
-    if (modalType === 'consultation') {
-        modal = document.getElementById('consultationModal');
-    } else if (modalType === 'inquiry') {
-        modal = document.getElementById('inquiryModal');
+    if (formType === 'consultation' && this.consultationModal) {
+      modal = this.consultationModal;
+    } else if (formType === 'inquiry' && this.inquiryModal) {
+      modal = this.inquiryModal;
     }
-
+    
     if (modal) {
-        // Show modal
-        modal.style.display = 'block';
-        
-        // Add active class for animation (after brief delay for the display change to take effect)
-        setTimeout(() => {
-            modal.classList.add('active');
-        }, 10);
-        
-        // Prevent body scrolling
-        document.body.classList.add('modal-open');
-        
-        // Set focus to first form field
-        setTimeout(() => {
-            const firstInput = modal.querySelector('input, select, textarea');
-            if (firstInput) firstInput.focus();
-        }, 300);
+      console.log('Found modal to open:', modal.id);
+      // Show modal
+      modal.style.display = 'block';
+      
+      // Add active class for animation (after brief delay for the display change to take effect)
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 10);
+      
+      // Announce to screen readers
+      this.announceModalOpen(formType);
+      
+      // Prevent body scrolling
+      document.body.classList.add('modal-open');
+      
+      // Focus trap for accessibility
+      this.trapFocus(modal);
     } else {
-        console.warn(`Modal type '${modalType}' not found. Available modals:`, 
-                    document.getElementById('consultationModal') ? 'consultation' : 'none',
-                    document.getElementById('inquiryModal') ? 'inquiry' : 'none');
+      console.warn(`Modal type '${formType}' not found. Available modals:`, 
+                  this.consultationModal ? 'consultation' : 'none',
+                  this.inquiryModal ? 'inquiry' : 'none');
     }
-}
-
-/**
- * Close a modal
- * @param {HTMLElement} modal - The modal to close
- */
-function closeModal(modal) {
+  }
+  
+  /**
+   * Close a specific modal
+   * @param {HTMLElement} modal - Modal element to close
+   */
+  closeModal(modal) {
     if (!modal) return;
+    
+    console.log('Closing modal:', modal.id);
     
     // Remove active class first (triggers transition)
     modal.classList.remove('active');
     
     // After transition completes, hide the modal
     setTimeout(() => {
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
+      modal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+      
+      // Announce to screen readers
+      this.announceModalClose();
+      
+      // Restore focus to the element that was focused before the modal was opened
+      if (this.lastFocusedElement) {
+        this.lastFocusedElement.focus();
+      }
     }, 300);
-}
-
-/**
- * Initialize form submission handlers
- */
-function initFormHandlers() {
-    const consultationForm = document.getElementById('consultationForm');
-    const inquiryForm = document.getElementById('inquiryForm');
-    
-    if (consultationForm) {
-        consultationForm.addEventListener('submit', handleFormSubmit);
+  }
+  
+  /**
+   * Close all modals
+   */
+  closeAllModals() {
+    if (this.consultationModal) {
+      this.closeModal(this.consultationModal);
     }
     
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', handleFormSubmit);
+    if (this.inquiryModal) {
+      this.closeModal(this.inquiryModal);
     }
-}
-
-/**
- * Form submission handling
- * @param {Event} e - Form submit event
- */
-function handleFormSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
+  }
+  
+  /**
+   * Trap focus within the modal for accessibility
+   * @param {HTMLElement} modal - The modal to trap focus within
+   */
+  trapFocus(modal) {
+    // Find all focusable elements within the modal
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
     
-    // Simple validation
+    if (focusableElements.length > 0) {
+      // Focus the first input or focusable element
+      setTimeout(() => {
+        const firstInput = modal.querySelector('input:not([type="hidden"]), select, textarea');
+        if (firstInput) {
+          firstInput.focus();
+        } else {
+          focusableElements[0].focus();
+        }
+      }, 100);
+    }
+  }
+  
+  /**
+   * Announce modal open to screen readers
+   * @param {string} type - Type of modal ('consultation' or 'inquiry')
+   */
+  announceModalOpen(type) {
+    // Get the live region for announcements
+    const liveRegion = document.getElementById('a11y-announcer');
+    
+    if (liveRegion) {
+      // Use i18n translation if available
+      if (window.i18n && typeof window.i18n.getTranslation === 'function') {
+        liveRegion.textContent = window.i18n.getTranslation(`modal.${type}.title`) + ' dialog opened';
+      } else {
+        liveRegion.textContent = type === 'consultation' ? 
+          'Schedule a Consultation dialog opened' : 
+          'Request Information dialog opened';
+      }
+    }
+  }
+  
+  /**
+   * Announce modal close to screen readers
+   */
+  announceModalClose() {
+    // Get the live region for announcements
+    const liveRegion = document.getElementById('a11y-announcer');
+    
+    if (liveRegion) {
+      liveRegion.textContent = 'Dialog closed';
+    }
+  }
+  
+  /**
+   * Handle form submission
+   * @param {Event} event - Form submission event
+   */
+  handleFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formId = form.id;
+    
+    console.log('Form submitted:', formId);
+    
+    // Validate form before submission
+    if (!this.validateForm(form)) {
+      return;
+    }
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const formObject = {};
+    
+    for (const [key, value] of formData.entries()) {
+      formObject[key] = value;
+    }
+    
+    console.log(`Form submission data:`, formObject);
+    
+    // In a real implementation, you would send this data to your backend
+    // For now, we'll simulate a successful submission
+    this.showFormSuccess(formId);
+    
+    // Close the modal after a delay
+    setTimeout(() => {
+      this.closeAllModals();
+      form.reset();
+    }, 3000);
+  }
+  
+  /**
+   * Validate form fields
+   * @param {HTMLFormElement} form - The form to validate
+   * @returns {boolean} True if the form is valid, false otherwise
+   */
+  validateForm(form) {
+    // Check required fields
     const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
     
     requiredFields.forEach(field => {
-        if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
-            field.classList.add('error');
-            isValid = false;
-        } else {
-            field.classList.remove('error');
-        }
+      if (field.type === 'checkbox' && !field.checked) {
+        this.showFieldError(field, 'This checkbox is required');
+        isValid = false;
+      } else if (field.value.trim() === '') {
+        this.showFieldError(field, 'This field is required');
+        isValid = false;
+      } else if (field.type === 'email' && !this.validateEmail(field.value)) {
+        this.showFieldError(field, 'Please enter a valid email address');
+        isValid = false;
+      } else if (field.type === 'tel' && !this.validatePhone(field.value)) {
+        this.showFieldError(field, 'Please enter a valid phone number');
+        isValid = false;
+      } else {
+        this.clearFieldError(field);
+      }
     });
     
-    if (isValid) {
-        // Show success message
-        const successMsg = document.createElement('div');
-        successMsg.className = 'form-success';
-        successMsg.textContent = form.id === 'consultationForm' 
-            ? 'Thank you! Your consultation request has been received. We will contact you shortly.'
-            : 'Thank you for your inquiry. Our team will respond to your questions soon.';
-        
-        form.prepend(successMsg);
-        
-        // Reset form after delay
-        setTimeout(() => {
-            form.reset();
-            
-            // Close modal after showing success message
-            setTimeout(() => {
-                closeModal(form.closest('.modal'));
-                
-                // Remove success message after modal closes
-                successMsg.remove();
-            }, 2000);
-        }, 1000);
+    return isValid;
+  }
+  
+  /**
+   * Validate email format
+   * @param {string} email - Email to validate
+   * @returns {boolean} True if valid, false otherwise
+   */
+  validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  /**
+   * Validate phone number format (basic validation)
+   * @param {string} phone - Phone number to validate
+   * @returns {boolean} True if valid, false otherwise
+   */
+  validatePhone(phone) {
+    // This is a simple validation that requires at least 7 digits
+    const re = /^[+]?[0-9\s()-]{7,}$/;
+    return re.test(phone);
+  }
+  
+  /**
+   * Show error message for a field
+   * @param {HTMLElement} field - The field with an error
+   * @param {string} message - Error message to display
+   */
+  showFieldError(field, message) {
+    // Remove any existing error message
+    this.clearFieldError(field);
+    
+    // Create error message element
+    const errorElement = document.createElement('div');
+    errorElement.className = 'field-error';
+    errorElement.textContent = message;
+    errorElement.style.color = '#e53935';
+    errorElement.style.fontSize = '0.85rem';
+    errorElement.style.marginTop = '4px';
+    
+    // Add error styles to the field
+    field.style.borderColor = '#e53935';
+    
+    // Add error message after the field
+    if (field.type === 'checkbox') {
+      field.parentElement.appendChild(errorElement);
+    } else {
+      field.parentElement.appendChild(errorElement);
     }
+  }
+  
+  /**
+   * Clear error message for a field
+   * @param {HTMLElement} field - The field to clear error for
+   */
+  clearFieldError(field) {
+    // Remove error styles
+    field.style.borderColor = '';
+    
+    // Remove error message
+    const errorElement = field.parentElement.querySelector('.field-error');
+    if (errorElement) {
+      errorElement.remove();
+    }
+  }
+  
+  /**
+   * Show form success message
+   * @param {string} formId - ID of the form
+   */
+  showFormSuccess(formId) {
+    const form = document.getElementById(formId);
+    
+    if (!form) return;
+    
+    // Create success message if it doesn't exist
+    let successMessage = form.querySelector('.form-success');
+    
+    if (!successMessage) {
+      successMessage = document.createElement('div');
+      successMessage.className = 'form-success';
+      form.prepend(successMessage);
+    }
+    
+    // Set message text based on form type
+    if (formId === 'consultationForm') {
+      successMessage.textContent = 'Thank you! Your consultation request has been received. We will contact you shortly.';
+      
+      // Use i18n translation if available
+      if (window.i18n && typeof window.i18n.getTranslation === 'function') {
+        const translation = window.i18n.getTranslation('modal.consultation.success');
+        if (translation) {
+          successMessage.textContent = translation;
+        }
+      }
+    } else if (formId === 'inquiryForm') {
+      successMessage.textContent = 'Thank you for your inquiry. Our team will respond to your questions soon.';
+      
+      // Use i18n translation if available
+      if (window.i18n && typeof window.i18n.getTranslation === 'function') {
+        const translation = window.i18n.getTranslation('modal.inquiry.success');
+        if (translation) {
+          successMessage.textContent = translation;
+        }
+      }
+    }
+    
+    // Make sure success message is visible
+    successMessage.style.display = 'block';
+    
+    // Announce success to screen readers
+    const liveRegion = document.getElementById('a11y-announcer');
+    if (liveRegion) {
+      liveRegion.textContent = successMessage.textContent;
+    }
+  }
 }
 
-/**
- * Convert existing contact page links to modal triggers
- */
-function convertContactLinksToModalTriggers() {
-    // Find contact links that should trigger modals
-    document.querySelectorAll('a[href*="contact.html"]').forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Skip if explicitly marked to not convert
-        if (link.classList.contains('no-modal')) return;
-        
-        // Determine modal type based on URL
-        let modalType = 'consultation';
-        if (href.includes('inquiry=true') || href.includes('inquiry')) {
-            modalType = 'inquiry';
-        }
-        
-        // Replace link behavior
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal(modalType);
-        });
-        
-        // Add attributes for clarity
-        link.setAttribute('data-form-type', modalType);
-        link.setAttribute('role', 'button');
-    });
-}
+// Initialize the modal manager when the document is loaded
+let modalManager;
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Initializing modal manager');
+  modalManager = new ModalManager();
+  
+  // Make modalManager available globally
+  window.modalManager = modalManager;
+  
+  // For backward compatibility
+  window.openModal = (formType) => modalManager.openModal(formType);
+  window.closeModal = (modal) => modalManager.closeModal(modal);
+});
