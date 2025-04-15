@@ -1,0 +1,472 @@
+/* =========================================
+   Consolidated Contact Page Styles
+   Combines contact-page-css.css and contact-page-improvements.css
+   with FAQ integration and enhancements
+   ========================================= */
+
+/* CSS Variables for consistent styling */
+:root {
+  --primary-color: #76b347;
+  --primary-dark: #5e9035;
+  --text-dark: #333;
+  --text-medium: #555;
+  --text-light: #888;
+  --bg-light: #f5f5f5;
+  --bg-lighter: #fff;
+  --bg-accent: #e6f0d8;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --border-radius: 5px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* =========================================
+   Get in Touch Section
+   ========================================= */
+.get-in-touch {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.get-in-touch h1 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+  font-size: 2.5rem;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.contact-card {
+  background-color: var(--bg-lighter);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  width: 300px;
+  text-align: center;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card h2 {
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+.contact-card p {
+  color: var(--text-medium);
+  margin-bottom: 1.5rem;
+  min-height: 80px;
+}
+
+.button,
+.cta-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.cta-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.button:focus,
+.cta-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.button.secondary {
+  background-color: #666;
+}
+
+.button.secondary:hover {
+  background-color: #555;
+}
+
+.cta-button-container {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+/* =========================================
+   Contact Information Section
+   ========================================= */
+.contact-info {
+  background-color: var(--bg-light);
+  padding: var(--spacing-xl) 0;
+}
+
+.contact-info .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  max-width: 400px;
+}
+
+.contact-details h2 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-details p,
+.contact-details address {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.map {
+  flex: 1;
+  min-width: 300px;
+  max-width: 650px;
+}
+
+.map-placeholder {
+  background-color: #e6e6e6;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* =========================================
+   General Message Section
+   ========================================= */
+.general-message-section {
+  background-color: var(--bg-light);
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.general-message-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
+}
+
+.general-message-section p.lead {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+  color: var(--text-medium);
+}
+
+/* =========================================
+   FAQ Section Integration
+   ========================================= */
+.faq-section {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--bg-lighter);
+}
+
+.faq-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.faq-container h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.faq-category {
+  margin-bottom: var(--spacing-lg);
+}
+
+.faq-category h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.faq-item {
+  margin-bottom: var(--spacing-md);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.faq-item details {
+  background-color: #f9f9f9;
+}
+
+.faq-item summary {
+  padding: var(--spacing-md);
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  transition: background-color var(--transition-speed);
+  position: relative;
+}
+
+.faq-item summary:hover {
+  background-color: var(--bg-accent);
+}
+
+.faq-item summary:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Animation for smooth open/close */
+.faq-item details[open] summary {
+  background-color: var(--bg-accent);
+}
+
+.faq-answer {
+  padding: var(--spacing-md);
+  background-color: white;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.faq-answer ul {
+  padding-left: 1.5rem;
+}
+
+.faq-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color var(--transition-speed);
+}
+
+.faq-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.faq-contact {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--bg-accent);
+  border-radius: var(--border-radius);
+}
+
+.faq-contact a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.faq-contact a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   Helper Classes
+   ========================================= */
+.text-center {
+  text-align: center;
+}
+
+/* =========================================
+   Responsive Adjustments
+   ========================================= */
+@media (max-width: 992px) {
+  .contact-info .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-details {
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .map {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 3rem;
+  }
+  
+  .get-in-touch h1 {
+    font-size: 2rem;
+  }
+  
+  .intro-text {
+    font-size: 1rem;
+  }
+  
+  .contact-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-card {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .faq-item summary,
+  .faq-answer {
+    padding: 0.8rem;
+  }
+  
+  .general-message-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .general-message-section p.lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-xl: 2.5rem;
+    --spacing-lg: 1.5rem;
+  }
+  
+  .get-in-touch h1 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .button,
+  .cta-button {
+    width: 100%;
+  }
+  
+  .faq-container h1 {
+    font-size: 1.5rem;
+  }
+  
+  .faq-category h2 {
+    font-size: 1.2rem;
+  }
+  
+  .faq-item summary {
+    font-size: 0.9rem;
+  }
+  
+  .general-message-section {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .general-message-section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .general-message-section p.lead {
+    font-size: 1rem;
+  }
+}
+
+/* =========================================
+   Print Styles
+   ========================================= */
+@media print {
+  .get-in-touch,
+  .contact-info,
+  .general-message-section,
+  .faq-section {
+    padding: 1rem 0;
+  }
+  
+  .contact-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .map-placeholder,
+  .button,
+  .cta-button,
+  .cta-button-container {
+    display: none;
+  }
+  
+  .faq-item {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin-bottom: 1em;
+  }
+  
+  .faq-item details {
+    display: block;
+  }
+  
+  .faq-item summary {
+    font-weight: bold;
+    background: none;
+  }
+  
+  .faq-answer {
+    display: block !important;
+  }
+  
+  .contact-details {
+    max-width: 100%;
+  }
+  
+  .contact-details p,
+  .contact-details address {
+    color: black;
+  }
+}
