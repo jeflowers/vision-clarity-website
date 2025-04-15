@@ -15,11 +15,31 @@ const ResourceLoader = {
   },
   
   // Load a JS file
-  loadJs: function(filename, async = false, callback = null) {
+  /* loadJs: function(filename, async = false, callback = null) {
     const path = window.PathResolver ? window.PathResolver.getJsPath(filename) : 'js/' + filename;
     const script = document.createElement('script');
     script.src = path;
     script.async = async;
+    */
+
+  loadJs: function(filename, async = false, callback = null) {
+  const path = window.PathResolver ? window.PathResolver.getJsPath(filename) : 'js/' + filename;
+  const script = document.createElement('script');
+  script.src = path;
+  script.async = async;
+  
+  if (callback) {
+    script.onload = callback;
+  }
+  
+  // Check if body exists, otherwise append to head
+  if (document.body) {
+    document.body.appendChild(script);
+  } else {
+    document.head.appendChild(script);
+  }
+  return script;
+},
     
     if (callback) {
       script.onload = callback;
