@@ -3,7 +3,9 @@
  * Handles culture-specific content adaptations beyond text translation.
  */
 
-import i18n from './i18n.js';
+// Replace ES6 import with direct global reference
+// import i18n from './i18n.js';
+// Ensure i18n.js is loaded before this file
 
 class ContentLocalizer {
   constructor() {
@@ -340,7 +342,6 @@ class ContentLocalizer {
   }
 }
 
-// Create and export the content localizer
+// Create and expose the content localizer globally instead of ES6 export
 const contentLocalizer = new ContentLocalizer();
-
-export default contentLocalizer;
+window.contentLocalizer = contentLocalizer;
