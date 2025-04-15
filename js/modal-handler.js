@@ -70,6 +70,9 @@ class ModalManager {
       // Add modals to the DOM
       modalContainer.innerHTML = consultationHTML + inquiryHTML;
       
+      // Load language selector components
+      await this.loadLanguageSelectors();
+      
       // Create accessibility announcer if it doesn't exist
       if (!document.getElementById('a11y-announcer')) {
         const announcer = document.createElement('div');
@@ -104,6 +107,42 @@ class ModalManager {
       console.log('Modals loaded successfully');
     } catch (error) {
       console.error('Error loading modal components:', error);
+    }
+  }
+  
+  /**
+   * Load language selector components into containers
+   */
+  async loadLanguageSelectors() {
+    try {
+      const rootPath = this.getRootPath();
+      const containers = document.querySelectorAll('[data-component="language-selector-form"]');
+      
+      if (containers.length === 0) {
+        console.log('No language selector containers found');
+        return;
+      }
+      
+      console.log(`Found ${containers.length} language selector containers`);
+      
+      // Load the language selector component
+      const response = await fetch(`${rootPath}components/language-selector-form.html`);
+      let languageSelectorHTML = await response.text();
+      
+      // Process each container
+      for (const container of containers) {
+        const formPrefix = container.getAttribute('data-form-prefix') || 'form';
+        
+        // Replace placeholders in the template
+        let processedHTML = languageSelectorHTML.replace(/\{\{form_prefix\}\}/g, formPrefix);
+        
+        // Set the container content
+        container.innerHTML = processedHTML;
+      }
+      
+      console.log('Language selectors loaded successfully');
+    } catch (error) {
+      console.error('Error loading language selector components:', error);
     }
   }
   
@@ -172,6 +211,9 @@ class ModalManager {
       this.inquiryForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
     }
     
+    // Initialize language selectors with flag display
+    this.initLanguageSelectors();
+    
     // Handle escape key
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
@@ -182,11 +224,65 @@ class ModalManager {
     // Re-initialize modal triggers when DOM changes
     const observer = new MutationObserver(() => {
       this.initModalTriggers();
+      this.initLanguageSelectors();
     });
     
     observer.observe(document.body, {
       childList: true,
       subtree: true
+    });
+  }
+  
+  /**
+   * Initialize language selectors with flag display functionality
+   */
+  initLanguageSelectors() {
+    const languageSelects = document.querySelectorAll('.flag-enabled');
+    
+    languageSelects.forEach(select => {
+      // Skip if already initialized
+      if (select.getAttribute('data-flag-initialized') === 'true') return;
+      
+      // Set initial flag display
+      const flagDisplay = select.parentElement.querySelector('.flag-display');
+      if (flagDisplay) {
+        const selectedOption = select.options[select.selectedIndex];
+        if (selectedOption && selectedOption.getAttribute('data-flag')) {
+          flagDisplay.textContent = selectedOption.getAttribute('data-flag');
+        }
+      }
+      
+      // Add change event listener to update flag
+      select.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        if (selectedOption && selectedOption.getAttribute('data-flag') && flagDisplay) {
+          flagDisplay.textContent = selectedOption.getAttribute('data-flag');
+        }
+      });
+      
+      // Show tooltip on focus/hover
+      select.addEventListener('focus', function() {
+        const tooltipId = this.getAttribute('aria-describedby');
+        if (tooltipId) {
+          const tooltip = document.getElementById(tooltipId);
+          if (tooltip) {
+            tooltip.style.display = 'block';
+          }
+        }
+      });
+      
+      select.addEventListener('blur', function() {
+        const tooltipId = this.getAttribute('aria-describedby');
+        if (tooltipId) {
+          const tooltip = document.getElementById(tooltipId);
+          if (tooltip) {
+            tooltip.style.display = 'none';
+          }
+        }
+      });
+      
+      // Mark as initialized
+      select.setAttribute('data-flag-initialized', 'true');
     });
   }
   
