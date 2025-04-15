@@ -386,75 +386,8 @@
     <script src="../js/flag-language-selector.js"></script>
     <!-- Team page specific scripts -->
     <script src="../js/team-scripts.js"></script>
-    
-    <!-- Debug script to check CSS loading -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Checking CSS loading...');
-            
-            // Verify team styles are applied
-            const teamGrid = document.querySelector('.team-grid');
-            if (teamGrid) {
-                const computed = window.getComputedStyle(teamGrid);
-                console.log('Team grid display style:', computed.display);
-                
-                // Force display if needed
-                if (computed.display !== 'grid') {
-                    console.log('Applying grid display style manually');
-                    teamGrid.style.display = 'grid';
-                    teamGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
-                    teamGrid.style.gap = '2rem';
-                    teamGrid.style.marginTop = '2rem';
-                }
-            }
-            
-            // Initialize team filtering and bio toggles
-            const bioToggles = document.querySelectorAll('.bio-toggle');
-            bioToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const credentialsId = this.getAttribute('aria-controls');
-                    const credentials = document.getElementById(credentialsId);
-                    
-                    if (credentials.style.display === 'block') {
-                        credentials.style.display = 'none';
-                        this.setAttribute('aria-expanded', 'false');
-                        this.classList.remove('expanded');
-                        this.textContent = 'View Credentials';
-                    } else {
-                        credentials.style.display = 'block';
-                        this.setAttribute('aria-expanded', 'true');
-                        this.classList.add('expanded');
-                        this.textContent = 'Hide Credentials';
-                    }
-                });
-            });
-            
-            // Team filtering
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const teamMembers = document.querySelectorAll('.team-member');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // Show/hide team members based on filter
-                    teamMembers.forEach(member => {
-                        if (filter === 'all' || member.getAttribute('data-category') === filter) {
-                            member.style.display = 'block';
-                        } else {
-                            member.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <!-- Debug script reference -->
+    <script src="../js/tools/debug.js"></script>
     
     <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
