@@ -211,7 +211,6 @@ class LanguageDetector {
   }
 }
 
-// Create and export the language detector
+// Create and expose the language detector globally instead of ES6 export
 const languageDetector = new LanguageDetector();
-
-export default languageDetector;
+window.languageDetector = languageDetector;
