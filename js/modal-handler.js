@@ -237,54 +237,58 @@ class ModalManager {
    * Initialize language selectors with flag display functionality
    */
   initLanguageSelectors() {
-    const languageSelects = document.querySelectorAll('.flag-enabled');
-    
-    languageSelects.forEach(select => {
-      // Skip if already initialized
-      if (select.getAttribute('data-flag-initialized') === 'true') return;
-      
-      // Set initial flag display
-      const flagDisplay = select.parentElement.querySelector('.flag-display');
-      if (flagDisplay) {
-        const selectedOption = select.options[select.selectedIndex];
-        if (selectedOption && selectedOption.getAttribute('data-flag')) {
-          flagDisplay.textContent = selectedOption.getAttribute('data-flag');
-        }
-      }
-      
-      // Add change event listener to update flag
-      select.addEventListener('change', function() {
-        const selectedOption = this.options[this.selectedIndex];
-        if (selectedOption && selectedOption.getAttribute('data-flag') && flagDisplay) {
-          flagDisplay.textContent = selectedOption.getAttribute('data-flag');
-        }
-      });
-      
-      // Show tooltip on focus/hover
-      select.addEventListener('focus', function() {
-        const tooltipId = this.getAttribute('aria-describedby');
-        if (tooltipId) {
-          const tooltip = document.getElementById(tooltipId);
-          if (tooltip) {
-            tooltip.style.display = 'block';
-          }
-        }
-      });
-      
-      select.addEventListener('blur', function() {
-        const tooltipId = this.getAttribute('aria-describedby');
-        if (tooltipId) {
-          const tooltip = document.getElementById(tooltipId);
-          if (tooltip) {
-            tooltip.style.display = 'none';
-          }
-        }
-      });
-      
-      // Mark as initialized
-      select.setAttribute('data-flag-initialized', 'true');
-    });
+  console.log('Initializing language selectors');
+  
+  const languageSelects = document.querySelectorAll('.flag-enabled');
+  console.log(`Found ${languageSelects.length} language selectors`);
+  
+  if (languageSelects.length === 0) {
+    // Try again later
+    setTimeout(() => this.initLanguageSelectors(), 500);
+    return;
   }
+  
+  languageSelects.forEach(select => {
+    // Skip if already initialized
+    if (select.getAttribute('data-flag-initialized') === 'true') {
+      console.log(`Selector ${select.id} already initialized, skipping`);
+      return;
+    }
+    
+    console.log(`Initializing selector: ${select.id || 'unnamed'}`);
+    
+    // Set initial flag display
+    const flagDisplay = select.parentElement.querySelector('.flag-display');
+    
+    if (flagDisplay) {
+      const selectedOption = select.options[select.selectedIndex];
+      if (selectedOption && selectedOption.getAttribute('data-flag')) {
+        flagDisplay.textContent = selectedOption.getAttribute('data-flag');
+        console.log(`Set initial flag: ${flagDisplay.textContent}`);
+      } else {
+        console.warn('Selected option or data-flag attribute not found');
+      }
+    } else {
+      console.warn('Flag display element not found');
+    }
+    
+    // Add change event listener to update flag
+    select.addEventListener('change', function() {
+      console.log(`Language changed to: ${this.value}`);
+      const selectedOption = this.options[this.selectedIndex];
+      const flagDisplay = this.parentElement.querySelector('.flag-display');
+      
+      if (selectedOption && selectedOption.getAttribute('data-flag') && flagDisplay) {
+        flagDisplay.textContent = selectedOption.getAttribute('data-flag');
+        console.log(`Updated flag to: ${flagDisplay.textContent}`);
+      }
+    });
+    
+    // Mark as initialized
+    select.setAttribute('data-flag-initialized', 'true');
+    console.log(`Language selector ${select.id || 'unnamed'} initialized`);
+  });
+}
   
   /**
    * Initialize modal trigger buttons
