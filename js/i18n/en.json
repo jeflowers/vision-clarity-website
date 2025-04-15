@@ -169,6 +169,8 @@
       "insurance": "Insurance Provider (if applicable)",
       "preferred_contact_time": "Preferred Contact Time",
       "service": "Service of Interest",
+      "inquiry_details": "Inquiry Details",
+      "send_inquiry": "Send Inquiry",
       "additional_info": "Additional Information",
       "consent": "I consent to Vision Clarity Institute collecting and storing the information provided above.",
       "schedule_consultation": "Schedule Consultation",
@@ -192,6 +194,8 @@
         "arabic": "Arabic"
       },
       "service": {
+        "traditional": "Traditional LASIK",
+        "bladeless": "Custom Bladeless LASIK",
         "traditional_lasik": "Traditional LASIK",
         "bladeless_lasik": "Custom Bladeless LASIK",
         "prk": "PRK",
