@@ -146,11 +146,12 @@
 
 .flag-select-wrapper {
     position: relative;
+    width: 100%
 }
 
 .form-language-select {
     width: 100%;
-    padding: 10px 12px 10px 36px; /* Extra left padding for flag */
+    padding: 10px 36px 10px 36px; /* Left padding for flag, right padding for arrow */
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
@@ -160,22 +161,30 @@
     background-color: #fff;
 }
 
-.select-icon-container {
+/* Updated arrow container with improved positioning */
+.select-arrow-container {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.select-icon {
+/* New arrow styling that's more visible */
+.select-arrow {
     display: inline-block;
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #666;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #666;
 }
+
 
 .flag-display {
     position: absolute;
