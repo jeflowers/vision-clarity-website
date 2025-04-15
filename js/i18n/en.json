@@ -20,7 +20,7 @@
       "email": "Email: info@visionclarityinstitute.com",
       "hours": "Hours",
       "weekdays": "Monday - Friday: 8am - 6pm",
-      "saturday": "Saturday: 9am - 2pm", 
+      "saturday": "Saturday: 9am - 2pm",
       "sunday": "Sunday: Closed",
       "copyright": "© 2025 Vision Clarity Institute. All rights reserved.",
       "privacy": "Privacy Policy",
@@ -488,5 +488,147 @@
   },
   "accessibility": {
     "skipToContent": "Skip to main content"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Us - Vision Clarity Institute",
+      "description": "Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures."
+    },
+    "header": {
+      "title": "Contact Us",
+      "subtitle": "Advanced vision correction procedures tailored to your needs"
+    },
+    "info": {
+      "title": "Contact Information",
+      "phone_title": "Phone",
+      "phone_number": "(800) 555-2020",
+      "phone_hours": "Monday-Friday: 8am-6pm, Saturday: 9am-2pm",
+      "email_title": "Email",
+      "email_address": "Send Email",
+      "email_response": "We typically respond within 24 hours",
+      "locations_title": "Locations",
+      "main_location": "1234 Vision Way, Suite 100\nLos Angeles, CA 90001",
+      "all_locations": "View all locations",
+      "social_title": "Follow Us"
+    },
+    "touch": {
+      "title": "Get in Touch",
+      "subtitle": "We're here to answer your questions and help you achieve crystal clear vision. Use one of our convenient contact options to reach us.",
+      "card1": {
+        "title": "Schedule a Consultation",
+        "content": "Ready to explore your vision correction options? Schedule a free, no-obligation consultation with our expert team.",
+        "button": "Schedule Consultation"
+      },
+      "card2": {
+        "title": "Ask About Our Services",
+        "content": "Have questions about a specific procedure? Our team can provide detailed information about our services.",
+        "button": "Service Inquiry"
+      },
+      "card3": {
+        "title": "Send Us a Message",
+        "content": "Have a general question or comment? Send us a message and our team will get back to you promptly.",
+        "button": "Send Message"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    },
+    "cta": {
+      "title": "Ready to See Clearly?",
+      "content": "Take the first step toward visual freedom. Our experts are ready to answer your questions.",
+      "button": "Schedule Your Consultation Today"
+    }
+  },
+  "locations": {
+    "meta": {
+      "title": "Our Locations - Vision Clarity Institute",
+      "description": "Find a Vision Clarity Institute location near you for LASIK consultations and vision correction procedures across the Greater Los Angeles area."
+    },
+    "header": {
+      "title": "Our Locations",
+      "subtitle": "Convenient Vision Clarity locations throughout the Greater Los Angeles area"
+    },
+    "find": {
+      "title": "Find a Location Near You",
+      "input_placeholder": "Enter your ZIP code",
+      "button": "Find Nearest Location",
+      "or_text": "or browse our locations below"
+    },
+    "main_location": {
+      "title": "Main Office - Los Angeles",
+      "address": "1234 Vision Way, Suite 100\nLos Angeles, CA 90001",
+      "phone": "(800) 555-2020",
+      "hours_title": "Hours",
+      "hours_weekdays": "Monday - Friday: 8am - 6pm",
+      "hours_saturday": "Saturday: 9am - 2pm",
+      "hours_sunday": "Sunday: Closed",
+      "parking": "Free parking available in building garage",
+      "directions_button": "Get Directions",
+      "schedule_button": "Schedule at This Location"
+    },
+    "branch_locations": {
+      "beverly_hills": {
+        "title": "Beverly Hills",
+        "address": "8765 Wilshire Blvd, Suite 200\nBeverly Hills, CA 90210",
+        "phone": "(800) 555-2021",
+        "hours_title": "Hours",
+        "hours_weekdays": "Monday - Friday: 9am - 5pm",
+        "hours_saturday": "Saturday: 9am - 1pm",
+        "hours_sunday": "Sunday: Closed",
+        "parking": "Validated parking available",
+        "directions_button": "Get Directions",
+        "schedule_button": "Schedule at This Location"
+      },
+      "glendale": {
+        "title": "Glendale",
+        "address": "123 Brand Blvd, Suite 400\nGlendale, CA 91203",
+        "phone": "(800) 555-2022",
+        "hours_title": "Hours",
+        "hours_weekdays": "Monday - Friday: 8am - 6pm",
+        "hours_saturday": "Saturday: 9am - 2pm",
+        "hours_sunday": "Sunday: Closed",
+        "parking": "Free parking available in rear lot",
+        "directions_button": "Get Directions",
+        "schedule_button": "Schedule at This Location"
+      },
+      "pasadena": {
+        "title": "Pasadena",
+        "address": "456 Lake Avenue, Suite 300\nPasadena, CA 91101",
+        "phone": "(800) 555-2023",
+        "hours_title": "Hours",
+        "hours_weekdays": "Monday - Friday: 8am - 6pm",
+        "hours_saturday": "Saturday: 9am - 1pm",
+        "hours_sunday": "Sunday: Closed",
+        "parking": "Street parking and nearby garage available",
+        "directions_button": "Get Directions",
+        "schedule_button": "Schedule at This Location"
+      },
+      "santa_monica": {
+        "title": "Santa Monica",
+        "address": "789 Ocean Avenue, Suite 500\nSanta Monica, CA 90401",
+        "phone": "(800) 555-2024",
+        "hours_title": "Hours",
+        "hours_weekdays": "Monday - Friday: 9am - 5pm",
+        "hours_saturday": "Saturday: 10am - 2pm",
+        "hours_sunday": "Sunday: Closed",
+        "parking": "Validated parking available in building",
+        "directions_button": "Get Directions",
+        "schedule_button": "Schedule at This Location"
+      }
+    },
+    "map": {
+      "title": "Our Service Areas",
+      "subtitle": "Vision Clarity Institute proudly serves patients throughout the Greater Los Angeles area"
+    },
+    "telehealth": {
+      "title": "Virtual Consultations",
+      "content": "Can't make it to one of our locations? We offer virtual consultations for certain appointments. Speak with our specialists from the comfort of your home.",
+      "button": "Schedule Virtual Consultation"
+    },
+    "cta": {
+      "title": "Ready to Schedule Your Visit?",
+      "content": "Contact us today to schedule a free consultation at the location most convenient for you.",
+      "button": "Schedule Now"
+    }
   }
 }
