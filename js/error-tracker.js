@@ -126,5 +126,5 @@ const errorTracker = new ErrorTracker({
     remoteLoggingEndpoint: '/api/error-tracking'
 });
 
-// Export for use in other modules
-export default errorTracker;
+// Make available globally instead of using ES6 export
+window.errorTracker = errorTracker;
