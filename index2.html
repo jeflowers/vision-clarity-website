@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="home.meta.title">Vision Clarity Institute - Advanced Lasik Eye Surgery</title>
+    <meta name="description" content="Vision Clarity Institute provides advanced Lasik eye surgery with state-of-the-art technology and experienced surgeons for optimal vision correction results." data-i18n="home.meta.description">
+
+    <!-- Core path resolution - must be loaded first -->
+    <script src="js/path-resolver.js"></script>
+    <script src="js/resource-loader.js"></script>
+
+    <!-- Load CSS files dynamically -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            window.ResourceLoader.loadCssFiles([
+                'styles.css',
+                'chatbot.css',
+                'button-refinements.css',
+                'modal.css',
+                'checkmark-fix.css',
+                'header-improvements.css',
+                'language-selector.css', // Keep only this one CSS file for language selector styling
+            ]);
+        });
+    </script>
+
+    <!-- Scripts - load JS files in the correct sequence -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            window.ResourceLoader.loadJsSequence([
+                'error-tracker.js',
+                'i18n.js',
+                'language-detector.js',
+                'content-localizer.js',
+                'scripts.js',
+                'component-loader.js',
+                'header.js',
+                'flag-language-selector.js',
+                'modal-handler.js', // Use our consolidated modal handler
+                'chatbot.js'
+            ]);
+        });
+    </script>
+</head>
+<body>
+    <header class="header"></header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 data-i18n="home.hero.title">Advanced Laser Vision Correction</h1>
+                    <p data-i18n="home.hero.subtitle">Achieve crystal clear vision with state-of-the-art LASIK technology and our expert surgical team. Experience life without glasses or contacts.</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Free Consultation</button>
+                        <a href="pages/technology.html" class="btn btn-secondary" data-i18n="home.hero.secondary_button">Explore Our Technology</a>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="hero-image-grid">
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image1.jpg" alt="Patient with clear vision after LASIK surgery">
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image2.jpg" alt="Advanced laser technology for vision correction">
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="assets/images/hero/image3.jpg" alt="Vision Clarity Institute surgeon performing LASIK procedure">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro section">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-image">
+                    <img src="assets/images/intro/doctor-patient.jpg" alt="Doctor consulting with a patient at Vision Clarity Institute">
+                </div>
+                <div class="intro-content">
+                    <h2 data-i18n="home.intro.title">Experience the Vision Clarity Difference</h2>
+                    <p data-i18n="home.intro.paragraph1">At Vision Clarity Institute, we combine cutting-edge technology with experienced surgeons to deliver exceptional results. Our personalized approach ensures that each patient receives treatment specifically tailored to their unique vision needs.</p>
+                    <p data-i18n="home.intro.paragraph2">With over 50,000 successful procedures performed, our board-certified ophthalmologists have the expertise to provide you with the highest standard of care in laser vision correction.</p>
+                    <ul class="intro-features">
+                        <li data-i18n="home.intro.feature1">Advanced bladeless LASIK technology</li>
+                        <li data-i18n="home.intro.feature2">Comprehensive consultation and eye analysis</li>
+                        <li data-i18n="home.intro.feature3">Personalized treatment plans</li>
+                        <li data-i18n="home.intro.feature4">Exceptional post-operative care</li>
+                    </ul>
+                    <a href="pages/technology.html" class="btn btn-secondary" data-i18n="home.intro.button">Our Technology</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-overview section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home.services.title">Our Services</h2>
+            <p class="section-subtitle" data-i18n="home.services.subtitle">Comprehensive vision correction solutions to fit your needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/traditional-lasik.svg" alt="Traditional LASIK Icon">
+                    </div>
+                    <h3 data-i18n="home.services.traditional.title">Traditional LASIK</h3>
+                    <p data-i18n="home.services.traditional.description">Our standard LASIK procedure corrects nearsightedness, farsightedness, and astigmatism with a quick recovery time.</p>
+                    <div class="service-actions">
+                        <a href="pages/services.html#traditional" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="traditional_lasik" data-i18n="home.services.request_consultation">Request Consultation</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/custom-lasik.svg" alt="Custom Bladeless LASIK Icon">
+                    </div>
+                    <h3 data-i18n="home.services.custom.title">Custom Bladeless LASIK</h3>
+                    <p data-i18n="home.services.custom.description">Our premium all-laser LASIK procedure offers higher precision for complex cases and reduced risk of complications.</p>
+                    <div class="service-actions">
+                        <a href="pages/services.html#custom" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="bladeless_lasik" data-i18n="home.services.request_consultation">Request Consultation</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/prk.svg" alt="PRK Icon">
+                    </div>
+                    <h3 data-i18n="home.services.prk.title">PRK</h3>
+                    <p data-i18n="home.services.prk.description">An excellent alternative for patients who aren't candidates for LASIK, particularly those with thin corneas.</p>
+                    <div class="service-actions">
+                        <a href="pages/services.html#prk" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="prk" data-i18n="home.services.request_consultation">Request Consultation</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/icons/presbyopia.svg" alt="Presbyopia Correction Icon">
+                    </div>
+                    <h3 data-i18n="home.services.presbyopia.title">Presbyopia Correction</h3>
+                    <p data-i18n="home.services.presbyopia.description">Specialized procedures to address age-related near vision loss, reducing or eliminating dependence on reading glasses.</p>
+                    <div class="service-actions">
+                        <a href="pages/services.html#presbyopia" class="service-link" data-i18n="home.services.learn_more">Learn More</a>
+                        <button class="btn btn-text open-modal" data-form-type="consultation" data-service="presbyopia" data-i18n="home.services.request_consultation">Request Consultation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home.testimonials.title">Patient Testimonials</h2>
+            <p class="section-subtitle" data-i18n="home.testimonials.subtitle">Hear from our satisfied patients</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <blockquote>
+                            <p data-i18n="home.testimonials.testimonial1">After 20 years of wearing glasses, I can finally see clearly without them. The procedure was quick and painless, and the staff made me feel completely at ease. I wish I had done this years ago!</p>
+                        </blockquote>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonials/jennifer-t.jpg" alt="Jennifer T." class="author-image">
+                            <div class="author-info">
+                                <h4 data-i18n="home.testimonials.author1_name">Jennifer T.</h4>
+                                <p data-i18n="home.testimonials.author1_location">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-navigation">
+                    <button class="prev-testimonial" aria-label="Previous testimonial">
+                        <img src="assets/images/icons/arrow-left.svg" alt="Previous">
+                    </button>
+                    <div class="testimonial-indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+                    <button class="next-testimonial" aria-label="Next testimonial">
+                        <img src="assets/images/icons/arrow-right.svg" alt="Next">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-overview section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-i18n="home.faq.title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question" data-i18n="home.faq.question1">Am I a good candidate for LASIK?</h3>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.answer1">Good candidates for LASIK are typically 18 years or older with stable vision for at least one year. A comprehensive eye exam during your consultation will determine if LASIK is right for you based on your eye health, prescription, and corneal thickness.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question" data-i18n="home.faq.question2">Is LASIK painful?</h3>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.answer2">LASIK is generally not painful. We use numbing eye drops before the procedure, and patients typically feel only slight pressure during the brief surgery. Some mild discomfort, irritation, or dryness may occur during the first 24-48 hours of recovery.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question" data-i18n="home.faq.question3">How long does recovery take?</h3>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.answer3">Most patients notice improved vision immediately after surgery, with vision continuing to stabilize over the next few days. Many return to work within 1-2 days. Complete healing may take 3-6 months, though most visual stabilization occurs within the first few weeks.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question" data-i18n="home.faq.question4">How much does LASIK cost?</h3>
+                    <div class="faq-answer">
+                        <p data-i18n="home.faq.answer4">The cost of LASIK at Vision Clarity Institute ranges from $1,800 to $2,500 per eye, depending on your specific vision needs and the technology selected. We offer flexible financing options with affordable monthly payments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule a Free Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="home.cta.title">Ready to Experience Clear Vision?</h2>
+            <p data-i18n="home.cta.content">Take the first step toward visual freedom. Our experts are ready to help you achieve better vision without glasses or contacts.</p>
+            <button class="btn btn-large open-modal" data-form-type="consultation" data-i18n="home.cta.button">Schedule Your Free Consultation</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+
+</body>
+</html>
