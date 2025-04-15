@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="contact.meta.title">Contact Us - Vision Clarity Institute</title>
+    <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures." data-i18n="contact.meta.description">
+    
+    <!-- Core path resolution - must be loaded first -->
+    <script src="../js/path-resolver.js"></script>
+    <script src="../js/resource-loader.js"></script>
+    
+    <!-- Load CSS files dynamically -->
+    <script>
+        window.ResourceLoader.loadCssFiles([
+            'styles.css',
+            'chatbot.css',
+            'button-refinements.css',
+            'modal.css',
+            'checkmark-fix.css',
+            'header-improvements.css',
+            'language-selector.css', // Keep only this one CSS file for language selector styling
+            'contact-styles.css', // CSS styles for the FAQ section
+        ]);
+    </script>
+
+    <!-- Scripts - load JS files in the correct sequence -->
+    <script>
+        window.ResourceLoader.loadJsSequence([
+            'error-tracker.js',
+            'i18n.js',
+            'language-detector.js',
+            'content-localizer.js',
+            'scripts.js',
+            'component-loader.js',
+            'header.js',
+            'flag-language-selector.js',
+            'modal-handler.js', // Use our consolidated modal handler
+            'chatbot.js',
+            'accordion.js', // Add accordion features.
+        ]);
+    </script>
+    
+    <!-- Add after component loader in head section -->
+    <link rel="stylesheet" href="../css/language-selector-improvements.css">
+    
+</head>
+<body>
+    <header class="header"></header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 data-i18n="services.header.title">Contact Us</h1>
+                    <p data-i18n="services.header.subtitle">Reach out to schedule your consultation or ask questions</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="global.buttons.schedule">Schedule Consultation</button>
+                        <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="global.buttons.inquiry">Request Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-section section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact.info.title">Contact Information</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/icons/phone.svg" alt="Phone">
+                    </div>
+                    <h3 data-i18n="contact.info.phone_title">Phone</h3>
+                    <p data-i18n="contact.info.phone_number">(800) 555-2020</p>
+                    <p class="text-muted" data-i18n="contact.info.phone_hours">Monday-Friday: 8am-6pm, Saturday: 9am-2pm</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/icons/email.svg" alt="Email">
+                    </div>
+                    <h3 data-i18n="contact.info.email_title">Email</h3>
+                    <p data-i18n="contact.info.email_address"><a href="mailto:info@visionclarityinstitute.com">Send Email</a></p>
+                    <p class="text-muted" data-i18n="contact.info.email_response">We typically respond within 24 hours</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/icons/location.svg" alt="Locations">
+                    </div>
+                    <h3 data-i18n="contact.info.locations_title">Locations</h3>
+                    <p data-i18n="contact.info.main_location">1234 Vision Way, Suite 100<br>Los Angeles, CA 90001</p>
+                    <p><a href="locations.html" class="text-link" data-i18n="contact.info.all_locations">View all locations</a></p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="../assets/images/icons/social-network.svg" alt="Social Media">
+                    </div>
+                    <h3 data-i18n="contact.info.social_title">Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook" class="social-icon">
+                            <img src="../assets/images/icons/facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-icon">
+                            <img src="../assets/images/icons/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-icon">
+                            <img src="../assets/images/icons/twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-icon">
+                            <img src="../assets/images/icons/linkedin.svg" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch Section -->
+<section class="get-in-touch-section section bg-light">
+    <div class="container">
+        <h2 class="section-title" data-i18n="contact.get_in_touch.title">Get in Touch</h2>
+        <p class="section-subtitle" data-i18n="contact.get_in_touch.subtitle">We're here to answer your questions and help you achieve crystal clear vision. Use one of our convenient contact options to reach us.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 data-i18n="contact.get_in_touch.consultation.title">Schedule a Consultation</h3>
+                <p data-i18n="contact.get_in_touch.consultation.description">Ready to explore your vision correction options? Schedule a free, no-obligation consultation with our expert team.</p>
+                <button class="btn btn-primary open-modal" data-form-type="consultation" data-i18n="contact.get_in_touch.consultation.button">Schedule Consultation</button>
+            </div>
+            
+            <div class="service-card">
+                <h3 data-i18n="contact.get_in_touch.services.title">Ask About Our Services</h3>
+                <p data-i18n="contact.get_in_touch.services.description">Have questions about a specific procedure? Our team can provide detailed information about our services.</p>
+                <button class="btn btn-secondary open-modal" data-form-type="inquiry" data-i18n="contact.get_in_touch.services.button">Service Inquiry</button>
+            </div>
+            
+            <div class="service-card">
+                <h3 data-i18n="contact.get_in_touch.message.title">Send Us a Message</h3>
+                <p data-i18n="contact.get_in_touch.message.description">Have a general question or comment? Send us a message and our team will get back to you promptly.</p>
+                <button class="btn btn-primary open-modal" data-form-type="message" data-i18n="contact.get_in_touch.message.button">Send Message</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section">
+        <div class="container">
+            <h2 data-i18n="contact.faq.title">Frequently Asked Questions</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q1">How do I schedule a consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a1">You can schedule a consultation by clicking the "Schedule Consultation" button on this page, calling our office at (800) 555-2020, or using our online booking system. Our staff will help you find a convenient time for your initial evaluation.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q2">What should I bring to my consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a2">Please bring your current glasses or contact lens prescription, a list of medications you're taking, your insurance card, and any medical records related to your eyes. If you wear contact lenses, please remove them 48 hours prior to your appointment for soft contacts, or 3 weeks prior for rigid gas permeable lenses.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q3">Do you accept insurance?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a3">We accept most major insurance plans and flexible spending accounts (FSAs). While most insurance plans don't cover LASIK or other refractive surgeries, they may cover the initial consultation. Our staff will help determine your coverage and discuss financing options.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q4">How long does the consultation take?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a4">Your initial consultation will take approximately 90 minutes. This includes a comprehensive eye exam, discussion of your vision correction options, and time to ask questions. Our goal is to provide you with all the information you need to make an informed decision.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q5">Do you offer payment plans?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a5">Yes, we offer a variety of financing options including interest-free payment plans and healthcare credit options. We work with several healthcare financing companies to help make your vision correction procedure affordable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-i18n="contact.cta.title">Ready to See Clearly?</h2>
+            <p data-i18n="contact.cta.content">Take the first step toward visual freedom. Our experts are ready to answer your questions.</p>
+            <button class="btn btn-large open-modal" data-form-type="consultation" data-i18n="contact.cta.button">Schedule Your Consultation Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+    
+    <!-- Chatbot Interface -->
+    <div id="vision-clarity-chatbot" class="vision-clarity-chatbot">
+        <button class="chatbot-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                <path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9"/>
+            </svg>
+        </button>
+        <div class="chat-window">
+            <div class="chat-header">
+                <svg height="24" width="24" viewBox="0 0 24 24" fill="#76b900" class="chat-logo">
+                    <circle cx="12" cy="12" r="10" fill="#76b900"/>
+                    <path d="M8 12 L16 12 M12 8 L12 16" stroke="white" stroke-width="2"/>
+                </svg>
+                <span>Vision Clarity Assistant</span>
+                <div class="ai-toggle-container">
+                    <label class="ai-toggle">
+                        <input type="checkbox" id="ai-toggle-checkbox" checked>
+                        <span class="ai-toggle-slider"></span>
+                        <span class="ai-toggle-label">Claude</span>
+                    </label>
+                </div>
+                <button class="close-chat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="chat-messages"></div>
+            <div class="chat-input-container">
+                <textarea class="chat-input" placeholder="Type your question here..." rows="1"></textarea>
+                <button class="send-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/scripts.js"></script>
+    <script src="../js/chatbot.js"></script>
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/modal-handler.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/flag-language-selector.js"></script>
+
+  <!-- Add this right before the closing body tag -->
+<script>
+// Inline accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Accordion script loaded directly');
+  
+  setTimeout(function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    console.log('Found ' + accordionHeaders.length + ' accordion headers');
+    
+    accordionHeaders.forEach(function(header) {
+      header.setAttribute('aria-expanded', 'false');
+      
+      header.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        
+        const content = this.nextElementSibling;
+        if (content && content.classList.contains('accordion-content')) {
+          if (!isExpanded) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          } else {
+            content.style.maxHeight = '0';
+          }
+        }
+      });
+      
+      const content = header.nextElementSibling;
+      if (content && content.classList.contains('accordion-content')) {
+        content.style.maxHeight = '0';
+      }
+    });
+  }, 500);
+});
+</script>
+    
+    <!-- Accessibility announcer for screen readers -->
+    <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
+</body>
+</html>
