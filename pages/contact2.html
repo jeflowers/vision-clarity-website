@@ -20,29 +20,8 @@
             'checkmark-fix.css',
             'header-improvements.css',
             'language-selector.css', // Keep only this one CSS file for language selector styling
-            'contact-styles.css', // CSS styles for the FAQ section
         ]);
     </script>
-
-    <!-- Scripts - load JS files in the correct sequence -->
-    <script>
-        window.ResourceLoader.loadJsSequence([
-            'error-tracker.js',
-            'i18n.js',
-            'language-detector.js',
-            'content-localizer.js',
-            'scripts.js',
-            'component-loader.js',
-            'header.js',
-            'flag-language-selector.js',
-            'modal-handler.js', // Use our consolidated modal handler
-            'chatbot.js',
-            'accordion.js', // Uncommented accordion features for the FAQ section
-        ]);
-    </script>
-    
-    <!-- Add after component loader in head section -->
-    <link rel="stylesheet" href="../css/language-selector-improvements.css">
     
 </head>
 <body>
@@ -148,116 +127,60 @@
     </div>
 </section>
 
-    <!-- FAQ Section with the new accordion implementation -->
+    <!-- FAQ Section -->
     <section class="faq-section section">
         <div class="container">
-            <h2 class="section-title" data-i18n="contact.faq.title">Frequently Asked Questions</h2>
+            <h2 data-i18n="contact.faq.title">Frequently Asked Questions</h2>
             
-            <div class="faq-container">
-                <div class="faq-category">
-                    <h2>Scheduling & Appointments</h2>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>How do I schedule a consultation?</summary>
-                            <div class="faq-answer">
-                                <p>You can schedule a consultation by calling our office at (800) 555-2020, using our online scheduling tool on our website, or emailing us at info@eyecarecenter.com. Our staff will help find a time that works best for you.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>How long does the consultation take?</summary>
-                            <div class="faq-answer">
-                                <p>Initial consultations typically take 60-90 minutes. This includes time for comprehensive eye testing, discussion of your vision goals, and answering any questions you may have about potential treatments.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>What should I bring to my consultation?</summary>
-                            <div class="faq-answer">
-                                <p>Please bring your current glasses and/or contact lenses, a list of medications you're taking, your vision insurance information, and any previous eye exam records if available. Also, it's helpful to prepare a list of questions you may have about your vision and treatment options.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>How should I prepare for my eye exam?</summary>
-                            <div class="faq-answer">
-                                <p>For your eye exam, we recommend getting plenty of rest the night before. If you wear contact lenses, please remove them at least 24 hours before your appointment for soft lenses, or several days for rigid lenses. Avoid applying eye makeup on the day of your exam, and bring sunglasses as your eyes may be sensitive after dilation.</p>
-                            </div>
-                        </details>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q1">How do I schedule a consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a1">You can schedule a consultation by clicking the "Schedule Consultation" button on this page, calling our office at (800) 555-2020, or using our online booking system. Our staff will help you find a convenient time for your initial evaluation.</p>
                     </div>
                 </div>
                 
-                <div class="faq-category">
-                    <h2>Insurance & Payment</h2>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>Do you accept insurance?</summary>
-                            <div class="faq-answer">
-                                <p>Yes, we accept most major vision and health insurance plans, including VSP, EyeMed, Blue Cross Blue Shield, and more. Please call our office with your insurance information so we can verify your coverage before your appointment.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>Do you offer payment plans?</summary>
-                            <div class="faq-answer">
-                                <p>Yes, we offer flexible payment plans to help make your eye care affordable. We accept CareCredit and also have in-house financing options available with approved credit. Our staff can help you explore payment options that work for your budget.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>What is the cost of LASIK surgery?</summary>
-                            <div class="faq-answer">
-                                <p>The cost of LASIK surgery typically ranges from $2,000 to $3,000 per eye, depending on the technology used and your specific vision needs. We provide comprehensive pricing during your consultation that includes pre-operative care, the procedure itself, and post-operative follow-up appointments.</p>
-                            </div>
-                        </details>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q2">What should I bring to my consultation?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a2">Please bring your current glasses or contact lens prescription, a list of medications you're taking, your insurance card, and any medical records related to your eyes. If you wear contact lenses, please remove them 48 hours prior to your appointment for soft contacts, or 3 weeks prior for rigid gas permeable lenses.</p>
                     </div>
                 </div>
                 
-                <div class="faq-category">
-                    <h2>Procedures & Recovery</h2>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>Am I a good candidate for LASIK?</summary>
-                            <div class="faq-answer">
-                                <p>Good LASIK candidates are typically 18 years or older with stable vision for at least a year, have adequate corneal thickness, and do not have certain eye conditions like severe dry eye or glaucoma. During your consultation, we'll perform comprehensive testing to determine if LASIK is right for you or if another procedure might be more suitable.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>What is the recovery time after LASIK?</summary>
-                            <div class="faq-answer">
-                                <p>Most patients experience improved vision within 24 hours after LASIK. You'll need someone to drive you home after the procedure, and you should plan to rest for the remainder of that day. Many patients return to work within 1-2 days, though you should avoid strenuous activities for about a week. Complete healing typically occurs within 3-6 months.</p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <details>
-                            <summary>What alternatives to LASIK do you offer?</summary>
-                            <div class="faq-answer">
-                                <p>We offer several alternatives to LASIK, including PRK (Photorefractive Keratectomy), SMILE (Small Incision Lenticule Extraction), implantable contact lenses (ICL), and refractive lens exchange (RLE). During your consultation, we'll discuss which option might be best for your specific vision needs and eye health.</p>
-                            </div>
-                        </details>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q3">Do you accept insurance?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a3">We accept most major insurance plans and flexible spending accounts (FSAs). While most insurance plans don't cover LASIK or other refractive surgeries, they may cover the initial consultation. Our staff will help determine your coverage and discuss financing options.</p>
                     </div>
                 </div>
                 
-                <div class="faq-contact">
-                    <p>Still have questions? Contact us directly at (800) 555-2020 or <a href="mailto:info@eyecarecenter.com">info@eyecarecenter.com</a></p>
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q4">How long does the consultation take?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a4">Your initial consultation will take approximately 90 minutes. This includes a comprehensive eye exam, discussion of your vision correction options, and time to ask questions. Our goal is to provide you with all the information you need to make an informed decision.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span data-i18n="contact.faq.q5">Do you offer payment plans?</span>
+                        <img src="../assets/images/icons/chevron-down.svg" alt="" class="accordion-icon">
+                    </button>
+                    <div class="accordion-content">
+                        <p data-i18n="contact.faq.a5">Yes, we offer a variety of financing options including interest-free payment plans and healthcare credit options. We work with several healthcare financing companies to help make your vision correction procedure affordable.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -320,11 +243,10 @@
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
     <script src="../js/component-loader.js"></script>
-    <script src="../js/modal-handler.js"></script>
+    <script src="../js/unified-modal.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/flag-language-selector.js"></script>
-    <script src="../js/accordion.js"></script> <!-- Added accordion.js script reference -->
     
     <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
