@@ -116,13 +116,16 @@ if (!window.ComponentLoader) {
     },
     
     postLoadProcessing: function(container) {
-      // Apply translations if I18nManager is available
-      if (window.I18nManager && typeof window.I18nManager.applyTranslations === 'function') {
-        window.I18nManager.applyTranslations();
-      }
-      
-      // Initialize any scripts within the container
-      this.initComponentScripts(container);
+      // Short delay to ensure translations are loaded
+      setTimeout(() => {
+        // Apply translations if I18nManager is available
+        if (window.I18nManager && typeof window.I18nManager.applyTranslations === 'function') {
+          window.I18nManager.applyTranslations();
+        }
+        
+        // Initialize any scripts within the container
+        this.initComponentScripts(container);
+      }, 100); // 100ms delay
     },
     
     initComponentScripts: function(container) {
