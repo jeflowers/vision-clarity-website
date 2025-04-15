@@ -238,7 +238,7 @@ if (!window.ChatbotManager) {
         }
         
         const data = await response.json();
-        return data.response || 'I apologize, but I didn't understand. Could you please rephrase your question?';
+        return data.response || 'I apologize, but I didn\'t understand. Could you please rephrase your question?';
       } catch (error) {
         console.error('Error calling chatbot API:', error);
         
