@@ -469,4 +469,72 @@
   .contact-details address {
     color: black;
   }
+
+   /* FAQ Accordion Styles */
+
+.faq-section {
+  padding: 4rem 0;
+  background-color: #f9f9f9;
+}
+
+.accordion {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.accordion-item {
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #e6f0d8;
+}
+
+.accordion-header[aria-expanded="true"] {
+  background-color: #e6f0d8;
+}
+
+.accordion-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  background-color: #fff;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content p {
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.accordion-header[aria-expanded="true"] + .accordion-content {
+  max-height: 500px;
+  padding: 0;
+}
 }
