@@ -2,7 +2,6 @@
  * Vision Clarity Institute - Path Resolver
  * Handles dynamic path resolution for assets across the site
  */
-
 const PathResolver = {
   // Get the root path based on current page location
   getRootPath: function() {
@@ -21,31 +20,31 @@ const PathResolver = {
   
   // Get path to CSS files
   getCssPath: function(filename) {
-    return this.getRootPath() + 'css/' + filename;
+    const cssPath = this.getRootPath() + 'css/' + filename;
     console.log('CSS path resolved:', cssPath);
+    return cssPath;
   },
   
   // Get path to JS files
   getJsPath: function(filename) {
-    return this.getRootPath() + 'js/' + filename;
-    console.log('CSS path resolved:', cssPath);
+    const jsPath = this.getRootPath() + 'js/' + filename;
+    console.log('JS path resolved:', jsPath);
+    return jsPath;
   },
   
   // Get path to components
   getComponentPath: function(filename) {
-    return this.getRootPath() + 'components/' + filename;
-    console.log('CSS path resolved:', cssPath);
+    const componentPath = this.getRootPath() + 'components/' + filename;
+    console.log('Component path resolved:', componentPath);
+    return componentPath;
   },
   
   // Get path to assets
   getAssetPath: function(filename) {
-    return this.getRootPath() + 'assets/' + filename;
-    console.log('CSS path resolved:', cssPath);
+    const assetPath = this.getRootPath() + 'assets/' + filename;
+    console.log('Asset path resolved:', assetPath);
+    return assetPath;
   }
 };
-
 // Make path resolver globally available
 window.PathResolver = PathResolver;
-
-console.log('CSS path resolved:', cssPath);
-
