@@ -10,6 +10,7 @@ const I18nManager = {
   defaultLanguage: 'en',
   supportedLanguages: ['en', 'br', 'la_es', 'es', 'zh', 'ko', 'tw', 'hy', 'he', 'tl', 'ru', 'lg', 'fa', 'ar'],
   rtlLanguages: ['he', 'ar', 'fa'],
+  missingTranslations: {}, // Track missing translations for reporting
   
   /**
    * Initialize the I18n system
@@ -276,13 +277,16 @@ const I18nManager = {
       return;
     }
     
+    // Reset missing translations for current language
+    this.missingTranslations[this.currentLanguage] = [];
+    
     // Find all elements with data-i18n attribute
     const elements = document.querySelectorAll('[data-i18n]');
     console.log(`Applying translations to ${elements.length} elements`);
     
     elements.forEach(element => {
       const key = element.getAttribute('data-i18n');
-      const translation = this.getTranslation(key);
+      const translation = this.getTranslation(key, { logMissing: true, returnKey: false });
       
       if (translation) {
         // Special handling for different element types
@@ -297,7 +301,12 @@ const I18nManager = {
           element.textContent = translation;
         }
       } else {
-        console.warn(`No translation found for key: ${key}`);
+        // If translation is missing, use the key as fallback text
+        if (element.tagName !== 'META' && element.tagName !== 'IMG' && element.tagName !== 'IFRAME') {
+          // Only set fallback text for elements that display text
+          const keyParts = key.split('.');
+          element.textContent = keyParts[keyParts.length - 1].replace(/_/g, ' ');
+        }
       }
     });
     
@@ -310,41 +319,107 @@ const I18nManager = {
         document.title = titleTranslation;
       }
     }
+    
+    // Report missing translations if any
+    this.reportMissingTranslations();
   },
   
   /**
-   * Get a translation by key using dot notation
+   * Get a translation by key using dot notation with enhanced error handling
    * @param {string} key - Translation key in dot notation (e.g., 'global.menu.home')
+   * @param {Object} options - Options for fallback behavior
    * @returns {string|null} The translation or null if not found
    */
-  getTranslation: function(key) {
+  getTranslation: function(key, options = {}) {
     if (!key) return null;
+    
+    const settings = {
+      logMissing: true,
+      returnKey: true,
+      ...options
+    };
     
     // Split the key into parts
     const parts = key.split('.');
     
     // Navigate through the nested translations object
     let translation = this.translations[this.currentLanguage];
+    let keyExists = true;
+    
     for (const part of parts) {
       if (!translation || typeof translation !== 'object') {
-        return null;
+        keyExists = false;
+        break;
       }
       translation = translation[part];
+      if (translation === undefined) {
+        keyExists = false;
+        break;
+      }
     }
     
-    // Fallback to default language if translation is missing
-    if (translation === undefined && this.currentLanguage !== this.defaultLanguage) {
+    // If translation exists, return it
+    if (keyExists && translation !== undefined) {
+      return translation;
+    }
+    
+    // If key uses "traditional" or "bladeless", try with "_lasik" suffix
+    // This handles the inconsistency between traditional/traditional_lasik in the data
+    if (!keyExists && key.includes('.service.')) {
+      const serviceKeys = ['traditional', 'bladeless'];
+      for (const serviceKey of serviceKeys) {
+        if (key.endsWith(`.${serviceKey}`)) {
+          const altKey = key.replace(`.${serviceKey}`, `.${serviceKey}_lasik`);
+          const altTranslation = this.getTranslation(altKey, { logMissing: false, returnKey: false });
+          if (altTranslation) {
+            return altTranslation;
+          }
+        }
+      }
+    }
+    
+    // Try fallback to default language
+    if (this.currentLanguage !== this.defaultLanguage) {
       let defaultTranslation = this.translations[this.defaultLanguage];
+      let defaultKeyExists = true;
+      
       for (const part of parts) {
         if (!defaultTranslation || typeof defaultTranslation !== 'object') {
-          return null;
+          defaultKeyExists = false;
+          break;
         }
         defaultTranslation = defaultTranslation[part];
+        if (defaultTranslation === undefined) {
+          defaultKeyExists = false;
+          break;
+        }
       }
-      return defaultTranslation;
+      
+      if (defaultKeyExists && defaultTranslation !== undefined) {
+        // Log that we're using a fallback
+        if (settings.logMissing) {
+          console.warn(`Using fallback translation for key: ${key} (${this.currentLanguage} -> ${this.defaultLanguage})`);
+        }
+        return defaultTranslation;
+      }
     }
     
-    return translation;
+    // Log missing translation if requested
+    if (settings.logMissing) {
+      console.warn(`No translation found for key: ${key}`);
+      
+      // Store missing key for reporting
+      if (!this.missingTranslations[this.currentLanguage]) {
+        this.missingTranslations[this.currentLanguage] = [];
+      }
+      
+      if (!this.missingTranslations[this.currentLanguage].includes(key)) {
+        this.missingTranslations[this.currentLanguage].push(key);
+      }
+    }
+    
+    // Return the key itself if requested
+    return settings.returnKey ? key : null;
   },
   
   /**
@@ -362,6 +437,41 @@ const I18nManager = {
     return text.replace(/\{\{(\w+)\}\}/g, (match, variable) => {
       return vars[variable] !== undefined ? vars[variable] : match;
     });
+  },
+  
+  /**
+   * Report all missing translations to the console
+   */
+  reportMissingTranslations: function() {
+    const currentMissing = this.missingTranslations[this.currentLanguage] || [];
+    
+    if (currentMissing.length > 0) {
+      console.warn(`Found ${currentMissing.length} missing translations for language: ${this.currentLanguage}`);
+      console.warn('Missing translations:', currentMissing);
+      
+      // Group missing translations by section for easier fixing
+      const groupedMissing = this.groupMissingTranslations(currentMissing);
+      console.warn('Grouped missing translations:', groupedMissing);
+    }
+  },
+  
+  /**
+   * Group missing translations by their top-level section
+   * @param {Array} missingKeys - Array of missing translation keys
+   * @returns {Object} Object with sections as keys and arrays of missing keys as values
+   */
+  groupMissingTranslations: function(missingKeys) {
+    const grouped = {};
+    
+    missingKeys.forEach(key => {
+      const section = key.split('.')[0];
+      if (!grouped[section]) {
+        grouped[section] = [];
+      }
+      grouped[section].push(key);
+    });
+    
+    return grouped;
   }
 };
 
