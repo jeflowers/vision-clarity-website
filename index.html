@@ -24,22 +24,22 @@
     </script>
 
     <!-- Scripts - load JS files in the correct sequence -->
-    <!--
+ 
     <script>
         window.ResourceLoader.loadJsSequence([
-            'error-tracker.js',
-            'i18n.js',
-            'language-detector.js',
-            'content-localizer.js',
             'scripts.js',
-            'component-loader.js',
+            'i18n.js',
+            'component-loader.js',',
             'header.js',
+            'modal-handler.js
+            'error-tracker.js',
+            'language-detector.js',
             'flag-language-selector.js',
-            'modal-handler.js', // Use our consolidated modal handler
+            'content-localizer.js
             'chatbot.js'
         ]);
     </script>
-    -->
+    
 </head>
 <body>
     <header class="header"></header>
@@ -260,19 +260,15 @@
     <script src="js/header.js"></script>
     <script src="js/flag-language-selector.js"></script>
 -->
-    <!-- Scripts -->
+    <!-- Scripts 
     <script src="js/scripts.js"></script>
     <script src="js/chatbot.js"></script>
-    <!-- Component loader script -->
     <script src="js/component-loader.js"></script>
-    <!-- Consolidated modal handler -->
     <script src="js/modal-handler.js"></script>
     <script src="js/i18n.js"></script>
-    <!-- header and flag js -->
     <script src="js/header.js"></script>
     <script src="js/flag-language-selector.js"></script>
-    <!-- Team page specific scripts -->
-    <script src="js/team-scripts.js"></script>
+     <script src="js/team-scripts.js"></script>
 <!-- Scripts - load JS files in the correct sequence -->
    <!-- <script>
         window.ResourceLoader.loadJsSequence([
