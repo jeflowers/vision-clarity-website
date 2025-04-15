@@ -20,7 +20,15 @@ const ResourceLoader = {
     const script = document.createElement('script');
     script.src = path;
     script.async = async;
-    */
+    
+     if (callback) {
+      script.onload = callback;
+    }
+    
+    document.body.appendChild(script);
+    return script;
+  },
+  */
 
   loadJs: function(filename, async = false, callback = null) {
   const path = window.PathResolver ? window.PathResolver.getJsPath(filename) : 'js/' + filename;
@@ -41,13 +49,7 @@ const ResourceLoader = {
   return script;
 },
     
-    if (callback) {
-      script.onload = callback;
-    }
-    
-    document.body.appendChild(script);
-    return script;
-  },
+   
   
   // Load multiple CSS files
   loadCssFiles: function(filenames) {
