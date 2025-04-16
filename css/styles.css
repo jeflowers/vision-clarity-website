@@ -156,6 +156,72 @@ a:hover {
     flex: 1 1 auto;
 }
 
+/* Inside the .header-actions section */
+.language-selector {
+  margin-right: 4px;
+  min-width: 200px;
+}
+
+.flag-select-wrapper {
+  position: relative;
+  min-width: 200px;
+  width: 100%;
+}
+
+.form-language-select {
+  width: 100%;
+  padding: 8px 45px 8px 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 4px;
+  border: 1px solid var(--color-light-gray);
+  background-color: var(--color-white);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.form-language-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-language-select option {
+  padding: 8px;
+  white-space: normal;
+}
+
+.flag-display {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+  font-size: 16px;
+}
+
+.select-arrow-container {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.select-arrow {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-gray);
+  border-bottom: 2px solid var(--color-gray);
+  transform: rotate(45deg);
+}
+
 /* Navigation */
 .main-nav {
     display: flex;
@@ -791,6 +857,14 @@ address p {
         font-size: 0.8rem;
         height: 40px;
     }
+
+    .language-selector {
+    min-width: 150px;
+  }
+  
+  .flag-select-wrapper {
+    min-width: 150px;
+  }
 }
 
 /**
