@@ -359,6 +359,14 @@ if (!window.ComponentLoader) {
       const languageContainer = document.querySelector('#header-language-component');
       if (languageContainer && !languageContainer.querySelector('.language-selector-field')) {
         console.log('Loading language selector into #header-language-component');
+
+        // Properly set the full path to ensure it works from any page
+        const rootPath = this.getRootPath();
+        const fullComponentPath = `${rootPath}components/language-selector-form.html`;
+    
+        console.log('Using full component path:', fullComponentPath);
+    
+        // Use the absolute path starting from the root of the site
         this.loadComponent('components/language-selector-form.html', languageContainer);
       } else {
         console.log('Language selector already loaded or container not found');
