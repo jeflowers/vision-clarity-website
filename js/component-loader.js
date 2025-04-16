@@ -22,8 +22,6 @@ if (!window.ComponentLoader) {
       { path: 'components/header.html', target: 'header.header', loaded: false, critical: true },
       { path: 'components/footer.html', target: 'footer.footer', loaded: false, critical: true },
       { path: 'components/language-selector-form.html', target: '#header-language-component', loaded: false, critical: true },
-      { path: 'components/consultation-modal.html', target: 'body', loaded: false, critical: false },
-      { path: 'components/service-inquiry-modal.html', target: 'body', loaded: false, critical: false }
     ],
     loadedCount: 0,
     
