@@ -23,7 +23,7 @@
         ]);
     </script>
 
-    <!-- Scripts - load JS files in the correct sequence -->
+    <!-- Scripts - load JS files in the correct sequence
  
     <script>
         window.ResourceLoader.loadJsSequence([
@@ -38,6 +38,17 @@
             'content-localizer.js'
         ]);
     </script>
+    -->
+    <!-- Replace the dynamic loading script with these direct script tags -->
+        <script src="/js/scripts.js"></script>
+        <script src="/js/i18n.js"></script>
+        <script src="/js/component-loader.js"></script>
+        <script src="/js/modal-handler.js"></script>
+        <script src="/js/header.js"></script>
+        <script src="/js/error-tracker.js"></script>
+        <script src="/js/language-detector.js"></script>
+        <script src="/js/flag-language-selector.js"></script>
+        <script src="/js/content-localizer.js"></script>
     
 </head>
 <body>
@@ -326,6 +337,28 @@
 </script>
 <!-- ###### End Debug ######-->
 
+    <script>
+  console.log("DOM Check - Testing if page rendering is working");
+  
+  // Force basic styling to make content visible
+  document.addEventListener('DOMContentLoaded', function() {
+    const style = document.createElement('style');
+    style.textContent = `
+      body { display: block !important; visibility: visible !important; }
+      .container { display: block !important; visibility: visible !important; }
+      section { display: block !important; visibility: visible !important; }
+    `;
+    document.head.appendChild(style);
+    
+    console.log("Page elements:", {
+      body: document.body,
+      header: document.querySelector('header'),
+      sections: document.querySelectorAll('section').length,
+      heroSection: document.querySelector('.hero'),
+      modals: document.querySelectorAll('.modal')
+    });
+  });
+</script>
 
     
 </body>
