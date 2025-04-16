@@ -287,7 +287,7 @@
  <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
 
-<!-- ###### Start Debug ######-->
+<!-- ###### Start Debug ######
     <script>
   // Debug check to see if components loaded correctly
   console.log('Current pathname:', window.location.pathname);
@@ -326,6 +326,29 @@
   });
 </script>
 <!-- ###### End Debug ######-->
+
+<script>
+  console.log("DOM Check - Testing if page rendering is working");
+  
+  // Force basic styling to make content visible
+  document.addEventListener('DOMContentLoaded', function() {
+    const style = document.createElement('style');
+    style.textContent = `
+      body { display: block !important; visibility: visible !important; }
+      .container { display: block !important; visibility: visible !important; }
+      section { display: block !important; visibility: visible !important; }
+    `;
+    document.head.appendChild(style);
+    
+    console.log("Page elements:", {
+      body: document.body,
+      header: document.querySelector('header'),
+      sections: document.querySelectorAll('section').length,
+      heroSection: document.querySelector('.hero'),
+      modals: document.querySelectorAll('.modal')
+    });
+  });
+</script>
     
 </body>
 </html>
