@@ -20,6 +20,9 @@ if (!window.ModalManager) {
       
       console.log('Initializing modal manager');
       this.initialized = true;
+  
+      // First load modal components explicitly
+      this.loadModalComponents();
       
       // Load modals
       this.loadModals();
@@ -74,7 +77,55 @@ if (!window.ModalManager) {
       // Initialize language selectors again after modals are loaded
       this.initLanguageSelectors();
     },
-    
+
+    loadModalComponents: function() {
+      console.log('Explicitly loading modal components...');
+      
+      // Make sure ComponentLoader is available
+      if (!window.ComponentLoader || typeof window.ComponentLoader.loadComponent !== 'function') {
+        console.error('ComponentLoader not available for loading modal components');
+        return;
+      }
+      
+      // Determine the root path for modal components
+      const rootPath = this.getRootPath();
+      
+      // Load modal components - use a container div to avoid cluttering the body
+      let modalContainer = document.getElementById('modal-container');
+      if (!modalContainer) {
+        modalContainer = document.createElement('div');
+        modalContainer.id = 'modal-container';
+        document.body.appendChild(modalContainer);
+      }
+      
+      // Load consultation modal
+      window.ComponentLoader.loadComponent('components/consultation-modal.html', modalContainer)
+        .then(() => {
+          console.log('Consultation modal component loaded');
+          this.modals.consultationModal = document.getElementById('consultation-modal');
+          this.forms.consultationForm = document.getElementById('consultation-form');
+          
+          // Set up form if present
+          if (this.forms.consultationForm) {
+            this.setupForm(this.forms.consultationForm, 'consultation');
+          }
+        })
+        .catch(error => console.error('Error loading consultation modal:', error));
+      
+      // Load service inquiry modal
+      window.ComponentLoader.loadComponent('components/service-inquiry-modal.html', modalContainer)
+        .then(() => {
+          console.log('Service inquiry modal component loaded');
+          this.modals.inquiryModal = document.getElementById('inquiry-modal');
+          this.forms.inquiryForm = document.getElementById('inquiry-form');
+          
+          // Set up form if present
+          if (this.forms.inquiryForm) {
+            this.setupForm(this.forms.inquiryForm, 'inquiry');
+          }
+        })
+        .catch(error => console.error('Error loading service inquiry modal:', error));
+    },
     setupForm: function(form, formType) {
       // Add validation logic here
       form.addEventListener('submit', (event) => {
