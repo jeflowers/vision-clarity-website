@@ -1,6 +1,6 @@
 /**
- * Vision Clarity Institute - Component Loader
- * Handles dynamic loading of reusable components
+ * Vision Clarity Institute - Combined Component Loader
+ * Handles dynamic loading of reusable components with broad compatibility
  */
 
 // Check if ComponentLoader already exists
@@ -8,6 +8,11 @@ if (!window.ComponentLoader) {
   window.ComponentLoader = {
     initialized: false,
     componentCache: {},
+    components: [
+      { path: 'components/header.html', target: 'header.header', loaded: false, critical: true },
+      { path: 'components/footer.html', target: 'footer.footer', loaded: false, critical: true }
+    ],
+    loadedCount: 0,
     
     init: function() {
       // Prevent multiple initializations
@@ -19,8 +24,13 @@ if (!window.ComponentLoader) {
       this.initialized = true;
       console.log('Initializing ComponentLoader');
       
-      // Load all components by default
-      this.loadAllComponents();
+      // Load critical components immediately
+      this.loadCriticalComponents();
+      
+      // Load remaining components after a small delay
+      setTimeout(() => {
+        this.loadAllComponents();
+      }, 100);
       
       // Setup event listeners
       this.setupEventListeners();
@@ -33,102 +43,243 @@ if (!window.ComponentLoader) {
           this.loadComponent(event.detail.path, event.detail.target);
         }
       });
+      
+      // Listen for component loaded events
+      document.addEventListener('componentLoaded', this.handleComponentLoaded.bind(this));
+    },
+    
+    handleComponentLoaded: function(event) {
+      this.loadedCount++;
+      
+      // Update component status if it's one we're tracking
+      const componentInfo = this.components.find(c => c.path === event.detail.path);
+      if (componentInfo) {
+        componentInfo.loaded = true;
+      }
+      
+      // Check if all registered components are loaded
+      const allRegisteredLoaded = this.components.every(c => c.loaded);
+      if (allRegisteredLoaded) {
+        this.postLoadProcessing();
+      }
+    },
+    
+    loadCriticalComponents: function() {
+      console.log('Loading critical components (header/footer)...');
+      
+      // Load critical components first
+      this.components
+        .filter(c => c.critical)
+        .forEach(component => {
+          const targetElement = this.getTargetElement(component.target);
+          if (targetElement) {
+            this.loadComponent(component.path, targetElement, true);
+          }
+        });
     },
     
     loadAllComponents: function() {
-      // Find all component placeholders
-      const containers = document.querySelectorAll('[data-component]');
+      // Load all components that aren't already loaded
+      this.components
+        .filter(c => !c.loaded)
+        .forEach(component => {
+          const targetElement = this.getTargetElement(component.target);
+          if (targetElement) {
+            this.loadComponent(component.path, targetElement);
+          }
+        });
       
-      // Load each component
-      containers.forEach(container => {
+      // Find custom components marked with data-component
+      const customContainers = document.querySelectorAll('[data-component]');
+      console.log('Found custom component containers:', customContainers.length);
+      
+      customContainers.forEach(container => {
         const componentPath = container.getAttribute('data-component');
         this.loadComponent(componentPath, container);
       });
     },
     
-    loadComponent: function(path, targetElement) {
+    getTargetElement: function(targetSelector) {
+      // Get the target element from selector or return the element itself
+      return typeof targetSelector === 'string'
+        ? document.querySelector(targetSelector)
+        : targetSelector;
+    },
+    
+    loadComponent: function(path, targetElement, isCritical = false) {
       if (!path) {
         console.error('Component path is required');
         return Promise.reject('Component path is required');
+      }
+      
+      // Handle target element if passed as string
+      if (typeof targetElement === 'string') {
+        targetElement = document.querySelector(targetElement);
+        if (!targetElement) {
+          console.error(`Target element not found: ${targetElement}`);
+          return Promise.reject(`Target element not found: ${targetElement}`);
+        }
       }
       
       // Determine full component path
       const rootPath = this.getRootPath();
       const fullPath = path.startsWith('/') ? path : `${rootPath}${path}`;
       
-      // Return from cache if available
-      if (this.componentCache[fullPath]) {
+      console.log(`Loading component: ${fullPath}`);
+      
+      // Return from cache if available and not critical
+      if (!isCritical && this.componentCache[fullPath]) {
         return Promise.resolve(this.componentCache[fullPath])
           .then(content => {
             if (targetElement) {
-              targetElement.innerHTML = content;
+              // Replace {{rootPath}} placeholder with actual root path
+              const processedContent = content.replace(/\{\{rootPath\}\}/g, rootPath);
+              targetElement.innerHTML = processedContent;
               this.postLoadProcessing(targetElement);
             }
             return content;
           });
       }
       
-      // Fetch the component
-      return fetch(fullPath)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Failed to load component: ${fullPath} (${response.status})`);
-          }
-          return response.text();
-        })
-        .then(content => {
-          // Cache the component content
-          this.componentCache[fullPath] = content;
+      // Use Promise-based fetch but fall back to XHR for older browsers
+      if (typeof fetch === 'function') {
+        return fetch(fullPath)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Failed to load component: ${fullPath} (${response.status})`);
+            }
+            return response.text();
+          })
+          .then(content => {
+            // Replace {{rootPath}} placeholder with actual root path
+            const processedContent = content.replace(/\{\{rootPath\}\}/g, rootPath);
+            
+            // Cache the component content
+            this.componentCache[fullPath] = processedContent;
+            
+            // Insert the component if target element provided
+            if (targetElement) {
+              targetElement.innerHTML = processedContent;
+              this.postLoadProcessing(targetElement);
+            }
+            
+            // Dispatch component loaded event
+            document.dispatchEvent(new CustomEvent('componentLoaded', { 
+              detail: { path, element: targetElement, component: path }
+            }));
+            
+            console.log(`Component loaded event: ${path}`);
+            
+            return processedContent;
+          })
+          .catch(error => {
+            console.error(`Error loading component ${path}:`, error);
+            return Promise.reject(error);
+          });
+      } else {
+        // Fallback to XMLHttpRequest for older browsers
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                // Replace {{rootPath}} placeholder with the actual root path
+                const processedContent = xhr.responseText.replace(/\{\{rootPath\}\}/g, rootPath);
+                
+                // Cache the component content
+                this.componentCache[fullPath] = processedContent;
+                
+                // Insert the component into the target element
+                if (targetElement) {
+                  targetElement.innerHTML = processedContent;
+                  this.postLoadProcessing(targetElement);
+                }
+                
+                // Dispatch component loaded event
+                document.dispatchEvent(new CustomEvent('componentLoaded', { 
+                  detail: { path, element: targetElement, component: path }
+                }));
+                
+                console.log(`Component loaded event: ${path}`);
+                
+                resolve(processedContent);
+              } else {
+                const error = `Error loading component: ${fullPath} (${xhr.status})`;
+                console.error(error);
+                reject(error);
+              }
+            }
+          };
           
-          // Insert the component if target element provided
-          if (targetElement) {
-            targetElement.innerHTML = content;
-            this.postLoadProcessing(targetElement);
-          }
-          
-          // Dispatch component loaded event
-          document.dispatchEvent(new CustomEvent('componentLoaded', { 
-            detail: { path, element: targetElement }
-          }));
-          
-          console.log(`Component loaded event: ${path}`);
-          
-          return content;
-        })
-        .catch(error => {
-          console.error(`Error loading component ${path}:`, error);
-          return Promise.reject(error);
+          xhr.open('GET', fullPath, true);
+          xhr.send();
         });
+      }
     },
     
     getRootPath: function() {
-      // Same logic as in I18nManager
+      // If on GitHub Pages, use the repository-specific path
       if (window.location.hostname.includes('github.io')) {
-        return '/vision-clarity-website/';
+        // Extract repo name from path for GitHub Pages
+        const path = window.location.pathname;
+        if (path.includes('/vision-clarity-website/')) {
+          return '/vision-clarity-website/';
+        }
       }
       
+      // Count directory levels for relative paths
       const path = window.location.pathname;
-      if (path.includes('/pages/')) {
-        return '../';
+      let depth = 0;
+      
+      // Remove the file from the path
+      let pathWithoutFile = path;
+      const lastSlashIndex = path.lastIndexOf('/');
+      if (lastSlashIndex !== -1) {
+        pathWithoutFile = path.substring(0, lastSlashIndex + 1);
       }
       
-      return './';
+      // Count directory levels
+      const parts = pathWithoutFile.split('/').filter(part => part.length > 0);
+      depth = parts.length;
+      
+      // Generate the appropriate root path
+      if (depth === 0) {
+        return './'; // We're at the root
+      } else {
+        // Go up 'depth' levels
+        return '../'.repeat(depth);
+      }
     },
     
     postLoadProcessing: function(container) {
-      // Short delay to ensure translations are loaded
+      // If no specific container, consider it a global post-processing
+      if (!container) {
+        // Highlight the current page in the navigation
+        this.highlightCurrentNav();
+        
+        // Dispatch event that all components have loaded
+        document.dispatchEvent(new CustomEvent('allComponentsLoaded'));
+        
+        console.log('All components loaded event fired');
+      }
+      
+      // Apply translations if I18nManager is available (with delay for proper initialization)
       setTimeout(() => {
-        // Apply translations if I18nManager is available
         if (window.I18nManager && typeof window.I18nManager.applyTranslations === 'function') {
           window.I18nManager.applyTranslations();
+        } else if (window.i18n && typeof window.i18n.applyTranslations === 'function') {
+          window.i18n.applyTranslations();
         }
         
         // Initialize any scripts within the container
         this.initComponentScripts(container);
-      }, 100); // 100ms delay
+      }, 150);
     },
     
     initComponentScripts: function(container) {
+      // If no container provided, skip
+      if (!container) return;
+      
       // Find and execute any script tags in the component
       const scripts = container.querySelectorAll('script');
       scripts.forEach(oldScript => {
@@ -145,15 +296,98 @@ if (!window.ComponentLoader) {
         // Replace old script with new one to execute it
         oldScript.parentNode.replaceChild(newScript, oldScript);
       });
+    },
+    
+    highlightCurrentNav: function() {
+      // Get the current page path
+      const currentPath = window.location.pathname;
+      
+      // Check for GitHub Pages URL structure
+      const isGitHubPages = currentPath.includes('/vision-clarity-website/');
+      
+      // Determine which navigation item should be active
+      let activeNavId = 'home'; // Default to home
+      
+      // Handle both local and GitHub Pages URL structures
+      if (currentPath.includes('/services.html') || (isGitHubPages && currentPath.includes('/pages/services.html'))) {
+        activeNavId = 'services';
+      } else if (currentPath.includes('/technology.html') || (isGitHubPages && currentPath.includes('/pages/technology.html'))) {
+        activeNavId = 'technology';
+      } else if (currentPath.includes('/staff.html') || (isGitHubPages && currentPath.includes('/pages/staff.html'))) {
+        activeNavId = 'staff';
+      } else if (currentPath.includes('/locations.html') || (isGitHubPages && currentPath.includes('/pages/locations.html'))) {
+        activeNavId = 'locations';
+      } else if (currentPath.includes('/contact.html') || (isGitHubPages && currentPath.includes('/pages/contact.html'))) {
+        activeNavId = 'contact';
+      }
+      
+      console.log('Current path:', currentPath);
+      console.log('Active nav ID:', activeNavId);
+      
+      // Find all navigation items
+      const navItems = document.querySelectorAll('[data-nav-id]');
+      
+      // Remove active class from all items
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Add active class to the current page's nav item
+      const activeItem = document.querySelector(`[data-nav-id="${activeNavId}"]`);
+      if (activeItem) {
+        activeItem.classList.add('active');
+        console.log('Active item found and highlighted:', activeItem);
+      } else {
+        console.log('No navigation item found with ID:', activeNavId);
+      }
+    },
+    
+    loadLanguageSelector: function() {
+      const headerActions = document.querySelector('.header-actions');
+      if (headerActions && !document.querySelector('#language-select')) {
+        this.loadComponent('components/language-selector.html', headerActions, function(element) {
+          // Move the loaded language selector to be the first child
+          const languageSelector = element.querySelector('.language-selector');
+          if (languageSelector && element.firstChild !== languageSelector) {
+            element.insertBefore(languageSelector, element.firstChild);
+          }
+        });
+      }
     }
   };
 } else {
   console.log('ComponentLoader already defined, using existing instance');
 }
 
-// Initialize safely
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize safely - but make sure it runs as soon as possible
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.ComponentLoader && typeof window.ComponentLoader.init === 'function') {
+      window.ComponentLoader.init();
+    }
+  });
+} else {
+  // DOM already loaded, initialize immediately
   if (window.ComponentLoader && typeof window.ComponentLoader.init === 'function') {
     window.ComponentLoader.init();
   }
-});
+}
+
+// For compatibility with older code that might use PathUtils
+if (!window.PathUtils) {
+  window.PathUtils = {
+    getRootPath: function() {
+      return window.ComponentLoader.getRootPath();
+    },
+    loadComponent: function(path, target, callback) {
+      return window.ComponentLoader.loadComponent(path, target).then(() => {
+        if (callback && typeof callback === 'function') {
+          callback(typeof target === 'string' ? document.querySelector(target) : target);
+        }
+      });
+    },
+    highlightCurrentNav: function() {
+      return window.ComponentLoader.highlightCurrentNav();
+    }
+  };
+}
