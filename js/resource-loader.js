@@ -30,23 +30,32 @@ const ResourceLoader = {
     return link;
   },
   
-  // Load a JS file
-  loadJs: function(filename, async = false, callback = null) {
-    const path = window.PathResolver ? window.PathResolver.getJsPath(filename) : 'js/' + filename;
-    this.log('Loading JS: ' + path);
-    
-    const script = document.createElement('script');
-    script.src = path;
-    script.async = async;
-    
-    if (callback) {
-      script.onload = callback;
-    }
-    
-    // Fix: Use document.head instead of document.body to avoid potential null issues
-    document.head.appendChild(script);
-    return script;
-  },
+  // Fix: Load a JS file
+loadJs: function(filename, async = false, callback = null) {
+  const path = window.PathResolver ? window.PathResolver.getJsPath(filename) : "/js/" + filename;
+  this.log("Loading JS: " + path);
+  
+  const script = document.createElement('script');
+  script.src = path;
+  script.async = async;
+  
+  // Only set the callback for the onload event, not execute immediately
+  if (callback) {
+    script.onload = callback;
+  }
+  
+  // Add error handling
+  script.onerror = function(e) {
+    console.error('Failed to load script:', path, e);
+    // Optionally call callback with error parameter
+    if (callback) callback(new Error(`Failed to load ${path}`));
+  };
+  
+  // Fixing the document.head instead of document.body to avoid potential null issues
+  (document.head || document.getElementsByTagName('head')[0]).appendChild(script);
+  
+  return script;
+},
   
   // Load multiple CSS files
   loadCssFiles: function(filenames) {
