@@ -1,12 +1,16 @@
 /**
- * Vision Clarity Institute - Internationalization Module
+ * Vision Clarity Institute - Combined Internationalization Module
+ * 
  * This module handles loading and applying translations based on user language preferences.
+ * It includes functionality for language detection, loading appropriate translations,
+ * handling right-to-left languages, and managing language switching.
  */
 
 // Check if I18nManager already exists to prevent duplicate declarations
 if (!window.I18nManager) {
   // Create I18nManager only if it doesn't already exist
   window.I18nManager = {
+    // Core configuration
     translations: {}, // Will store all loaded translations
     currentLanguage: 'en', // Default language
     defaultLanguage: 'en',
@@ -35,6 +39,9 @@ if (!window.I18nManager) {
       this.initLanguage();
     },
     
+    /**
+     * Set up event listeners for language selection
+     */
     initEventListeners: function() {
       // Language selector dropdown event listener
       const languageSelect = document.getElementById('language-select');
@@ -43,8 +50,18 @@ if (!window.I18nManager) {
           this.changeLanguage(event.target.value);
         });
       }
+      
+      // Listen for custom events that might trigger language changes
+      document.addEventListener('vci-language-change', (event) => {
+        if (event.detail && event.detail.language) {
+          this.changeLanguage(event.detail.language);
+        }
+      });
     },
     
+    /**
+     * Initialize the language based on preferences or browser settings
+     */
     initLanguage: async function() {
       // Try to get language from localStorage
       const savedLanguage = localStorage.getItem('vci-language');
@@ -85,6 +102,9 @@ if (!window.I18nManager) {
       console.log(`Language initialized: ${this.currentLanguage}`);
     },
     
+    /**
+     * Handle RTL (right-to-left) language settings
+     */
     handleTextDirection: function(lang) {
       if (this.rtlLanguages.includes(lang)) {
         document.documentElement.dir = 'rtl';
@@ -108,6 +128,9 @@ if (!window.I18nManager) {
       }
     },
     
+    /**
+     * Determine the root path based on the current environment
+     */
     getRootPath: function() {
       // If on GitHub Pages, use the repository-specific path
       if (window.location.hostname.includes('github.io')) {
@@ -123,16 +146,39 @@ if (!window.I18nManager) {
       return './';
     },
     
+    /**
+     * Get the browser's language
+     */
     getBrowserLanguage: function() {
       const fullLang = navigator.language || navigator.userLanguage;
       return fullLang.split('-')[0].toLowerCase();
     },
     
+    /**
+     * Load the appropriate font for the selected language
+     */
     loadFontsForLanguage: function(lang) {
       document.body.className = document.body.className.replace(/lang-\w+/g, '');
       document.body.classList.add(`lang-${lang}`);
+      
+      // Add specific font loading for languages that need specialized fonts
+      const specialFontLanguages = ['zh', 'ko', 'tw', 'ar', 'he', 'ru'];
+      
+      if (specialFontLanguages.includes(lang)) {
+        // Ensure any specialized font CSS is loaded
+        if (!document.getElementById(`font-${lang}`)) {
+          const fontStylesheet = document.createElement('link');
+          fontStylesheet.id = `font-${lang}`;
+          fontStylesheet.rel = 'stylesheet';
+          fontStylesheet.href = this.getRootPath() + `css/fonts-${lang}.css`;
+          document.head.appendChild(fontStylesheet);
+        }
+      }
     },
     
+    /**
+     * Load translations for the specified language
+     */
     loadTranslations: async function(lang) {
       try {
         // Check if translations are already loaded
@@ -206,6 +252,9 @@ if (!window.I18nManager) {
       }
     },
     
+    /**
+     * Change the current language and update UI accordingly
+     */
     changeLanguage: async function(lang) {
       if (!this.supportedLanguages.includes(lang)) {
         console.error(`Language ${lang} is not supported`);
@@ -244,6 +293,9 @@ if (!window.I18nManager) {
       document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
     },
     
+    /**
+     * Apply translations to all elements with data-i18n attributes
+     */
     applyTranslations: function() {
       // Return early if translations aren't loaded
       if (!this.translations[this.currentLanguage]) {
@@ -301,6 +353,9 @@ if (!window.I18nManager) {
       this.ensureCriticalTranslations();
     },
     
+    /**
+     * Ensure critical translations like homepage features are properly applied
+     */
     ensureCriticalTranslations: function() {
       // This function specifically ensures the intro features and other critical elements
       // retain their translations even if there are timing issues
@@ -340,6 +395,9 @@ if (!window.I18nManager) {
       this.setupTranslationObserver(criticalKeys, fallbackTranslations);
     },
     
+    /**
+     * Set up a mutation observer to prevent critical translations from being overwritten
+     */
     setupTranslationObserver: function(keys, fallbacks) {
       // If browser doesn't support MutationObserver, skip this
       if (!window.MutationObserver) return;
@@ -375,6 +433,9 @@ if (!window.I18nManager) {
       });
     },
     
+    /**
+     * Get a translation for the given key
+     */
     getTranslation: function(key, options = {}) {
       if (!key) return null;
       
@@ -466,6 +527,9 @@ if (!window.I18nManager) {
       return settings.returnKey ? key : null;
     },
     
+    /**
+     * Format a translation with variable replacements
+     */
     formatTranslation: function(key, vars = {}) {
       let text = this.getTranslation(key);
       
@@ -477,6 +541,9 @@ if (!window.I18nManager) {
       });
     },
     
+    /**
+     * Report missing translations to console
+     */
     reportMissingTranslations: function() {
       const currentMissing = this.missingTranslations[this.currentLanguage] || [];
       
@@ -490,6 +557,9 @@ if (!window.I18nManager) {
       }
     },
     
+    /**
+     * Group missing translations by section for better organization
+     */
     groupMissingTranslations: function(missingKeys) {
       const grouped = {};
       
@@ -502,6 +572,76 @@ if (!window.I18nManager) {
       });
       
       return grouped;
+    },
+
+    /**
+     * Get translations for the specified language
+     * Useful for accessing translations programmatically without changing the UI language
+     */
+    getTranslationsForLanguage: async function(lang) {
+      if (!this.supportedLanguages.includes(lang)) {
+        console.error(`Language ${lang} is not supported`);
+        return null;
+      }
+      
+      // Load translations if not already loaded
+      if (!this.translations[lang]) {
+        await this.loadTranslations(lang);
+      }
+      
+      return this.translations[lang];
+    },
+    
+    /**
+     * Translate a specific text string with supplied key
+     * Useful for dynamically inserted content that isn't in the DOM when applyTranslations runs
+     */
+    translateText: function(key, params = {}) {
+      let translation = this.getTranslation(key);
+      
+      if (!translation) return key;
+      
+      // Replace any parameters in the translation
+      if (Object.keys(params).length > 0) {
+        translation = this.formatTranslation(key, params);
+      }
+      
+      return translation;
+    },
+    
+    /**
+     * Export missing translations to a JSON format that can be easily copied
+     * Useful for developers to update translation files
+     */
+    exportMissingTranslations: function() {
+      const missingByLanguage = {};
+      
+      Object.keys(this.missingTranslations).forEach(lang => {
+        if (this.missingTranslations[lang].length > 0) {
+          // Create nested structure for the missing translations
+          const missingObj = {};
+          
+          this.missingTranslations[lang].forEach(key => {
+            const parts = key.split('.');
+            let current = missingObj;
+            
+            // Build the nested structure
+            for (let i = 0; i < parts.length - 1; i++) {
+              if (!current[parts[i]]) {
+                current[parts[i]] = {};
+              }
+              current = current[parts[i]];
+            }
+            
+            // Set the value for the leaf node to an empty string
+            current[parts[parts.length - 1]] = "";
+          });
+          
+          missingByLanguage[lang] = missingObj;
+        }
+      });
+      
+      return JSON.stringify(missingByLanguage, null, 2);
     }
   };
 
