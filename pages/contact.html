@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="contact.meta.title">Contact Us - Vision Clarity Institute</title>
     <meta name="description" content="Contact Vision Clarity Institute to schedule your free Lasik surgery consultation or to learn more about our vision correction procedures." data-i18n="contact.meta.description">
-    
+
     <!-- Core path resolution - must be loaded first -->
     <script src="../js/path-resolver.js"></script>
     <script src="../js/resource-loader.js"></script>
-    
+
     <!-- Load CSS files dynamically -->
     <script>
         window.ResourceLoader.loadCssFiles([
@@ -20,17 +20,23 @@
             'checkmark-fix.css',
             'header-improvements.css',
             'language-selector.css', // Keep only this one CSS file for language selector styling
-            'contact-styles.css', // CSS styles for the FAQ section
         ]);
     </script>
 
     <!-- Scripts - load JS files in the correct sequence -->
+ 
     <script>
         window.ResourceLoader.loadJsSequence([
+            'scripts.js',
+            'i18n.js',
+            'component-loader.js',
+            'header.js',
+            'modal-handler.js',
             'error-tracker.js',
             'language-detector.js',
-            'content-localizer.js',
             'flag-language-selector.js',
+            'content-localizer.js',
+            'chatbot.js',
             'accordion.js', // Uncommented accordion features for the FAQ section
         ]);
     </script>
@@ -306,7 +312,7 @@
     </div>
 
     <!-- REMOVE these duplicate script tags at the bottom of the body -->
-    <!-- Scripts -->
+    <!-- Scripts 
     <script src="../js/scripts.js"></script>
     <script src="../js/component-loader.js"></script>
     <script src="../js/i18n.js"></script>
