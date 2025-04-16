@@ -7,15 +7,11 @@
     <meta name="description" content="Explore Vision Clarity Institute's advanced laser vision correction services, including LASIK, PRK, and presbyopia treatment." data-i18n="services.meta.description">
     
     <!-- Core path resolution - must be loaded first -->
-    <script src="../js/path-resolver.js"></script>
-    <script src="../js/resource-loader.js"></script>
-    
+    <script src="js/path-resolver.js"></script>
+    <script src="js/resource-loader.js"></script>
+
     <!-- Load CSS files dynamically -->
     <script>
-        /* Start debug */
-        console.log("Root path:", window.PathResolver.getRootPath());
-        console.log("CSS path example:", window.PathResolver.getCssPath('styles.css'));
-        /* End Debug */
         window.ResourceLoader.loadCssFiles([
             'styles.css',
             'chatbot.css',
@@ -24,6 +20,23 @@
             'checkmark-fix.css',
             'header-improvements.css',
             'language-selector.css', // Keep only this one CSS file for language selector styling
+        ]);
+    </script>
+
+    <!-- Scripts - load JS files in the correct sequence -->
+ 
+    <script>
+        window.ResourceLoader.loadJsSequence([
+            'scripts.js',
+            'i18n.js',
+            'component-loader.js',
+            'header.js',
+            'modal-handler.js',
+            'error-tracker.js',
+            'language-detector.js',
+            'flag-language-selector.js',
+            'content-localizer.js',
+            'chatbot.js'
         ]);
     </script>
     
@@ -264,16 +277,15 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts
     <script src="../js/scripts.js"></script>
     <script src="../js/chatbot.js"></script>
-    <!-- Component loader script -->
-    <script src="../js/component-loader.js"></script>
+     <script src="../js/component-loader.js"></script>
     <script src="../js/modal-handler.js"></script>
     <script src="../js/i18n.js"></script>
-    <!-- header and flag js -->
     <script src="../js/header.js"></script>
     <script src="../js/flag-language-selector.js"></script>
+    -->
     
     <!-- Accessibility announcer for screen readers -->
     <div id="a11y-announcer" class="sr-only" aria-live="polite"></div>
