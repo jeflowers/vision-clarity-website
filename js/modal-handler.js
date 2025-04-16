@@ -98,63 +98,6 @@ if (!window.ModalManager) {
           this.setupForm(this.forms.inquiryForm, 'inquiry');
         }
       }, 1000);
-    }
-      
-      console.log('ComponentLoader available, loading modal components...');
-      
-      // Load modal components - use a container div to avoid cluttering the body
-      let modalContainer = document.getElementById('modal-container');
-      if (!modalContainer) {
-        modalContainer = document.createElement('div');
-        modalContainer.id = 'modal-container';
-        document.body.appendChild(modalContainer);
-      }
-      
-      // Helper function to load a component with retries
-      const loadComponentWithRetry = (path, container, maxRetries = 3, retryCount = 0) => {
-        window.ComponentLoader.loadComponent(path, container)
-          .then(response => {
-            console.log(`${path} loaded successfully`);
-            
-            // For consultation modal
-            if (path.includes('consultation-modal')) {
-              this.modals.consultationModal = document.getElementById('consultation-modal');
-              this.forms.consultationForm = document.getElementById('consultation-form');
-              
-              if (this.forms.consultationForm) {
-                this.setupForm(this.forms.consultationForm, 'consultation');
-              }
-            }
-            
-            // For service inquiry modal
-            if (path.includes('service-inquiry-modal')) {
-              // Check both possible IDs
-              this.modals.inquiryModal = document.getElementById('inquiry-modal') || 
-                                        document.getElementById('service-inquiry-modal');
-              this.forms.inquiryForm = document.getElementById('inquiry-form') || 
-                                      document.getElementById('service-inquiry-form');
-              
-              if (this.forms.inquiryForm) {
-                this.setupForm(this.forms.inquiryForm, 'inquiry');
-              }
-            }
-          })
-          .catch(error => {
-            console.error(`Error loading component ${path}:`, error);
-            
-            // Retry if we haven't reached max retries
-            if (retryCount < maxRetries) {
-              console.log(`Retrying load of ${path} (attempt ${retryCount + 1})`);
-              setTimeout(() => {
-                loadComponentWithRetry(path, container, maxRetries, retryCount + 1);
-              }, 1000);
-            }
-          });
-      };
-      
-      // Load both modals with retry capability
-      loadComponentWithRetry('components/consultation-modal.html', modalContainer);
-      loadComponentWithRetry('components/service-inquiry-modal.html', modalContainer);
     },
     
     setupForm: function(form, formType) {
