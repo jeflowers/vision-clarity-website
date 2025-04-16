@@ -240,6 +240,10 @@ if (!window.ModalManager) {
     getFlagEmoji: function(langCode) {
       // Map language codes to country codes for flag emojis
       const langToCountry = {
+        'en': 'US', // English ->
+    getFlagEmoji: function(langCode) {
+      // Map language codes to country codes for flag emojis
+      const langToCountry = {
         'en': 'US', // English -> USA flag
         'es': 'ES', // Spanish -> Spain flag
         'la_es': 'MX', // Latin American Spanish -> Mexico flag
