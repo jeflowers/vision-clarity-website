@@ -3,6 +3,16 @@
  * Handles dynamic loading of reusable components with broad compatibility
  */
 
+// Global debug setting - set to false by default
+const DEBUG_MODE = false;
+
+// Debug logging function that only logs when debug mode is enabled
+function debugLog(...args) {
+  if (DEBUG_MODE) {
+    console.log(...args);
+  }
+}
+
 // Check if ComponentLoader already exists
 if (!window.ComponentLoader) {
   window.ComponentLoader = {
@@ -11,19 +21,19 @@ if (!window.ComponentLoader) {
     components: [
       { path: 'components/header.html', target: 'header.header', loaded: false, critical: true },
       { path: 'components/footer.html', target: 'footer.footer', loaded: false, critical: true },
-      { path: 'components/language-selector-form.html', target: '#header-language-component', loaded: false }
+      { path: 'components/language-selector-form.html', target: '#header-language-component', loaded: false, critical: true }
     ],
     loadedCount: 0,
     
     init: function() {
       // Prevent multiple initializations
       if (this.initialized) {
-        console.log('ComponentLoader already initialized');
+        debugLog('ComponentLoader already initialized');
         return;
       }
       
       this.initialized = true;
-      console.log('Initializing ComponentLoader');
+      debugLog('Initializing ComponentLoader');
       
       // Load critical components immediately
       this.loadCriticalComponents();
@@ -58,6 +68,11 @@ if (!window.ComponentLoader) {
       const componentInfo = this.components.find(c => c.path === event.detail.path);
       if (componentInfo) {
         componentInfo.loaded = true;
+        
+        // If header was just loaded, try loading language selector
+        if (event.detail.path === 'components/header.html') {
+          setTimeout(() => this.loadLanguageSelector(), 50);
+        }
       }
       
       // Check if all registered components are loaded
@@ -68,7 +83,7 @@ if (!window.ComponentLoader) {
     },
     
     loadCriticalComponents: function() {
-      console.log('Loading critical components (header/footer)...');
+      debugLog('Loading critical components (header/footer)...');
       
       // Load critical components first
       this.components
@@ -94,7 +109,7 @@ if (!window.ComponentLoader) {
       
       // Find custom components marked with data-component
       const customContainers = document.querySelectorAll('[data-component]');
-      console.log('Found custom component containers:', customContainers.length);
+      debugLog('Found custom component containers:', customContainers.length);
       
       customContainers.forEach(container => {
         const componentPath = container.getAttribute('data-component');
@@ -128,7 +143,7 @@ if (!window.ComponentLoader) {
       const rootPath = this.getRootPath();
       const fullPath = path.startsWith('/') ? path : `${rootPath}${path}`;
       
-      console.log(`Loading component: ${fullPath}`);
+      debugLog(`Loading component: ${fullPath}`);
       
       // Return from cache if available and not critical
       if (!isCritical && this.componentCache[fullPath]) {
@@ -175,7 +190,7 @@ if (!window.ComponentLoader) {
               detail: { path, element: targetElement, component: path }
             }));
             
-            console.log(`Component loaded event: ${path}`);
+            debugLog(`Component loaded event: ${path}`);
             
             return finalContent;
           })
@@ -209,7 +224,7 @@ if (!window.ComponentLoader) {
                   detail: { path, element: targetElement, component: path }
                 }));
                 
-                console.log(`Component loaded event: ${path}`);
+                debugLog(`Component loaded event: ${path}`);
                 
                 resolve(finalContent);
               } else {
@@ -272,7 +287,7 @@ if (!window.ComponentLoader) {
         // Dispatch event that all components have loaded
         document.dispatchEvent(new CustomEvent('allComponentsLoaded'));
         
-        console.log('All components loaded event fired');
+        debugLog('All components loaded event fired');
       }
       
       // Apply translations if I18nManager is available (with delay for proper initialization)
@@ -333,8 +348,8 @@ if (!window.ComponentLoader) {
         activeNavId = 'contact';
       }
       
-      console.log('Current path:', currentPath);
-      console.log('Active nav ID:', activeNavId);
+      debugLog('Current path:', currentPath);
+      debugLog('Active nav ID:', activeNavId);
       
       // Find all navigation items
       const navItems = document.querySelectorAll('[data-nav-id]');
@@ -348,33 +363,60 @@ if (!window.ComponentLoader) {
       const activeItem = document.querySelector(`[data-nav-id="${activeNavId}"]`);
       if (activeItem) {
         activeItem.classList.add('active');
-        console.log('Active item found and highlighted:', activeItem);
+        debugLog('Active item found and highlighted:', activeItem);
       } else {
-        console.log('No navigation item found with ID:', activeNavId);
+        debugLog('No navigation item found with ID:', activeNavId);
       }
     },
     
     loadLanguageSelector: function() {
-      // Use the dedicated language component container instead of header-actions
+      // Use the dedicated language component container
       const languageContainer = document.querySelector('#header-language-component');
+      
+      // Only proceed if container exists and doesn't already have the component
       if (languageContainer && !languageContainer.querySelector('.language-selector-field')) {
-        console.log('Loading language selector into #header-language-component');
-
-        // Properly set the full path to ensure it works from any page
-        const rootPath = this.getRootPath();
-        const fullComponentPath = `${rootPath}components/language-selector-form.html`;
-    
-        console.log('Using full component path:', fullComponentPath);
-    
-        // Use the absolute path starting from the root of the site
-        this.loadComponent('components/language-selector-form.html', languageContainer);
+        debugLog('Loading language selector into #header-language-component');
+        
+        // Use absolute path for GitHub Pages or relative path for local development
+        let componentPath;
+        if (window.location.hostname.includes('github.io')) {
+          // When on GitHub Pages, always use the absolute repository path
+          componentPath = '/vision-clarity-website/components/language-selector-form.html';
+        } else {
+          // For local development, use the root path calculation
+          const rootPath = this.getRootPath();
+          componentPath = `${rootPath}components/language-selector-form.html`;
+        }
+        
+        debugLog('Using component path:', componentPath);
+        
+        // Always use the full path to load the component
+        this.loadComponent(componentPath, languageContainer, true);
       } else {
-        console.log('Language selector already loaded or container not found');
+        debugLog('Language selector already loaded or container not found');
+        
+        // If container not found, it might be because header is still loading
+        // Try again after a short delay
+        if (!languageContainer) {
+          setTimeout(() => {
+            const retryContainer = document.querySelector('#header-language-component');
+            if (retryContainer && !retryContainer.querySelector('.language-selector-field')) {
+              debugLog('Retrying language selector load after delay');
+              
+              // Use absolute path for GitHub Pages
+              const retryPath = window.location.hostname.includes('github.io') 
+                ? '/vision-clarity-website/components/language-selector-form.html'
+                : `${this.getRootPath()}components/language-selector-form.html`;
+                
+              this.loadComponent(retryPath, retryContainer, true);
+            }
+          }, 500);
+        }
       }
     }
   };
 } else {
-  console.log('ComponentLoader already defined, using existing instance');
+  debugLog('ComponentLoader already defined, using existing instance');
 }
 
 // Initialize safely - but make sure it runs as soon as possible
