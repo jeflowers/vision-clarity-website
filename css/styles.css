@@ -124,6 +124,38 @@ a:hover {
     width: auto;
 }
 
+/* Header Actions - Consistent Layout Fix */
+.header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 20px;
+}
+
+#header-language-component {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo-container {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.main-nav {
+    flex: 1 1 auto;
+}
+
 /* Navigation */
 .main-nav {
     display: flex;
@@ -666,9 +698,16 @@ address p {
     }
     
     .header-actions {
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: 8px;
+    }
+    
+    #header-language-component {
+        order: -1;
+        margin-bottom: 10px;
+        width: 100%;
     }
     
     .btn {
@@ -714,9 +753,15 @@ address p {
         justify-content: center;
     }
     
-    .header-actions {
+    .header .container {
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
     }
     
     .language-selector {
