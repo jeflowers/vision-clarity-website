@@ -43,11 +43,13 @@ if (!window.ModalManager) {
       
       // Find modal elements
       this.modals.consultationModal = document.getElementById('consultation-modal');
-      this.modals.inquiryModal = document.getElementById('inquiry-modal');
+      this.modals.inquiryModal = document.getElementById('inquiry-modal') || 
+                                document.getElementById('service-inquiry-modal');
       
       // Find form elements
       this.forms.consultationForm = document.getElementById('consultation-form');
-      this.forms.inquiryForm = document.getElementById('inquiry-form');
+      this.forms.inquiryForm = document.getElementById('inquiry-form') || 
+                              document.getElementById('service-inquiry-form');
       
       // Set up language selector containers
       const langSelectorContainers = document.querySelectorAll('.language-selector-container');
@@ -79,16 +81,16 @@ if (!window.ModalManager) {
     },
 
     loadModalComponents: function() {
-      console.log('Explicitly loading modal components...');
+      console.log('Preparing to load modal components...');
       
-      // Make sure ComponentLoader is available
+      // If ComponentLoader isn't available yet, wait and try again
       if (!window.ComponentLoader || typeof window.ComponentLoader.loadComponent !== 'function') {
-        console.error('ComponentLoader not available for loading modal components');
+        console.log('ComponentLoader not available yet, waiting...');
+        setTimeout(() => this.loadModalComponents(), 500);
         return;
       }
       
-      // Determine the root path for modal components
-      const rootPath = this.getRootPath();
+      console.log('ComponentLoader available, loading modal components...');
       
       // Load modal components - use a container div to avoid cluttering the body
       let modalContainer = document.getElementById('modal-container');
@@ -98,34 +100,53 @@ if (!window.ModalManager) {
         document.body.appendChild(modalContainer);
       }
       
-      // Load consultation modal
-      window.ComponentLoader.loadComponent('components/consultation-modal.html', modalContainer)
-        .then(() => {
-          console.log('Consultation modal component loaded');
-          this.modals.consultationModal = document.getElementById('consultation-modal');
-          this.forms.consultationForm = document.getElementById('consultation-form');
-          
-          // Set up form if present
-          if (this.forms.consultationForm) {
-            this.setupForm(this.forms.consultationForm, 'consultation');
-          }
-        })
-        .catch(error => console.error('Error loading consultation modal:', error));
+      // Helper function to load a component with retries
+      const loadComponentWithRetry = (path, container, maxRetries = 3, retryCount = 0) => {
+        window.ComponentLoader.loadComponent(path, container)
+          .then(response => {
+            console.log(`${path} loaded successfully`);
+            
+            // For consultation modal
+            if (path.includes('consultation-modal')) {
+              this.modals.consultationModal = document.getElementById('consultation-modal');
+              this.forms.consultationForm = document.getElementById('consultation-form');
+              
+              if (this.forms.consultationForm) {
+                this.setupForm(this.forms.consultationForm, 'consultation');
+              }
+            }
+            
+            // For service inquiry modal
+            if (path.includes('service-inquiry-modal')) {
+              // Check both possible IDs
+              this.modals.inquiryModal = document.getElementById('inquiry-modal') || 
+                                        document.getElementById('service-inquiry-modal');
+              this.forms.inquiryForm = document.getElementById('inquiry-form') || 
+                                      document.getElementById('service-inquiry-form');
+              
+              if (this.forms.inquiryForm) {
+                this.setupForm(this.forms.inquiryForm, 'inquiry');
+              }
+            }
+          })
+          .catch(error => {
+            console.error(`Error loading component ${path}:`, error);
+            
+            // Retry if we haven't reached max retries
+            if (retryCount < maxRetries) {
+              console.log(`Retrying load of ${path} (attempt ${retryCount + 1})`);
+              setTimeout(() => {
+                loadComponentWithRetry(path, container, maxRetries, retryCount + 1);
+              }, 1000);
+            }
+          });
+      };
       
-      // Load service inquiry modal
-      window.ComponentLoader.loadComponent('components/service-inquiry-modal.html', modalContainer)
-        .then(() => {
-          console.log('Service inquiry modal component loaded');
-          this.modals.inquiryModal = document.getElementById('inquiry-modal');
-          this.forms.inquiryForm = document.getElementById('inquiry-form');
-          
-          // Set up form if present
-          if (this.forms.inquiryForm) {
-            this.setupForm(this.forms.inquiryForm, 'inquiry');
-          }
-        })
-        .catch(error => console.error('Error loading service inquiry modal:', error));
+      // Load both modals with retry capability
+      loadComponentWithRetry('components/consultation-modal.html', modalContainer);
+      loadComponentWithRetry('components/service-inquiry-modal.html', modalContainer);
     },
+    
     setupForm: function(form, formType) {
       // Add validation logic here
       form.addEventListener('submit', (event) => {
@@ -160,63 +181,85 @@ if (!window.ModalManager) {
     },
     
     setupEventListeners: function() {
-  // Original handlers for data-open-modal
-  document.querySelectorAll('[data-open-modal]').forEach(button => {
-    const modalId = button.getAttribute('data-open-modal');
-    button.addEventListener('click', () => {
-      this.openModal(modalId);
-    });
-  });
-  
-  // Add new handlers for open-modal class with data-form-type
-  document.querySelectorAll('.open-modal').forEach(button => {
-    button.addEventListener('click', () => {
-      const formType = button.getAttribute('data-form-type');
-      if (formType === 'consultation') {
-        this.openModal('consultation-modal');
-      } else if (formType === 'inquiry') {
-        this.openModal('inquiry-modal');
-      }
-    });
-  });
-  
-  // Rest of your existing code...
-  document.querySelectorAll('[data-close-modal]').forEach(button => {
-    button.addEventListener('click', () => {
-      const modal = button.closest('.modal');
-      if (modal) {
-        this.closeModal(modal.id);
-      }
-    });
-  });
-  
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        this.closeModal(modal.id);
-      }
-    });
-  });
-  
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      this.closeAllModals();
-    }
-  });
-},
+      // Original handlers for data-open-modal
+      document.querySelectorAll('[data-open-modal]').forEach(button => {
+        const modalId = button.getAttribute('data-open-modal');
+        button.addEventListener('click', () => {
+          this.openModal(modalId);
+        });
+      });
+      
+      // Add new handlers for open-modal class with data-form-type
+      document.querySelectorAll('.open-modal').forEach(button => {
+        button.addEventListener('click', () => {
+          const formType = button.getAttribute('data-form-type');
+          if (formType === 'consultation') {
+            this.openModal('consultation-modal');
+          } else if (formType === 'inquiry') {
+            // Try both possible IDs
+            const serviceInquiryModal = document.getElementById('service-inquiry-modal');
+            if (serviceInquiryModal) {
+              this.openModal('service-inquiry-modal');
+            } else {
+              this.openModal('inquiry-modal');
+            }
+          }
+        });
+      });
+      
+      // Setup close buttons within modals
+      document.querySelectorAll('[data-close-modal]').forEach(button => {
+        button.addEventListener('click', () => {
+          const modal = button.closest('.modal');
+          if (modal) {
+            this.closeModal(modal.id);
+          }
+        });
+      });
+      
+      // Close modal when clicking outside content
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            this.closeModal(modal.id);
+          }
+        });
+      });
+      
+      // Escape key to close modals
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          this.closeAllModals();
+        }
+      });
+    },
     
     openModal: function(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.add('active');
-    document.body.classList.add('modal-open');
-  } else {
-    console.error(`Modal not found with ID: ${modalId}`);
-    // For debugging
-    console.log('Available modals:', 
-      Array.from(document.querySelectorAll('.modal')).map(m => m.id).filter(Boolean));
-  }
-},
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.classList.add('modal-open');
+        console.log(`Modal opened: ${modalId}`);
+      } else {
+        console.error(`Modal not found with ID: ${modalId}`);
+        // For debugging
+        console.log('Available modals:', 
+          Array.from(document.querySelectorAll('.modal')).map(m => ({id: m.id, classes: m.className})));
+        
+        // If the modal doesn't exist yet, we might be in a race condition
+        // Try again after a short delay
+        setTimeout(() => {
+          const retryModal = document.getElementById(modalId);
+          if (retryModal) {
+            console.log(`Modal found on retry: ${modalId}`);
+            retryModal.classList.add('active');
+            document.body.classList.add('modal-open');
+          } else {
+            console.error(`Modal still not found on retry: ${modalId}`);
+          }
+        }, 500);
+      }
+    },
     
     closeModal: function(modalId) {
       const modal = document.getElementById(modalId);
@@ -229,8 +272,8 @@ if (!window.ModalManager) {
     closeAllModals: function() {
       document.querySelectorAll('.modal').forEach(modal => {
         modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
       });
-      document.body.classList.remove('modal-open');
     },
     
     initLanguageSelectors: function() {
