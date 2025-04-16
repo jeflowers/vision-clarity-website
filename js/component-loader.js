@@ -10,7 +10,8 @@ if (!window.ComponentLoader) {
     componentCache: {},
     components: [
       { path: 'components/header.html', target: 'header.header', loaded: false, critical: true },
-      { path: 'components/footer.html', target: 'footer.footer', loaded: false, critical: true }
+      { path: 'components/footer.html', target: 'footer.footer', loaded: false, critical: true },
+      { path: 'components/language-selector-form.html', target: '#header-language-component', loaded: false }
     ],
     loadedCount: 0,
     
@@ -30,6 +31,8 @@ if (!window.ComponentLoader) {
       // Load remaining components after a small delay
       setTimeout(() => {
         this.loadAllComponents();
+        // Ensure language selector is loaded
+        this.loadLanguageSelector();
       }, 100);
       
       // Setup event listeners
@@ -134,7 +137,9 @@ if (!window.ComponentLoader) {
             if (targetElement) {
               // Replace {{rootPath}} placeholder with actual root path
               const processedContent = content.replace(/\{\{rootPath\}\}/g, rootPath);
-              targetElement.innerHTML = processedContent;
+              // Replace {{form_prefix}} placeholder for language selector
+              const finalContent = processedContent.replace(/\{\{form_prefix\}\}/g, 'header');
+              targetElement.innerHTML = finalContent;
               this.postLoadProcessing(targetElement);
             }
             return content;
@@ -153,13 +158,15 @@ if (!window.ComponentLoader) {
           .then(content => {
             // Replace {{rootPath}} placeholder with actual root path
             const processedContent = content.replace(/\{\{rootPath\}\}/g, rootPath);
+            // Replace {{form_prefix}} placeholder for language selector
+            const finalContent = processedContent.replace(/\{\{form_prefix\}\}/g, 'header');
             
             // Cache the component content
-            this.componentCache[fullPath] = processedContent;
+            this.componentCache[fullPath] = finalContent;
             
             // Insert the component if target element provided
             if (targetElement) {
-              targetElement.innerHTML = processedContent;
+              targetElement.innerHTML = finalContent;
               this.postLoadProcessing(targetElement);
             }
             
@@ -170,7 +177,7 @@ if (!window.ComponentLoader) {
             
             console.log(`Component loaded event: ${path}`);
             
-            return processedContent;
+            return finalContent;
           })
           .catch(error => {
             console.error(`Error loading component ${path}:`, error);
@@ -185,13 +192,15 @@ if (!window.ComponentLoader) {
               if (xhr.status === 200) {
                 // Replace {{rootPath}} placeholder with the actual root path
                 const processedContent = xhr.responseText.replace(/\{\{rootPath\}\}/g, rootPath);
+                // Replace {{form_prefix}} placeholder for language selector
+                const finalContent = processedContent.replace(/\{\{form_prefix\}\}/g, 'header');
                 
                 // Cache the component content
-                this.componentCache[fullPath] = processedContent;
+                this.componentCache[fullPath] = finalContent;
                 
                 // Insert the component into the target element
                 if (targetElement) {
-                  targetElement.innerHTML = processedContent;
+                  targetElement.innerHTML = finalContent;
                   this.postLoadProcessing(targetElement);
                 }
                 
@@ -202,7 +211,7 @@ if (!window.ComponentLoader) {
                 
                 console.log(`Component loaded event: ${path}`);
                 
-                resolve(processedContent);
+                resolve(finalContent);
               } else {
                 const error = `Error loading component: ${fullPath} (${xhr.status})`;
                 console.error(error);
@@ -256,6 +265,9 @@ if (!window.ComponentLoader) {
       if (!container) {
         // Highlight the current page in the navigation
         this.highlightCurrentNav();
+        
+        // Ensure language selector is loaded
+        this.loadLanguageSelector();
         
         // Dispatch event that all components have loaded
         document.dispatchEvent(new CustomEvent('allComponentsLoaded'));
@@ -313,8 +325,8 @@ if (!window.ComponentLoader) {
         activeNavId = 'services';
       } else if (currentPath.includes('/technology.html') || (isGitHubPages && currentPath.includes('/pages/technology.html'))) {
         activeNavId = 'technology';
-      } else if (currentPath.includes('/staff.html') || (isGitHubPages && currentPath.includes('/pages/staff.html'))) {
-        activeNavId = 'staff';
+      } else if (currentPath.includes('/team.html') || (isGitHubPages && currentPath.includes('/pages/team.html'))) {
+        activeNavId = 'team';
       } else if (currentPath.includes('/locations.html') || (isGitHubPages && currentPath.includes('/pages/locations.html'))) {
         activeNavId = 'locations';
       } else if (currentPath.includes('/contact.html') || (isGitHubPages && currentPath.includes('/pages/contact.html'))) {
@@ -343,15 +355,13 @@ if (!window.ComponentLoader) {
     },
     
     loadLanguageSelector: function() {
-      const headerActions = document.querySelector('.header-actions');
-      if (headerActions && !document.querySelector('#language-select')) {
-        this.loadComponent('components/language-selector.html', headerActions, function(element) {
-          // Move the loaded language selector to be the first child
-          const languageSelector = element.querySelector('.language-selector');
-          if (languageSelector && element.firstChild !== languageSelector) {
-            element.insertBefore(languageSelector, element.firstChild);
-          }
-        });
+      // Use the dedicated language component container instead of header-actions
+      const languageContainer = document.querySelector('#header-language-component');
+      if (languageContainer && !languageContainer.querySelector('.language-selector-field')) {
+        console.log('Loading language selector into #header-language-component');
+        this.loadComponent('components/language-selector-form.html', languageContainer);
+      } else {
+        console.log('Language selector already loaded or container not found');
       }
     }
   };
