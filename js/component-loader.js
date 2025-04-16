@@ -4,7 +4,7 @@
  */
 
 // Global debug setting - set to false by default
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 
 // Debug logging function that only logs when debug mode is enabled
 function debugLog(...args) {
