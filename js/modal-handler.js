@@ -81,14 +81,24 @@ if (!window.ModalManager) {
     },
 
     loadModalComponents: function() {
-      console.log('Preparing to load modal components...');
+      console.log('Modal components will be loaded by modal-preloader.js');
       
-      // If ComponentLoader isn't available yet, wait and try again
-      if (!window.ComponentLoader || typeof window.ComponentLoader.loadComponent !== 'function') {
-        console.log('ComponentLoader not available yet, waiting...');
-        setTimeout(() => this.loadModalComponents(), 500);
-        return;
-      }
+      // Make sure we have references to the modals once they're loaded
+      setTimeout(() => {
+        this.modals.consultationModal = document.getElementById('consultationModal');
+        this.modals.inquiryModal = document.getElementById('inquiryModal');
+        this.forms.consultationForm = document.getElementById('consultationForm');
+        this.forms.inquiryForm = document.getElementById('inquiryForm');
+        
+        if (this.forms.consultationForm) {
+          this.setupForm(this.forms.consultationForm, 'consultation');
+        }
+        
+        if (this.forms.inquiryForm) {
+          this.setupForm(this.forms.inquiryForm, 'inquiry');
+        }
+      }, 1000);
+    }
       
       console.log('ComponentLoader available, loading modal components...');
       
