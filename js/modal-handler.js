@@ -109,48 +109,63 @@ if (!window.ModalManager) {
     },
     
     setupEventListeners: function() {
-      // Setup button listeners for opening modals
-      document.querySelectorAll('[data-open-modal]').forEach(button => {
-        const modalId = button.getAttribute('data-open-modal');
-        button.addEventListener('click', () => {
-          this.openModal(modalId);
-        });
-      });
-      
-      // Setup close buttons within modals
-      document.querySelectorAll('[data-close-modal]').forEach(button => {
-        button.addEventListener('click', () => {
-          const modal = button.closest('.modal');
-          if (modal) {
-            this.closeModal(modal.id);
-          }
-        });
-      });
-      
-      // Close modal when clicking outside content
-      document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', (event) => {
-          if (event.target === modal) {
-            this.closeModal(modal.id);
-          }
-        });
-      });
-      
-      // Escape key to close modals
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          this.closeAllModals();
-        }
-      });
-    },
+  // Original handlers for data-open-modal
+  document.querySelectorAll('[data-open-modal]').forEach(button => {
+    const modalId = button.getAttribute('data-open-modal');
+    button.addEventListener('click', () => {
+      this.openModal(modalId);
+    });
+  });
+  
+  // Add new handlers for open-modal class with data-form-type
+  document.querySelectorAll('.open-modal').forEach(button => {
+    button.addEventListener('click', () => {
+      const formType = button.getAttribute('data-form-type');
+      if (formType === 'consultation') {
+        this.openModal('consultation-modal');
+      } else if (formType === 'inquiry') {
+        this.openModal('inquiry-modal');
+      }
+    });
+  });
+  
+  // Rest of your existing code...
+  document.querySelectorAll('[data-close-modal]').forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal');
+      if (modal) {
+        this.closeModal(modal.id);
+      }
+    });
+  });
+  
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        this.closeModal(modal.id);
+      }
+    });
+  });
+  
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      this.closeAllModals();
+    }
+  });
+},
     
     openModal: function(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.classList.add('modal-open');
-      }
-    },
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+  } else {
+    console.error(`Modal not found with ID: ${modalId}`);
+    // For debugging
+    console.log('Available modals:', 
+      Array.from(document.querySelectorAll('.modal')).map(m => m.id).filter(Boolean));
+  }
+},
     
     closeModal: function(modalId) {
       const modal = document.getElementById(modalId);
@@ -280,5 +295,13 @@ if (!window.ModalManager) {
 document.addEventListener('DOMContentLoaded', function() {
   if (window.ModalManager && typeof window.ModalManager.init === 'function') {
     window.ModalManager.init();
+  }
+});
+
+// Add at the end of your file
+document.addEventListener('allComponentsLoaded', function() {
+  console.log('All components loaded, re-initializing ModalManager event listeners');
+  if (window.ModalManager && typeof window.ModalManager.setupEventListeners === 'function') {
+    window.ModalManager.setupEventListeners();
   }
 });
