@@ -22,9 +22,8 @@
             'language-selector.css', // Keep only this one CSS file for language selector styling
         ]);
     </script>
-
+    
     <!-- Scripts - load JS files in the correct sequence -->
- 
     <script>
         window.ResourceLoader.loadJsSequence([
             'scripts.js',
@@ -39,6 +38,9 @@
             'chatbot.js'
         ]);
     </script>
+
+<!-- Modal preloader - add this new script -->
+<script src="js/modal-preloader.js"></script>
    
     <!-- Replace the dynamic loading script with these direct script tags 
         <script src="/js/scripts.js"></script>
