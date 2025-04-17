@@ -80,7 +80,7 @@ if (!window.I18nManager) {
       }
       
       const rootPath = this.getRootPath();
-      const url = `${rootPath}lang/${language}.json`;
+      const url = `${rootPath}js/i18n/${language}.json`;
       
       fetch(url)
         .then(response => {
