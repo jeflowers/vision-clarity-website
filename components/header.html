@@ -2,12 +2,14 @@
 <!-- This component provides consistent navigation across all pages with improved accessibility and responsive design -->
 <header class="header" role="banner">
     <div class="container">
+        <!-- Logo Container -->
         <div class="logo-container">
             <a href="{{rootPath}}index.html" aria-label="Vision Clarity Institute Home">
                 <img src="{{rootPath}}assets/images/logo.svg" alt="Vision Clarity Institute" class="logo">
             </a>
         </div>
         
+        <!-- Main Navigation -->
         <nav class="main-nav" role="navigation" aria-label="Main Navigation">
             <button class="mobile-menu-toggle" 
                     aria-expanded="false" 
@@ -38,19 +40,23 @@
             </ul>
         </nav>
         
+        <!-- Header Actions -->
         <div class="header-actions">
-            <!-- Include language selector component -->
-            <div id="header-language-component"></div>
+            <!-- Language selector component -->
+            <div id="header-language-component" class="language-selector-container"></div>
             
-            <button class="btn btn-primary open-modal" 
-                    data-form-type="consultation" 
-                    data-i18n="global.buttons.schedule"
-                    aria-haspopup="dialog">Schedule Consultation</button>
-            
-            <button class="btn btn-secondary open-modal" 
-                    data-form-type="inquiry" 
-                    data-i18n="global.buttons.inquiry"
-                    aria-haspopup="dialog">Request Information</button>
+            <!-- Action Buttons -->
+            <div class="header-buttons">
+                <button class="btn btn-primary open-modal" 
+                        data-form-type="consultation" 
+                        data-i18n="global.buttons.schedule"
+                        aria-haspopup="dialog">Schedule Consultation</button>
+                
+                <button class="btn btn-secondary open-modal" 
+                        data-form-type="inquiry" 
+                        data-i18n="global.buttons.inquiry"
+                        aria-haspopup="dialog">Request Information</button>
+            </div>
         </div>
     </div>
 </header>
