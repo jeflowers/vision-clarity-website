@@ -1,6 +1,6 @@
 /* 
  * Vision Clarity Institute - Header Manager
- * Consolidated header styles from multiple CSS files
+ * Consolidated header styles with improved structure
  */
 
 /* ===== HEADER BASIC STRUCTURE ===== */
@@ -115,6 +115,14 @@
     margin-left: auto;
 }
 
+/* Header buttons container */
+.header-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+
 /* Buttons in header actions */
 .header-actions .btn {
     margin-top: 5px;
@@ -123,11 +131,16 @@
 }
 
 /* Language component */
-#header-language-component {
+.language-selector-container {
     margin-bottom: 10px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+#header-language-component {
+    width: 100%;
+    max-width: 200px;
 }
 
 /* ===== LANGUAGE SELECTOR ===== */
@@ -237,15 +250,24 @@
         gap: 8px;
     }
     
-    #header-language-component {
+    .language-selector-container {
         order: -1;
         margin-bottom: 10px;
         width: auto;
     }
     
+    .header-buttons {
+        flex-direction: row;
+        gap: 8px;
+    }
+    
     .main-nav {
         justify-content: flex-end;
         margin-right: 10px;
+    }
+    
+    .header-actions .btn {
+        margin: 0;
     }
 }
 
@@ -292,6 +314,16 @@
     
     .header .container {
         flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .logo-container {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+    
+    .main-nav {
+        flex: 0 0 auto;
     }
     
     .header-actions {
@@ -300,6 +332,14 @@
         justify-content: center;
         margin-top: 10px;
         margin-left: 0;
+        align-items: center;
+    }
+    
+    .header-buttons {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
     }
     
     .language-selector-field {
@@ -320,11 +360,21 @@
         gap: 8px;
     }
     
-    .language-selector-field {
+    .language-selector-container {
         order: -1;
         margin-bottom: 10px;
         width: 100%;
-        text-align: center;
+        justify-content: center;
+    }
+    
+    #header-language-component {
+        max-width: 200px;
+    }
+    
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
     
     .flag-select-wrapper {
@@ -334,8 +384,10 @@
     .header-actions .btn {
         flex: 1 0 auto;
         min-width: 0;
+        width: 100%;
+        max-width: 300px;
         text-align: center;
-        margin: 5px;
+        margin: 5px 0;
     }
     
     .flag-display {
@@ -367,6 +419,10 @@
     align-items: flex-start;
 }
 
+[dir="rtl"] .header-buttons {
+    align-items: flex-start;
+}
+
 [dir="rtl"] .flag-display {
     left: auto;
     right: 10px;
@@ -383,7 +439,7 @@
     padding-left: 36px !important;
 }
 
-[dir="rtl"] #header-language-component {
+[dir="rtl"] .language-selector-container {
     justify-content: flex-start;
 }
 
@@ -403,5 +459,19 @@
     
     [dir="rtl"] .nav-list a {
         text-align: right;
+    }
+    
+    [dir="rtl"] .header-buttons {
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    [dir="rtl"] .language-selector-container {
+        justify-content: center;
+    }
+    
+    [dir="rtl"] .header-buttons {
+        align-items: center;
     }
 }
