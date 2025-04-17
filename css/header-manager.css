@@ -13,7 +13,6 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--color-light-gray);
-    position: relative;
 }
 
 /* Container layout */
@@ -24,6 +23,8 @@
     justify-content: space-between;
     padding: var(--spacing-md) var(--spacing-lg);
     position: relative;
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 /* Logo section */
@@ -66,6 +67,7 @@
     position: relative;
     padding-bottom: var(--spacing-xs);
     white-space: nowrap;
+    display: block;
 }
 
 .nav-list a:after {
@@ -86,11 +88,6 @@
 
 .nav-list a.active {
     color: var(--color-primary);
-}
-
-/* Fix for "Meet Our Team" navigation link */
-.nav-list li:last-child {
-    margin-right: 20px;
 }
 
 /* Mobile menu toggle */
@@ -115,7 +112,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-left: 20px;
+    margin-left: auto;
+}
+
+/* Buttons in header actions */
+.header-actions .btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /* Language component */
@@ -134,26 +137,7 @@
     min-width: 200px;
 }
 
-/* Wrapper */
-.flag-select-wrapper {
-    position: relative;
-    min-width: 200px;
-    width: 100%;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-}
-
-.flag-select-wrapper:focus-within {
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
-}
-
-/* Header specific wrapper */
-.header-select-wrapper {
-    min-width: 120px;
-    max-width: 150px;
-}
-
-/* Select styling */
+/* Form language select */
 .form-language-select {
     width: 100%;
     padding: 8px 45px 8px 12px;
@@ -175,15 +159,17 @@
     border-color: var(--color-primary);
 }
 
-.form-language-select option {
-    padding: 8px;
-    white-space: normal;
+/* Wrapper */
+.flag-select-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
 }
 
 /* Flag display */
 .flag-display {
     position: absolute;
-    right: 36px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
@@ -218,53 +204,6 @@
     min-width: 90px;
 }
 
-/* ===== ACCESSIBILITY ===== */
-
-/* Skip link for keyboard navigation */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    z-index: 1000;
-    text-decoration: none;
-    font-weight: 600;
-    transition: top 0.3s;
-    border-radius: 0 0 4px 0;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-/* Enhanced focus states for better keyboard navigation */
-.nav-list a:focus,
-.mobile-menu-toggle:focus,
-.language-selector select:focus,
-.header-actions .btn:focus {
-    outline: 2px solid #4CAF50;
-    outline-offset: 2px;
-}
-
-/* ARIA support */
-[aria-current="page"] {
-    position: relative;
-    font-weight: 600;
-    color: #4CAF50;
-}
-
-[aria-current="page"]::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #4CAF50;
-}
-
 /* ===== RESPONSIVE DESIGN ===== */
 
 /* Large screens */
@@ -272,11 +211,6 @@
     .header-actions .btn {
         padding: 0 12px;
         min-width: 120px;
-    }
-    
-    /* Adjust spacing on smaller screens */
-    .nav-list li:last-child {
-        margin-right: 15px;
     }
 }
 
@@ -293,11 +227,6 @@
         order: -1;
         margin-bottom: 10px;
         width: 100%;
-    }
-    
-    .btn {
-        margin-top: 4px;
-        margin-bottom: 4px;
     }
     
     .main-nav {
@@ -339,7 +268,6 @@
     
     .nav-list li:last-child {
         border-bottom: none;
-        margin-right: 0;
     }
     
     .nav-list a {
@@ -362,11 +290,6 @@
     
     .language-selector {
         margin-right: 10px;
-    }
-    
-    .btn {
-        padding: 8px 12px;
-        font-size: 0.875rem;
     }
     
     .header-actions .btn {
@@ -412,10 +335,6 @@
         text-align: center;
     }
     
-    .header-select-wrapper {
-        min-width: 90px;
-    }
-    
     .flag-display {
         font-size: 14px;
     }
@@ -424,8 +343,9 @@
 /* ===== RTL LANGUAGE SUPPORT ===== */
 
 /* Base RTL adjustments */
-[dir="rtl"] .nav-list {
-    flex-direction: row-reverse;
+[dir="rtl"] .nav-list a:after {
+    left: auto;
+    right: 0;
 }
 
 [dir="rtl"] .nav-list a[aria-current="page"]::after {
@@ -442,7 +362,6 @@
     margin-right: auto;
     margin-left: 0;
     align-items: flex-start;
-    flex-direction: row-reverse;
 }
 
 [dir="rtl"] .language-selector {
@@ -462,8 +381,8 @@
 
 [dir="rtl"] .flag-language-select,
 [dir="rtl"] .flag-enabled {
-    padding-right: 32px !important;
-    padding-left: 32px !important;
+    padding-right: 28px !important;
+    padding-left: 36px !important;
 }
 
 [dir="rtl"] #header-language-component {
@@ -475,17 +394,6 @@
     margin-left: 20px;
 }
 
-[dir="rtl"] .nav-list a:after {
-    left: auto;
-    right: 0;
-}
-
-[dir="rtl"] .nav-list li:last-child {
-    margin-right: 0;
-    margin-left: 20px;
-}
-
-/* RTL responsive adjustments */
 @media screen and (max-width: 768px) {
     [dir="rtl"] .logo-container {
         margin-left: 0;
@@ -498,36 +406,4 @@
     [dir="rtl"] .nav-list a {
         text-align: right;
     }
-}
-
-/* ===== BROWSER-SPECIFIC FIXES ===== */
-
-/* Firefox fix */
-@-moz-document url-prefix() {
-    select.flag-enabled {
-        text-overflow: ellipsis;
-        background-image: none !important;
-    }
-    
-    select.flag-enabled option {
-        padding: 6px 10px;
-    }
-}
-
-/* Webkit scrollbar styling */
-select.flag-enabled::-webkit-scrollbar {
-    width: 8px;
-}
-
-select.flag-enabled::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-select.flag-enabled::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-
-select.flag-enabled::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
