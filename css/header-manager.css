@@ -119,6 +119,7 @@
 .header-actions .btn {
     margin-top: 5px;
     margin-bottom: 5px;
+    min-width: 180px; /* Ensure buttons have consistent width */
 }
 
 /* Language component */
@@ -132,9 +133,23 @@
 /* ===== LANGUAGE SELECTOR ===== */
 
 /* Language selector base */
-.language-selector {
-    margin-right: 4px;
-    min-width: 200px;
+.language-selector-field {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 5px;
+}
+
+/* Hide the label in the header, but keep it for screen readers */
+.header-actions .language-selector-field label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* Form language select */
@@ -200,8 +215,7 @@
 .flag-language-select,
 .flag-enabled {
     padding-right: 36px !important;
-    padding-left: 28px !important;
-    min-width: 90px;
+    padding-left: 36px !important;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -210,7 +224,7 @@
 @media screen and (max-width: 1100px) {
     .header-actions .btn {
         padding: 0 12px;
-        min-width: 120px;
+        min-width: 180px;
     }
 }
 
@@ -226,7 +240,7 @@
     #header-language-component {
         order: -1;
         margin-bottom: 10px;
-        width: 100%;
+        width: auto;
     }
     
     .main-nav {
@@ -288,25 +302,14 @@
         margin-left: 0;
     }
     
-    .language-selector {
-        margin-right: 10px;
+    .language-selector-field {
+        max-width: none;
     }
     
+    /* Show buttons in mobile view */
     .header-actions .btn {
-        display: none;
-    }
-    
-    /* Show buttons in dropdown when menu is activated */
-    .nav-list.active .header-action-buttons {
-        display: flex;
-        flex-direction: column;
-        padding: 15px;
-        gap: 10px;
-    }
-    
-    .nav-list.active .header-action-buttons .btn {
-        display: block;
-        width: 100%;
+        display: inline-block;
+        width: auto;
     }
 }
 
@@ -317,22 +320,22 @@
         gap: 8px;
     }
     
-    .language-selector {
+    .language-selector-field {
         order: -1;
         margin-bottom: 10px;
         width: 100%;
         text-align: center;
-        min-width: 150px;
     }
     
     .flag-select-wrapper {
         min-width: 150px;
     }
     
-    .btn {
+    .header-actions .btn {
         flex: 1 0 auto;
         min-width: 0;
         text-align: center;
+        margin: 5px;
     }
     
     .flag-display {
@@ -364,11 +367,6 @@
     align-items: flex-start;
 }
 
-[dir="rtl"] .language-selector {
-    margin-right: 0;
-    margin-left: 10px;
-}
-
 [dir="rtl"] .flag-display {
     left: auto;
     right: 10px;
@@ -381,7 +379,7 @@
 
 [dir="rtl"] .flag-language-select,
 [dir="rtl"] .flag-enabled {
-    padding-right: 28px !important;
+    padding-right: 36px !important;
     padding-left: 36px !important;
 }
 
