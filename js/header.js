@@ -83,7 +83,7 @@ function setActiveNavItem() {
         const href = link.getAttribute('href');
         
         // Simple path matching
-        if (currentPath === '/' || currentPath === '/index.html') {
+        if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('/index.html')) {
             // Home page
             if (href.endsWith('index.html') || href === './') {
                 setActiveLink(link);
@@ -97,7 +97,7 @@ function setActiveNavItem() {
             if ((navId === 'home' && (currentPath === '/' || currentPath.endsWith('index.html'))) ||
                 (navId === 'services' && currentPath.includes('services.html')) ||
                 (navId === 'technology' && currentPath.includes('technology.html')) ||
-                (navId === 'staff' && currentPath.includes('staff.html')) ||
+                (navId === 'team' && currentPath.includes('team.html')) ||
                 (navId === 'locations' && currentPath.includes('locations.html')) ||
                 (navId === 'contact' && currentPath.includes('contact.html'))) {
                 setActiveLink(link);
@@ -122,11 +122,19 @@ function loadLanguageSelector() {
     const headerLanguageContainer = document.getElementById('header-language-component');
     if (!headerLanguageContainer) return;
     
-    // Determine the root path based on the current page location
-    const rootPath = window.location.pathname.includes('/pages/') ? '../' : './';
+    // Try to determine the correct path using PathResolver if available
+    let basePath = './';
+    if (window.PathResolver && typeof window.PathResolver.getBasePath === 'function') {
+        basePath = window.PathResolver.getBasePath();
+    } else {
+        // Fallback path detection
+        if (window.location.pathname.includes('/pages/')) {
+            basePath = '../';
+        }
+    }
     
     // Load the language selector component
-    fetch(`${rootPath}components/language-selector-form.html`)
+    fetch(`${basePath}components/language-selector-form.html`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to load language selector component');
@@ -155,7 +163,44 @@ function loadLanguageSelector() {
         })
         .catch(error => {
             console.error('Error loading language selector component:', error);
+            // Fallback - create a simple language selector
+            createFallbackLanguageSelector(headerLanguageContainer);
         });
+}
+
+/**
+ * Create a fallback language selector if the component can't be loaded
+ * @param {HTMLElement} container - The container element
+ */
+function createFallbackLanguageSelector(container) {
+    if (!container) return;
+    
+    const fallbackHtml = `
+    <div class="form-field language-selector-field" data-field="preferred_language">
+        <label for="header_preferred_language" data-i18n="modal.form.preferred_language">
+            Preferred Language
+        </label>
+        
+        <div class="select-wrapper flag-select-wrapper">
+            <select id="header_preferred_language" 
+                    name="preferred_language" 
+                    class="form-language-select flag-enabled"
+                    aria-describedby="header_language_description">
+                <option value="en" data-flag="🇺🇸" data-i18n="modal.form.language.english">English</option>
+                <option value="es" data-flag="🇪🇸" data-i18n="modal.form.language.spanish">Spanish</option>
+                <option value="zh" data-flag="🇨🇳" data-i18n="modal.form.language.chinese">Chinese</option>
+            </select>
+            <div class="select-arrow-container">
+                <span class="select-arrow"></span>
+            </div>
+            <span class="flag-display form-flag-display" aria-hidden="true">🇺🇸</span>
+        </div>
+    </div>`;
+    
+    container.innerHTML = fallbackHtml;
+    
+    // Initialize the language selector
+    initializeLanguageSelector();
 }
 
 /**
@@ -166,20 +211,12 @@ function initializeLanguageSelector() {
     if (!selector) return;
     
     // Update flag display
-    if (window.flagLanguageSelector && typeof window.flagLanguageSelector.update === 'function') {
-        window.flagLanguageSelector.update(selector);
-    } else {
-        updateFlagDisplay(selector);
-    }
+    updateFlagDisplay(selector);
     
     // Add change event listener
     selector.addEventListener('change', function() {
         // Update flag display and store preference
-        if (window.flagLanguageSelector && typeof window.flagLanguageSelector.update === 'function') {
-            window.flagLanguageSelector.update(selector);
-        } else {
-            updateFlagDisplay(this);
-        }
+        updateFlagDisplay(this);
         
         // Save language preference
         localStorage.setItem('vci-language', this.value);
@@ -213,11 +250,6 @@ function updateFlagDisplay(selector) {
         // Create flag display if it doesn't exist
         const newFlagDisplay = document.createElement('span');
         newFlagDisplay.className = 'flag-display';
-        if (selector.id === 'header_preferred_language') {
-            newFlagDisplay.classList.add('header-flag-display');
-        } else {
-            newFlagDisplay.classList.add('form-flag-display');
-        }
         newFlagDisplay.setAttribute('aria-hidden', 'true');
         newFlagDisplay.textContent = flag;
         
@@ -249,7 +281,7 @@ window.addEventListener('resize', function() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     
     // When resizing to desktop view, reset mobile menu state
-    if (window.innerWidth > 991 && navList && menuToggle) {
+    if (window.innerWidth > 768 && navList && menuToggle) {
         navList.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
     }
