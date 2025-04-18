@@ -231,7 +231,7 @@
     font-size: 16px;
 }
 
-/* Arrow container */
+/* Arrow container - Material Design Style */
 .select-arrow-container {
     position: absolute;
     right: 10px;
@@ -239,15 +239,20 @@
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 2;
+    transition: transform 0.2s ease;
 }
 
-.select-arrow {
+/* Material Design dropdown arrow */
+.select-arrow-material {
     display: block;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid var(--color-gray, #999);
-    border-bottom: 2px solid var(--color-gray, #999);
-    transform: rotate(45deg);
+    width: 24px;
+    height: 24px;
+    fill: var(--color-gray, #999);
+}
+
+/* For the active/open state, rotate the arrow */
+.flag-select-wrapper.active .select-arrow-container {
+    transform: translateY(-50%) rotate(180deg);
 }
 
 /* Make language selector more compact */
