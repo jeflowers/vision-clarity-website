@@ -149,6 +149,33 @@ function updateFlag(selector) {
         selector.parentNode.appendChild(flagDisplay);
     }
     
+    // Check for existing arrow container and remove it
+    const existingArrow = selector.parentNode.querySelector('.select-arrow-container');
+    if (existingArrow) {
+        existingArrow.remove();
+    }
+    
+    // Create Material Design arrow container and SVG
+    const arrowContainer = document.createElement('div');
+    arrowContainer.className = 'select-arrow-container';
+    
+    // Create SVG element for Material Design arrow
+    const svgNamespace = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNamespace, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("class", "select-arrow-material");
+    
+    // Create path for the arrow
+    const path = document.createElementNS(svgNamespace, "path");
+    path.setAttribute("d", "M7 10l5 5 5-5z");
+    
+    // Append path to SVG and SVG to container
+    svg.appendChild(path);
+    arrowContainer.appendChild(svg);
+    
+    // Add the arrow to the selector wrapper
+    selector.parentNode.appendChild(arrowContainer);
+    
     // Update direction attribute for RTL languages
     if (['ar', 'he', 'fa'].includes(selector.value)) {
         document.documentElement.setAttribute('dir', 'rtl');
@@ -226,9 +253,48 @@ function setInitialLanguage() {
     }
 }
 
+/**
+ * Handle dropdown open/close for language selectors
+ */
+function setupDropdownBehavior() {
+    const selectors = document.querySelectorAll('.flag-enabled');
+    
+    selectors.forEach(selector => {
+        // Toggle active class on click
+        selector.addEventListener('click', function(event) {
+            const wrapper = this.closest('.flag-select-wrapper');
+            if (wrapper) {
+                wrapper.classList.toggle('active');
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const wrapper = selector.closest('.flag-select-wrapper');
+            if (wrapper && !wrapper.contains(event.target)) {
+                wrapper.classList.remove('active');
+            }
+        });
+        
+        // Close dropdown after selection
+        selector.addEventListener('change', function() {
+            const wrapper = this.closest('.flag-select-wrapper');
+            if (wrapper) {
+                wrapper.classList.remove('active');
+            }
+        });
+    });
+}
+
+// Initialize dropdown behavior
+document.addEventListener('DOMContentLoaded', function() {
+    setupDropdownBehavior();
+});
+
 // Add global access
 window.flagLanguageSelector = {
     update: updateFlag,
     sync: syncLanguageSelectors,
-    initialize: initializeFlagLanguageSelectors
+    initialize: initializeFlagLanguageSelectors,
+    setupDropdown: setupDropdownBehavior
 };
