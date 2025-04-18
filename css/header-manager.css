@@ -195,7 +195,7 @@
 
 /* Form language select - improved spacing */
 .form-language-select {
-    padding: 6px 40px 6px 35px; /* Increased right padding to avoid text cutoff */
+    padding: 0 45px 0 35px; /* Changed vertical padding to 0 */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -204,15 +204,21 @@
     background-color: var(--color-white, #fff);
     font-size: 0.875rem;
     cursor: pointer;
-    height: 36px; /* Fixed height */
-    min-width: 140px;
-    line-height: 1.2; /* Proper line height for vertical centering */
+    height: 38px; /* Slightly increased height */
+    min-width: 160px; /* Increased minimum width */
+    display: flex; /* Added flex display */
+    align-items: center; /* Center content vertically */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box; /* Ensure padding doesn't affect overall height */
 }
 
 /* Ensure dropdown options display correctly */
 .form-language-select option {
-    padding: 8px 12px;
-    line-height: 1.2;
+    padding: 10px 12px; /* Increased padding */
+    min-height: 36px; /* Ensure minimum height */
+    line-height: normal; /* Reset line height */
 }
 /* Wrapper */
 .flag-select-wrapper {
@@ -235,12 +241,30 @@
 /* Adjust select arrow container position */
 .select-arrow-container {
     position: absolute;
-    right: 12px; /* Slightly increased from 10px */
+    right: 15px; /* Increased from 12px */
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     z-index: 2;
     transition: transform 0.2s ease;
+}
+
+/* Fix for Firefox */
+@-moz-document url-prefix() {
+    .form-language-select {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 38px;
+    }
+}
+
+/* Fix for Safari and Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .form-language-select {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 38px;
+    }
 }
 
 /* Material Design dropdown arrow */
